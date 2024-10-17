@@ -28,7 +28,7 @@ export const lightTheme = createTheme({
       },
   },
   typography: {
-    fontFamily: 'Roboto, sans-serif',
+    fontFamily: "Six Caps", 'sans-serif',
     h1: {
       fontSize: '3rem',
       fontWeight: 400,
@@ -160,7 +160,7 @@ export const darkTheme = createTheme({
       },
   },
   typography: {
-    fontFamily: 'Montserrat, sans-serif',
+    fontFamily: "Six Caps", 'sans-serif',
     h1: {
       fontSize: '3rem',
       fontWeight: 400,
