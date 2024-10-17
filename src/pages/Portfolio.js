@@ -2,32 +2,34 @@ import React from 'react';
 import { Box, Typography, Button } from '@mui/material';
 import { useTranslation } from 'react-i18next';
 
-import project1Image1 from '../assets/project1-image1.png';
-import project1Image2 from '../assets/project1-image2.png';
-import project2Image1 from '../assets/project2-image1.png';
-import project2Image2 from '../assets/project2-image2.png';
+
+import project1Image1 from '../assets/light-phone.png';
+import project1Image2 from '../assets/dark-phone.png';
+import project2Image1 from '../assets/light-phone.png';
+import project2Image2 from '../assets/dark-phone.png';
 
 const Portfolio = () => {
   const { t } = useTranslation();
 
-  const projects = [
-    {
-      title: t('portfolioPage.projects.project.title'), 
-      description: t('portfolioPage.projects.project.description'),
-      images: [project1Image1, project1Image2],
-      link: "/project/library-management"
-    },
-    {
-      title: t('portfolioPage.projects.project.title'), 
-      description: t('portfolioPage.projects.project.description'),
-      images: [project2Image1, project2Image2],
-      link: "/project/real-estate"
-    },
-  ];
+  // const projects = [
+  //   {
+  //     title: t('portfolioPage.projects.project.title', 'Default Project Title'),
+  //     description: t('portfolioPage.projects.project.description', 'Default Project Description'),
+  //     images: [project1Image1, project1Image2],
+  //     link: "/project/library-management"
+  //   },
+  //   {
+  //     title: t('portfolioPage.projects.project.title', 'Default Project Title'),
+  //     description: t('portfolioPage.projects.project.description', 'Default Project Description'),
+  //     images: [project2Image1, project2Image2],
+  //     link: "/project/real-estate"
+  //   },
+  // ];
+  
 
   return (
     <Box sx={{ p: 4 }}>
-      {projects.map((project, index) => (
+      {/* {projects.map((project, index) => (
         <Box key={index} sx={{ display: 'flex', flexDirection: 'column', mb: 4 }}>
           <Box sx={{ display: 'flex', justifyContent: 'space-between', mb: 2 }}>
             <Box>
@@ -42,7 +44,7 @@ const Portfolio = () => {
             ))}
           </Box>
         </Box>
-      ))}
+      ))} */}
     </Box>
   );
 };

@@ -1,34 +1,34 @@
-import React from 'react';
+import React, { useState, useContext } from 'react';
 import {
   Box,
   Typography,
   Container,
   Button,
-  Paper,
+  Paper
 } from '@mui/material';
-import Grid2 from '@mui/material/Grid2'; // Importuojame Grid2
-import { styled } from '@mui/material/styles';
+import Grid2 from '@mui/material/Grid2'; 
+import { styled, useTheme } from '@mui/material/styles';
 import { useTranslation } from 'react-i18next'; 
 import { ThemeContext } from '../context/ThemeContext'; 
 import lightPhoneImage from '../assets/light-phone.png';
 import darkPhoneImage from '../assets/dark-phone.png';
 
 const About = () => {
-    const { t, i18n } = useTranslation();
+    const { t } = useTranslation();
     const { themeMode } = useContext(ThemeContext); 
-
+    const theme = useTheme();
   return (
     <>
     
     <HeroSection>
         <StyledBox>
-            <Typography variant="h2" sx={{ fontFamily: 'Six Caps', 'sans-serif' }}>
+            <Typography variant="h2" sx={{ fontFamily: 'Noto Sans, sans-serif', fontWeight: '500' }}>
             {t('aboutPage.name')}
             </Typography>
             <Typography variant="body1">
             {t('aboutPage.jobTitle')}
             </Typography>
-            <Typography variant="body2" sx={{ textAlign: 'left' }}>
+            <Typography variant="body2" sx={{ textAlign: 'left', color:  theme.palette.text.third}}>
             {t('aboutPage.description')}
             </Typography>
         </StyledBox>
@@ -66,36 +66,34 @@ const About = () => {
         {t('aboutPage.workExperience.title')}
       </Typography>
 
-      <Grid container spacing={4}>
-        {Object.keys(t('aboutPage.workExperience.experiences')).map((key) => {
-          const experience = t(`aboutPage.workExperience.experiences.${key}`);
-          return (
-            <Grid item xs={12} sm={6} md={4} key={experience.tittle}>
-              <Paper elevation={3} style={{ padding: 20 }}>
-                <Typography variant="h6">{experience.tittle}</Typography>
-                <Typography variant="body2">{experience.company}</Typography>
-                <Typography variant="body2">
-                  {experience.startDate} - {experience.endDate || 'Present'}
-                </Typography>
-                <Typography variant="body2">{experience.employmentType}</Typography>
-                <ul>
-                  {Object.keys(experience.description).map((descKey) => (
-                    <li key={descKey}>{experience.description[descKey]}</li>
-                  ))}
-                </ul>
-                <Typography variant="body2">
-                  <strong>Skills:</strong>
-                </Typography>
-                <ul>
-                  {Object.keys(experience.skills).map((skillKey) => (
-                    <li key={skillKey}>{experience.skills[skillKey]}</li>
-                  ))}
-                </ul>
-              </Paper>
-            </Grid>
-          );
-        })}
-      </Grid>
+      <Grid2 container spacing={4}>
+  {t('aboutPage.workExperience.experiences', { returnObjects: true }).map((experience, index) => (
+    <Grid2 item xs={12} sm={6} md={4} key={index}>
+      <Paper elevation={3} style={{ padding: 20 }}>
+        <Typography variant="h6">{experience.tittle}</Typography>
+        <Typography variant="body2">{experience.company}</Typography>
+        <Typography variant="body2">
+          {experience.startDate} - {experience.endDate || 'Present'}
+        </Typography>
+        <Typography variant="body2">{experience.employmentType}</Typography>
+        <ul>
+          {Object.keys(experience.description).map((descKey) => (
+            <li key={descKey}>{experience.description[descKey]}</li>
+          ))}
+        </ul>
+        <Typography variant="body2">
+          <strong>Skills:</strong>
+        </Typography>
+        <ul>
+          {Object.keys(experience.skills).map((skillKey) => (
+            <li key={skillKey}>{experience.skills[skillKey]}</li>
+          ))}
+        </ul>
+      </Paper>
+    </Grid2>
+  ))}
+</Grid2>
+
     </section>
 
 

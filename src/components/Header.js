@@ -5,7 +5,8 @@ import { useTranslation } from 'react-i18next';
 import { styled } from '@mui/material/styles';
 import CloseIcon from '@mui/icons-material/Close';
 import LanguageIcon from '@mui/icons-material/Language';
-import { Link } from 'react-router-dom'; // Import Link
+import { Link } from 'react-router-dom'; 
+import LanguageSwitcher from './LanguageSwitcher';
 
 export default function Header() {
   const { toggleTheme, themeMode } = useContext(ThemeContext); 
@@ -81,6 +82,7 @@ export default function Header() {
     </StyledAppBar>
   );
 }
+
 
 const StyledAppBar = styled(AppBar)(({ theme }) => ({
     transition: 'background-color 0.3s ease, color 0.3s ease',

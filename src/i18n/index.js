@@ -25,19 +25,19 @@ i18n
             description: "Programming is my driving passion. I enjoy every moment spent tackling challenges, seeking creative solutions, building and coding. I dedicate myself to hard work and continuous learning, not only because I aspire to become a professional in this field, but also because software development is my number one hobby.",
             workExperience: {
               title: "Work Experience",
-              experiences:{
-                experience: {
+              experiences: [ // Patirtis kaip masyvas
+                {
                   tittle: "Junior Developer",
                   company: "Universalios valdymo sistemos, UAB",
                   startDate: "2024-06-25",
                   endDate: null,
                   employmentType: "Full Time",
-                  description:{
+                  description: {
                     1: "Working with the user interface of POS systems",
                     2: "Modifying design elements if the original plan requires changes",
                     3: "Collaborating with team members",
                   },
-                  skills:{
+                  skills: {
                     1: "C# .NET",
                     2: "XAML",
                     3: "XML",
@@ -45,41 +45,43 @@ i18n
                     5: "HTML/CSS",
                   },
                 },
-                experience: {
+                {
                   tittle: "Planner",
                   company: "Girteka Europe West, UAB",
                   startDate: "2021-10-01",
                   endDate: "2023-09-01",
                   employmentType: "Full Time",
-                  description:{
+                  description: {
                     1: "Strategically planned cargo flows for efficient coordination",
                     2: "Analyzed supervised vehicle movements",
                     3: "Selected and adjusted optimal transportation options based on evolving circumstances",
                     4: "Collaborated with colleagues to resolve transportation issues",
                   },
-                  skills:{
+                  skills: {
                     1: "Excel",
                     2: "Dynamics AX",
                   },
                 },
-                experience: {
+                {
                   tittle: "Administrator",
                   company: "Jarinta, UAB",
                   startDate: "2021-04-01",
                   endDate: "2021-09-01",
                   employmentType: "Full Time",
-                  description:{
+                  description: {
                     1: "Electrical network management",
                     2: "Apartment administration",
                     3: "Debt collection",
                     4: "Managed company documentation",
                   },
-                  skills:{
+                  skills: {
                     1: "Excel",
                     2: "Word",
                   },
                 },
-              },
+              ],
+            
+            
              
             },
             education: {
@@ -187,8 +189,8 @@ i18n
             description:"Programavimas, o ypač vartotojo sąsajos, yra mano gyvenimo varikliukas. Aš mėgaujuosi kiekviena minute praleista gilinantis į užduotis, ieškant kūrybiškų sprendimų, kuriant ir programuojant. Tikrai daug dirbu ir daug mokausi, gal dėl to, kad noriu tapti šios srities profesionale, bet manau ir dėl to, kad programų kūrimas yra mano top 1 hobis.",
             workExperience: {
               tittle: "Darbo patirtis",
-              experiences:{
-                experience: {
+              experiences:[
+                {
                   tittle: "Jaunesnioji programuotoja",
                   company: "Universalios valdymo sistemos, UAB",
                   startDate: "2024-06-25",
@@ -207,7 +209,8 @@ i18n
                     5: "HTML/CSS",
                   },
                 },
-                experience: {
+
+                {
                   tittle: "Reisų koordinatorė/planuotoja",
                   company: "Girteka Europe West, UAB",
                   startDate: "2021-10-01",
@@ -224,7 +227,7 @@ i18n
                     2: "Dynamics AX",
                   },
                 },
-                experience: {
+                {
                   tittle: "Administratorė",
                   company: "Jarinta, UAB",
                   startDate: "2021-04-01",
@@ -239,8 +242,9 @@ i18n
                     1: "Excel",
                     2: "Word",
                   },
-                },
-              },
+                }
+              ]
+                
               
             },
             education: {

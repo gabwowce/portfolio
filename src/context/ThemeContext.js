@@ -1,4 +1,3 @@
-
 import { createContext, useState, useMemo } from 'react';
 import { ThemeProvider } from '@mui/material/styles';
 import { lightTheme, darkTheme } from '../theme';
@@ -15,7 +14,7 @@ export const ThemeContextProvider = ({ children }) => {
   const theme = useMemo(() => (themeMode === 'light' ? lightTheme : darkTheme), [themeMode]);
 
   return (
-    <ThemeContext.Provider value={{ themeMode, toggleTheme }}>
+    <ThemeContext.Provider value={{ themeMode, toggleTheme, theme }}> {/* Added theme here */}
       <ThemeProvider theme={theme}>
         {children}
       </ThemeProvider>

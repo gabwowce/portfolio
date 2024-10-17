@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Box, Typography, TextField, Button, Container, Grid, useTheme } from '@mui/material';
+import { Box, Typography, TextField, Button, Container, Grid2, useTheme } from '@mui/material';
 import lightPhoneImage from '../assets/light-phone.png';
 import darkPhoneImage from '../assets/dark-phone.png';
 
@@ -56,8 +56,8 @@ const Contact = () => {
           Send a Message
         </Typography>
         <form onSubmit={handleSubmit}>
-          <Grid container spacing={2}>
-            <Grid item xs={12} sm={6}>
+          <Grid2 container spacing={2}>
+            <Grid2 item xs={12} sm={6}>
               <TextField
                 fullWidth
                 label="Name"
@@ -66,8 +66,8 @@ const Contact = () => {
                 onChange={handleChange}
                 required
               />
-            </Grid>
-            <Grid item xs={12} sm={6}>
+            </Grid2>
+            <Grid2 item xs={12} sm={6}>
               <TextField
                 fullWidth
                 label="Email"
@@ -77,8 +77,8 @@ const Contact = () => {
                 onChange={handleChange}
                 required
               />
-            </Grid>
-            <Grid item xs={12}>
+            </Grid2>
+            <Grid2 item xs={12}>
               <TextField
                 fullWidth
                 label="Message"
@@ -89,13 +89,13 @@ const Contact = () => {
                 onChange={handleChange}
                 required
               />
-            </Grid>
-            <Grid item xs={12}>
+            </Grid2>
+            <Grid2 item xs={12}>
               <Button variant="contained" color="primary" type="submit" fullWidth>
                 Send Message
               </Button>
-            </Grid>
-          </Grid>
+            </Grid2>
+          </Grid2>
         </form>
       </Container>
     </div>

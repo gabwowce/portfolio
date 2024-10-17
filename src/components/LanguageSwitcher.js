@@ -3,6 +3,13 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import Switch from '@mui/material/Switch';
 import FormControlLabel from '@mui/material/FormControlLabel';
+import {
+  Box,
+  Typography,
+  Container,
+  Button,
+  Paper
+} from '@mui/material';
 
 const LanguageSwitcher = () => {
   const { i18n } = useTranslation();

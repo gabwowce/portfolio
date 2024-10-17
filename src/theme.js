@@ -17,6 +17,7 @@ export const lightTheme = createTheme({
     text: {
       primary: '#243642', // Dark blue for main text
       secondary: '#FF9D3D', // Orange for secondary text (e.g., in buttons or highlighted text)
+      third: '#8A8A8A'
     },
     footer: {
       background: '#f0f0f0',  // Light gray footer background
@@ -28,7 +29,7 @@ export const lightTheme = createTheme({
       },
   },
   typography: {
-    fontFamily: "PT Serif", 'sans-serif',
+    fontFamily: "PT Serif, sans-serif",
     h1: {
       fontSize: '3rem',
       fontWeight: 400,
@@ -120,16 +121,26 @@ export const lightTheme = createTheme({
       },
     },
     body2: {
-      fontSize: '0.875rem',
+      fontSize: '0.675rem',
       fontWeight: 400,
       [createTheme().breakpoints.up('sm')]: {
-        fontSize: '1rem',
+        fontSize: '0.875rem',
       },
       [createTheme().breakpoints.up('md')]: {
-        fontSize: '1.125rem',
+        fontSize: '1rem',
       },
     },
-  },
+    button: {
+      fontSize: '0.775rem',  // Default size for buttons
+      fontWeight: 600,
+      [createTheme().breakpoints.up('sm')]: {
+        fontSize: '0.875rem', // Size for small screens
+      },
+      [createTheme().breakpoints.up('md')]: {
+        fontSize: '0.975rem',  // Size for medium screens
+      }
+    }
+  }
 });
 
 // Dark Theme
@@ -149,6 +160,7 @@ export const darkTheme = createTheme({
     text: {
       primary: '#E5E5CB', // Light gray for main text
       secondary: '#D5CEA3', // Tan for secondary text (e.g., in buttons or highlighted text)
+      third: 'rgba(182, 182, 154, 0.6)',
     },
     footer: {
       background: '#3C2A21',  // Medium brown footer background
@@ -160,7 +172,7 @@ export const darkTheme = createTheme({
       },
   },
   typography: {
-    fontFamily: "PT Serif", 'sans-serif',
+    fontFamily: "PT Serif, sans-serif",
     h1: {
       fontSize: '3rem',
       fontWeight: 400,
@@ -252,14 +264,25 @@ export const darkTheme = createTheme({
       },
     },
     body2: {
-      fontSize: '0.875rem',
+      fontSize: '0.675rem',
       fontWeight: 400,
       [createTheme().breakpoints.up('sm')]: {
-        fontSize: '1rem',
+        fontSize: '0.875rem',
       },
       [createTheme().breakpoints.up('md')]: {
-        fontSize: '1.125rem',
+        fontSize: '1rem',
       },
     },
+    button: {
+      fontSize: '0.775rem',  // Default size for buttons
+      fontWeight: 600,
+      [createTheme().breakpoints.up('sm')]: {
+        fontSize: '0.875rem', // Size for small screens
+      },
+      [createTheme().breakpoints.up('md')]: {
+        fontSize: '0.975rem',  // Size for medium screens
+      }
+    }
   },
 });
+
