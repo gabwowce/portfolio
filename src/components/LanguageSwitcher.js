@@ -23,7 +23,11 @@ const LanguageSwitcher = () => {
           color="primary"
         />
       }
-      label={checked ? 'EN' : 'LT'}
+      label={
+      <Typography variant="body1">
+        {checked ? 'EN' : 'LT'}
+      </Typography>
+    }
     />
   );
 };
