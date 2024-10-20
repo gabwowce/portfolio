@@ -108,6 +108,11 @@ const StyledAccordion = styled(Accordion)(({ theme, index }) => ({
     [theme.breakpoints.down('sm')]: {
       width: '30%',
     },
+    [theme.breakpoints.down('md')]: {
+      width: '40%',
+       transform: index % 2 === 0 ? 'translateX(-8%)' : 'translateX(8%)'
+    },
+
     
 }));
 
@@ -150,7 +155,8 @@ const StyledLine = styled(Box)(({theme, top, bottom }) => ({
     borderRadius: '50px',
     backgroundColor: theme.palette.mode === 'dark' ? 'rgb(10,130,182,0.2)' : '#FFBD73',
     top: top, 
-    bottom: `calc(100% - ${bottom}px)`
+    bottom: `calc(100% - ${bottom}px)`,
+    
   }));
 
 const StyledDot = styled(Box)(({ theme }) => ({
@@ -168,6 +174,19 @@ const StyledDot = styled(Box)(({ theme }) => ({
   },
   '&.right': {
     right: '119.5%', 
+  },
+  [theme.breakpoints.down('lg')]: {
+    '&.right': {
+      right: '118%', 
+    },
+  },
+  [theme.breakpoints.down('md')]: {
+    '&.left': {
+    left: '133%', 
+    },
+    '&.right': {
+      right: '121.5%', 
+    },
   },
 }));
 
@@ -190,4 +209,6 @@ const YearTypography = styled(Typography)(({ theme }) => ({
   '&.right': {
     right: 'calc(100% + 0.4rem)', 
   },
+  
+  
 }));

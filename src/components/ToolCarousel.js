@@ -46,72 +46,83 @@ const tools = [
 ];
 
 const ToolCarousel = () => {
-    const { t } = useTranslation();
-    const theme = useTheme();
-    const isExtraSmall = useMediaQuery(theme.breakpoints.down('sm'));
-  
-    const settings = {
-      infinite: true,
-      speed: 5000,
-      slidesToShow: isExtraSmall ? 4 : 14, // Show 2 slides on extra small screens
-      slidesToScroll: 1,
-      autoplay: true,
-      autoplaySpeed: 0,
-      cssEase: 'linear',
-      pauseOnHover: true,
-    };
-  
-    const groupedTools = isExtraSmall 
-      ? tools.reduce((acc, tool, index) => {
-          const groupIndex = Math.floor(index / 2); // Adjust this number to control the number of tools per row
-          if (!acc[groupIndex]) acc[groupIndex] = [];
-          acc[groupIndex].push(tool);
-          return acc;
-        }, [])
-      : [tools]; // Keep single row for larger screens
-  
-    return (
-      <StyledBox>
-        <NameTypography variant="h4" gutterBottom>
-          {t('aboutPage.skills.title')}
-        </NameTypography>
-        <Slider {...settings}>
-          {groupedTools.map((group, groupIndex) => (
-            <Box key={groupIndex} sx={{ display: 'flex', justifyContent: 'space-around', flexDirection: 'row', width: '100%' }}>
-              {group.map((tool, index) => (
-                <Box 
-                  key={index} 
-                  sx={{ 
-                    display: 'flex', 
-                    flexDirection: 'column', 
-                    alignItems: 'center', 
-                    justifyContent: 'center', 
-                    textAlign: 'center', 
-                    padding: '10px',
-                  }}
-                >
-                  <Box
-                    component="img"
-                    src={tool.image}
-                    alt={tool.name}
-                    sx={{ 
-                      width: '60px', 
-                      height: '60px', 
-                      marginBottom: '5px', 
-                      display: 'block',
-                    }}
-                  />
-                  <Typography variant="subtitle2" sx={{ fontSize: '0.8rem', color: theme.palette.text.primary }}>{tool.name}</Typography>
-                </Box>
-              ))}
-            </Box>
-          ))}
-        </Slider>
-      </StyledBox>
-    );
+  const { t } = useTranslation();
+  const theme = useTheme();
+  const isMedium = useMediaQuery(theme.breakpoints.down('md'));
+  const isExtraSmall = useMediaQuery(theme.breakpoints.down('sm'));
+  const settings = {
+    infinite: true,
+    speed: 4000,
+    slidesToShow: isExtraSmall ? 4 : (isMedium ? 6 : 12),
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 0,
+    autoplaySpeed: 50,
+    cssEase: 'linear',
+    pauseOnHover: true,
+    draggable: true
   };
-  
-  export default ToolCarousel;
+
+  // Group tools based on screen size
+  const groupedTools = tools.reduce((acc, tool, index) => {
+        const groupIndex = Math.floor(index / (isMedium || isExtraSmall ? 2 : 1)); // 2 tools per row for small screens
+        if (!acc[groupIndex]) acc[groupIndex] = [];
+        acc[groupIndex].push(tool);
+        return acc;
+      }, []); // Single group for large screens (1 row with all tools)
+
+  return (
+    <StyledBox>
+      <NameTypography variant="h4" gutterBottom>
+        {t('aboutPage.skills.title')}
+      </NameTypography>
+      <Slider {...settings}>
+        {/* Use flexbox layout to make sure the tools align in rows and columns */}
+        {groupedTools.map((group, groupIndex) => (
+          <Box
+            key={groupIndex}
+            sx={{
+              display: 'flex',
+              flexWrap: isExtraSmall ? 'wrap' : 'nowrap', // Allow wrapping on small screens, no wrap on large screens
+              justifyContent: 'space-around',
+              width: '100%',
+            }}
+          >
+            {group.map((tool, index) => (
+              <Box 
+                key={index} 
+                sx={{ 
+                  display: 'flex', 
+                  flexDirection: 'column', 
+                  alignItems: 'center', 
+                  justifyContent: 'center', 
+                  textAlign: 'center', 
+                  padding: '10px',
+                }}
+              >
+                <Box
+                  component="img"
+                  src={tool.image}
+                  alt={tool.name}
+                  sx={{ 
+                    width: '60px', 
+                    height: '60px', 
+                    marginBottom: '5px', 
+                    display: 'block',
+                  }}
+                />
+                <Typography variant="subtitle2" sx={{ fontSize: '0.8rem', color: theme.palette.text.primary }}>{tool.name}</Typography>
+              </Box>
+            ))}
+          </Box>
+        ))}
+      </Slider>
+    </StyledBox>
+  );
+};
+
+export default ToolCarousel;
+
 
 
   
