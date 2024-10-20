@@ -5,7 +5,53 @@ body {
     margin: 0;
   }
 
-  .content {
-    padding-top: 56px; 
+.content {
+  padding-top: 56px; 
+}
+
+* {
+  box-sizing: border-box;
+}
+
+
+  @keyframes pulse {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.1); 
+    }
+    100% {
+      transform: scale(1);
+    }
   }
 
+
+  .custom-container {
+    max-width: 100%; /* xs */
+  }
+  
+  @media (min-width: 600px) {
+    .custom-container {
+      max-width: 600px; /* sm */
+    }
+  }
+  
+  @media (min-width: 900px) {
+    .custom-container {
+      max-width: 900px; /* md */
+    }
+  }
+  
+  @media (min-width: 1200px) {
+    .custom-container {
+      max-width: 1200px; /* lg */
+    }
+  }
+  
+  @media (min-width: 1536px) {
+    .custom-container {
+      max-width: 1536px; /* xl */
+    }
+  }
+  

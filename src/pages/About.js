@@ -12,178 +12,206 @@ import { useTranslation } from 'react-i18next';
 import { ThemeContext } from '../context/ThemeContext'; 
 import lightPhoneImage from '../assets/light-phone.png';
 import darkPhoneImage from '../assets/dark-phone.png';
+import { ReactComponent as AddUserIcon } from '../assets/add-user.svg';
+import Timeline from '../components/Timeline';
+import ToolCarousel from '../components/ToolCarousel';
+import LanguageSkills from '../components/LanguageSkills';
 
 const About = () => {
     const { t } = useTranslation();
     const { themeMode } = useContext(ThemeContext); 
     const theme = useTheme();
-  return (
-    <>
-    
-    <HeroSection>
-        <StyledBox>
-            <Typography variant="h2" sx={{ fontFamily: 'Noto Sans, sans-serif', fontWeight: '500' }}>
-            {t('aboutPage.name')}
-            </Typography>
-            <Typography variant="body1">
-            {t('aboutPage.jobTitle')}
-            </Typography>
-            <Typography variant="body2" sx={{ textAlign: 'left', color:  theme.palette.text.third}}>
-            {t('aboutPage.description')}
-            </Typography>
-        </StyledBox>
+  
+    return (
+      <BackgroundSection>
+
+        <HeroSection>
+          <StyledContainer className='custom-container'>
+                <StyledBox>
+                  <NameTypography variant="h2">
+                    {t('aboutPage.name')}
+                  </NameTypography>
+                  <SecondTypography variant="body1">
+                    {t('aboutPage.jobTitle')}
+                  </SecondTypography>
+                  <ThirdTypography variant="body2">
+                    {t('aboutPage.description')}
+                  </ThirdTypography>
+                </StyledBox>
+
+                <BoxForPic>
+                  <ImageBox component="img" src={themeMode === 'dark' ? darkPhoneImage : lightPhoneImage} alt="Phone"/>
+                  <StyledButton href="https://www.linkedin.com/in/gabrielė-tamaševičiūtė-06712526b" target="_blank" rel="noopener noreferrer">
+                    <AddUserIcon /> Connect
+                  </StyledButton>
+                </BoxForPic>
+          </StyledContainer>
+        </HeroSection>
+
+        <ToolCarousel/>
+
+        <Container className='custom-container'>
+            <Timeline/>
+        </Container>
         
-        <Box
-          component="img"
-          src={themeMode == 'dark' ? darkPhoneImage : lightPhoneImage}
-          alt="Phone"
-          sx={{
-            width: '300px', 
-            height: 'auto',
-            marginLeft: '20px', 
-            
-            filter: 'drop-shadows(10px 4px 20px rgba(0, 0, 0, 1))', 
+        <StyledBackgroundBox>
+          <Container className='custom-container'>
+            <LanguageSkills/>
+          </Container>
+        </StyledBackgroundBox>
         
-          }}
-        />
-          <StyledButton variant="contained">
-            Connect
-          </StyledButton>
+        
 
-    </HeroSection>
+      </BackgroundSection>
 
-
- 
-     <section>
-      <Typography variant="h4" gutterBottom align="center">
-        {t('aboutPage.name')} - {t('aboutPage.jobTitle')}
-      </Typography>
-      <Typography variant="body1" align="center" gutterBottom>
-        {t('aboutPage.description')}
-      </Typography>
-
-      <Typography variant="h5" gutterBottom>
-        {t('aboutPage.workExperience.title')}
-      </Typography>
-
-      <Grid2 container spacing={4}>
-  {t('aboutPage.workExperience.experiences', { returnObjects: true }).map((experience, index) => (
-    <Grid2 item xs={12} sm={6} md={4} key={index}>
-      <Paper elevation={3} style={{ padding: 20 }}>
-        <Typography variant="h6">{experience.tittle}</Typography>
-        <Typography variant="body2">{experience.company}</Typography>
-        <Typography variant="body2">
-          {experience.startDate} - {experience.endDate || 'Present'}
-        </Typography>
-        <Typography variant="body2">{experience.employmentType}</Typography>
-        <ul>
-          {Object.keys(experience.description).map((descKey) => (
-            <li key={descKey}>{experience.description[descKey]}</li>
-          ))}
-        </ul>
-        <Typography variant="body2">
-          <strong>Skills:</strong>
-        </Typography>
-        <ul>
-          {Object.keys(experience.skills).map((skillKey) => (
-            <li key={skillKey}>{experience.skills[skillKey]}</li>
-          ))}
-        </ul>
-      </Paper>
-    </Grid2>
-  ))}
-</Grid2>
-
-    </section>
-
-
-      <Section>
-        <Typography variant="h4" gutterBottom align="center">
-          What Our Clients Say
-        </Typography>
-        <Grid2 container spacing={4} justifyContent="center">
-          <Grid2 item xs={12} sm={6} md={4}>
-            <TestimonialCard>
-              <Typography variant="body1">
-                "This company provided excellent service!"
-              </Typography>
-              <Typography variant="subtitle2" color="textSecondary">
-                - Client Name
-              </Typography>
-            </TestimonialCard>
-          </Grid2>
-          <Grid2 item xs={12} sm={6} md={4}>
-            <TestimonialCard>
-              <Typography variant="body1">
-                "Highly recommend their services!"
-              </Typography>
-              <Typography variant="subtitle2" color="textSecondary">
-                - Client Name
-              </Typography>
-            </TestimonialCard>
-          </Grid2>
-        </Grid2>
-      </Section>
-
-
-      <Section>
-        <Typography variant="h4" gutterBottom align="center">
-          Get In Touch
-        </Typography>
-        <Typography align="center">
-          Feel free to reach out to us for any inquiries or collaboration!
-        </Typography>
-        <Box textAlign="center" marginTop={2}>
-          <Button variant="contained" color="primary">
-            Contact Us
-          </Button>
-        </Box>
-      </Section>
-    </>
-  );
+    );
 };
 
 export default About;
 
 
+const StyledBackgroundBox = styled(Box)(({ theme }) => ({
+  width:'100%',
+  background: theme.palette.background.paper,
+  padding: '2rem 0 2rem 0',
+
+}));
+
+const SecondTypography = styled(Typography)(({ theme }) => ({
+  textAlign: 'justify',
+  color: theme.palette.text.primary,
+}));
+
+const StyledPaper = styled(Paper)(({ theme }) => ({
+  width: '60%',
+  margin: '1rem 0',
+  position: 'relative',
+  overflow: 'hidden',
+  backgroundColor: 'white',
+  borderRadius: '24px',
+  boxShadow: theme.shadows[3],
+  transition: 'transform 0.3s',
+  display: 'flex',
+  flexDirection: 'row',
+  alignItems: 'center', // Aligns content vertically center
+
+}));
+
+
+const ImageBox = styled(Box)(({ theme }) => ({
+  maxWidth: '300px',
+  height: 'auto',
+  filter: theme.palette.mode === 'dark' ? 'drop-shadow(5px 0px 25px rgba(255, 255, 255, 0.2))' : 'drop-shadow(10px 4px 15px rgba(0, 0, 0, 1))',
+  padding: theme.spacing(3),
+  boxSizing: 'content-box',
+  [theme.breakpoints.down('md')]: {
+    maxWidth: '200px',
+  },
+ 
+}));                
+
+const BoxForPic = styled(Box)(({ theme }) => ({
+  position: 'relative',
+  width: '100%',
+  height: 'auto',
+  justifyItems: 'center',
+}));                
+
+const ThirdTypography = styled(Typography)(({ theme }) => ({
+  textAlign: 'justify',
+  color: theme.palette.text.third,
+  marginTop: '1rem'
+}));
+
+const NameTypography = styled(Typography)(({ theme }) => ({
+  fontFamily: 'Noto Sans, sans-serif', 
+  fontWeight: '500',
+  textAlign:'left',
+  color: theme.palette.text.primary,
+}));
+
+const StyledContainer = styled(Container)(({ theme }) => ({
+  display:'flex',
+  flexDirection: 'column',
+  justifyContent: 'center',
+  alignItems: 'center',
+  margin: '3rem 0',
+  [theme.breakpoints.up('sm')]: {
+    flexDirection: 'row',
+  },
+}));
+
+
+
 const StyledButton = styled(Button)(({ theme }) => ({
-    backgroundColor: '#0a66c2',  
-    color: 'white',
-    textTransform: 'none',  
-    fontWeight: 'bold',
-    borderRadius: '20px',  
-    padding: '6px 16px', 
-    '&:hover': {
-      backgroundColor: '#084a8c',  
+  position: 'absolute',
+  left: '71px',
+  top: '291px',
+  backgroundColor: theme.palette.mode === 'dark' ? '#71b6f9' : '#0b66c1',
+  color: theme.palette.mode === 'dark' ? '#0f121b' : '#fbfbff',
+  textTransform: 'none',
+  borderRadius: '20px',
+  padding: '1px 25px',
+  fontSize: '0.7rem !important',
+  animation: 'pulse 1.5s infinite',
+  '&:hover': {
+    backgroundColor: theme.palette.mode === 'dark' ? '#A2CBF3' : '#367CC1',
+  },
+  svg: {
+    marginRight: '8px',
+    width: '12px',
+    height: '12px',
+    fill: theme.palette.mode === 'dark' ? '#0f121b' : '#fbfbff'
+  },
+
+  [theme.breakpoints.down('lg')]: {
+    left: '44px',
+    top: '290px',
+  },
+  [theme.breakpoints.down('md')]: {
+    left: '41px',
+    top: '202px',
+    padding: '1px 18px',
+    fontSize: '0.4rem !important',                      //gt Reikia tvarkyti ant maziausio ekrano daryti pc foto
+    svg: {
+      marginRight: '4px',
+      width: '6px',
+      height: '6px',
     },
-  }));
+  },
+}));
 
 const StyledBox = styled(Box)(({ theme }) => ({
-    padding: theme.spacing(2), 
-    color: theme.palette.text.primary, 
-    maxWidth: '750px',
-    display:'flex',
-    flexDirection:'column',
-    justifyContent:'center',
-    alignItems:'flex-start'
-  }));
+  padding: theme.spacing(3),
+  maxWidth: '750px',
+  display: 'flex',
+  flexDirection: 'column',
+  justifyContent: 'center',
+  alignItems: 'flex-start'
+}));
 
 const HeroSection = styled(Box)(({ theme }) => ({
-    backgroundColor: theme.palette.background.default,
-    textAlign: 'center',
-    width: '100%',
-    height: '90vh',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center'
-  }));
-  
-  const Section = styled(Box)(({ theme }) => ({
-    padding: theme.spacing(4, 0),
-  }));
-  
-  const TestimonialCard = styled(Paper)(({ theme }) => ({
-    padding: theme.spacing(2),
-    textAlign: 'center',
-    color: theme.palette.text.secondary,
-  }));
+  backgroundColor: theme.palette.background.default,
+  textAlign: 'center',
+  width: '100%',
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  boxShadow: theme.palette.mode === 'dark' ? '0 4px 6px -2px rgba(0, 0, 0, 0.5)' : '0 4px 6px -2px rgba(0, 0, 0, 0.2)',  //gt Reikia tvarkyti
+  // marginBottom: '5rem',
+}));
+
+// const Section = styled(Box)(({ theme }) => ({
+//   padding: theme.spacing(4, 0),
+// }));
+
+// const TestimonialCard = styled(Paper)(({ theme }) => ({
+//   padding: theme.spacing(2),
+//   textAlign: 'center',
+//   color: theme.palette.text.secondary,
+// }));
+
+const BackgroundSection = styled(Box)(({ theme }) => ({
+  backgroundColor: theme.palette.mode === 'dark' ? '#393736' : '#FDFDFB',
+  width: '100%',
+})); 

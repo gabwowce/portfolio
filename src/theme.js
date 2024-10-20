@@ -139,7 +139,8 @@ export const lightTheme = createTheme({
       [createTheme().breakpoints.up('md')]: {
         fontSize: '0.975rem',  // Size for medium screens
       }
-    }
+    },
+    
   }
 });
 
@@ -148,7 +149,7 @@ export const darkTheme = createTheme({
   palette: {
     mode: 'dark',
     primary: {
-      main: '#1A120B', // Dark brown
+      main: '#985E2C', // Dark brown
       light: '#3C2A21', // Medium brown (lighter buttons/active states)
       dark: '#D5CEA3',  // Light tan (for darker button states)
     },
@@ -282,7 +283,8 @@ export const darkTheme = createTheme({
       [createTheme().breakpoints.up('md')]: {
         fontSize: '0.975rem',  // Size for medium screens
       }
-    }
+    },
+    
   },
 });
 
