@@ -1,6 +1,8 @@
 import Slider from 'react-slick';
 import React, { useState, useContext } from 'react';
-import { styled, useTheme } from '@mui/material/styles';
+import { styled, useTheme, keyframes } from '@mui/material/styles';
+import { slideInRightAnimation, slideInLeftAnimation } from '../styles/animations';
+import useOnScreen from '../styles/useOnScreen';
 import { useTranslation } from 'react-i18next'; 
 import { ThemeContext } from '../context/ThemeContext'; 
 import { Box, Typography } from '@mui/material';
@@ -48,6 +50,9 @@ const tools = [
 const ToolCarousel = () => {
   const { t } = useTranslation();
   const theme = useTheme();
+
+  const [ref, isVisible] = useOnScreen({ threshold: 0 });
+
   const isMedium = useMediaQuery(theme.breakpoints.down('md'));
   const isExtraSmall = useMediaQuery(theme.breakpoints.down('sm'));
   const settings = {
@@ -72,10 +77,13 @@ const ToolCarousel = () => {
       }, []); // Single group for large screens (1 row with all tools)
 
   return (
-    <StyledBox>
-      <NameTypography variant="h4" gutterBottom>
+    <StyledBox ref={ref}>
+      <NameTypography variant="h4" isVisible={isVisible}>
         {t('aboutPage.skills.title')}
       </NameTypography>
+      <SecondTypography variant='body2' isVisible={isVisible}>
+        I love them all, but I owe a big thanks to ChatGPT – thanks for being there during tough times!
+      </SecondTypography>
       <Slider {...settings}>
         {/* Use flexbox layout to make sure the tools align in rows and columns */}
         {groupedTools.map((group, groupIndex) => (
@@ -98,6 +106,7 @@ const ToolCarousel = () => {
                   justifyContent: 'center', 
                   textAlign: 'center', 
                   padding: '10px',
+                  
                 }}
               >
                 <Box
@@ -109,6 +118,7 @@ const ToolCarousel = () => {
                     height: '60px', 
                     marginBottom: '5px', 
                     display: 'block',
+                    
                   }}
                 />
                 <Typography variant="subtitle2" sx={{ fontSize: '0.8rem', color: theme.palette.text.primary }}>{tool.name}</Typography>
@@ -134,9 +144,20 @@ width: '100%',
 overflow: 'hidden',
 }));
 
-const NameTypography = styled(Typography)(({ theme }) => ({
-    fontFamily: 'Noto Sans, sans-serif',
-    fontWeight: '500',
+const NameTypography = styled(Typography)(({ theme, isVisible }) => ({
+    fontFamily: 'Outfit, sans-serif',
+    fontWeight: '600',
     textAlign: 'center',
+    fontSize:'54px !important',
     color: theme.palette.text.primary,
+    animation: isVisible ? `${slideInLeftAnimation} 2s ease forwards` : 'none',
   }));
+
+  
+
+const SecondTypography = styled(Typography)(({ theme, isVisible }) => ({
+  color: theme.palette.text.third,
+  textAlign: 'center',
+  marginBottom:'1rem',
+  animation: isVisible ? `${slideInRightAnimation} 2s ease forwards` : 'none',
+}));

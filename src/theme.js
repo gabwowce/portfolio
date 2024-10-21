@@ -5,14 +5,14 @@ export const lightTheme = createTheme({
   palette: {
     mode: 'light',
     primary: {
-      main: '#C4E1F6',  // Light blue
+      main: '#FEF9F2',  // Light blue
       light: '#FEEE91',  // Light yellow (for lighter buttons/active states)
       dark: '#FFBD73',   // Light orange (for darker button states)
     },
     background: {
       default: '#FDFCEE', // Very light yellow
       paper: '#FEF9F2',   // Light yellow paper background
-      hover: '#F6EFBD',   // Orange for hover effects
+      hover: '#e4a0b8',   // Orange for hover effects
     },
     text: {
       primary: '#243642', // Dark blue for main text
@@ -24,7 +24,7 @@ export const lightTheme = createTheme({
       text: '#243642',         // Dark blue footer text
     },
     switch: {
-        thumb: '#FF9D3D',   // color of the thumb
+        thumb: '#e4a0b8',   // color of the thumb
         track: '#F6EFBD',   // color of the track when off
       },
   },
@@ -149,14 +149,14 @@ export const darkTheme = createTheme({
   palette: {
     mode: 'dark',
     primary: {
-      main: '#985E2C', // Dark brown
+      main: '#45474B', // Dark brown
       light: '#3C2A21', // Medium brown (lighter buttons/active states)
       dark: '#D5CEA3',  // Light tan (for darker button states)
     },
     background: {
       default: '#121212', // Dark background
       paper: '#1d1d1d',   // Dark paper background
-      hover: '#3C2A21',   // Light gray for hover effects
+      hover: '#612a30',   // Light gray for hover effects
     },
     text: {
       primary: '#E5E5CB', // Light gray for main text
@@ -168,7 +168,7 @@ export const darkTheme = createTheme({
       text: '#E5E5CB',         // Light gray footer text
     },
     switch: {
-        thumb: '#D5CEA3',   // light color for thumb
+        thumb: '#612a30',   // light color for thumb
         track: '#1A120B',    // dark color for the track when off
       },
   },

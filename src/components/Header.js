@@ -1,5 +1,6 @@
 import React, { useState, useContext } from 'react';
 import { AppBar, Toolbar, IconButton, Button, Box, Menu, MenuItem, Switch, useMediaQuery } from '@mui/material';
+import { slideDownAnimation } from '../styles/animations';
 import { ThemeContext } from '../context/ThemeContext'; 
 import { useTranslation } from 'react-i18next'; 
 import { styled } from '@mui/material/styles';
@@ -68,14 +69,14 @@ export default function Header() {
         {/* Language Switch and Theme Toggle */}
         <StyledBox>
             <IconButton onClick={handleMenuClick}>
-                <LanguageIcon />
+              <StyledLanguageIcon />
             </IconButton>
           <Menu anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={handleMenuClose}>
             <MenuItem onClick={() => changeLanguage('en')}>EN</MenuItem>
             <MenuItem onClick={() => changeLanguage('lt')}>LT</MenuItem>
           </Menu>
 
-          <Switch checked={themeMode === 'dark'} onChange={toggleTheme} />
+          <StyledSwitch checked={themeMode === 'dark'} onChange={toggleTheme}/>
         </StyledBox>
         
       </StyledToolbar>
@@ -84,17 +85,42 @@ export default function Header() {
 }
 
 
+const StyledSwitch = styled(Switch)(({ theme }) => ({
+  '& .MuiSwitch-thumb': {
+    backgroundColor: theme.palette.switch.thumb
+  },
+}));
+
+const StyledLanguageIcon = styled(LanguageIcon)(({ theme }) => ({
+  color: theme.palette.switch.thumb,
+  width:'2rem',
+  height:'2rem'
+}));
+
+
 const StyledAppBar = styled(AppBar)(({ theme }) => ({
-    transition: 'background-color 0.3s ease, color 0.3s ease',
+  position: 'fixed',
+  top: '1rem', // Nustatykite viršutinę atstumą
+  left: '2rem', // Nustatykite kairįjį atstumą
+  right: '2rem', // Nustatykite dešinįjį atstumą
+  borderRadius: '24px', // Apvalūs kampai
+  width:'calc(100% - 4rem)',
+  transition: 'background-color 0.3s ease, color 0.3s ease',
+  boxShadow: theme.shadows[10], // Pridėkite šešėlį, kad atrodytų plūduriuojantis
+  zIndex: 1100, // Užtikrinkite, kad jis būtų virš kitų elementų
+  animation: `${slideDownAnimation} 2s ease forwards`,
 }));
   
 const StyledToolbar = styled(Toolbar)(({ theme }) => ({
-    display: 'flex',
-    justifyContent: 'space-between',
-    alignItems: 'center',
+  display: 'flex',
+  justifyContent: 'space-between',
+  alignItems: 'center',
+  padding: '0.5rem', // Pridėkite vidinį atstumą, jei reikia
 }));
   
 const StyledButton = styled(Button)(({ theme }) => ({
+    fontFamily: 'Outfit, sans-serif', 
+    fontWeight:'600',
     color: theme.palette.text.primary,
     margin: theme.spacing(1),
     fontSize: '1rem', 

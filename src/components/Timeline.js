@@ -1,30 +1,30 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Box, Typography, Accordion, AccordionSummary, AccordionDetails } from '@mui/material';
+import { slideInRightAnimation, slideInLeftAnimation, slideUpAnimation } from '../styles/animations';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { styled } from '@mui/material/styles';
+import useOnScreen from '../styles/useOnScreen';
 
 const Timeline = () => {
   const { t } = useTranslation();
-  const workExperience = t('aboutPage.workExperience.experiences', { returnObjects: true });
+  const workExperience = t('aboutPage.workExperience.experiences', { returnObjects: true });             //gt reikai useEffect kad atidaryti pirma experienca ant uzkrovimo
   const isArray = Array.isArray(workExperience);
   const [lineY, setLineY] = useState({ top: 0, bottom: 0 });
   
   const accordionRefs = useRef([]);
 
+  const [ref, isVisible] = useOnScreen({ threshold: 0 });
+
   const calcLineTopBottom = () => {
     if (accordionRefs.current.length > 0) {
-      // Get the timeline container's Y position
       const timelineContainer = accordionRefs.current[0].parentElement.getBoundingClientRect();
-  
-      // Get the first and last dots' Y positions relative to the container
       const firstDot = accordionRefs.current[0].querySelector('.dot').getBoundingClientRect();
       const lastDot = accordionRefs.current[accordionRefs.current.length - 1].querySelector('.dot').getBoundingClientRect();
-  
-      // Calculate the line positions based on the dots' positions relative to the container
+
       setLineY({
-        top: firstDot.top - timelineContainer.top + firstDot.height / 2,  // Adjusted for the container
-        bottom: lastDot.top - timelineContainer.top + lastDot.height / 2, // Adjusted for the container
+        top: firstDot.top - timelineContainer.top + firstDot.height / 2, 
+        bottom: lastDot.top - timelineContainer.top + lastDot.height / 2, 
       });
     }
   };
@@ -36,14 +36,17 @@ const Timeline = () => {
   }, [workExperience]);
 
   return (
-    <StyledTimeline>
-      <NameTypography variant="h4" gutterBottom>
+    <StyledTimeline ref={ref}>
+      <NameTypography variant="h4" isVisible={isVisible}>
         {t('aboutPage.workExperience.title')}
       </NameTypography>
+      <SecondTypography variant='body2' isVisible={isVisible}>
+        I love working! Sometimes even more than eating chocolate...
+      </SecondTypography>
       <StyledTimelineContainer>
-        <StyledLine top={lineY.top} bottom={lineY.bottom} />
+        <StyledLine top={lineY.top} bottom={lineY.bottom} isVisible={isVisible}/>
         {isArray && workExperience.map((exp, index) => (
-          <StyledAccordion key={index} ref={el => (accordionRefs.current[index] = el)} index={index}>
+          <StyledAccordion key={index} ref={el => (accordionRefs.current[index] = el)} index={index} isVisible={isVisible}>
             <AccordionSummary expandIcon={<ExpandMoreIcon />}>
               <Box>
                 <PrimaryTypography variant='body1'>
@@ -95,13 +98,23 @@ const InnerTypography = styled(Typography)(({ theme }) => ({
     fontSize: '14px',
   }));
 
-const StyledAccordion = styled(Accordion)(({ theme, index }) => ({
+  const StyledAccordion = styled(Accordion)(({ theme, index, isVisible }) => ({
     width: '40%',
     height: 'auto',
-    background: theme.palette.mode === 'dark' ? 'linear-gradient(90deg, #313131 40%, #3D3D3D 100%)' : 'linear-gradient(90deg, #C4E1F6 40%, #93CAF6 100%)',
+    background: 'rgba(0, 0, 0, 0.02)',  // Permatomas fonas
     alignSelf: index % 2 === 0 ? 'flex-start' : 'flex-end',
     padding: '0',
-    boxShadow: theme.palette.mode === 'dark' ? '0 4px 6px -2px rgba(0, 0, 0, 0.5)' : '0 4px 6px -2px rgba(0, 0, 0, 0.2)',
+    animation: isVisible ? `${index % 2 == 0 ? slideInLeftAnimation : slideInRightAnimation} 2s ease forwards` : 'none',
+    boxShadow: theme.palette.mode === 'dark' 
+  ? '0 7px 6px -2px rgba(0, 0, 0, 0.5), 7px 0 6px -2px rgba(0, 0, 0, 0.5)' 
+  : '0 7px 6px -2px rgba(0, 0, 0, 0.2), 7px 0 6px -2px rgba(0, 0, 0, 0.2)',
+
+    '&:last-of-type': {
+    borderBottomLeftRadius: '10px', // Užtikrina, kad paskutinis elementas turės apvalius kampus
+    borderBottomRightRadius: '10px',
+  },
+    border: theme.palette.mode === 'dark' ? '1px solid rgba(255, 255, 255, 0.2)' : '1px solid rgba(0, 0, 0, 0.2)',  // Šviesus rėmelis
+    borderRadius: '10px',  // Švelnūs kampai, kad atrodytų kaip stiklas
     '&::before': {
         content: 'none',
     },
@@ -110,20 +123,26 @@ const StyledAccordion = styled(Accordion)(({ theme, index }) => ({
     },
     [theme.breakpoints.down('md')]: {
       width: '40%',
-       transform: index % 2 === 0 ? 'translateX(-8%)' : 'translateX(8%)'
+      transform: index % 2 === 0 ? 'translateX(-8%)' : 'translateX(8%)',
     },
-
-    
 }));
 
 const PrimaryTypography = styled(Typography)(({ theme }) => ({
   fontWeight: '500',
-  color: theme.palette.mode === 'dark' ? '#985E2C' :'#0A82B6'
+  fontFamily: 'Outfit, sans-serif', 
+  color: theme.palette.text.primary
 }));
 
 const ThirdTypography = styled(Typography)(({ theme }) => ({
   textAlign: 'justify',
   color: theme.palette.text.primary,
+}));
+
+const SecondTypography = styled(Typography)(({ theme, isVisible }) => ({
+  color: theme.palette.text.third,
+  textAlign: 'center',
+  marginBottom:'3rem',
+  animation: isVisible ? `${slideInRightAnimation} 2s ease forwards` : 'none',
 }));
 
 const StyledTimeline = styled(Box)(({ theme }) => ({
@@ -135,6 +154,7 @@ const StyledTimeline = styled(Box)(({ theme }) => ({
   padding: '0 0',
   width: '100%',
   padding: '7rem 0 7rem 0',
+  
 }));
 
 const StyledTimelineContainer = styled(Box)(({ theme }) => ({
@@ -148,32 +168,32 @@ const StyledTimelineContainer = styled(Box)(({ theme }) => ({
     
 }));
 
-const StyledLine = styled(Box)(({theme, top, bottom }) => ({
+const StyledLine = styled(Box)(({theme, top, bottom, isVisible }) => ({
     position: 'absolute',
     left: 'calc(50% - 4px)',
     width: '8px',
     borderRadius: '50px',
-    backgroundColor: theme.palette.mode === 'dark' ? 'rgb(10,130,182,0.2)' : '#FFBD73',
+    backgroundColor: theme.palette.mode === 'dark' ? 'rgb(29,29,29,0.5)' : 'rgb(255,249,242,0.9)',
     top: top, 
     bottom: `calc(100% - ${bottom}px)`,
-    
+    animation: isVisible ? `${slideUpAnimation} 2s ease forwards` : 'none',
   }));
 
 const StyledDot = styled(Box)(({ theme }) => ({
   position: 'absolute',
   width: '25px',
   height: '25px',
-  backgroundColor: theme.palette.mode === 'dark' ? '#85C0DA' : '#FFBD73',
-  border: theme.palette.mode === 'dark' ? '5px solid #0A82B6' : '5px solid #FF9D3D',
+  backgroundColor: theme.palette.mode === 'dark' ? 'rgb(29,29,29,0.9)' : 'rgb(254,249,242,0.9)',
+  border: theme.palette.mode === 'dark' ? '5px solid #1D1D1D' : '5px solid #FEF9F2',
   borderRadius: '50%',
   top: 'calc(50% - 12.5px)', 
   transform: 'translateX(-50%)',
   zIndex: 1,
   '&.left': {
-    left: '125%', 
+    left: '125.5%', 
   },
   '&.right': {
-    right: '119.5%', 
+    right: '119.6%', 
   },
   [theme.breakpoints.down('lg')]: {
     '&.right': {
@@ -190,12 +210,14 @@ const StyledDot = styled(Box)(({ theme }) => ({
   },
 }));
 
-const NameTypography = styled(Typography)(({ theme }) => ({
-  fontFamily: 'Noto Sans, sans-serif',
-  fontWeight: '500',
+
+const NameTypography = styled(Typography)(({ theme, isVisible }) => ({
+  fontFamily: 'Outfit, sans-serif',
+  fontWeight: '600',
   textAlign: 'center',
+  fontSize:'54px !important',
   color: theme.palette.text.primary,
-  margin: '0 0 3rem 0',
+  animation: isVisible ? `${slideInLeftAnimation} 2s ease forwards` : 'none',
 }));
 
 const YearTypography = styled(Typography)(({ theme }) => ({
