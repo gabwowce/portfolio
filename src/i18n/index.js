@@ -171,6 +171,28 @@ i18n
             title: "Contact Me",
             description: "Fill out the form and I will get back to you.",
           },
+          statistics: {
+            linesOfCode: {
+                title: "Lines of Code Written",
+                number: 50000,
+                pic: "",
+            },
+            codeFirstTry: {
+                title: "Code Written on First Try Without Errors",
+                number: -1,
+                pic: "",
+            },
+            bugsSquashed: {
+                title: "Bugs Squashed",
+                number: 120,
+                pic: "",
+            },
+            monitorsUsed: {
+                title: "Monitors Used",
+                number: 3,
+                pic: "",
+            },
+        },
           messages: [
         {
           id: 1,
@@ -218,7 +240,7 @@ i18n
           ],
         },
       ],
-        },
+ },
       },
       lt: {
         translation: {
@@ -379,6 +401,28 @@ i18n
             title: "Susisiekite su manimi",
             description: "Užpildykite formą ir aš jums atsakysiu.",
           },
+          statistics: {
+            linesOfCode: {
+                title: "Parašytų kodo eilučių",
+                number: 50000,
+                pic: "",
+            },
+            codeFirstTry: {
+                title: "Kodas parašytas pirmuoju bandymu be klaidų",
+                number: -1,
+                pic: "",
+            },
+            bugsSquashed: {
+                title: "Ištaisytų klaidų",
+                number: 120,
+                pic: "",
+            },
+            monitorsUsed: {
+                title: "Naudojamų monitorių",
+                number: 3,
+                pic: "",
+            },
+        },
 
          messages: [
         {
