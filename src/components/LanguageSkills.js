@@ -20,13 +20,13 @@ const LanguageSkills = () => {
             <SecondTypography variant='body2'>
             Languages are my passion! I mean programming languages. Who wants to talk when you can write code?
             </SecondTypography>
-            <Box sx={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '2rem' }}>
+            <StyledBox>
                 {Object.entries(languageSkills.details).map(([language, skills]) => (
                     <StyledSkillBox key={language}>
                         <SecondTypography2 variant="h6">
                             {language.charAt(0).toUpperCase() + language.slice(1)}
                         </SecondTypography2>
-                        <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginTop: '1rem' }}>
+                        <StyledBox2>
                             {Object.entries(skills).map(([skill, level]) => (
                                 <StyledProgressContainer key={skill}>
                                    <StyledCircularProgress variant="determinate" value={level} size={70} level={level} />
@@ -43,6 +43,19 @@ const LanguageSkills = () => {
 };
 
 export default LanguageSkills;
+
+const StyledBox2 = styled(Box)(({ theme }) => ({
+    display: 'flex', 
+    flexDirection: 'column', 
+    alignItems: 'center', 
+    marginTop: '1rem' 
+}));
+
+const StyledBox = styled(Box)(({ theme }) => ({
+    display: 'grid', 
+    gridTemplateColumns: 'repeat(3, 1fr)', 
+    gap: '2rem'
+}));
 
 const StyledCircularProgress = styled(CircularProgress)(({ theme, level }) => ({
     color: level > 75 ? (theme.palette.mode === 'dark' ? '#6d2531' : '#f2a7b0') : 
