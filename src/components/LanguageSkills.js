@@ -20,7 +20,7 @@ const LanguageSkills = () => {
             <SecondTypography variant='body2' isVisible={isVisible}>
             Languages are my passion! I mean programming languages. Who wants to talk when you can write code?
             </SecondTypography>
-            <Box sx={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '2rem' }}>
+            <Box sx={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '2rem'}}>
                 {Object.entries(languageSkills.details).map(([language, skills]) => (
                     <StyledSkillBox key={language}>
                         <SecondTypography2 variant="h6">
