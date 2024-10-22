@@ -41,13 +41,13 @@ export const lightTheme = createTheme({
       },
     },
     h2: {
-      fontSize: '4rem',
+      fontSize: '3.5rem',
       fontWeight: 400,
       [createTheme().breakpoints.up('sm')]: {
-        fontSize: '3.75rem',
+        fontSize: '3.25rem',
       },
       [createTheme().breakpoints.up('md')]: {
-        fontSize: '3.5rem',
+        fontSize: '3rem',
       },
     },
     h3: {
