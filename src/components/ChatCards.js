@@ -2,19 +2,24 @@ import React from 'react';
 import { Card, CardContent, Typography, Avatar, Box } from '@mui/material';
 import { blue, green } from '@mui/material/colors';
 import { useTranslation } from 'react-i18next';
+import { styled, useTheme } from '@mui/material/styles';
+import { ThemeContext } from '../context/ThemeContext'; 
 
 const ChatCard = () => {
     const { t } = useTranslation();
     const messages = t('messages', { returnObjects: true });
 
+    const { themeMode } = useContext(ThemeContext); 
+    const theme = useTheme();
+
     return (
-        <Box sx={{ width: '100%', maxWidth: 500, mx: 'auto', mt: 4 }}>
+        <StyledBox>
             {messages.map((msg) =>
                 msg.text.map((textItem, index) => (
-                    <Card key={`${msg.id}-${index}`} sx={{ mb: 2, bgcolor: textItem.type === 'sent' ? green[100] : blue[100] }}>
+                    <StyledCard key={`${msg.id}-${index}`}>
                         <CardContent>
                             <Box display="flex" alignItems="center">
-                                <Avatar sx={{ bgcolor: textItem.type === 'sent' ? green[500] : blue[500] }}>
+                                <StyledAvatar>
                                     {msg.sender.charAt(0)}
                                 </Avatar>
                                 <Box ml={2}>
@@ -31,3 +36,22 @@ const ChatCard = () => {
 };
 
 export default ChatCard;
+
+const StyledAvatar = styled(Avatar)(({ theme }) => ({
+  bgcolor: textItem.type === 'sent' ? green[500] : blue[500]
+ 
+})); 
+
+const StyledCard = styled(Card)(({ theme }) => ({
+  mb: 2, 
+  bgcolor: textItem.type === 'sent' ? green[100] : blue[100] 
+ 
+})); 
+
+const StyledBox = styled(Box)(({ theme }) => ({
+  width: '100%',
+  maxWidth: 500,
+  mx: 'auto', 
+  mt: 4
+ 
+}));  
