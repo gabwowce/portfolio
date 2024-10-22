@@ -14,7 +14,7 @@ const LanguageSkills = () => {
     return (
         <StyledBackgroundBox ref={ref}>
             {/* Title separated from the details */}
-            <NameTypography variant="h4" align="center" gutterBottom >
+            <NameTypography variant="h2" align="center" gutterBottom >
                 {languageSkills.title}
             </NameTypography>
             <SecondTypography variant='body2'>
@@ -67,7 +67,6 @@ const NameTypography = styled(Typography)(({ theme }) => ({
     fontFamily: 'Outfit, sans-serif',
     fontWeight: '600',
     textAlign: 'center',
-    fontSize:'54px !important',
     color: theme.palette.text.primary,
   }));
 
