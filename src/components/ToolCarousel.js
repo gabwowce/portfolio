@@ -78,7 +78,7 @@ const ToolCarousel = () => {
 
   return (
     <StyledBox ref={ref}>
-      <NameTypography variant="h4">
+      <NameTypography variant="h2">
         {t('aboutPage.skills.title')}
       </NameTypography>
       <SecondTypography variant='body2'>
@@ -143,7 +143,6 @@ const NameTypography = styled(Typography)(({ theme }) => ({
     fontFamily: 'Outfit, sans-serif',
     fontWeight: '600',
     textAlign: 'center',
-    fontSize:'54px !important',
     color: theme.palette.text.primary,
   }));
 
