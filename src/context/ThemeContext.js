@@ -1,11 +1,13 @@
-import { createContext, useState, useMemo } from 'react';
+import { createContext, useState, useMemo, useEffect } from 'react';
 import { ThemeProvider } from '@mui/material/styles';
 import { lightTheme, darkTheme } from '../theme';
 
 export const ThemeContext = createContext();
 
 export const ThemeContextProvider = ({ children }) => {
-  const [themeMode, setThemeMode] = useState('light');
+  // Tikriname naršyklės nustatymus ir nustatome pradinę temą
+  const prefersDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const [themeMode, setThemeMode] = useState(prefersDarkMode ? 'dark' : 'light');
 
   const toggleTheme = () => {
     setThemeMode((prevMode) => (prevMode === 'light' ? 'dark' : 'light'));
@@ -14,7 +16,7 @@ export const ThemeContextProvider = ({ children }) => {
   const theme = useMemo(() => (themeMode === 'light' ? lightTheme : darkTheme), [themeMode]);
 
   return (
-    <ThemeContext.Provider value={{ themeMode, toggleTheme, theme }}> {/* Added theme here */}
+    <ThemeContext.Provider value={{ themeMode, toggleTheme, theme }}>
       <ThemeProvider theme={theme}>
         {children}
       </ThemeProvider>
