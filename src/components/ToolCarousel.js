@@ -91,7 +91,7 @@ const ToolCarousel = () => {
             {group.map((tool, index) => (
               <StyledBox4 key={index}>
                 <StyledBox3 component="img" src={tool.image} alt={tool.name} />
-                <ToolNameTypography variant="subtitle2">{tool.name}</Typography>
+                <ToolNameTypography variant="body2">{tool.name}</Typography>
               </Box>
             ))}
           </Box>
@@ -104,7 +104,6 @@ const ToolCarousel = () => {
 export default ToolCarousel;
 
 const ToolNameTypography = styled(Typography)(({ theme }) => ({
-  fontSize: '0.8rem', 
   color: theme.palette.text.primary
 }));
 
