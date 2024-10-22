@@ -14,10 +14,10 @@ const LanguageSkills = () => {
     return (
         <StyledBackgroundBox ref={ref}>
             {/* Title separated from the details */}
-            <NameTypography variant="h4" align="center" isVisible={isVisible} gutterBottom >
+            <NameTypography variant="h4" align="center" gutterBottom >
                 {languageSkills.title}
             </NameTypography>
-            <SecondTypography variant='body2' isVisible={isVisible}>
+            <SecondTypography variant='body2'>
             Languages are my passion! I mean programming languages. Who wants to talk when you can write code?
             </SecondTypography>
             <Box sx={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '2rem' }}>
@@ -50,13 +50,12 @@ const StyledCircularProgress = styled(CircularProgress)(({ theme, level }) => ({
            (theme.palette.mode === 'dark' ? '#392660' : '#d2d2fc'),
 }));
 
-const NameTypography = styled(Typography)(({ theme, isVisible }) => ({
+const NameTypography = styled(Typography)(({ theme }) => ({
     fontFamily: 'Outfit, sans-serif',
     fontWeight: '600',
     textAlign: 'center',
     fontSize:'54px !important',
     color: theme.palette.text.primary,
-    animation: isVisible ? `${slideInLeftAnimation} 2s ease forwards` : 'none',
   }));
 
 
@@ -71,11 +70,10 @@ const SecondTypography2 = styled(Typography)(({ theme }) => ({
     color: theme.palette.text.third,
   }));
 
-  const SecondTypography = styled(Typography)(({ theme,isVisible }) => ({
+  const SecondTypography = styled(Typography)(({ theme }) => ({
     color: theme.palette.text.third,
     textAlign: 'center',
     marginBottom:'3rem',
-    animation: isVisible ? `${slideInRightAnimation} 2s ease forwards` : 'none',
   }));
 
 const StyledBackgroundBox = styled(Box)(({ theme }) => ({
