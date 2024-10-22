@@ -37,10 +37,10 @@ const Timeline = () => {
 
   return (
     <StyledTimeline ref={ref}>
-      <NameTypography variant="h4" isVisible={isVisible}>
+      <NameTypography variant="h4">
         {t('aboutPage.workExperience.title')}
       </NameTypography>
-      <SecondTypography variant='body2' isVisible={isVisible}>
+      <SecondTypography variant='body2'>
         I love working! Sometimes even more than eating chocolate...
       </SecondTypography>
       <StyledTimelineContainer>
@@ -138,11 +138,10 @@ const ThirdTypography = styled(Typography)(({ theme }) => ({
   color: theme.palette.text.primary,
 }));
 
-const SecondTypography = styled(Typography)(({ theme, isVisible }) => ({
+const SecondTypography = styled(Typography)(({ theme }) => ({
   color: theme.palette.text.third,
   textAlign: 'center',
   marginBottom:'3rem',
-  animation: isVisible ? `${slideInRightAnimation} 2s ease forwards` : 'none',
 }));
 
 const StyledTimeline = styled(Box)(({ theme }) => ({
@@ -211,13 +210,12 @@ const StyledDot = styled(Box)(({ theme }) => ({
 }));
 
 
-const NameTypography = styled(Typography)(({ theme, isVisible }) => ({
+const NameTypography = styled(Typography)(({ theme }) => ({
   fontFamily: 'Outfit, sans-serif',
   fontWeight: '600',
   textAlign: 'center',
   fontSize:'54px !important',
   color: theme.palette.text.primary,
-  animation: isVisible ? `${slideInLeftAnimation} 2s ease forwards` : 'none',
 }));
 
 const YearTypography = styled(Typography)(({ theme }) => ({
