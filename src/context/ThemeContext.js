@@ -15,6 +15,20 @@ export const ThemeContextProvider = ({ children }) => {
 
   const theme = useMemo(() => (themeMode === 'light' ? lightTheme : darkTheme), [themeMode]);
 
+  useEffect(() => {
+  const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+  const handleChange = (e) => {
+    setThemeMode(e.matches ? 'dark' : 'light');
+  };
+
+  mediaQuery.addEventListener('change', handleChange);
+  
+  return () => {
+    mediaQuery.removeEventListener('change', handleChange);
+  };
+}, []);
+
+
   return (
     <ThemeContext.Provider value={{ themeMode, toggleTheme, theme }}>
       <ThemeProvider theme={theme}>
