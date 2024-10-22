@@ -62,13 +62,10 @@ const Timeline = () => {
               <StyledDot className={`dot ${index % 2 === 0 ? 'left' : 'right'}`} />
             </AccordionSummary>
             <AccordionDetails>
-            <Typography
-                variant="subtitle2"
-                sx={{ lineHeight: 1.2, paddingBottom:'0.5rem' }} 
-                >
+            <DescriptionTypography variant="subtitle2">
                 {exp.description.join(', ')}
             </Typography>
-              <Typography variant="subtitle2" component="div" sx={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
+              <SkillsTypography variant="subtitle2" component="div">
                     {exp.skills.map((skill, index) => (
                         <InnerTypography
                         key={index}
@@ -87,7 +84,16 @@ const Timeline = () => {
 
 export default Timeline;
 
+const SkillsTypography = styled(Typography)(({ theme }) => ({
+    display: 'flex', 
+    flexWrap: 'wrap', 
+    gap: '8px'
+  }));
 
+const DescriptionTypography = styled(Typography)(({ theme }) => ({
+    lineHeight: 1.2, 
+    paddingBottom:'0.5rem'
+  }));
 
 const InnerTypography = styled(Typography)(({ theme }) => ({
     display: 'inline-block',
