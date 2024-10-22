@@ -171,6 +171,53 @@ i18n
             title: "Contact Me",
             description: "Fill out the form and I will get back to you.",
           },
+          messages: [
+        {
+          id: 1,
+          sender: "Draugas",
+          recipient: "As",
+          text: [
+            {
+              type: "sent",
+              content: "No! It attracts bugs",
+            },
+            {
+              type: "received",
+              content: "How can you sit in such darkness? Open the curtains.",
+            },
+          ],
+        },
+        {
+          id: 2,
+          sender: "Mama",
+          recipient: "As",
+          text: [
+            {
+              type: "sent",
+              content: "Ne! šviesą pritraukia bug'us",
+            },
+            {
+              type: "received",
+              content: "Kaip gali tokioje tamsoje sedėti, atskleisk užuolaidas",
+            },
+          ],
+        },
+        {
+          id: 3,
+          sender: "Mama",
+          recipient: "As",
+          text: [
+            {
+              type: "sent",
+              content: "Ne! šviesą pritraukia bug'us",
+            },
+            {
+              type: "received",
+              content: "Kaip gali tokioje tamsoje sedėti, atskleisk užuolaidas",
+            },
+          ],
+        },
+      ],
         },
       },
       lt: {
@@ -332,9 +379,56 @@ i18n
             title: "Susisiekite su manimi",
             description: "Užpildykite formą ir aš jums atsakysiu.",
           },
+
+         messages: [
+        {
+          id: 1,
+          sender: "Draugas",
+          recipient: "As",
+          text: [
+            {
+              type: "sent",
+              content: "Ne! šviesą pritraukia bug'us",
+            },
+            {
+              type: "received",
+              content: "Kaip gali tokioje tamsoje sedėti, atskleisk užuolaidas",
+            },
+          ],
         },
-      },
+        {
+          id: 2,
+          sender: "Mama",
+          recipient: "As",
+          text: [
+            {
+              type: "sent",
+              content: "Ne! šviesą pritraukia bug'us",
+            },
+            {
+              type: "received",
+              content: "Kaip gali tokioje tamsoje sedėti, atskleisk užuolaidas",
+            },
+          ],
+        },
+        {
+          id: 3,
+          sender: "Mama",
+          recipient: "As",
+          text: [
+            {
+              type: "sent",
+              content: "Ne! šviesą pritraukia bug'us",
+            },
+            {
+              type: "received",
+              content: "Kaip gali tokioje tamsoje sedėti, atskleisk užuolaidas",
+            },
+          ],
+        },
+      ],
     },
+  },
     lng: "en",
     fallbackLng: "en",
     interpolation: {
