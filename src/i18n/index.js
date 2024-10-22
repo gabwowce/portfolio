@@ -27,7 +27,7 @@ i18n
             jobTitle: "Junior Developer",
             description: "Programming is my driving passion. I enjoy every moment spent tackling challenges, seeking creative solutions, building and coding. I dedicate myself to hard work and continuous learning, not only because I aspire to become a professional in this field, but also because software development is my number one hobby.",
             workExperience: {
-              title: "Work Experience",
+              title: "My History",
               experiences: [
                 {
                   title: "Junior Developer",
@@ -42,6 +42,20 @@ i18n
                     "Collaborating with team members",
                   ],
                   skills: ["C# .NET", "XAML", "XML", "WPF", "HTML/CSS"]
+                },
+                {
+                  "title": "Software Engineer Student",
+                  "company": "Vilniaus Kolegija",
+                  "startDate": "2023-09-01",
+                  "endDate": "2027-01-01",
+                  "employmentType": "Session-based",
+                  "description": [
+                    "Studies in Software Engineering",
+                    "Structured/Object-Oriented Programming with Python, C++, C# .NET",
+                    "Database management and SQL usage",
+                    "Systems analysis and design"
+                  ],
+                  "skills": ["Python", "C++", "C#", "SQL", "Axure RP", "AutoCAD"]
                 },
                 {
                   title: "Planner",
@@ -73,6 +87,8 @@ i18n
                   ],
                   skills: ["Excel", "Word"]
                 },
+               
+
               ],
             },
             education: {
@@ -175,7 +191,7 @@ i18n
             jobTitle: "Jaunesnioji programuotoja",
             description: "Programavimas, o ypač vartotojo sąsajos, yra mano gyvenimo varikliukas. Aš mėgaujuosi kiekviena minute praleista gilinantis į užduotis, ieškant kūrybiškų sprendimų, kuriant ir programuojant. Tikrai daug dirbu ir daug mokausi, gal dėl to, kad noriu tapti šios srities profesionale, bet manau ir dėl to, kad programų kūrimas yra mano top 1 hobis.",
             workExperience: {
-              title: "Darbo patirtis",
+              title: "Mano istorija",
               experiences: [
                 {
                   title: "Jaunesnioji programuotoja",
@@ -192,7 +208,21 @@ i18n
                   skills: ["C# .NET", "XAML", "XML", "WPF", "HTML/CSS"]
                 },
                 {
-                  title: "Planavimo specialistė",
+                  "title": "Programų sistemų studentas",
+                  "company": "Vilniaus Kolegija",
+                  "startDate": "2023-09-01",
+                  "endDate": "2027-01-01",
+                  "employmentType": "Sesijomis",
+                  "description": [
+                    "Studijos programų sistemų srityje",
+                    "Strukūrinis/objektinis programavimas su Python, C++, C# .NET",
+                    "Duomenų bazių valdymas ir SQL naudojimas",
+                    "Sistemų analizė ir dizainas"
+                  ],
+                  "skills": ["Python", "C++", "C#", "SQL", "Axure RP", "AutoCAD"]
+                },
+                {
+                  title: "Reisų planuotoja",
                   company: "Girteka Europe West, UAB",
                   startDate: "2021-10-01",
                   endDate: "2023-09-01",
