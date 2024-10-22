@@ -57,7 +57,7 @@ const Timeline = () => {
                 </ThirdTypography>
               </Box>
               <YearTypography variant='body1' className={`year ${index % 2 === 0 ? 'left' : 'right'}`}>
-                {new Date(exp.startDate).getFullYear()}
+                {new Date(exp.startDate).toLocaleString('default', { year: 'numeric', month: 'short' })}
               </YearTypography>
               <StyledDot className={`dot ${index % 2 === 0 ? 'left' : 'right'}`} />
             </AccordionSummary>
