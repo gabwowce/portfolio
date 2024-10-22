@@ -87,41 +87,11 @@ const ToolCarousel = () => {
       <Slider {...settings}>
         {/* Use flexbox layout to make sure the tools align in rows and columns */}
         {groupedTools.map((group, groupIndex) => (
-          <Box
-            key={groupIndex}
-            sx={{
-              display: 'flex',
-              flexWrap: isExtraSmall ? 'wrap' : 'nowrap', // Allow wrapping on small screens, no wrap on large screens
-              justifyContent: 'space-around',
-              width: '100%',
-            }}
-          >
+          <StyledBox2 key={groupIndex}>
             {group.map((tool, index) => (
-              <Box 
-                key={index} 
-                sx={{ 
-                  display: 'flex', 
-                  flexDirection: 'column', 
-                  alignItems: 'center', 
-                  justifyContent: 'center', 
-                  textAlign: 'center', 
-                  padding: '10px',
-                  
-                }}
-              >
-                <Box
-                  component="img"
-                  src={tool.image}
-                  alt={tool.name}
-                  sx={{ 
-                    width: '60px', 
-                    height: '60px', 
-                    marginBottom: '5px', 
-                    display: 'block',
-                    
-                  }}
-                />
-                <Typography variant="subtitle2" sx={{ fontSize: '0.8rem', color: theme.palette.text.primary }}>{tool.name}</Typography>
+              <StyledBox4 key={index}>
+                <StyledBox3 component="img" src={tool.image} alt={tool.name} />
+                <ToolNameTypography variant="subtitle2">{tool.name}</Typography>
               </Box>
             ))}
           </Box>
@@ -133,8 +103,33 @@ const ToolCarousel = () => {
 
 export default ToolCarousel;
 
+const ToolNameTypography = styled(Typography)(({ theme }) => ({
+  fontSize: '0.8rem', 
+  color: theme.palette.text.primary
+}));
 
+const StyledBox4 = styled(Box)(({ theme }) => ({
+      display: 'flex', 
+      flexDirection: 'column', 
+      alignItems: 'center', 
+      justifyContent: 'center', 
+      textAlign: 'center', 
+      padding: '10px',
+}));
 
+const StyledBox3 = styled(Box)(({ theme }) => ({
+      width: '60px', 
+      height: '60px', 
+      marginBottom: '5px', 
+      display: 'block',
+}));
+
+const StyledBox2 = styled(Box)(({ theme }) => ({
+      display: 'flex',
+      flexWrap: isExtraSmall ? 'wrap' : 'nowrap', // Allow wrapping on small screens, no wrap on large screens
+      justifyContent: 'space-around',
+      width: '100%',
+}));
   
 
 const StyledBox = styled(Box)(({ theme }) => ({
