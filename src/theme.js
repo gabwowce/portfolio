@@ -31,23 +31,23 @@ export const lightTheme = createTheme({
   typography: {
     fontFamily: "PT Serif, sans-serif",
     h1: {
-      fontSize: '3rem',
+      fontSize: '4.25rem',
       fontWeight: 400,
       [createTheme().breakpoints.up('sm')]: {
-        fontSize: '3.5rem',
+        fontSize: '4rem',
       },
       [createTheme().breakpoints.up('md')]: {
-        fontSize: '4rem',
+        fontSize: '3.75rem',
       },
     },
     h2: {
-      fontSize: '2rem',
+      fontSize: '4rem',
       fontWeight: 400,
       [createTheme().breakpoints.up('sm')]: {
-        fontSize: '2.5rem',
+        fontSize: '3.75rem',
       },
       [createTheme().breakpoints.up('md')]: {
-        fontSize: '3rem',
+        fontSize: '3.5rem',
       },
     },
     h3: {
