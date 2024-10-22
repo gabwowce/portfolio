@@ -167,7 +167,6 @@ const ThirdTypography = styled(Typography)(({ theme }) => ({
 const NameTypography = styled(Typography)(({ theme }) => ({
   fontFamily: 'Outfit, sans-serif', 
   fontWeight: '600',
-  fontSize:'68px !important',
   textAlign:'left',
   color: theme.palette.text.primary,
   animation: `${slideInLeftAnimation} 2s ease forwards`,
