@@ -101,7 +101,6 @@ const InnerTypography = styled(Typography)(({ theme }) => ({
     padding: '2px 10px',
     borderRadius: '24px',
     color: theme.palette.mode === 'dark' ? '#985E2C' : '#0A82B6',
-    fontSize: '14px',
   }));
 
   const StyledAccordion = styled(Accordion)(({ theme, index, isVisible }) => ({
