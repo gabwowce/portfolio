@@ -78,10 +78,10 @@ const ToolCarousel = () => {
 
   return (
     <StyledBox ref={ref}>
-      <NameTypography variant="h4" isVisible={isVisible}>
+      <NameTypography variant="h4">
         {t('aboutPage.skills.title')}
       </NameTypography>
-      <SecondTypography variant='body2' isVisible={isVisible}>
+      <SecondTypography variant='body2'>
         I love them all, but I owe a big thanks to ChatGPT – thanks for being there during tough times!
       </SecondTypography>
       <Slider {...settings}>
@@ -144,20 +144,18 @@ width: '100%',
 overflow: 'hidden',
 }));
 
-const NameTypography = styled(Typography)(({ theme, isVisible }) => ({
+const NameTypography = styled(Typography)(({ theme }) => ({
     fontFamily: 'Outfit, sans-serif',
     fontWeight: '600',
     textAlign: 'center',
     fontSize:'54px !important',
     color: theme.palette.text.primary,
-    animation: isVisible ? `${slideInLeftAnimation} 2s ease forwards` : 'none',
   }));
 
   
 
-const SecondTypography = styled(Typography)(({ theme, isVisible }) => ({
+const SecondTypography = styled(Typography)(({ theme }) => ({
   color: theme.palette.text.third,
   textAlign: 'center',
   marginBottom:'1rem',
-  animation: isVisible ? `${slideInRightAnimation} 2s ease forwards` : 'none',
 }));
