@@ -2,6 +2,7 @@ import React from 'react';
 import { Card, CardContent, Typography, Box } from '@mui/material';
 import { useTranslation } from 'react-i18next';
 import { styled, useTheme } from '@mui/material/styles';
+import { ThemeContext } from '../context/ThemeContext'; 
 
 const statisticsData = [
     { key: 'linesOfCode' },
@@ -12,6 +13,8 @@ const statisticsData = [
 
 const Statistics = () => {
     const { t } = useTranslation();
+    const { themeMode } = useContext(ThemeContext); 
+    const theme = useTheme();
 
     return (
         <StyledBox>
