@@ -31,112 +31,112 @@ export const lightTheme = createTheme({
   typography: {
     fontFamily: "PT Serif, sans-serif",
     h1: {
-      fontSize: '3rem',
+      fontSize: '4.25rem',
       fontWeight: 400,
-      [createTheme().breakpoints.up('sm')]: {
-        fontSize: '3.5rem',
-      },
-      [createTheme().breakpoints.up('md')]: {
+      [createTheme().breakpoints.down('sm')]: {
         fontSize: '4rem',
+      },
+      [createTheme().breakpoints.down('md')]: {
+        fontSize: '3.75rem',
       },
     },
     h2: {
-      fontSize: '2rem',
+      fontSize: '3.5rem',
       fontWeight: 400,
-      [createTheme().breakpoints.up('sm')]: {
-        fontSize: '2.5rem',
+      [createTheme().breakpoints.down('sm')]: {
+        fontSize: '3.25rem',
       },
-      [createTheme().breakpoints.up('md')]: {
+      [createTheme().breakpoints.down('md')]: {
         fontSize: '3rem',
       },
     },
     h3: {
       fontSize: '1.75rem',
       fontWeight: 400,
-      [createTheme().breakpoints.up('sm')]: {
+      [createTheme().breakpoints.down('sm')]: {
         fontSize: '2rem',
       },
-      [createTheme().breakpoints.up('md')]: {
+      [createTheme().breakpoints.down('md')]: {
         fontSize: '2.25rem',
       },
     },
     h4: {
       fontSize: '1.5rem',
       fontWeight: 400,
-      [createTheme().breakpoints.up('sm')]: {
+      [createTheme().breakpoints.down('sm')]: {
         fontSize: '1.75rem',
       },
-      [createTheme().breakpoints.up('md')]: {
+      [createTheme().breakpoints.down('md')]: {
         fontSize: '2rem',
       },
     },
     h5: {
       fontSize: '1.25rem',
       fontWeight: 400,
-      [createTheme().breakpoints.up('sm')]: {
+      [createTheme().breakpoints.down('sm')]: {
         fontSize: '1.5rem',
       },
-      [createTheme().breakpoints.up('md')]: {
+      [createTheme().breakpoints.down('md')]: {
         fontSize: '1.75rem',
       },
     },
     h6: {
       fontSize: '1rem',
       fontWeight: 400,
-      [createTheme().breakpoints.up('sm')]: {
+      [createTheme().breakpoints.down('sm')]: {
         fontSize: '1.25rem',
       },
-      [createTheme().breakpoints.up('md')]: {
+      [createTheme().breakpoints.down('md')]: {
         fontSize: '1.5rem',
       },
     },
     subtitle1: {
       fontSize: '1rem',
       fontWeight: 400,
-      [createTheme().breakpoints.up('sm')]: {
+      [createTheme().breakpoints.down('sm')]: {
         fontSize: '1.125rem',
       },
-      [createTheme().breakpoints.up('md')]: {
+      [createTheme().breakpoints.down('md')]: {
         fontSize: '1.25rem',
       },
     },
     subtitle2: {
       fontSize: '0.875rem',
       fontWeight: 400,
-      [createTheme().breakpoints.up('sm')]: {
+      [createTheme().breakpoints.down('sm')]: {
         fontSize: '1rem',
       },
-      [createTheme().breakpoints.up('md')]: {
+      [createTheme().breakpoints.down('md')]: {
         fontSize: '1.125rem',
       },
     },
     body1: {
       fontSize: '1rem',
       fontWeight: 400,
-      [createTheme().breakpoints.up('sm')]: {
+      [createTheme().breakpoints.down('sm')]: {
         fontSize: '1.25rem',
       },
-      [createTheme().breakpoints.up('md')]: {
+      [createTheme().breakpoints.down('md')]: {
         fontSize: '1.5rem',
       },
     },
     body2: {
       fontSize: '0.675rem',
       fontWeight: 400,
-      [createTheme().breakpoints.up('sm')]: {
+      [createTheme().breakpoints.down('sm')]: {
         fontSize: '0.875rem',
       },
-      [createTheme().breakpoints.up('md')]: {
+      [createTheme().breakpoints.down('md')]: {
         fontSize: '1rem',
       },
     },
     button: {
       fontSize: '0.775rem',  // Default size for buttons
       fontWeight: 600,
-      [createTheme().breakpoints.up('sm')]: {
+      [createTheme().breakpoints.down('sm')]: {
         fontSize: '0.875rem', // Size for small screens
       },
-      [createTheme().breakpoints.up('md')]: {
+      [createTheme().breakpoints.down('md')]: {
         fontSize: '0.975rem',  // Size for medium screens
       }
     },
@@ -175,116 +175,115 @@ export const darkTheme = createTheme({
   typography: {
     fontFamily: "PT Serif, sans-serif",
     h1: {
-      fontSize: '3rem',
+      fontSize: '4.25rem',
       fontWeight: 400,
-      [createTheme().breakpoints.up('sm')]: {
-        fontSize: '3.5rem',
-      },
-      [createTheme().breakpoints.up('md')]: {
+      [createTheme().breakpoints.down('sm')]: {
         fontSize: '4rem',
+      },
+      [createTheme().breakpoints.down('md')]: {
+        fontSize: '3.75rem',
       },
     },
     h2: {
-      fontSize: '2rem',
+      fontSize: '3.5rem',
       fontWeight: 400,
-      [createTheme().breakpoints.up('sm')]: {
-        fontSize: '2.5rem',
+      [createTheme().breakpoints.down('sm')]: {
+        fontSize: '3.25rem',
       },
-      [createTheme().breakpoints.up('md')]: {
+      [createTheme().breakpoints.down('md')]: {
         fontSize: '3rem',
       },
     },
     h3: {
       fontSize: '1.75rem',
       fontWeight: 400,
-      [createTheme().breakpoints.up('sm')]: {
+      [createTheme().breakpoints.down('sm')]: {
         fontSize: '2rem',
       },
-      [createTheme().breakpoints.up('md')]: {
+      [createTheme().breakpoints.down('md')]: {
         fontSize: '2.25rem',
       },
     },
     h4: {
       fontSize: '1.5rem',
       fontWeight: 400,
-      [createTheme().breakpoints.up('sm')]: {
+      [createTheme().breakpoints.down('sm')]: {
         fontSize: '1.75rem',
       },
-      [createTheme().breakpoints.up('md')]: {
+      [createTheme().breakpoints.down('md')]: {
         fontSize: '2rem',
       },
     },
     h5: {
       fontSize: '1.25rem',
       fontWeight: 400,
-      [createTheme().breakpoints.up('sm')]: {
+      [createTheme().breakpoints.down('sm')]: {
         fontSize: '1.5rem',
       },
-      [createTheme().breakpoints.up('md')]: {
+      [createTheme().breakpoints.down('md')]: {
         fontSize: '1.75rem',
       },
     },
     h6: {
       fontSize: '1rem',
       fontWeight: 400,
-      [createTheme().breakpoints.up('sm')]: {
+      [createTheme().breakpoints.down('sm')]: {
         fontSize: '1.25rem',
       },
-      [createTheme().breakpoints.up('md')]: {
+      [createTheme().breakpoints.down('md')]: {
         fontSize: '1.5rem',
       },
     },
     subtitle1: {
       fontSize: '1rem',
       fontWeight: 400,
-      [createTheme().breakpoints.up('sm')]: {
+      [createTheme().breakpoints.down('sm')]: {
         fontSize: '1.125rem',
       },
-      [createTheme().breakpoints.up('md')]: {
+      [createTheme().breakpoints.down('md')]: {
         fontSize: '1.25rem',
       },
     },
     subtitle2: {
       fontSize: '0.875rem',
       fontWeight: 400,
-      [createTheme().breakpoints.up('sm')]: {
+      [createTheme().breakpoints.down('sm')]: {
         fontSize: '1rem',
       },
-      [createTheme().breakpoints.up('md')]: {
+      [createTheme().breakpoints.down('md')]: {
         fontSize: '1.125rem',
       },
     },
     body1: {
       fontSize: '1rem',
       fontWeight: 400,
-      [createTheme().breakpoints.up('sm')]: {
+      [createTheme().breakpoints.down('sm')]: {
         fontSize: '1.25rem',
       },
-      [createTheme().breakpoints.up('md')]: {
+      [createTheme().breakpoints.down('md')]: {
         fontSize: '1.5rem',
       },
     },
     body2: {
       fontSize: '0.675rem',
       fontWeight: 400,
-      [createTheme().breakpoints.up('sm')]: {
+      [createTheme().breakpoints.down('sm')]: {
         fontSize: '0.875rem',
       },
-      [createTheme().breakpoints.up('md')]: {
+      [createTheme().breakpoints.down('md')]: {
         fontSize: '1rem',
       },
     },
     button: {
       fontSize: '0.775rem',  // Default size for buttons
       fontWeight: 600,
-      [createTheme().breakpoints.up('sm')]: {
+      [createTheme().breakpoints.down('sm')]: {
         fontSize: '0.875rem', // Size for small screens
       },
-      [createTheme().breakpoints.up('md')]: {
+      [createTheme().breakpoints.down('md')]: {
         fontSize: '0.975rem',  // Size for medium screens
       }
     },
     
   },
 });
-

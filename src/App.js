@@ -8,7 +8,9 @@ import { ThemeContextProvider } from './context/ThemeContext';
 import About from './pages/About'; 
 import Portfolio from './pages/Portfolio'; 
 import Contact from './pages/Contact'; 
+import ChatBot from './components/ChatBot';
 import './i18n';
+
 
 const App = () => {
   return (
@@ -25,6 +27,7 @@ const App = () => {
             </Routes>
           </div>
           <Footer />
+          <ChatBot/>
         </Router>
       </LanguageProvider>
     </ThemeContextProvider>

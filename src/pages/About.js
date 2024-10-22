@@ -19,6 +19,7 @@ import Timeline from '../components/Timeline';
 import ToolCarousel from '../components/ToolCarousel';
 import LanguageSkills from '../components/LanguageSkills';
 
+
 const About = () => {
     const { t } = useTranslation();
     const { themeMode } = useContext(ThemeContext); 
@@ -40,16 +41,16 @@ const About = () => {
 
       <BackgroundSection>
 
-        <HeroSection>
+        <HeroSection id="abaut-hero">
           <StyledContainer className='custom-container'>
                 <StyledBox >
-                  <NameTypography variant="h2">
+                  <NameTypography variant="h1">
                     {t('aboutPage.name')}
                   </NameTypography>
-                  <SecondTypography variant="body1">
+                  <SecondTypography variant="h3">
                     {t('aboutPage.jobTitle')}
                   </SecondTypography>
-                  <ThirdTypography variant="body2">
+                  <ThirdTypography variant="body1">
                     {t('aboutPage.description')}
                   </ThirdTypography>
                 </StyledBox>
@@ -63,16 +64,16 @@ const About = () => {
           </StyledContainer>
         </HeroSection>
 
-        <ToolCarousel/>
+        <ToolCarousel id="abaut-skills"/>
 
         <StyledBackgroundBox>
-        <Container className='custom-container'>
+        <Container className='custom-container' id="abaut-history">
             <Timeline/>
         </Container>
         </StyledBackgroundBox>
         
         <StyledBackgroundBox2>
-          <Container className='custom-container'>
+          <Container className='custom-container' id="abaut-languages">
             <LanguageSkills/>
           </Container>
         </StyledBackgroundBox2>
@@ -167,7 +168,6 @@ const ThirdTypography = styled(Typography)(({ theme }) => ({
 const NameTypography = styled(Typography)(({ theme }) => ({
   fontFamily: 'Outfit, sans-serif', 
   fontWeight: '600',
-  fontSize:'68px !important',
   textAlign:'left',
   color: theme.palette.text.primary,
   animation: `${slideInLeftAnimation} 2s ease forwards`,
@@ -252,15 +252,6 @@ const HeroSection = styled(Box)(({ theme }) => ({
 
 }));
 
-// const Section = styled(Box)(({ theme }) => ({
-//   padding: theme.spacing(4, 0),
-// }));
-
-// const TestimonialCard = styled(Paper)(({ theme }) => ({
-//   padding: theme.spacing(2),
-//   textAlign: 'center',
-//   color: theme.palette.text.secondary,
-// }));
 
 const BackgroundSection = styled(Box)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#393736' : '#FDFDFB',

@@ -1,22 +1,22 @@
 import { keyframes } from '@mui/material/styles';
 
 export const slideDownAnimation= keyframes`
-  0% {
+  from {
     transform: translateY(-100%);
     opacity: 0;
   }
-  100% {
+  to {
     transform: translateX(0);
     opacity: 1;
   }
 `;
 
 export const slideUpAnimation= keyframes`
-  0% {
+  from{
     transform: translateY(100%);
     opacity: 0;
   }
-  100% {
+  to {
     transform: translateX(0);
     opacity: 1;
   }
@@ -24,10 +24,22 @@ export const slideUpAnimation= keyframes`
 
 
 export const slideInRightAnimation = keyframes`
-  0% {
+  from {
     transform: translateX(100%);
     opacity: 0;
   }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+`;
+
+export const slideToolsInAnimation = keyframes`
+  0% {
+    transform: translateX(500%);
+    opacity: 0;
+  }
+
   100% {
     transform: translateX(0);
     opacity: 1;
@@ -35,13 +47,12 @@ export const slideInRightAnimation = keyframes`
 `;
 
 
-
 export const slideInLeftAnimation = keyframes`
-  0% {
+  from {
     transform: translateX(-100%);
     opacity: 0;
   }
-  100% {
+ to {
     transform: translateX(0);
     opacity: 1;
   }

@@ -37,10 +37,10 @@ const Timeline = () => {
 
   return (
     <StyledTimeline ref={ref}>
-      <NameTypography variant="h4" isVisible={isVisible}>
+      <NameTypography variant="h2">
         {t('aboutPage.workExperience.title')}
       </NameTypography>
-      <SecondTypography variant='body2' isVisible={isVisible}>
+      <SecondTypography variant='body1'>
         I love working! Sometimes even more than eating chocolate...
       </SecondTypography>
       <StyledTimelineContainer>
@@ -49,26 +49,23 @@ const Timeline = () => {
           <StyledAccordion key={index} ref={el => (accordionRefs.current[index] = el)} index={index} isVisible={isVisible}>
             <AccordionSummary expandIcon={<ExpandMoreIcon />}>
               <Box>
-                <PrimaryTypography variant='body1'>
+                <PrimaryTypography variant='h5'>
                   {exp.title}
                 </PrimaryTypography>
-                <ThirdTypography variant='body2'>
+                <ThirdTypography variant='body1'>
                   {exp.company}
                 </ThirdTypography>
               </Box>
-              <YearTypography variant='body1' className={`year ${index % 2 === 0 ? 'left' : 'right'}`}>
-                {new Date(exp.startDate).getFullYear()}
+              <YearTypography variant='h5' className={`year ${index % 2 === 0 ? 'left' : 'right'}`}>
+                {new Date(exp.startDate).toLocaleString('default', { year: 'numeric', month: 'short' })}
               </YearTypography>
               <StyledDot className={`dot ${index % 2 === 0 ? 'left' : 'right'}`} />
             </AccordionSummary>
             <AccordionDetails>
-            <Typography
-                variant="subtitle2"
-                sx={{ lineHeight: 1.2, paddingBottom:'0.5rem' }} 
-                >
+            <DescriptionTypography variant="subtitle2">
                 {exp.description.join(', ')}
-            </Typography>
-              <Typography variant="subtitle2" component="div" sx={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
+            </DescriptionTypography>
+              <SkillsTypography variant="subtitle2" component="div">
                     {exp.skills.map((skill, index) => (
                         <InnerTypography
                         key={index}
@@ -76,7 +73,7 @@ const Timeline = () => {
                         {skill}
                         </InnerTypography>
                     ))}
-                    </Typography>
+                    </SkillsTypography>
             </AccordionDetails>
           </StyledAccordion>
         ))}
@@ -87,7 +84,16 @@ const Timeline = () => {
 
 export default Timeline;
 
+const SkillsTypography = styled(Typography)(({ theme }) => ({
+    display: 'flex', 
+    flexWrap: 'wrap', 
+    gap: '8px'
+  }));
 
+const DescriptionTypography = styled(Typography)(({ theme }) => ({
+    lineHeight: 1.2, 
+    paddingBottom:'0.5rem'
+  }));
 
 const InnerTypography = styled(Typography)(({ theme }) => ({
     display: 'inline-block',
@@ -95,7 +101,6 @@ const InnerTypography = styled(Typography)(({ theme }) => ({
     padding: '2px 10px',
     borderRadius: '24px',
     color: theme.palette.mode === 'dark' ? '#985E2C' : '#0A82B6',
-    fontSize: '14px',
   }));
 
   const StyledAccordion = styled(Accordion)(({ theme, index, isVisible }) => ({
@@ -103,8 +108,11 @@ const InnerTypography = styled(Typography)(({ theme }) => ({
     height: 'auto',
     background: 'rgba(0, 0, 0, 0.02)',  // Permatomas fonas
     alignSelf: index % 2 === 0 ? 'flex-start' : 'flex-end',
-    padding: '0',
-    animation: isVisible ? `${index % 2 == 0 ? slideInLeftAnimation : slideInRightAnimation} 2s ease forwards` : 'none',
+    margin: '1rem 0',
+    animation: isVisible 
+      ? `${index % 2 == 0 ? slideInLeftAnimation : slideInRightAnimation} 2s ease both` 
+      : 'none',
+    animationDelay: `${index * 0.3}s`,
     boxShadow: theme.palette.mode === 'dark' 
   ? '0 7px 6px -2px rgba(0, 0, 0, 0.5), 7px 0 6px -2px rgba(0, 0, 0, 0.5)' 
   : '0 7px 6px -2px rgba(0, 0, 0, 0.2), 7px 0 6px -2px rgba(0, 0, 0, 0.2)',
@@ -138,11 +146,10 @@ const ThirdTypography = styled(Typography)(({ theme }) => ({
   color: theme.palette.text.primary,
 }));
 
-const SecondTypography = styled(Typography)(({ theme, isVisible }) => ({
+const SecondTypography = styled(Typography)(({ theme }) => ({
   color: theme.palette.text.third,
   textAlign: 'center',
   marginBottom:'3rem',
-  animation: isVisible ? `${slideInRightAnimation} 2s ease forwards` : 'none',
 }));
 
 const StyledTimeline = styled(Box)(({ theme }) => ({
@@ -211,13 +218,11 @@ const StyledDot = styled(Box)(({ theme }) => ({
 }));
 
 
-const NameTypography = styled(Typography)(({ theme, isVisible }) => ({
+const NameTypography = styled(Typography)(({ theme }) => ({
   fontFamily: 'Outfit, sans-serif',
   fontWeight: '600',
   textAlign: 'center',
-  fontSize:'54px !important',
   color: theme.palette.text.primary,
-  animation: isVisible ? `${slideInLeftAnimation} 2s ease forwards` : 'none',
 }));
 
 const YearTypography = styled(Typography)(({ theme }) => ({

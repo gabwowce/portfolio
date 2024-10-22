@@ -104,12 +104,15 @@ const StyledAppBar = styled(AppBar)(({ theme }) => ({
   left: '2rem', // Nustatykite kairįjį atstumą
   right: '2rem', // Nustatykite dešinįjį atstumą
   borderRadius: '24px', // Apvalūs kampai
-  width:'calc(100% - 4rem)',
+  width: 'calc(100% - 4rem)',
+  backgroundColor: theme.palette.mode === 'dark' ? 'rgba(0, 0, 0, 0.2)' : 'rgba(255, 255, 255, 0.2)', // Skaidrus fonas
+  backdropFilter: 'blur(10px)', // Neryškumo efektas
   transition: 'background-color 0.3s ease, color 0.3s ease',
   boxShadow: theme.shadows[10], // Pridėkite šešėlį, kad atrodytų plūduriuojantis
   zIndex: 1100, // Užtikrinkite, kad jis būtų virš kitų elementų
   animation: `${slideDownAnimation} 2s ease forwards`,
 }));
+
   
 const StyledToolbar = styled(Toolbar)(({ theme }) => ({
   display: 'flex',

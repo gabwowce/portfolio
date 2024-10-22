@@ -14,35 +14,48 @@ const LanguageSkills = () => {
     return (
         <StyledBackgroundBox ref={ref}>
             {/* Title separated from the details */}
-            <NameTypography variant="h4" align="center" isVisible={isVisible} gutterBottom >
+            <NameTypography variant="h2" align="center" gutterBottom >
                 {languageSkills.title}
             </NameTypography>
-            <SecondTypography variant='body2' isVisible={isVisible}>
+            <SecondTypography variant='body1'>
             Languages are my passion! I mean programming languages. Who wants to talk when you can write code?
             </SecondTypography>
-            <Box sx={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '2rem'}}>
+            <StyledBox>
                 {Object.entries(languageSkills.details).map(([language, skills]) => (
                     <StyledSkillBox key={language}>
-                        <SecondTypography2 variant="h6">
+                        <SecondTypography2 variant="h5">
                             {language.charAt(0).toUpperCase() + language.slice(1)}
                         </SecondTypography2>
-                        <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginTop: '1rem' }}>
+                        <StyledBox2>
                             {Object.entries(skills).map(([skill, level]) => (
                                 <StyledProgressContainer key={skill}>
                                    <StyledCircularProgress variant="determinate" value={level} size={70} level={level} />
-                                    <StyledProgressText variant="body2">{level}%</StyledProgressText>
-                                    <ThirdTypography variant="body2">{skill.charAt(0).toUpperCase() + skill.slice(1)}</ThirdTypography>
+                                    <StyledProgressText variant="body1">{level}%</StyledProgressText>
+                                    <ThirdTypography variant="body1">{skill.charAt(0).toUpperCase() + skill.slice(1)}</ThirdTypography>
                                 </StyledProgressContainer>
                             ))}
-                        </Box>
+                        </StyledBox2>
                     </StyledSkillBox>
                 ))}
-            </Box>
+            </StyledBox>
         </StyledBackgroundBox>
     );
 };
 
 export default LanguageSkills;
+
+const StyledBox2 = styled(Box)(({ theme }) => ({
+    display: 'flex', 
+    flexDirection: 'column', 
+    alignItems: 'center', 
+    marginTop: '1rem' 
+}));
+
+const StyledBox = styled(Box)(({ theme }) => ({
+    display: 'grid', 
+    gridTemplateColumns: 'repeat(3, 1fr)', 
+    gap: '2rem'
+}));
 
 const StyledCircularProgress = styled(CircularProgress)(({ theme, level }) => ({
     color: level > 75 ? (theme.palette.mode === 'dark' ? '#6d2531' : '#f2a7b0') : 
@@ -50,13 +63,11 @@ const StyledCircularProgress = styled(CircularProgress)(({ theme, level }) => ({
            (theme.palette.mode === 'dark' ? '#392660' : '#d2d2fc'),
 }));
 
-const NameTypography = styled(Typography)(({ theme, isVisible }) => ({
+const NameTypography = styled(Typography)(({ theme }) => ({
     fontFamily: 'Outfit, sans-serif',
     fontWeight: '600',
     textAlign: 'center',
-    fontSize:'54px !important',
     color: theme.palette.text.primary,
-    animation: isVisible ? `${slideInLeftAnimation} 2s ease forwards` : 'none',
   }));
 
 
@@ -71,11 +82,10 @@ const SecondTypography2 = styled(Typography)(({ theme }) => ({
     color: theme.palette.text.third,
   }));
 
-  const SecondTypography = styled(Typography)(({ theme,isVisible }) => ({
+  const SecondTypography = styled(Typography)(({ theme }) => ({
     color: theme.palette.text.third,
     textAlign: 'center',
     marginBottom:'3rem',
-    animation: isVisible ? `${slideInRightAnimation} 2s ease forwards` : 'none',
   }));
 
 const StyledBackgroundBox = styled(Box)(({ theme }) => ({
