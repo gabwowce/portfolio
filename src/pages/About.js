@@ -18,7 +18,8 @@ import { ReactComponent as AddUserIcon } from '../assets/add-user.svg';
 import Timeline from '../components/Timeline';
 import ToolCarousel from '../components/ToolCarousel';
 import LanguageSkills from '../components/LanguageSkills';
-
+import ChatCards from '../components/ChatCards';
+import Statistics from '../components/FunStatistics';
 
 const About = () => {
     const { t } = useTranslation();
@@ -41,7 +42,7 @@ const About = () => {
 
       <BackgroundSection>
 
-        <HeroSection id="abaut-hero">
+        <HeroSection id="about-hero">
           <StyledContainer className='custom-container'>
                 <StyledBox >
                   <NameTypography variant="h1">
@@ -64,21 +65,33 @@ const About = () => {
           </StyledContainer>
         </HeroSection>
 
-        <ToolCarousel id="abaut-skills"/>
+        <ToolCarousel/>
 
         <StyledBackgroundBox>
-        <Container className='custom-container' id="abaut-history">
+        <Container className='custom-container' id="about-history">
             <Timeline/>
         </Container>
         </StyledBackgroundBox>
         
         <StyledBackgroundBox2>
-          <Container className='custom-container' id="abaut-languages">
+          <Container className='custom-container'>
             <LanguageSkills/>
           </Container>
         </StyledBackgroundBox2>
+
         
+
+        <HeroStyleSection>
+        <Container className='custom-container'>
+            <ChatCards/>
+        </Container>
+        </HeroStyleSection>
         
+        <StyledBackgroundBox2>
+          <Container className='custom-container'>
+            <Statistics/>
+          </Container>
+        </StyledBackgroundBox2>
         
 
       </BackgroundSection>
@@ -208,7 +221,7 @@ const StyledButton = styled(Button)(({ theme }) => ({
     fill: theme.palette.mode === 'dark' ? '#0f121b' : '#fbfbff'
   },
 
-  [theme.breakpoints.down('lg')]: {
+  [theme.breakpoints.down('lg')]: {                     //gt reikia tvarkyti overflow: hidden; kazkur nes animacijoms vykstant yra paslinkimas i desine
     left: '44px',
     top: '290px',
   },
@@ -233,6 +246,26 @@ const StyledBox = styled(Box)`
   justify-content: center;
   align-items: flex-start;
 `;
+
+const HeroStyleSection = styled(Box)(({ theme }) => ({
+  backgroundColor: theme.palette.background.default,
+  background: `radial-gradient(circle at 20% 30%, rgba(255, 0, 0, 0.3), transparent 40%),
+               radial-gradient(circle at 60% 80%, rgba(255, 0, 0, 0.3), transparent 40%),
+               radial-gradient(circle at 0% 20%, rgba(0, 0, 255, 0.3), transparent 30%),
+               radial-gradient(circle at 80% 100%, rgba(0, 0, 255, 0.3), transparent 30%),
+               radial-gradient(circle at 40% 60%, rgba(0, 0, 255, 0.3), transparent 30%)`,
+  backdropFilter: 'blur(15px)',
+  textAlign: 'center',
+  width: '100%',
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  boxShadow: theme.palette.mode === 'dark' 
+  ? '0 -10px 6px -2px rgba(0, 0, 0, 0.5), 0 10px 6px -2px rgba(0, 0, 0, 0.5)' 
+  : '0 -10px 6px -2px rgba(0, 0, 0, 0.2), 0 10px 6px -2px rgba(0, 0, 0, 0.2)',
+  padding: '4rem 0 4rem 0',
+
+}));
 
 const HeroSection = styled(Box)(({ theme }) => ({
   backgroundColor: theme.palette.background.default,

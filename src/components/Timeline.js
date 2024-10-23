@@ -1,10 +1,11 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Box, Typography, Accordion, AccordionSummary, AccordionDetails } from '@mui/material';
-import { slideInRightAnimation, slideInLeftAnimation, slideUpAnimation } from '../styles/animations';
+import { slideInRightAnimation, slideInLeftAnimation, slideUpAnimation, fadeInAnimation } from '../styles/animations';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { styled } from '@mui/material/styles';
 import useOnScreen from '../styles/useOnScreen';
+import starImage from '../assets/stars2.png';
 
 const Timeline = () => {
   const { t } = useTranslation();
@@ -41,13 +42,17 @@ const Timeline = () => {
         {t('aboutPage.workExperience.title')}
       </NameTypography>
       <SecondTypography variant='body1'>
-        I love working! Sometimes even more than eating chocolate...
+        {t('aboutPage.workExperience.subtitle')}
       </SecondTypography>
       <StyledTimelineContainer>
+        
         <StyledLine top={lineY.top} bottom={lineY.bottom} isVisible={isVisible}/>
+
         {isArray && workExperience.map((exp, index) => (
           <StyledAccordion key={index} ref={el => (accordionRefs.current[index] = el)} index={index} isVisible={isVisible}>
+            
             <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+            <StyledImage src={starImage} alt="Stars" />
               <Box>
                 <PrimaryTypography variant='h5'>
                   {exp.title}
@@ -62,6 +67,7 @@ const Timeline = () => {
               <StyledDot className={`dot ${index % 2 === 0 ? 'left' : 'right'}`} />
             </AccordionSummary>
             <AccordionDetails>
+            
             <DescriptionTypography variant="subtitle2">
                 {exp.description.join(', ')}
             </DescriptionTypography>
@@ -84,6 +90,19 @@ const Timeline = () => {
 
 export default Timeline;
 
+const StyledImage = styled('img')(({ theme }) => ({
+  position: 'absolute',
+  top: 0,
+  left: 0,
+  width: '100%',
+  height: '100%',
+  objectFit: 'cover',
+  opacity: theme.palette.mode === 'dark' ? '0.1' : '0.1',
+  zIndex:'-5',
+  opacity:'0.4',
+  borderRadius:'10px'
+}));
+
 const SkillsTypography = styled(Typography)(({ theme }) => ({
     display: 'flex', 
     flexWrap: 'wrap', 
@@ -104,9 +123,10 @@ const InnerTypography = styled(Typography)(({ theme }) => ({
   }));
 
   const StyledAccordion = styled(Accordion)(({ theme, index, isVisible }) => ({
+    position:'relative',
     width: '40%',
     height: 'auto',
-    background: 'rgba(0, 0, 0, 0.02)',  // Permatomas fonas
+    background: theme.palette.mode === 'dark' ? 'rgba(0, 0, 0, 0.3)' : 'rgba(255, 0, 0, 0.1)',
     alignSelf: index % 2 === 0 ? 'flex-start' : 'flex-end',
     margin: '1rem 0',
     animation: isVisible 
@@ -121,7 +141,7 @@ const InnerTypography = styled(Typography)(({ theme }) => ({
     borderBottomLeftRadius: '10px', // Užtikrina, kad paskutinis elementas turės apvalius kampus
     borderBottomRightRadius: '10px',
   },
-    border: theme.palette.mode === 'dark' ? '1px solid rgba(255, 255, 255, 0.2)' : '1px solid rgba(0, 0, 0, 0.2)',  // Šviesus rėmelis
+   
     borderRadius: '10px',  // Švelnūs kampai, kad atrodytų kaip stiklas
     '&::before': {
         content: 'none',
@@ -183,7 +203,7 @@ const StyledLine = styled(Box)(({theme, top, bottom, isVisible }) => ({
     backgroundColor: theme.palette.mode === 'dark' ? 'rgb(29,29,29,0.5)' : 'rgb(255,249,242,0.9)',
     top: top, 
     bottom: `calc(100% - ${bottom}px)`,
-    animation: isVisible ? `${slideUpAnimation} 2s ease forwards` : 'none',
+    animation: isVisible ? `${fadeInAnimation} 5s ease forwards` : 'none',
   }));
 
 const StyledDot = styled(Box)(({ theme }) => ({

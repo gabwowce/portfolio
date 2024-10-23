@@ -90,12 +90,12 @@ const ToolCarousel = () => {
       }, []); // Single group for large screens (1 row with all tools)
 
   return (
-    <StyledBox ref={ref}>
+    <StyledBox ref={ref} id="about-skills">
       <NameTypography variant="h2">
         {t('aboutPage.skills.title')}
       </NameTypography>
       <SecondTypography variant='body1'>
-        I love them all, but I owe a big thanks to ChatGPT – thanks for being there during tough times!
+        {t('aboutPage.skills.subtitle')}
       </SecondTypography>
       <Slider {...settings}>
         {/* Use flexbox layout to make sure the tools align in rows and columns */}

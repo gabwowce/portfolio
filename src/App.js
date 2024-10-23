@@ -10,6 +10,7 @@ import Portfolio from './pages/Portfolio';
 import Contact from './pages/Contact'; 
 import ChatBot from './components/ChatBot';
 import './i18n';
+import ScrollToTop from './context/ScrollToTop';
 
 
 const App = () => {
@@ -17,6 +18,7 @@ const App = () => {
     <ThemeContextProvider>
       <LanguageProvider>
         <Router> 
+          <ScrollToTop />
           <Header />
           <div className="content"> 
             <Routes> 

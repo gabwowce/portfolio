@@ -12,15 +12,81 @@ i18n
       en: {
         translation: {
           header: {
-            about: "About me",
+            about: "About",
             portfolio: "Portfolio",
             contact: "Contact"
           },
           footer: {
             copyright: "All rights reserved.",
-            about: "About",
-            portfolio: "Portfolio",
-            contact: "Contact"
+            pageLinks:[
+              {
+                title:"About",
+                link:'/about',
+                links:[
+                  {
+                    title:"Hero section",
+                    link:"about-hero"
+                  },
+                  {
+                    title: "My Skills",
+                    link:"about-skills"
+                  },
+                  {
+                    title: "My History",
+                    link:"about-history"
+                  },
+                  {
+                    title: "Language Skills",
+                    link:"about-languages"
+                  }
+                ]
+              },
+              {
+                title:"Portfolio",
+                link:'/porfolio',
+                links:[
+                  {
+                    title:"Hero skiltis",
+                    link:"portfolio-hero"
+                  },
+                  {
+                    title: "Mano Įgūdžiai",
+                    link:"about-skills"
+                  },
+                  {
+                    title:"Mano Istorija",
+                    link:"about-history"
+                  },
+                  {
+                    title: "Kalbų Įgūdžiai",
+                    link:"about-language"
+                  }
+                ]
+              },
+              
+              {
+                title:"Kontaktai",
+                link:'/contact',
+                links:[
+                  {
+                    title:"Hero skiltis",
+                    link:"contact-hero"
+                  },
+                  {
+                    title: "Mano Įgūdžiai",
+                    link:"about-skills"
+                  },
+                  {
+                    title: "Mano Istorija",
+                    link:"about-history"
+                  },
+                  {
+                    title: "Kalbų Įgūdžiai",
+                    link:"about-language"
+                  }
+                ]
+              }
+            ],
           },
           aboutPage: {
             name: "Gabrielė Tamaševičiūtė",
@@ -28,6 +94,7 @@ i18n
             description: "Programming is my driving passion. I enjoy every moment spent tackling challenges, seeking creative solutions, building and coding. I dedicate myself to hard work and continuous learning, not only because I aspire to become a professional in this field, but also because software development is my number one hobby.",
             workExperience: {
               title: "My History",
+              subtitle:"Although the storyline is straight, the twists in it are unexpected.",
               experiences: [
                 {
                   title: "Junior Developer",
@@ -98,6 +165,7 @@ i18n
             },
             languages: {
               title: "Language Skills",
+              subtitle:"Languages are my passion! I mean programming languages. Who wants to talk when you can write code?",
               details: {
                 russian: {
                   speaking: 80,
@@ -117,7 +185,8 @@ i18n
               }
             },
             skills: {
-              title: "My Skills"
+              title: "My Skills",
+              subtitle: 'I love them all, but I owe a big thanks to ChatGPT – thanks for being there during tough times!'
             },
             computerSkills: {
               "ChatGPT": 80,
@@ -191,8 +260,9 @@ i18n
               sender: "Draugas",
               recipient: "As",
               text: [
+                
+                { type: "received", content: "How can you sit in such darkness? Open the curtains." },
                 { type: "sent", content: "No! It attracts bugs" },
-                { type: "received", content: "How can you sit in such darkness? Open the curtains." }
               ]
             },
             {
@@ -200,17 +270,19 @@ i18n
               sender: "Mama",
               recipient: "As",
               text: [
+                
+                { type: "received", content: "Kaip gali tokioje tamsoje sedėti, atskleisk užuolaidas" },
                 { type: "sent", content: "Ne! šviesą pritraukia bug'us" },
-                { type: "received", content: "Kaip gali tokioje tamsoje sedėti, atskleisk užuolaidas" }
               ]
             },
             {
               id: 3,
-              sender: "Mama",
+              sender: "Tetis",
               recipient: "As",
               text: [
+              
+                { type: "received", content: "Kaip gali tokioje tamsoje sedėti, atskleisk užuolaidas" },
                 { type: "sent", content: "Ne! šviesą pritraukia bug'us" },
-                { type: "received", content: "Kaip gali tokioje tamsoje sedėti, atskleisk užuolaidas" }
               ]
             }
           ]
@@ -225,9 +297,74 @@ i18n
           },
           footer: {
             copyright: "Visos teisės saugomos.",
-            about: "Apie mane",
-            portfolio: "Portfolio",
-            contact: "Kontaktai"
+            pageLinks:[
+              {
+                title:"Apie mane",
+                link:'/about',
+                links:[
+                  {
+                    title:"Hero skiltis",
+                    link:"abaut-hero"
+                  },
+                  {
+                    title: "Mano Įgūdžiai",
+                    link:"about-skills"
+                  },
+                  {
+                    title: "Mano Istorija",
+                    link:"about-history"
+                  },
+                  {
+                    title: "Kalbų Įgūdžiai",
+                    link:"about-languages"
+                  }
+                ]
+              },
+              {
+                title:"Portfolio",
+                link:'/porfolio',
+                links:[
+                  {
+                    title:"Hero skiltis",
+                    link:"portfolio-hero"
+                  },
+                  {
+                    title: "Mano Įgūdžiai",
+                    link:"about-skills"
+                  },
+                  {
+                    title:"Mano Istorija",
+                    link:"about-history"
+                  },
+                  {
+                    title: "Kalbų Įgūdžiai",
+                    link:"about-language"
+                  }
+                ]
+              },
+              {
+                title:"Kontaktai",
+                link:'/contact',
+                links:[
+                  {
+                    title:"Hero skiltis",
+                    link:"contact-hero"
+                  },
+                  {
+                    title: "Mano Įgūdžiai",
+                    link:"about-skills"
+                  },
+                  {
+                    title: "Mano Istorija",
+                    link:"about-history"
+                  },
+                  {
+                    title: "Kalbų Įgūdžiai",
+                    link:"about-language"
+                  }
+                ]
+              }
+            ],
           },
           aboutPage: {
             name: "Gabrielė Tamaševičiūtė",
@@ -235,6 +372,7 @@ i18n
             description: "Programavimas, o ypač vartotojo sąsajos, yra mano gyvenimo varikliukas. Aš mėgaujuosi kiekviena minute praleista gilinantis į užduotis, ieškant kūrybiškų sprendimų, kuriant ir programuojant. Tikrai daug dirbu ir daug mokausi, gal dėl to, kad noriu tapti šios srities profesionale, bet manau ir dėl to, kad programų kūrimas yra mano top 1 hobis.",
             workExperience: {
               title: "Mano istorija",
+              subtitle:"Nors istorijos linija tiesi, bet posūkiai joje netikėti.",
               experiences: [
                 {
                   title: "Jaunesnioji programuotoja",
@@ -305,26 +443,28 @@ i18n
             },
             languages: {
               title: "Kalbų įgūdžiai",
+              subtitle:"Kalbos yra mano aistra! Turiu omenyje programavimo kalbas. Kam kalbėtis, kai galima rašyti kodą?",
               details: {
-                russian: {
-                  speaking: 80,
-                  comprehension: 100,
-                  writing: 80
+                rusų: {
+                  kalbėjimas: 80,
+                  supratimas: 100,
+                  rašymas: 80
                 },
-                lithuanian: {
-                  speaking: 100,
-                  comprehension: 100,
-                  writing: 100
+                lietuvių: {
+                  kalbėjimas: 100,
+                  supratimas: 100,
+                  rašymas: 100
                 },
-                english: {
-                  speaking: 50,
-                  comprehension: 80,
-                  writing: 80
+                anglų: {
+                  kalbėjimas: 50,
+                  supratimas: 80,
+                  rašymas: 80
                 }
               }
             },
             skills: {
-              title: "Mano įgūdžiai"
+              title: "Mano įgūdžiai",
+              subtitle: 'Aš myliu juos visus, bet esu labai dėkingas ChatGPT – ačiū, kad buvai šalia sunkiu metu!'
             },
             computerSkills: {
               "ChatGPT": 80,
@@ -413,7 +553,7 @@ i18n
             },
             {
               id: 3,
-              sender: "Mama",
+              sender: "Tetis",
               recipient: "As",
               text: [
                 { type: "sent", content: "Ne! šviesą pritraukia bug'us" },
@@ -428,6 +568,8 @@ i18n
     interpolation: {
       escapeValue: false
     }
-  });
+}
+)
+;
 
 export default i18n;

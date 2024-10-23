@@ -2,7 +2,7 @@ import React from 'react';
 import { Box, Typography, CircularProgress } from '@mui/material';
 import { useTranslation } from 'react-i18next';
 import { styled } from '@mui/system';
-import { slideInRightAnimation, slideInLeftAnimation } from '../styles/animations';
+import { slideInRightAnimation, slideInLeftAnimation, slideUpAnimation } from '../styles/animations';
 import useOnScreen from '../styles/useOnScreen';
 
 const LanguageSkills = () => {
@@ -12,23 +12,23 @@ const LanguageSkills = () => {
     const languageSkills = t('aboutPage.languages', { returnObjects: true });
 
     return (
-        <StyledBackgroundBox ref={ref}>
+        <StyledBackgroundBox ref={ref} id="about-languages">
             {/* Title separated from the details */}
             <NameTypography variant="h2" align="center" gutterBottom >
                 {languageSkills.title}
             </NameTypography>
             <SecondTypography variant='body1'>
-            Languages are my passion! I mean programming languages. Who wants to talk when you can write code?
+                {languageSkills.subtitle}
             </SecondTypography>
             <StyledBox>
-                {Object.entries(languageSkills.details).map(([language, skills]) => (
+                {Object.entries(languageSkills.details).map(([language, skills], index) => (
                     <StyledSkillBox key={language}>
-                        <SecondTypography2 variant="h5">
+                        <SecondTypography2 variant="h5" index={index} isVisible={isVisible}>
                             {language.charAt(0).toUpperCase() + language.slice(1)}
                         </SecondTypography2>
                         <StyledBox2>
                             {Object.entries(skills).map(([skill, level]) => (
-                                <StyledProgressContainer key={skill}>
+                                <StyledProgressContainer key={skill} index={index} isVisible={isVisible}>
                                    <StyledCircularProgress variant="determinate" value={level} size={70} level={level} />
                                     <StyledProgressText variant="body1">{level}%</StyledProgressText>
                                     <ThirdTypography variant="body1">{skill.charAt(0).toUpperCase() + skill.slice(1)}</ThirdTypography>
@@ -44,11 +44,12 @@ const LanguageSkills = () => {
 
 export default LanguageSkills;
 
-const StyledBox2 = styled(Box)(({ theme }) => ({
+const StyledBox2 = styled(Box)(({ theme, isVisible, index }) => ({
     display: 'flex', 
     flexDirection: 'column', 
     alignItems: 'center', 
-    marginTop: '1rem' 
+    marginTop: '1rem' ,
+    
 }));
 
 const StyledBox = styled(Box)(({ theme }) => ({
@@ -71,9 +72,13 @@ const NameTypography = styled(Typography)(({ theme }) => ({
   }));
 
 
-const SecondTypography2 = styled(Typography)(({ theme }) => ({
+const SecondTypography2 = styled(Typography)(({ theme, index, isVisible }) => ({
     textAlign: 'center',
     color: theme.palette.text.primary,
+    animation: isVisible 
+      ? `${slideUpAnimation} 2s ease both` 
+      : 'none',
+    animationDelay: `${index * 0.3}s`,
     
   }));
 
@@ -98,13 +103,17 @@ const StyledSkillBox = styled(Box)(({ theme }) => ({
     textAlign: 'center',
 }));
 
-const StyledProgressContainer = styled(Box)({
+const StyledProgressContainer = styled(Box)(({ theme, isVisible, index }) => ({
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
     marginBottom: '1rem',
     position: 'relative',
-});
+    animation: isVisible 
+      ? `${index % 2 == 0 ? slideUpAnimation : slideUpAnimation} 2s ease both` 
+      : 'none',
+    animationDelay: `${index * 0.3}s`,
+}));
 
 const StyledProgressText = styled(Typography)(({ theme }) => ({
     position: 'absolute',

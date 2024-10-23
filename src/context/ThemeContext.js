@@ -5,29 +5,33 @@ import { lightTheme, darkTheme } from '../theme';
 export const ThemeContext = createContext();
 
 export const ThemeContextProvider = ({ children }) => {
-  // Tikriname naršyklės nustatymus ir nustatome pradinę temą
+  const savedTheme = localStorage.getItem('theme');
   const prefersDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
-  const [themeMode, setThemeMode] = useState(prefersDarkMode ? 'dark' : 'light');
+  const [themeMode, setThemeMode] = useState(savedTheme || (prefersDarkMode ? 'dark' : 'light'));
 
   const toggleTheme = () => {
-    setThemeMode((prevMode) => (prevMode === 'light' ? 'dark' : 'light'));
+    const newTheme = themeMode === 'light' ? 'dark' : 'light';
+    setThemeMode(newTheme);
+    localStorage.setItem('theme', newTheme);
   };
 
   const theme = useMemo(() => (themeMode === 'light' ? lightTheme : darkTheme), [themeMode]);
 
   useEffect(() => {
-  const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-  const handleChange = (e) => {
-    setThemeMode(e.matches ? 'dark' : 'light');
-  };
+    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+    
+    const handleChange = (e) => {
+      if (!savedTheme) { 
+        setThemeMode(e.matches ? 'dark' : 'light');
+      }
+    };
 
-  mediaQuery.addEventListener('change', handleChange);
-  
-  return () => {
-    mediaQuery.removeEventListener('change', handleChange);
-  };
-}, []);
+    mediaQuery.addEventListener('change', handleChange);
 
+    return () => {
+      mediaQuery.removeEventListener('change', handleChange);
+    };
+  }, [savedTheme]);
 
   return (
     <ThemeContext.Provider value={{ themeMode, toggleTheme, theme }}>
