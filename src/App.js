@@ -29,7 +29,6 @@ const App = () => {
             </Routes>
           </div>
           <Footer />
-          <ChatBot/>
         </Router>
       </LanguageProvider>
     </ThemeContextProvider>

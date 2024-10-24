@@ -1,6 +1,6 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { slideInRightAnimation, slideInLeftAnimation} from '../styles/animations';
-
+import Hero from '../components/HeroSection';
 import {
   Box,
   Typography,
@@ -42,28 +42,7 @@ const About = () => {
 
       <BackgroundSection>
 
-        <HeroSection id="about-hero">
-          <StyledContainer className='custom-container'>
-                <StyledBox >
-                  <NameTypography variant="h1">
-                    {t('aboutPage.name')}
-                  </NameTypography>
-                  <SecondTypography variant="h3">
-                    {t('aboutPage.jobTitle')}
-                  </SecondTypography>
-                  <ThirdTypography variant="body1">
-                    {t('aboutPage.description')}
-                  </ThirdTypography>
-                </StyledBox>
-
-                <BoxForPic >
-                  <ImageBox component="img" src={themeMode === 'dark' ? darkPhoneImage : lightPhoneImage} alt="Phone"/>
-                  <StyledButton href="https://www.linkedin.com/in/gabrielė-tamaševičiūtė-06712526b" target="_blank" rel="noopener noreferrer">
-                    <AddUserIcon /> Connect
-                  </StyledButton>
-                </BoxForPic>
-          </StyledContainer>
-        </HeroSection>
+        <Hero/>
 
         <ToolCarousel/>
 
@@ -129,7 +108,7 @@ const StyledBackgroundBox = styled(Box)(({ theme }) => ({
 
 }));
 
-const SecondTypography = styled(Typography)(({ theme }) => ({
+export const SecondTypography = styled(Typography)(({ theme }) => ({
   textAlign: 'justify',
   color: theme.palette.text.primary,
   animation: `${slideInLeftAnimation} 2s ease forwards`,
@@ -151,7 +130,7 @@ const StyledPaper = styled(Paper)(({ theme }) => ({
 }));
 
 
-const ImageBox = styled(Box)(({ theme }) => ({
+export const ImageBox = styled(Box)(({ theme }) => ({
   maxWidth: '300px',
   height: 'auto',
   filter: theme.palette.mode === 'dark' ? 'drop-shadow(5px 0px 25px rgba(255, 255, 255, 0.2))' : 'drop-shadow(10px 4px 15px rgba(0, 0, 0, 1))',
@@ -163,7 +142,7 @@ const ImageBox = styled(Box)(({ theme }) => ({
  
 }));                
 
-const BoxForPic = styled(Box)`
+export const BoxForPic = styled(Box)`
   position: relative;
   width: 100%;
   height: auto;
@@ -171,14 +150,14 @@ const BoxForPic = styled(Box)`
   animation: ${slideInRightAnimation} 2s ease forwards
 `;                
 
-const ThirdTypography = styled(Typography)(({ theme }) => ({
+export const ThirdTypography = styled(Typography)(({ theme }) => ({
   textAlign: 'justify',
   color: theme.palette.text.third,
   marginTop: '1rem',
   animation: `${slideInLeftAnimation} 2s ease forwards`,
 }));
 
-const NameTypography = styled(Typography)(({ theme }) => ({
+export const NameTypography = styled(Typography)(({ theme }) => ({
   fontFamily: 'Outfit, sans-serif', 
   fontWeight: '600',
   textAlign:'left',
@@ -186,7 +165,7 @@ const NameTypography = styled(Typography)(({ theme }) => ({
   animation: `${slideInLeftAnimation} 2s ease forwards`,
 }));
 
-const StyledContainer = styled(Container)(({ theme }) => ({
+export const StyledContainer = styled(Container)(({ theme }) => ({
   display:'flex',
   flexDirection: 'column',
   justifyContent: 'center',
@@ -200,7 +179,7 @@ const StyledContainer = styled(Container)(({ theme }) => ({
 
 
 
-const StyledButton = styled(Button)(({ theme }) => ({
+export const StyledButton = styled(Button)(({ theme }) => ({
   position: 'absolute',
   left: '71px',
   top: '291px',
@@ -238,7 +217,7 @@ const StyledButton = styled(Button)(({ theme }) => ({
   },
 }));
 
-const StyledBox = styled(Box)`
+export const StyledBox = styled(Box)`
   padding: ${({ theme }) => theme.spacing(3)};
   max-width: 750px;
   display: flex;
@@ -267,23 +246,23 @@ const HeroStyleSection = styled(Box)(({ theme }) => ({
 
 }));
 
-const HeroSection = styled(Box)(({ theme }) => ({
-  backgroundColor: theme.palette.background.default,
-  background: `radial-gradient(circle at 20% 30%, rgba(255, 0, 0, 0.3), transparent 40%),
-               radial-gradient(circle at 60% 80%, rgba(255, 0, 0, 0.3), transparent 40%),
-               radial-gradient(circle at 0% 20%, rgba(0, 0, 255, 0.3), transparent 30%),
-               radial-gradient(circle at 80% 100%, rgba(0, 0, 255, 0.3), transparent 30%),
-               radial-gradient(circle at 40% 60%, rgba(0, 0, 255, 0.3), transparent 30%)`,
-  backdropFilter: 'blur(15px)',
-  textAlign: 'center',
-  width: '100%',
-  display: 'flex',
-  justifyContent: 'center',
-  alignItems: 'center',
-  boxShadow: theme.palette.mode === 'dark' ? '0 10px 6px -2px rgba(0, 0, 0, 0.5)' : '0 10px 6px -2px rgba(0, 0, 0, 0.2)',  //gt Reikia tvarkyti
-  padding: '4rem 0 4rem 0',
+// export const HeroSection = styled(Box)(({ theme }) => ({
+//   backgroundColor: theme.palette.background.default,
+//   background: `radial-gradient(circle at 20% 30%, rgba(255, 0, 0, 0.3), transparent 40%),
+//                radial-gradient(circle at 60% 80%, rgba(255, 0, 0, 0.3), transparent 40%),
+//                radial-gradient(circle at 0% 20%, rgba(0, 0, 255, 0.3), transparent 30%),
+//                radial-gradient(circle at 80% 100%, rgba(0, 0, 255, 0.3), transparent 30%),
+//                radial-gradient(circle at 40% 60%, rgba(0, 0, 255, 0.3), transparent 30%)`,
+//   backdropFilter: 'blur(15px)',
+//   textAlign: 'center',
+//   width: '100%',
+//   display: 'flex',
+//   justifyContent: 'center',
+//   alignItems: 'center',
+//   boxShadow: theme.palette.mode === 'dark' ? '0 10px 6px -2px rgba(0, 0, 0, 0.5)' : '0 10px 6px -2px rgba(0, 0, 0, 0.2)',  //gt Reikia tvarkyti
+//   padding: '4rem 0 4rem 0',
 
-}));
+// }));
 
 
 const BackgroundSection = styled(Box)(({ theme }) => ({

@@ -1,0 +1,492 @@
+[
+{
+  "resources": {
+  "en": {
+    "translation": {
+      "about my work and skills": {
+        "name": "Gabrielė Tamaševičiūtė",
+        "jobTitle": {
+          "lt": "Jaunesnioji programuotoja",
+          "en": "Junior Developer"
+        },
+        "description": {
+          "lt": "Programavimas, o ypač vartotojo sąsajos, yra mano gyvenimo varikliukas. Aš mėgaujuosi kiekviena minute praleista gilinantis į užduotis, ieškant kūrybiškų sprendimų, kuriant ir programuojant. Tikrai daug dirbu ir daug mokausi, gal dėl to, kad noriu tapti šios srities profesionale, bet manau ir dėl to, kad programų kūrimas yra mano top 1 hobis.",
+          "en": "Programming is my driving passion. I enjoy every moment spent tackling challenges, seeking creative solutions, building and coding. I dedicate myself to hard work and continuous learning, not only because I aspire to become a professional in this field, but also because software development is my number one hobby."
+        },
+        "workExperience": {
+          "experiences": [
+            {
+              "title": {
+                "lt": "Jaunesnioji programuotoja",
+                "en": "Junior Developer"
+              },
+              "company": {
+                "lt": "Universalios valdymo sistemos, UAB",
+                "en": "Universal Management Systems, Ltd."
+              },
+              "startDate": "2024-06-25",
+              "endDate": {
+                "lt": "Šiuo metu dirbu čia",
+                "en": "Working at the moment here"
+              },
+              "employmentType": {
+                "lt": "Visas etatas",
+                "en": "Full Time"
+              },
+              "description": {
+                "1": {
+                  "lt": "Dirbu su POS sistemų vartotojo sąsaja",
+                  "en": "Working with the user interface of POS systems"
+                },
+                "2": {
+                  "lt": "Keičiu dizaino elementus, jei originalus planas reikalauja pakeitimų",
+                  "en": "Modifying design elements if the original plan requires changes"
+                },
+                "3": {
+                  "lt": "Bendradarbiauju su komandos nariais",
+                  "en": "Collaborating with team members"
+                }
+              },
+              "skills in this position": {
+                "1": "C# .NET",
+                "2": "XAML",
+                "3": "XML",
+                "4": "WPF",
+                "5": "HTML/CSS"
+              }
+            },
+            {
+              "title": {
+                "lt": "Planavimo specialistas",
+                "en": "Planner"
+              },
+              "company": {
+                "lt": "Girteka Europe West, UAB",
+                "en": "Girteka Europe West, Ltd."
+              },
+              "startDate": "2021-10-01",
+              "endDate": "2023-09-01",
+              "employmentType": {
+                "lt": "Visas etatas",
+                "en": "Full Time"
+              },
+              "description": {
+                "1": {
+                  "lt": "Strategiškai planavau krovinių srautus efektyviam koordinavimui",
+                  "en": "Strategically planned cargo flows for efficient coordination"
+                },
+                "2": {
+                  "lt": "Analizavau prižiūrimus transporto judesius",
+                  "en": "Analyzed supervised vehicle movements"
+                },
+                "3": {
+                  "lt": "Pasirinkau ir pritaikiau optimalius transportavimo variantus pagal besikeičiančias aplinkybes",
+                  "en": "Selected and adjusted optimal transportation options based on evolving circumstances"
+                },
+                "4": {
+                  "lt": "Bendradarbiavau su kolegomis sprendžiant transportavimo problemas",
+                  "en": "Collaborated with colleagues to resolve transportation issues"
+                }
+              },
+              "skills in this position": {
+                "1": "Excel",
+                "2": "Dynamics AX"
+              }
+            },
+            {
+              "title": {
+                "lt": "Administratorius",
+                "en": "Administrator"
+              },
+              "company": {
+                "lt": "Jarinta, UAB",
+                "en": "Jarinta, Ltd."
+              },
+              "startDate": "2021-04-01",
+              "endDate": "2021-09-01",
+              "employmentType": {
+                "lt": "Visas etatas",
+                "en": "Full Time"
+              },
+              "description": {
+                "1": {
+                  "lt": "Elektros tinklo valdymas",
+                  "en": "Electrical network management"
+                },
+                "2": {
+                  "lt": "Butų administravimas",
+                  "en": "Apartment administration"
+                },
+                "3": {
+                  "lt": "Skolų išieškojimas",
+                  "en": "Debt collection"
+                },
+                "4": {
+                  "lt": "Tvarkiau įmonės dokumentaciją",
+                  "en": "Managed company documentation"
+                }
+              },
+              "skills in this position": {
+                "1": "Excel",
+                "2": "Word"
+              }
+            }
+          ]
+        },
+        "education": {
+          "institution": {
+            "lt": "Vilniaus kolegija",
+            "en": "Vilnius College"
+          },
+          "degree": {
+            "lt": "Aukštesnysis neuniversitetinis (profesinis bakalauro laipsnis)",
+            "en": "Higher non-university (professional bachelor's degree)"
+          },
+          "fieldOfStudy": {
+            "lt": "Programinės įrangos inžinerija",
+            "en": "Software Engineering"
+          },
+          "startYear": 2023,
+          "endYear": 2027
+        },
+        "languages": {
+          "russian": {
+            "speaking": 80,
+            "comprehension": 100,
+            "writing": 80
+          },
+          "lithuanian": {
+            "speaking": 100,
+            "comprehension": 100,
+            "writing": 100
+          },
+          "english": {
+            "speaking": 50,
+            "comprehension": 80,
+            "writing": 80
+          }
+        },
+        "my computer Skills": {
+          "ChatGPT": 80,
+          "Microsoft Excel": 80,
+          "XML": 80,
+          "AutoCAD": 70,
+          "Axure RP": 70,
+          "Bash Command Line": 70,
+          "C++": 70,
+          "CSS/SCSS": 70,
+          "Figma": 70,
+          "HTML": 70,
+          "Microsoft Dynamics Axapta": 70,
+          "Power BI": 70,
+          "Python": 70,
+          "Pygame": 60,
+          "Web Scraping": 60,
+          "Pandas": 60,
+          "Matplotlib": 60,
+          "ReactJS": 70,
+          "SQL": 70,
+          "SQLite": 60,
+          "MySQL": 60,
+          "C# .NET": 40,
+          "ASP.NET": 40,
+          "WPF": 40,
+          "NodeJS": 40
+        }
+      }
+    }
+  },
+        "mySoftSkills": {
+          "communication": {
+             "description": {
+                "lt": "Esu komunikabili ir draugiška, stengiuosi kuo aiškiau išdėstyti savo mintis ir idėjas. Gebu kritiškai mąstyti ir priimti skirtingus požiūrius bei idėjas.",
+                "en": "I am communicative and friendly, striving to express my thoughts and ideas as clearly as possible. I can think critically and accept different perspectives and ideas."
+              },
+              "activeListening": {
+                "lt": "Turiu aktyvaus klausymo įgūdžių, kurie skatina supratimą ir bendradarbiavimą.",
+                "en": "I possess active listening skills that foster understanding and collaboration."
+              }
+          },
+           "teamwork": {
+                "description": {
+                  "lt": "Turiu patirties dirbant įvairiose komandose, prisidedu prie grupės tikslų.",
+                  "en": "Experience working effectively in diverse teams, contributing to group objectives."
+                },
+                "conflictResolution": {
+                  "lt": "Nesiveliu į konfliktus, suprantu visokiausius požiūrius ir stengiuosi atrasti kompromisus.",
+                  "en": "I avoid getting involved in conflicts, understanding various perspectives, and strive to find compromises."
+                }
+              },
+          "problemSolving": {
+                "analyticalSkills": {
+                  "lt": "Tvirti analitiniai įgūdžiai, leidžiantys identifikuoti problemas ir generuoti sprendimus.",
+                  "en": "Strong analytical skills for identifying issues and generating solutions."
+                },
+                "creativeThinking": {
+                  "lt": "Kūrybinis mąstymas, leidžiantis taikyti novatoriškus požiūrius į iššūkius.",
+                  "en": "Creative thinking that allows for innovative approaches to challenges."
+                },
+                "decisionMaking": {
+                  "lt": "Gebėjimas priimti informuotus sprendimus, remiantis analize ir kritiniu mąstymu.",
+                  "en": "Ability to make informed decisions based on analysis and critical thinking."
+                }
+              },
+          "adaptability": {
+                "description": {
+                  "lt": "Prisitaikau prie naujų situacijų ir pokyčių darbo aplinkoje.",
+                  "en": "Comfortable adjusting to new situations and changes in the work environment."
+                },
+                "willingnessToLearn": {
+                  "lt": "Atvira atsiliepimams ir noru mokytis iš patirčių.",
+                  "en": "Open to feedback and willing to learn from experiences."
+                },
+                "flexibility": {
+                  "lt": "Gebėjimas keisti strategijas atsižvelgiant į kintančias aplinkybes.",
+                  "en": "Ability to pivot strategies based on changing circumstances."
+                }
+              },
+          "timeManagement": {
+                "description": {
+                  "lt": "Gebėjimas prioritetizuoti užduotis ir efektyviai valdyti laiką, kad būtų laikomasi terminų.",
+                  "en": "Ability to prioritize tasks and manage time effectively to meet deadlines."
+                },
+                "organization": {
+                  "lt": "Organizuotas požiūris į kelis projektus vienu metu.",
+                  "en": "Organized approach to handling multiple projects simultaneously."
+                },
+                "goalSetting": {
+                  "lt": "Nustatomi realūs tikslai ir etapai pažangos sekimui.",
+                  "en": "Setting realistic goals and milestones to track progress."
+                },
+                "taskManagement": {
+                  "description": {
+                    "lt": "Esu išmokusi, kaip valdyti savo užduotis, jas užsirašau su smulkmenomis, kad nieko nepraleisčiau, ir sistemingai, be streso, galiu dirbti, kadangi turiu visą planą po ranka.",
+                    "en": "I have learned how to manage my tasks, noting them down with details to ensure nothing is missed, allowing me to work systematically and stress-free, as I have the entire plan at hand."
+                  }
+                }
+              },
+
+          "criticalThinking": {
+                "description": {
+                  "lt": "Gebėjimas analizuoti situacijas ir priimti pagrįstus sprendimus.",
+                  "en": "Ability to analyze situations and make reasoned judgments."
+                },
+                "evaluation": {
+                  "lt": "Kritiškai vertinant įrodymus ir argumentus, kad būtų priimti pagrįsti sprendimai.",
+                  "en": "Evaluating evidence and arguments critically to make sound decisions."
+                },
+                "reflection": {
+                  "lt": "Apmąstyti praeities patirtis, siekiant tobulinti ateities rezultatus.",
+                  "en": "Reflecting on past experiences to improve future performance."
+                }
+              }
+              ,
+        "portfolioPage": {
+          "title": {
+            "lt": "Mano Darbai",
+            "en": "My Works"
+          },
+          "description": {
+            "lt": "Mano programavimo kelias buvo įvairialypis, apimantis įvairius projektus, kurie tarnavo kaip vertingi mokymosi šaltiniai. Esu sukūrusi įvairias programas, nuo duomenų analitikos projektų iki darbalaukio aplikacijų. Šiame portfelyje pateikiu savo pastaruosius darbus, kurie man labiausiai patinka.",
+            "en": "My programming journey has been diverse, involving various projects that served as valuable learning resources. I've created a range of applications, from data analytics projects to desktop applications. In this portfolio, I present my recent works that I am most passionate about."
+          },
+          "projects": {
+            "project1": {
+              "title": {
+                "lt": "Bibliotekos valdymo sistema",
+                "en": "Library Management App"
+              },
+              "description": {
+                "lt": "Bibliotekos valdymo sistema skirta bibliotekos duomenų valdymui. Sistema leidžia sekti knygų informaciją, administruoti skolas ir valdyti skolininkus. Ji apima tris režimus: administratoriaus, vadybininko ir naudotojo, kiekvienas iš jų turi skirtingas teises ir funkcionalumą.",
+                "en": "The library management system is designed for managing library data. The system allows tracking of book information, administering debts, and managing borrowers. It includes three modes: administrator, manager, and user, each with different rights and functionalities."
+              },
+              "tools": {
+                "1": "React",
+                "2": "CSS/SCSS",
+                "3": "ASP.NET Core Web API",
+                "4": "MySQL"
+              }
+            },
+            "project2": {
+              "title": {
+                "lt": "Nekilnojamojo turto svetainė",
+                "en": "Real Estate Website"
+              },
+              "description": {
+                "lt": "Ši nekilnojamojo turto svetainė sukurta siekiant suteikti vartotojams intuityvią platformą nekilnojamojo turto sąrašams naršyti ir valdyti. Sukurta naudojant React ir TypeScript, svetainė pasižymi prisitaikančiu dizainu, naudojant SCSS.",
+                "en": "This real estate website is designed to provide users with an intuitive platform for browsing and managing property listings. Built with React and TypeScript, the site features a responsive design using SCSS, ensuring an optimal experience across various devices."
+              },
+              "tools": {
+                "1": "React",
+                "2": "TypeScript",
+                "3": "SCSS",
+                "4": "Responsive Design",
+           "hobbies": {
+              "title": {
+                "lt": "Pomėgiai",
+                "en": "Hobbies"
+              },
+              "description": {
+                "lt": "Mano pomėgiai apima knygų skaitymą, filmų žiūrėjimą, programavimą, naujų sistemų kūrimą, kūrybines ir loginės užduotis, problemų sprendimą ir maisto gaminimą.",
+                "en": "My hobbies include reading books, watching films, programming, developing new systems, creative and logical tasks, problem-solving, and cooking."
+              }
+            },
+                "goals": {
+                    "title": {
+                      "lt": "Tikslai",
+                      "en": "Goals"
+                    },
+                    "description": {
+                      "lt": "Mano pagrindinis tikslas yra tapti geru programuotoju, gerai suprantant didesnį sistemų architektūros vaizdą. Noriu pritaikyti savo kūrybiškumą, be didelio gilinimosi į tai, kaip viskas veikia. Taip pat siekiu sukurti savo programą, kuri galėtų būti naudinga visuomenei, ir prisidėti prie projektų, kurie atneša vertę aplinkiniams, jausdamasi jų dalimi.",
+                      "en": "My primary goal is to become a proficient programmer with a solid understanding of larger system architecture. I aim to apply my creativity without needing to dive deep into the technicalities of how everything works. Additionally, I aspire to create my own program that can serve as a valuable tool for the community and contribute to projects that bring value to others, feeling like an integral part of those initiatives."
+                    }
+                  },
+                "values": {
+                    "title": {
+                      "lt": "Vertybės",
+                      "en": "Values"
+                    },
+                    "description": {
+                      "lt": "Man svarbiausios vertybės yra sąžiningumas, bendradarbiavimas, inovacijos ir nuolatinis tobulėjimas. Sąžiningumas užtikrina pasitikėjimą tiek asmeniniuose, tiek profesiniuose santykiuose. Bendradarbiavimas leidžia efektyviau dirbti komandoje ir siekti bendrų tikslų. Inovacijos skatina kūrybiškumą ir naujų idėjų generavimą, o nuolatinis tobulėjimas leidžia man išlikti konkurencingu ir prisitaikyti prie besikeičiančių rinkos poreikių.",
+                      "en": "My core values include integrity, collaboration, innovation, and continuous improvement. Integrity fosters trust in both personal and professional relationships. Collaboration enables more effective teamwork and the achievement of common goals. Innovation encourages creativity and the generation of new ideas, while continuous improvement allows me to remain competitive and adapt to changing market demands."
+                    }
+                  },
+                "my experience about programming and projects and my opinions": {
+                  "summary": {
+                    "lt": "Esu kurusi įvairius projektus nuo duomenų analitikos iki desktop aplikacijų.",
+                    "en": "I have created various projects ranging from data analytics to desktop applications."
+                  },
+                  "learningValue": {
+                    "lt": "Visi šie projektai buvo vertingi mano mokymuisi.",
+                    "en": "All these projects have been valuable for my learning journey."
+                  },
+                  "goal": {
+                    "lt": "Darant projektus jaučiuosi siekianti savo tikslo tapti gerai programuotoja.",
+                    "en": "While working on projects, I feel like I am pursuing my goal of becoming a good programmer."
+                  },
+                  "mainLearningSource": {
+                    "lt": "Manau, kad projektų kūrimas yra pagrindinis mokymosi šaltinis.",
+                    "en": "I believe that project development is the main source of learning."
+                  },
+                  "understandingPrinciples": {
+                    "lt": "Tai apima visos sistemos veikimo principų supratimą.",
+                    "en": "This encompasses the understanding of the principles of how the entire system works."
+                  },
+                  "focusOnUnderstanding": {
+                    "lt": "Esmė yra ne sintaksėje, o supratime, kaip kodas veikia tarpusavyje.",
+                    "en": "The essence lies not in syntax, but in understanding how code interacts with each other."
+                  },
+                  "strengths": {
+                    "lt": "Negaliu pasigirti labai geros sintaksės mokėjimu, bet galiu greitai rasti informaciją.",
+                    "en": "I cannot boast about having excellent syntax skills, but I can quickly find information."
+                  },
+                  "problemSolving": {
+                    "lt": "Žaisdama detektyvą greitai atrandu problemos šaltinį ir sprendžiu problemas.",
+                    "en": "Playing detective, I swiftly locate the source of problems and solve issues."
+                  }
+                }
+              },
+              "careerOpinions": {
+                  "importanceOfJobChoice": {
+                    "lt": "Man svarbu, kad mano pasirinktas darbas atitiktų mano vertybes ir interesus.",
+                    "en": "It is important to me that my chosen job aligns with my values and interests."
+                  },
+                  "learningOpportunities": {
+                    "lt": "Noriu dirbti aplinkoje, kur galėčiau nuolat mokytis ir tobulėti.",
+                    "en": "I want to work in an environment where I can continuously learn and grow."
+                  },
+                  "collaboration": {
+                    "lt": "Bendradarbiavimas su kitais man yra labai svarbus aspektas.",
+                    "en": "Collaboration with others is a very important aspect for me."
+                  },
+                  "impact": {
+                    "lt": "Noriu prisidėti prie projektų, kurie daro teigiamą poveikį visuomenei.",
+                    "en": "I want to contribute to projects that have a positive impact on society."
+                  },
+                  "futureVision": {
+                    "lt": "Ateityje matau save kaip profesionalą, kuris turi įtakos ir prisideda prie inovacijų.",
+                    "en": "In the future, I see myself as a professional who influences and contributes to innovations."
+                  },
+                  "longTermGoals": {
+                    "lt": "Mano ilgalaikiai tikslai apima nuolatinį žinių gilinimą ir prisidėjimą prie prasmingų projektų.",
+                    "en": "My long-term goals include continuously deepening my knowledge and contributing to meaningful projects."
+                  }
+                }
+              },
+            "personalHistory": {
+                  "lt": {
+                    "beginning": "Pradėjau savo karjerą nuo padavėjos darbo, kurioje įgijau pagrindinių įgūdžių kaip bendravimas su klientais, sistemų, kurios valdo staliukų užsakymus, problemų sprendimas.",
+                    "transition": "Bet kai atėjau dirbti kaip reisų koordinatorė girtekoje, ir sprendžiau labiau komplikuotas problemas ir užduotis, kuriose reikėjo ir apskaičiuoti kažką, ir suplanuoti, supratau, kokios užduotys man labiausiai patinka ir kuo aš tikrai mėgaujuosi.",
+                    "discovery": "Taigi netyčia užmačiusi Udemy akcijas, nusipirkau programavimo kursus ir labai greitai supratau, kad tai tas, ko aš ieškojau taip ilgai bandydama atrasti save.",
+                    "passion": "Man tai taip patiko, programuoti, kad po pusės metų metiau savo darbą ir nuėjau studijuoti programų sistemas.",
+                    "currentWork": "Dieną dienomis studijavau ir dariau ne tik koleginius darbus, bet ir mokiausi savarankiškai, kurdama savo projektus. Šiuo metu dirbu UVS kaip junior programuotoja, kuri užsiima frontend dalimi su POS sistemomis, bet tuo pačiu metu gilinu žinias į web įrankius, kuriu web projektus su React, SCSS, CSS, C# .NET."
+                  },
+                  "en": {
+                    "beginning": "I started my career as a waitress, where I acquired basic skills such as communicating with customers, managing table orders, and problem-solving.",
+                    "transition": "However, when I began working as a trip coordinator at a travel agency, solving more complex problems and tasks that required both calculations and planning, I realized what tasks I enjoy the most and what truly excites me.",
+                    "discovery": "So, when I accidentally noticed a Udemy sale, I bought programming courses and quickly realized that this was what I had been searching for while trying to find myself.",
+                    "passion": "I enjoyed programming so much that after six months, I quit my job and went to study software systems.",
+                    "currentWork": "Day after day, I studied and not only completed college assignments but also learned independently by creating my projects. Currently, I work at UVS as a junior programmer, focusing on the frontend aspect of POS systems while also deepening my knowledge of web tools, creating web projects with React, SCSS, CSS, and C# .NET."
+                  }
+                }
+              },
+          "questionsAnswers": {
+              "strengths": {
+                "question": {
+                  "lt": "Kokios yra jūsų stiprybės?",
+                  "en": "What are your strengths?"
+                },
+                "answer": {
+                  "lt": "Mano stiprybės yra problemų sprendimas, analitiniai gebėjimai ir greitas prisitaikymas prie naujų situacijų. Turiu gerų programavimo įgūdžių, ypač su React, C# ir .NET, ir esu organizuota, todėl efektyviai valdau savo laiką ir užduotis.",
+                  "en": "My strengths include problem-solving, analytical skills, and quick adaptability to new situations. I possess strong programming skills, especially with React, C#, and .NET, and I am organized, which allows me to effectively manage my time and tasks."
+                }
+              },
+              "weaknesses": {
+                "question": {
+                  "lt": "Kokios yra jūsų silpnybės?",
+                  "en": "What are your weaknesses?"
+                },
+                "answer": {
+                  "lt": "Mano silpnybės yra per didelis detalizavimas ir kartais sunku pasitikėti savo sprendimais. Siekiu tobulėti, kad geriau valdydama laiką galėčiau efektyviau įgyvendinti užduotis, nepamiršdama bendro vaizdo.",
+                  "en": "My weaknesses include being overly detail-oriented and sometimes struggling to trust my decisions. I aim to improve by managing my time better so that I can execute tasks more efficiently without losing sight of the bigger picture."
+                }
+              },
+              "motivatingSituations": {
+                "question": {
+                  "lt": "Kokios situacijos jus labiausiai motyvuoja?",
+                  "en": "What situations motivate you the most?"
+                },
+                "answer": {
+                  "lt": "Man labiausiai motyvuoja situacijos, kai dirbu komandoje prie kūrybiškų projektų, kurie reikalauja naujų sprendimų. Taip pat jaučiuosi įkvėpta, kai matau tiesioginį savo darbo poveikį ir naudingumą visuomenei.",
+                  "en": "I am most motivated by situations where I work in a team on creative projects that require new solutions. I also feel inspired when I see the direct impact and usefulness of my work to the community."
+                },
+                "conflictResolution": {
+                    "question": {
+                      "lt": "Kaip sprendžiate konfliktus ar problemas darbe?",
+                      "en": "How do you resolve conflicts or problems at work?"
+                    },
+                    "answer": {
+                      "lt": "Mano požiūris į konfliktų sprendimą yra išklausyti abi puses, analizuoti situaciją ir ieškoti abipusiai naudingų sprendimų. Stengiuosi išlaikyti atvirą ir konstruktyvų dialogą, kad visi jaustųsi išgirsti ir suprasti.",
+                      "en": "My approach to conflict resolution is to listen to both sides, analyze the situation, and look for mutually beneficial solutions. I strive to maintain an open and constructive dialogue so that everyone feels heard and understood."
+                    }
+                  },
+                  "futureGoals": {
+                    "question": {
+                      "lt": "Kokie jūsų ateities tikslai?",
+                      "en": "What are your future goals?"
+                    },
+                    "answer": {
+                      "lt": "Mano ateities tikslai yra toliau tobulėti programavimo srityje, sukurti savo programą, kuri būtų naudinga visuomenei, ir prisidėti prie inovatyvių projektų, kurie pagerintų žmonių gyvenimus.",
+                      "en": "My future goals are to continue developing my skills in programming, create my own application that would benefit the community, and contribute to innovative projects that improve people's lives."
+                    }
+                  }
+                }
+              }
+
+
+          }
+    }}}]
+  
+
+
+

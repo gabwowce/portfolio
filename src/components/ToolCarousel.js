@@ -23,7 +23,7 @@ import excelLogo from '../assets/tools/excel.png';
 import figmaLogo from '../assets/tools/figma.png';  
 import htmlLogo from '../assets/tools/html.png';
 import sqlLogo from '../assets/tools/sql.png';
-
+import githubLogo from '../assets/tools/github.png';
 import xamlLogo from '../assets/tools/xaml.png';  
 import xmlLogo from '../assets/tools/xml.png';
 import reactLogo from '../assets/tools/react.png';
@@ -37,7 +37,7 @@ const tools = [
   { name: 'SQL', image: sqlLogo },
   { name: 'React', image: reactLogo },
   { name: 'JavaScript', image: jsLogo },
-
+  {name: 'GitHub', image: githubLogo},
   { name: 'XAML', image: xamlLogo },
   { name: 'XML', image: xmlLogo },
   { name: 'Figma', image: figmaLogo },

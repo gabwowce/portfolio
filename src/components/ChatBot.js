@@ -1,26 +1,66 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Box, TextField, Button, Typography, IconButton, Drawer, AppBar } from '@mui/material';
 import ChatIcon from '@mui/icons-material/Chat';
 import CloseIcon from '@mui/icons-material/Close';
+import axios from 'axios';
+import data from '../data.json';
 
 const ChatBot = () => {
   const [open, setOpen] = useState(false);
   const [message, setMessage] = useState('');
   const [messages, setMessages] = useState([]);
+  const [question, setQuestion] = useState('');
+  const [answer, setAnswer] = useState('');
+  const [context, setContext] = useState(data.context); // Naudok JSON failo kontekstą
+
+  const apiToken = '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'; // Pakeisk savo API raktu
+  const model = 'distilbert-base-uncased-distilled-squad'; // Klausimų-atsakymų modelis
+
+  const handleAsk = async () => {
+    try {
+      console.log('Klausimas:', question); // Debugging
+      console.log('Kontekstas:', context); // Debugging
+  
+      const response = await axios.post(`https://api-inference.huggingface.co/models/${model}`, {
+        inputs: {
+          question: question,
+          context: context
+        }
+      }, {
+        headers: {
+          'Authorization': `Bearer ${apiToken}`,
+          'Content-Type': 'application/json'
+        }
+      });
+      if (response.data.answer) {
+        setAnswer(response.data.answer);
+        setMessages((prevMessages) => [...prevMessages, { text: response.data.answer, sender: 'bot' }]);
+      } else {
+        setMessages((prevMessages) => [...prevMessages, { text: 'Bot: Sorry, I could not find an answer.', sender: 'bot' }]);
+      }
+      
+  
+      console.log('Atsakymas:', response.data); // Debugging
+      setAnswer(response.data.answer);
+      setMessages((prevMessages) => [...prevMessages, { text: response.data.answer, sender: 'bot' }]);
+    } catch (error) {
+      console.error('Error fetching data:', error);
+      setAnswer('Sorry, there was an error.');
+    }
+  };
+  
 
   const handleSendMessage = () => {
     if (message.trim()) {
       setMessages([...messages, { text: message, sender: 'user' }]);
+      setQuestion(message); // Priskirk žinutę kaip klausimą
       setMessage('');
-      // Simuliuojame bot'o atsakymą
       setTimeout(() => {
-        setMessages((prevMessages) => [
-          ...prevMessages,
-          { text: 'Bot: Thanks for your message!', sender: 'bot' },
-        ]);
+        handleAsk(); // Skambink `handleAsk`, kad gautum atsakymą
       }, 1000);
     }
   };
+  
 
   return (
     <Box>
