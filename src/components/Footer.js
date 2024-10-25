@@ -7,6 +7,7 @@ import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import starImage from '../assets/stars.png';
 import { Link } from 'react-router-dom';
+import CanvasComponent from '../components/CanvasComponent';
 
 export default function Footer() {
   const { t } = useTranslation();
@@ -17,7 +18,14 @@ export default function Footer() {
   return (
     <BackgroundBox>
       <StyledBox component="footer">
-        <StyledImage src={starImage} alt="Stars" />
+      <CanvasComponent
+              layers={[
+                { speed: 0.135, scale: 0.2, count: 220 },
+                { speed: 0.1, scale: 0.5, count: 60 },
+                { speed: 0.2, scale: 0.75, count: 30 }
+              ]}
+            
+            />
         <StyledContainer>
           <PageLinksBox>
             {pageLinks.map((section, index) => (

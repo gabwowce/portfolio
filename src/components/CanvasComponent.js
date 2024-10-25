@@ -1,45 +1,16 @@
 import React, { useEffect, useRef } from 'react';
-import { styled, Box } from '@mui/material';
-import { NameTypography, SecondTypography, ThirdTypography, StyledContainer, StyledBox, BoxForPic, ImageBox, StyledButton } from '../pages/About'; 
-import { useTranslation } from 'react-i18next';
-import lightPhoneImage from '../assets/light-phone.png';
-import darkPhoneImage from '../assets/dark-phone.png';
-import { ReactComponent as AddUserIcon } from '../assets/add-user.svg';
 
 
-const HeroSection = styled(Box)(({ theme }) => ({
-  position: 'relative', // Make sure the container is relatively positioned
-  backgroundColor: theme.palette.background.default,
-  background: `radial-gradient(circle at 20% 30%, rgba(255, 0, 0, 0.3), transparent 40%),
-               radial-gradient(circle at 60% 80%, rgba(255, 0, 0, 0.3), transparent 40%),
-               radial-gradient(circle at 0% 20%, rgba(0, 0, 255, 0.3), transparent 30%),
-               radial-gradient(circle at 80% 100%, rgba(0, 0, 255, 0.3), transparent 30%),
-               radial-gradient(circle at 40% 60%, rgba(0, 0, 255, 0.3), transparent 30%)`,
-  backdropFilter: 'blur(15px)',
-  textAlign: 'center',
-  width: '100%',
-  display: 'flex',
-  justifyContent: 'center',
-  alignItems: 'center',
-  padding: '4rem 0',
-}));
-
-const Hero = ({ themeMode }) => {
-  const { t } = useTranslation();
+const CanvasComponent  = ({layers, shootingStarSpeed }) => {
   const canvasRef = useRef(null);
+
 
   useEffect(() => {
     const canvas = canvasRef.current;
     const context = canvas.getContext('2d');
   
     let width, height, stars = [], shootingStars = [];
-    const layers = [
-      { speed: 0.135, scale: 0.2, count: 520 },
-      { speed: 0.1, scale: 0.5, count: 100 },
-      { speed: 0.2, scale: 0.75, count: 60 }
-    ];
     const starsAngle = 145;
-    const shootingStarSpeed = { min: 15, max: 20 };
     const shootingStarOpacityDelta = 0.01;
     const trailLengthDelta = 0.01;
     const shootingStarEmittingInterval = 2000;
@@ -53,11 +24,9 @@ const Hero = ({ themeMode }) => {
       resizeCanvas();
       createStars();
       update();
-      setInterval(() => {
-        if (!paused) {
-          createShootingStar();
-        }
-      }, shootingStarEmittingInterval);
+      if (shootingStarSpeed) {
+        setInterval(() => !paused && createShootingStar(), shootingStarEmittingInterval);
+      }
   
       window.onfocus = () => { paused = false; };
       window.onblur = () => { paused = true; };
@@ -249,31 +218,7 @@ const Hero = ({ themeMode }) => {
   }, []);
   
 
-  return (
-    <HeroSection id="about-hero">
-      <StyledContainer className='custom-container'>
-        <StyledBox>
-          <NameTypography variant="h1">
-            {t('aboutPage.name')}
-          </NameTypography>
-          <SecondTypography variant="h3">
-            {t('aboutPage.jobTitle')}
-          </SecondTypography>
-          <ThirdTypography variant="body1">
-            {t('aboutPage.description')}
-          </ThirdTypography>
-        </StyledBox>
-        <BoxForPic>
-          <ImageBox component="img" src={themeMode === 'dark' ? darkPhoneImage : lightPhoneImage} alt="Phone" />
-          <StyledButton href="https://www.linkedin.com/in/gabrielė-tamaševičiūtė-06712526b" target="_blank" rel="noopener noreferrer">
-            <AddUserIcon /> Connect
-          </StyledButton>
-        </BoxForPic>
-      </StyledContainer>
-      <canvas ref={canvasRef} style={{ position: 'absolute', top: 0, left: 0,
- width: '100%', height: '100%' }} />
-    </HeroSection>
-  );
+  return <canvas ref={canvasRef} style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', zIndex:'0' }} />;
 };
 
-export default Hero;
+export default CanvasComponent;

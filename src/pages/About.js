@@ -1,6 +1,5 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { slideInRightAnimation, slideInLeftAnimation} from '../styles/animations';
-import Hero from '../components/HeroSection';
 import {
   Box,
   Typography,
@@ -20,6 +19,8 @@ import ToolCarousel from '../components/ToolCarousel';
 import LanguageSkills from '../components/LanguageSkills';
 import ChatCards from '../components/ChatCards';
 import Statistics from '../components/FunStatistics';
+import CanvasComponent from '../components/CanvasComponent';
+import CanvasComponentLight from '../components/CanvasComponentLight ';
 
 const About = () => {
     const { t } = useTranslation();
@@ -42,7 +43,44 @@ const About = () => {
 
       <BackgroundSection>
 
-        <Hero/>
+        <HeroSection id="about-hero">
+          <StyledContainer className='custom-container'>
+            <StyledBox>
+              <NameTypography variant="h1">
+                {t('aboutPage.name')}
+              </NameTypography>
+              <SecondTypography variant="h3">
+                {t('aboutPage.jobTitle')}
+              </SecondTypography>
+              <ThirdTypography variant="body1">
+                {t('aboutPage.description')}
+              </ThirdTypography>
+            </StyledBox>
+            <BoxForPic>
+              <ImageBox component="img" src={themeMode === 'dark' ? darkPhoneImage : lightPhoneImage} alt="Phone" />
+              <StyledButton href="https://www.linkedin.com/in/gabrielė-tamaševičiūtė-06712526b" target="_blank" rel="noopener noreferrer">
+                <AddUserIcon /> Connect
+              </StyledButton>
+            </BoxForPic>
+          </StyledContainer>
+
+          {
+            themeMode === 'dark' ?
+            <CanvasComponent
+              layers={[
+                { speed: 0.135, scale: 0.2, count: 520 },
+                { speed: 0.1, scale: 0.5, count: 100 },
+                { speed: 0.2, scale: 0.75, count: 60 }
+              ]}
+              shootingStarSpeed={{ min: 15, max: 20 }}
+            />
+            :
+            <CanvasComponentLight/>
+          }
+          
+
+            
+      </HeroSection>
 
         <ToolCarousel/>
 
@@ -83,6 +121,24 @@ const About = () => {
 export default About;
 
 
+const HeroSection = styled(Box)(({ theme }) => ({
+  position: 'relative', // Make sure the container is relatively positioned
+  background: `radial-gradient(circle at 20% 30%, rgba(255, 0, 0, 0.3), transparent 40%),
+               radial-gradient(circle at 60% 80%, rgba(255, 0, 0, 0.3), transparent 40%),
+               radial-gradient(circle at 0% 20%, rgba(0, 0, 255, 0.3), transparent 30%),
+               radial-gradient(circle at 80% 100%, rgba(0, 0, 255, 0.3), transparent 30%),
+               radial-gradient(circle at 40% 60%, rgba(0, 0, 255, 0.3), transparent 30%)`,
+  boxShadow: theme.palette.mode === 'dark' 
+  ? '0 -10px 6px -2px rgba(0, 0, 0, 0.5), 0 10px 6px -2px rgba(0, 0, 0, 0.5)' 
+  : '0 -10px 6px -2px rgba(0, 0, 0, 0.2), 0 10px 6px -2px rgba(0, 0, 0, 0.2)',
+  textAlign: 'center',
+  width: '100%',
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  padding: '4rem 0',
+  overflow:'hidden'
+}));
 
 
 const StyledBackgroundBox2 = styled(Box)(({ theme }) => ({
@@ -174,7 +230,7 @@ export const StyledContainer = styled(Container)(({ theme }) => ({
   [theme.breakpoints.up('sm')]: {
     flexDirection: 'row',
   },
-  
+  zIndex:'1'
 }));
 
 
@@ -266,7 +322,7 @@ const HeroStyleSection = styled(Box)(({ theme }) => ({
 
 
 const BackgroundSection = styled(Box)(({ theme }) => ({
-  backgroundColor: theme.palette.mode === 'dark' ? '#393736' : '#FDFDFB',
+  backgroundColor: theme.palette.mode === 'dark' ? '#393736' : 'rgb(196, 225,246,0.3)',
   width: '100%',
 })); 
 
