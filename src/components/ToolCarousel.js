@@ -60,8 +60,8 @@ const ToolCarousel = () => {
   const isExtraSmall = useMediaQuery(theme.breakpoints.down('sm'));
   const settings = {
     infinite: true,
-    speed: 4000,
-    slidesToShow: isExtraSmall ? 4 : (isMedium ? 6 : 12),
+    speed: 3000,
+    slidesToShow: isExtraSmall ? 4 : (isMedium ? 6 : 10),
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 0,
@@ -104,7 +104,7 @@ const ToolCarousel = () => {
             {group.map((tool, index) => (
               <StyledBox4 key={index} isVisible={isVisible} index={index}>
                 <StyledBox3 component="img" src={tool.image} alt={tool.name} />
-                <ToolNameTypography variant="subtitle2">{tool.name}</ToolNameTypography>
+                
               </StyledBox4>
             ))}
           </StyledBox2>
@@ -127,16 +127,18 @@ const StyledBox4 = styled(Box)(({ theme, isVisible, index }) => ({
       justifyContent: 'center', 
       textAlign: 'center', 
       padding: '10px',
-      animation: isVisible 
-      ? `${slideToolsInAnimation} 3s ease both` 
-      : 'none',
+      
 }));
 
 const StyledBox3 = styled(Box)(({ theme }) => ({
-      width: '60px', 
-      height: '60px', 
+      width: '80px', 
+      height: '80px', 
       marginBottom: '5px', 
       display: 'block',
+      [theme.breakpoints.down('lg')]: {
+        width: '60px', 
+        height: '60px', 
+      },
 }));
 
 const StyledBox2 = styled(Box)(({ theme, isExtraSmall }) => ({

@@ -52,7 +52,7 @@ const Timeline = () => {
           <StyledAccordion key={index} ref={el => (accordionRefs.current[index] = el)} index={index} isVisible={isVisible}>
             
             <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-            <StyledImage src={starImage} alt="Stars" />
+            {/* <StyledImage src={starImage} alt="Stars" /> */}
               <Box>
                 <PrimaryTypography variant='h5'>
                   {exp.title}

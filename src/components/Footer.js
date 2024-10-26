@@ -1,16 +1,19 @@
-import React from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { Box, Typography, IconButton, Container } from '@mui/material';
 import { styled } from '@mui/system';
 import { useTranslation } from 'react-i18next';
+import { ThemeContext } from '../context/ThemeContext'; 
 import FacebookIcon from '@mui/icons-material/Facebook';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import starImage from '../assets/stars.png';
 import { Link } from 'react-router-dom';
 import CanvasComponent from '../components/CanvasComponent';
+import CanvasComponentLight from '../components/CanvasComponentLight ';
 
 export default function Footer() {
   const { t } = useTranslation();
+  const { themeMode } = useContext(ThemeContext); 
 
   // Get the pageLinks from the i18n translation
   const pageLinks = t('footer.pageLinks', { returnObjects: true });
@@ -18,14 +21,19 @@ export default function Footer() {
   return (
     <BackgroundBox>
       <StyledBox component="footer">
-      <CanvasComponent
+      {
+            themeMode === 'dark' ?
+            <CanvasComponent
               layers={[
-                { speed: 0.135, scale: 0.2, count: 220 },
-                { speed: 0.1, scale: 0.5, count: 60 },
-                { speed: 0.2, scale: 0.75, count: 30 }
+                { speed: 0.135, scale: 0.2, count: 520 },
+                { speed: 0.1, scale: 0.5, count: 100 },
+                { speed: 0.2, scale: 0.75, count: 60 }
               ]}
-            
+              shootingStarSpeed={{ min: 15, max: 20 }}
             />
+            :
+            <CanvasComponentLight cloudAnimation = {true} birdAnimation = {false}/>
+          }
         <StyledContainer>
           <PageLinksBox>
             {pageLinks.map((section, index) => (
@@ -146,6 +154,7 @@ const BackgroundBox = styled(Box)(({ theme }) => ({
 }));
 
 const StyledBox = styled(Box)(({ theme }) => ({
+  overflow:'hidden',
   mt: 'auto',
   height: 'auto',
   backgroundColor: theme.palette.background.default,

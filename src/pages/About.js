@@ -21,6 +21,7 @@ import ChatCards from '../components/ChatCards';
 import Statistics from '../components/FunStatistics';
 import CanvasComponent from '../components/CanvasComponent';
 import CanvasComponentLight from '../components/CanvasComponentLight ';
+import zIndex from '@mui/material/styles/zIndex';
 
 const About = () => {
     const { t } = useTranslation();
@@ -75,7 +76,7 @@ const About = () => {
               shootingStarSpeed={{ min: 15, max: 20 }}
             />
             :
-            <CanvasComponentLight/>
+            <CanvasComponentLight cloudAnimation = {true} birdAnimation = {true}/>
           }
           
 
@@ -187,13 +188,21 @@ const StyledPaper = styled(Paper)(({ theme }) => ({
 
 
 export const ImageBox = styled(Box)(({ theme }) => ({
-  maxWidth: '300px',
-  height: 'auto',
+  width: '300px',
+ 
   filter: theme.palette.mode === 'dark' ? 'drop-shadow(5px 0px 25px rgba(255, 255, 255, 0.2))' : 'drop-shadow(10px 4px 15px rgba(0, 0, 0, 1))',
   padding: theme.spacing(3),
   boxSizing: 'content-box',
+
   [theme.breakpoints.down('md')]: {
-    maxWidth: '200px',
+    clipPath: 'inset(0 0 47% 0)',
+    filter:'none',
+    marginBottom:'-325px',
+  
+  },
+  [theme.breakpoints.down('sm')]: {
+    clipPath: 'inset(0 0 57% 0)',
+    marginBottom:'-385px',
   },
  
 }));                
@@ -223,12 +232,13 @@ export const NameTypography = styled(Typography)(({ theme }) => ({
 
 export const StyledContainer = styled(Container)(({ theme }) => ({
   display:'flex',
-  flexDirection: 'column',
+  flexDirection: 'row',
   justifyContent: 'center',
   alignItems: 'center',
   margin: '3rem 0',
-  [theme.breakpoints.up('sm')]: {
-    flexDirection: 'row',
+  height:'auto',
+  [theme.breakpoints.down('md')]: {
+    flexDirection: 'column-reverse',
   },
   zIndex:'1'
 }));
@@ -261,26 +271,35 @@ export const StyledButton = styled(Button)(({ theme }) => ({
     top: '290px',
   },
   [theme.breakpoints.down('md')]: {
-    left: '41px',
-    top: '202px',
-    padding: '1px 18px',
-    fontSize: '0.4rem !important',                      //gt Reikia tvarkyti ant maziausio ekrano daryti pc foto
-    svg: {
-      marginRight: '4px',
-      width: '6px',
-      height: '6px',
-    },
+    left: '148px',
+    top: '290px',
+  },
+  [theme.breakpoints.down('sm')]: {
+    visibility:'hidden'
   },
 }));
 
-export const StyledBox = styled(Box)`
-  padding: ${({ theme }) => theme.spacing(3)};
-  max-width: 750px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
-`;
+export const StyledBox = styled(Box)(({ theme }) => ({
+  padding: theme.spacing(3),
+  maxWidth: '750px',
+  display: 'flex',
+  flexDirection: 'column',
+  justifyContent: 'center',
+  alignItems: 'flex-start',
+  
+  // Media query for smaller screens
+  [theme.breakpoints.down('md')]: {
+    borderRadius:'10px',
+    zIndex:'100',
+    backgroundColor: 'rgba(255, 255, 255, 0.1)', // Adjust the color and opacity as needed
+    backdropFilter: 'blur(10px)', // Adjust blur amount for desired effect
+    boxShadow: theme.palette.mode === 'dark' 
+      ? '0 4px 10px rgba(0, 0, 0, 0.5)' 
+      : '0 4px 10px rgba(0, 0, 0, 0.5)', // Optional: add a shadow for depth
+    padding: theme.spacing(2),
+  },
+}));
+
 
 const HeroStyleSection = styled(Box)(({ theme }) => ({
   backgroundColor: theme.palette.background.default,
@@ -302,23 +321,7 @@ const HeroStyleSection = styled(Box)(({ theme }) => ({
 
 }));
 
-// export const HeroSection = styled(Box)(({ theme }) => ({
-//   backgroundColor: theme.palette.background.default,
-//   background: `radial-gradient(circle at 20% 30%, rgba(255, 0, 0, 0.3), transparent 40%),
-//                radial-gradient(circle at 60% 80%, rgba(255, 0, 0, 0.3), transparent 40%),
-//                radial-gradient(circle at 0% 20%, rgba(0, 0, 255, 0.3), transparent 30%),
-//                radial-gradient(circle at 80% 100%, rgba(0, 0, 255, 0.3), transparent 30%),
-//                radial-gradient(circle at 40% 60%, rgba(0, 0, 255, 0.3), transparent 30%)`,
-//   backdropFilter: 'blur(15px)',
-//   textAlign: 'center',
-//   width: '100%',
-//   display: 'flex',
-//   justifyContent: 'center',
-//   alignItems: 'center',
-//   boxShadow: theme.palette.mode === 'dark' ? '0 10px 6px -2px rgba(0, 0, 0, 0.5)' : '0 10px 6px -2px rgba(0, 0, 0, 0.2)',  //gt Reikia tvarkyti
-//   padding: '4rem 0 4rem 0',
 
-// }));
 
 
 const BackgroundSection = styled(Box)(({ theme }) => ({
