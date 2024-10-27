@@ -31,17 +31,15 @@ const LanguageSkills = () => {
             <SecondTypography variant='body1'>
                 {languageSkills.subtitle}
             </SecondTypography>
-            {
-                animate &&
-                <StyledBox>
+            <StyledBox>
                     {Object.entries(languageSkills.details).map(([language, skills], index) => (
                         <StyledSkillBox key={language}>
-                            <SecondTypography2 variant="h5"  index={index}>
+                            <SecondTypography2 animate={animate} variant="h5"  index={index}>
                                 {language.charAt(0).toUpperCase() + language.slice(1)}
                             </SecondTypography2>
                             <StyledBox2>
                                 {Object.entries(skills).map(([skill, level]) => (
-                                    <StyledProgressContainer key={skill} index={index}>
+                                    <StyledProgressContainer animate={animate} key={skill} index={index}>
                                     <StyledCircularProgress variant="determinate" value={level} size={70} level={level} />
                                         <StyledProgressText variant="body1">{level}%</StyledProgressText>
                                         <ThirdTypography variant="body1">{skill.charAt(0).toUpperCase() + skill.slice(1)}</ThirdTypography>
@@ -51,7 +49,6 @@ const LanguageSkills = () => {
                         </StyledSkillBox>
                     ))}
                 </StyledBox>
-            }
             
         </StyledBackgroundBox>
     );
@@ -87,11 +84,11 @@ const NameTypography = styled(Typography)(({ theme }) => ({
   }));
 
 
-const SecondTypography2 = styled(Typography)(({ theme, index }) => ({
+const SecondTypography2 = styled(Typography)(({ theme, index, animate }) => ({
     textAlign: 'center',
     color: theme.palette.text.primary,
-    animation: `${slideUpAnimation} 2s ease both`,
-    animationDelay: `${index * 0.3}s`,
+    animation: animate &&`${slideUpAnimation} 2s ease both`,
+    animationDelay: animate && `${index * 0.5}s`,
     
   }));
 
@@ -116,14 +113,14 @@ const StyledSkillBox = styled(Box)(({ theme }) => ({
     textAlign: 'center',
 }));
 
-const StyledProgressContainer = styled(Box)(({ theme, index }) => ({
+const StyledProgressContainer = styled(Box)(({ theme, index, animate }) => ({
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
     marginBottom: '1rem',
     position: 'relative',
-    animation: `${index % 2 == 0 ? slideUpAnimation : slideUpAnimation} 2s ease both`,
-    animationDelay: `${index * 0.3}s`,
+    animation: animate && `${index % 2 == 0 ? slideUpAnimation : slideUpAnimation} 2s ease both`,
+    animationDelay: animate && `${index * 0.5}s`,
 }));
 
 const StyledProgressText = styled(Typography)(({ theme }) => ({

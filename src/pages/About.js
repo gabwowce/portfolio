@@ -33,32 +33,13 @@ const About = () => {
     const [animate, setAnimate] = useState(false);
     const [hasAnimated, setHasAnimated] = useState(false);
 
-    const loadData = async () => {
-      setLoading(true);
-      await new Promise((resolve) => setTimeout(resolve, 2000)); // Simulate an API call
-      setLoading(false);
-    };
-
-    useEffect(() => {
-      loadData(); // Load data when the component mounts
-    }, [setLoading]);
-
     useEffect(() => {
       const isHeroVisible = visibleElements.has("about-hero");
       if (isHeroVisible && !hasAnimated) {
-          setAnimate(true);
-          setHasAnimated(true);
-      }
-  }, [visibleElements, hasAnimated]);
-
-    useEffect(() => {
-      // Trigger the animation after a short delay
-      const timer = setTimeout(() => {
         setAnimate(true);
-      }, 300); // Delay before animation starts (in milliseconds)
-  
-      return () => clearTimeout(timer); // Cleanup timer on unmount
-    }, []);
+        setHasAnimated(true);
+      }
+    }, [visibleElements, hasAnimated]);
   
 
     return (
@@ -69,38 +50,28 @@ const About = () => {
         <HeroSection id="about-hero" className="track-visibility">
           <StyledContainer className='custom-container'>
             <StyledBox>
-              {
-                animate &&
-                <>
-                  <NameTypography variant="h1">
-                    {t('aboutPage.name')}
-                  </NameTypography>
-                  <SecondTypography variant="h3">
-                    {t('aboutPage.jobTitle')}
-                  </SecondTypography>
-                  <ThirdTypography variant="body1">
-                    {t('aboutPage.description')}
-                  </ThirdTypography>
-                </>
-
-              }
+              <NameTypography variant="h1" animate={animate}>
+                {t('aboutPage.name')}
+              </NameTypography>
+              <SecondTypography variant="h3" animate={animate}>
+                {t('aboutPage.jobTitle')}
+              </SecondTypography>
+              <ThirdTypography variant="body1" animate={animate}>
+                {t('aboutPage.description')}
+              </ThirdTypography>
               
             </StyledBox>
-            {
-                animate &&
-                <BoxForPic>
-                  <ImageBox component="img" src={themeMode === 'dark' ? darkPhoneImage : lightPhoneImage} alt="Phone" />
-                  <StyledButton href="https://www.linkedin.com/in/gabrielė-tamaševičiūtė-06712526b" target="_blank" rel="noopener noreferrer">
-                    <AddUserIcon /> Connect
-                  </StyledButton>
-                </BoxForPic>
-            }
+            <BoxForPic animate={animate}>
+              <ImageBox component="img" src={themeMode === 'dark' ? darkPhoneImage : lightPhoneImage} alt="Phone" />
+              <StyledButton href="https://www.linkedin.com/in/gabrielė-tamaševičiūtė-06712526b" target="_blank" rel="noopener noreferrer">
+                <AddUserIcon /> Connect
+              </StyledButton>
+            </BoxForPic>
             
           </StyledContainer>
 
-          {animate &&
           
-            (themeMode === 'dark' ?
+            {themeMode === 'dark' ?
             <CanvasComponent
               layers={[
                 { speed: 0.135, scale: 0.2, count: 520 },
@@ -110,9 +81,9 @@ const About = () => {
               shootingStarSpeed={{ min: 15, max: 20 }}
             />
             :
-            <CanvasComponentLight cloudAnimation = {true} birdAnimation = {true}/>)
+            <CanvasComponentLight cloudAnimation = {true} birdAnimation = {true}/>}
           
-          }
+         
           
           
 
@@ -201,11 +172,11 @@ const StyledBackgroundBox = styled(Box)(({ theme }) => ({
 
 }));
 
-export const SecondTypography = styled(Typography)(({ theme }) => ({
+export const SecondTypography = styled(Typography)(({ theme, animate }) => ({
   textAlign: 'justify',
   color: theme.palette.text.primary,
-  animation:`${slideInLeftAnimation} 2.5s ease forwards`,
-   animationDelay:'0.5s'
+  animation: animate && `${slideInLeftAnimation} 2.5s ease forwards`,
+   animationDelay: animate && '0.5s'
 }));
 
 const StyledPaper = styled(Paper)(({ theme }) => ({
@@ -252,30 +223,30 @@ export const ImageBox = styled(Box)(({ theme }) => ({
 //   animation: animate && ${slideInRightAnimation} 2s ease forwards
 // `;    
 
-export const BoxForPic = styled(Box)(({ theme }) => ({
+export const BoxForPic = styled(Box)(({ theme, animate }) => ({
   position: 'relative',
   width: '100%',
   height: 'auto',
   justifyItems: 'center',
-  animation: `${slideInRightAnimation} 2.5s ease forwards`,
-  animationDelay:'0.5s'
+  animation: animate &&`${slideInRightAnimation} 2.5s ease forwards`,
+  animationDelay: animate && '0.5s'
 }));
 
-export const ThirdTypography = styled(Typography)(({ theme }) => ({
+export const ThirdTypography = styled(Typography)(({ theme, animate }) => ({
   textAlign: 'justify',
   color: theme.palette.text.third,
   marginTop: '1rem',
-  animation: `${slideInLeftAnimation} 2.5s ease forwards`,
-   animationDelay:'0.5s'
+  animation: animate && `${slideInLeftAnimation} 2.5s ease forwards`,
+   animationDelay: animate && '0.5s'
 }));
 
-export const NameTypography = styled(Typography)(({ theme }) => ({
+export const NameTypography = styled(Typography)(({ theme, animate }) => ({
   fontFamily: 'Outfit, sans-serif', 
   fontWeight: '600',
   textAlign:'left',
   color: theme.palette.text.primary,
-  animation:`${slideInLeftAnimation} 2.5s ease forwards`,
-   animationDelay:'0.5s'
+  animation:animate &&`${slideInLeftAnimation} 2.5s ease forwards`,
+   animationDelay: animate && '0.5s'
 }));
 
 export const StyledContainer = styled(Container)(({ theme }) => ({

@@ -54,15 +54,12 @@ const Timeline = () => {
       <SecondTypography variant='body1'>
         {t('aboutPage.workExperience.subtitle')}
       </SecondTypography>
-      {
-        animate &&
-
-        <StyledTimelineContainer>
+      <StyledTimelineContainer>
           
-          <StyledLine top={lineY.top} bottom={lineY.bottom}/>
+          <StyledLine animate={animate} top={lineY.top} bottom={lineY.bottom}/>
 
           {isArray && workExperience.map((exp, index) => (
-            <StyledAccordion key={index} ref={el => (accordionRefs.current[index] = el)} index={index}>
+            <StyledAccordion animate={animate} key={index} ref={el => (accordionRefs.current[index] = el)} index={index}>
               
               <AccordionSummary expandIcon={<ExpandMoreIcon />}>
               {/* <StyledImage src={starImage} alt="Stars" /> */}
@@ -97,7 +94,6 @@ const Timeline = () => {
             </StyledAccordion>
           ))}
         </StyledTimelineContainer>
-      }
      
     </StyledTimeline>
   );
@@ -137,15 +133,15 @@ const InnerTypography = styled(Typography)(({ theme }) => ({
     color: theme.palette.mode === 'dark' ? '#985E2C' : '#0A82B6',
   }));
 
-  const StyledAccordion = styled(Accordion)(({ theme, index }) => ({
+  const StyledAccordion = styled(Accordion)(({ theme, index, animate }) => ({
     position:'relative',
     width: '40%',
     height: 'auto',
     background: theme.palette.mode === 'dark' ? 'rgba(0, 0, 0, 0.3)' : 'rgba(255, 0, 0, 0.1)',
     alignSelf: index % 2 === 0 ? 'flex-start' : 'flex-end',
     margin: '1rem 0',
-    animation:`${index % 2 == 0 ? slideInLeftAnimation : slideInRightAnimation} 2.5s ease both`,
-    animationDelay: `${index * 0.5}s`,
+    animation: animate &&`${index % 2 == 0 ? slideInLeftAnimation : slideInRightAnimation} 2.5s ease both`,
+    animationDelay: animate &&`${index * 0.7}s`,
     boxShadow: theme.palette.mode === 'dark' 
   ? '0 7px 6px -2px rgba(0, 0, 0, 0.5), 7px 0 6px -2px rgba(0, 0, 0, 0.5)' 
   : '0 7px 6px -2px rgba(0, 0, 0, 0.2), 7px 0 6px -2px rgba(0, 0, 0, 0.2)',
@@ -159,12 +155,11 @@ const InnerTypography = styled(Typography)(({ theme }) => ({
     '&::before': {
         content: 'none',
     },
-    [theme.breakpoints.down('sm')]: {
-      width: '30%',
-    },
+    
     [theme.breakpoints.down('md')]: {
-      width: '40%',
+      width: '80%',
       transform: index % 2 === 0 ? 'translateX(-8%)' : 'translateX(8%)',
+      alignSelf:'center'
     },
 }));
 
@@ -195,6 +190,7 @@ const StyledTimeline = styled(Box)(({ theme }) => ({
   width: '100%',
   padding: '7rem 0 7rem 0',
   
+  
 }));
 
 const StyledTimelineContainer = styled(Box)(({ theme }) => ({
@@ -208,7 +204,7 @@ const StyledTimelineContainer = styled(Box)(({ theme }) => ({
     
 }));
 
-const StyledLine = styled(Box)(({theme, top, bottom }) => ({
+const StyledLine = styled(Box)(({theme, top, bottom, animate }) => ({
     position: 'absolute',
     left: 'calc(50% - 4px)',
     width: '8px',
@@ -216,7 +212,10 @@ const StyledLine = styled(Box)(({theme, top, bottom }) => ({
     backgroundColor: theme.palette.mode === 'dark' ? 'rgb(29,29,29,0.5)' : 'rgb(255,249,242,0.9)',
     top: top, 
     bottom: `calc(100% - ${bottom}px)`,
-    animation: `${fadeInAnimation} 7s ease forwards`
+    animation: animate && `${fadeInAnimation} 7s ease forwards`,
+    [theme.breakpoints.down('md')]: {
+      display: 'none',
+    },
   }));
 
 const StyledDot = styled(Box)(({ theme }) => ({
@@ -247,6 +246,7 @@ const StyledDot = styled(Box)(({ theme }) => ({
     '&.right': {
       right: '121.5%', 
     },
+    display: 'none',
   },
 }));
 
@@ -268,6 +268,14 @@ const YearTypography = styled(Typography)(({ theme }) => ({
   },
   '&.right': {
     right: 'calc(100% + 0.4rem)', 
+  },
+  [theme.breakpoints.down('md')]: {
+    '&.left': {
+    left: 'calc(100% + 0.8rem)', 
+  },
+  '&.right': {
+    right: 'calc(100% + 0.8rem)', 
+  },
   },
   
   

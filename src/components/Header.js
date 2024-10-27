@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { AppBar, Toolbar, IconButton, Button, Box, Menu, MenuItem, Switch, useMediaQuery } from '@mui/material';
 import { slideDownAnimation } from '../styles/animations';
 import { ThemeContext } from '../context/ThemeContext'; 
@@ -6,8 +6,9 @@ import { useTranslation } from 'react-i18next';
 import { styled } from '@mui/material/styles';
 import CloseIcon from '@mui/icons-material/Close';
 import LanguageIcon from '@mui/icons-material/Language';
-import { Link } from 'react-router-dom'; 
+import { Link, useLocation } from 'react-router-dom'; 
 import LanguageSwitcher from './LanguageSwitcher';
+import { useVisibility } from '../context/VisibilityContext';
 
 export default function Header() {
   const { toggleTheme, themeMode } = useContext(ThemeContext); 
@@ -15,6 +16,9 @@ export default function Header() {
   const [anchorEl, setAnchorEl] = useState(null); 
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false); 
   const isMobile = useMediaQuery((theme) => theme.breakpoints.down('sm'));
+  const { visibleElements } = useVisibility();
+  const [animate, setAnimate] = useState(false);
+  const location = useLocation(); // Get the current location
 
   const handleMenuClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -34,8 +38,24 @@ export default function Header() {
     setMobileMenuOpen(!mobileMenuOpen);
   };
 
+  // Use effect to trigger animation on location change
+  useEffect(() => {
+    // Reset animation when the route changes
+    setAnimate(true);
+    const timer = setTimeout(() => setAnimate(false), 2000); // Duration of the animation
+
+    return () => clearTimeout(timer); // Cleanup
+  }, [location]);
+
+  useEffect(() => {
+    const isVisible = visibleElements.has("header");
+    if (isVisible) {
+        setAnimate(true);
+    }
+  }, [visibleElements]);
+
   return (
-    <StyledAppBar position="fixed"> 
+    <StyledAppBar position="fixed" id='header' className="track-visibility" animate={animate}> 
       <StyledToolbar>
         {isMobile && (
           <IconButton color="inherit" onClick={handleMobileMenuOpen}>
@@ -58,7 +78,7 @@ export default function Header() {
         {isMobile && mobileMenuOpen && 
             <StyledMobileMenu open={mobileMenuOpen}>
             <IconButton onClick={handleMenuClose} sx={{ alignSelf: 'flex-start', color: 'inherit' }}>
-            <CloseIcon /> 
+              <CloseIcon /> 
             </IconButton >
             <StyledButton component={Link} to="/about" onClick={handleMenuClose}>{t('header.about')}</StyledButton>
             <StyledButton component={Link} to="/portfolio" onClick={handleMenuClose}>{t('header.portfolio')}</StyledButton>
@@ -84,7 +104,6 @@ export default function Header() {
   );
 }
 
-
 const StyledSwitch = styled(Switch)(({ theme }) => ({
   '& .MuiSwitch-thumb': {
     backgroundColor: theme.palette.switch.thumb
@@ -98,7 +117,7 @@ const StyledLanguageIcon = styled(LanguageIcon)(({ theme }) => ({
 }));
 
 
-const StyledAppBar = styled(AppBar)(({ theme }) => ({
+const StyledAppBar = styled(AppBar)(({ theme, animate }) => ({
   position: 'fixed',
   top: '1rem', // Nustatykite viršutinę atstumą
   left: '2rem', // Nustatykite kairįjį atstumą
@@ -110,7 +129,7 @@ const StyledAppBar = styled(AppBar)(({ theme }) => ({
   transition: 'background-color 0.3s ease, color 0.3s ease',
   boxShadow: theme.shadows[10], // Pridėkite šešėlį, kad atrodytų plūduriuojantis
   zIndex: 99999, // Užtikrinkite, kad jis būtų virš kitų elementų
-  animation: `${slideDownAnimation} 2s ease forwards`,
+  animation: animate && `${slideDownAnimation} 2s ease forwards`,
 }));
 
   

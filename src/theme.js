@@ -43,100 +43,100 @@ export const lightTheme = createTheme({
     h2: {
       fontSize: '3.5rem',
       fontWeight: 400,
-      [createTheme().breakpoints.down('sm')]: {
+      [createTheme().breakpoints.down('md')]: {
         fontSize: '3rem',
       },
-      [createTheme().breakpoints.down('md')]: {
+      [createTheme().breakpoints.down('sm')]: {
         fontSize: '2.7rem',
       },
     },
     h3: {
       fontSize: '2.25rem',
       fontWeight: 400,
-      [createTheme().breakpoints.down('sm')]: {
+      [createTheme().breakpoints.down('md')]: {
         fontSize: '1.8rem',
       },
-      [createTheme().breakpoints.down('md')]: {
+      [createTheme().breakpoints.down('sm')]: {
         fontSize: '1.2rem',
       },
     },
     h4: {
       fontSize: '2rem',
       fontWeight: 400,
-      [createTheme().breakpoints.down('sm')]: {
+      [createTheme().breakpoints.down('md')]: {
         fontSize: '1.5rem',
       },
-      [createTheme().breakpoints.down('md')]: {
+      [createTheme().breakpoints.down('sm')]: {
         fontSize: '1rem',
       },
     },
     h5: {
       fontSize: '1.75rem',
       fontWeight: 400,
-      [createTheme().breakpoints.down('sm')]: {
+      [createTheme().breakpoints.down('md')]: {
         fontSize: '1.2rem',
       },
-      [createTheme().breakpoints.down('md')]: {
+      [createTheme().breakpoints.down('sm')]: {
         fontSize: '0.9rem',
       },
     },
     h6: {
       fontSize: '1.5rem',
       fontWeight: 400,
-      [createTheme().breakpoints.down('sm')]: {
+      [createTheme().breakpoints.down('md')]: {
         fontSize: '1rem',
       },
-      [createTheme().breakpoints.down('md')]: {
+      [createTheme().breakpoints.down('sm')]: {
         fontSize: '0.8rem',
       },
     },
     subtitle1: {
       fontSize: '1.25rem',
       fontWeight: 400,
-      [createTheme().breakpoints.down('sm')]: {
+      [createTheme().breakpoints.down('md')]: {
         fontSize: '0.95rem',
       },
-      [createTheme().breakpoints.down('md')]: {
+      [createTheme().breakpoints.down('sm')]: {
         fontSize: '0.7rem',
       },
     },
     subtitle2: {
       fontSize: '1.125rem',
       fontWeight: 400,
-      [createTheme().breakpoints.down('sm')]: {
+      [createTheme().breakpoints.down('md')]: {
         fontSize: '0.9rem',
       },
-      [createTheme().breakpoints.down('md')]: {
+      [createTheme().breakpoints.down('sm')]: {
         fontSize: '0.7rem',
       },
     },
     body1: {
       fontSize: '1rem',
       fontWeight: 400,
-      [createTheme().breakpoints.down('sm')]: {
+      [createTheme().breakpoints.down('md')]: {
         fontSize: '0.9rem',
       },
-      [createTheme().breakpoints.down('md')]: {
+      [createTheme().breakpoints.down('sm')]: {
         fontSize: '0.7rem',
       },
     },
     body2: {
       fontSize: '0.675rem',
       fontWeight: 400,
-      [createTheme().breakpoints.down('sm')]: {
+      [createTheme().breakpoints.down('md')]: {
         fontSize: '0.475rem',
       },
-      [createTheme().breakpoints.down('md')]: {
+      [createTheme().breakpoints.down('sm')]: {
         fontSize: '0.375rem',
       },
     },
     button: {
       fontSize: '0.975rem',  // Default size for buttons
       fontWeight: 600,
-      [createTheme().breakpoints.down('sm')]: {
+      [createTheme().breakpoints.down('md')]: {
         fontSize: '0.775rem', // Size for small screens
       },
-      [createTheme().breakpoints.down('md')]: {
+      [createTheme().breakpoints.down('sm')]: {
         fontSize: '0.675rem ',  // Size for medium screens
       }
     },
@@ -177,110 +177,110 @@ export const darkTheme = createTheme({
     h1: {
       fontSize: '4.25rem',
       fontWeight: 400,
-      [createTheme().breakpoints.down('sm')]: {
+      [createTheme().breakpoints.down('md')]: {
         fontSize: '4rem',
       },
-      [createTheme().breakpoints.down('md')]: {
-        fontSize: '3.75rem',
+      [createTheme().breakpoints.down('sm')]: {
+        fontSize: '2.8rem',
       },
     },
     h2: {
       fontSize: '3.5rem',
       fontWeight: 400,
-      [createTheme().breakpoints.down('sm')]: {
+      [createTheme().breakpoints.down('md')]: {
         fontSize: '3.25rem',
       },
-      [createTheme().breakpoints.down('md')]: {
+      [createTheme().breakpoints.down('sm')]: {
         fontSize: '3rem',
       },
     },
     h3: {
       fontSize: '2.25rem',
       fontWeight: 400,
-      [createTheme().breakpoints.down('sm')]: {
+      [createTheme().breakpoints.down('md')]: {
         fontSize: '2rem',
       },
-      [createTheme().breakpoints.down('md')]: {
+      [createTheme().breakpoints.down('sm')]: {
         fontSize: '1.75rem',
       },
     },
     h4: {
       fontSize: '2rem',
       fontWeight: 400,
-      [createTheme().breakpoints.down('sm')]: {
+      [createTheme().breakpoints.down('md')]: {
         fontSize: '1.75rem',
       },
-      [createTheme().breakpoints.down('md')]: {
+      [createTheme().breakpoints.down('sm')]: {
         fontSize: '1.5rem',
       },
     },
     h5: {
       fontSize: '1.75rem',
       fontWeight: 400,
-      [createTheme().breakpoints.down('sm')]: {
+      [createTheme().breakpoints.down('md')]: {
         fontSize: '1.5rem',
       },
-      [createTheme().breakpoints.down('md')]: {
+      [createTheme().breakpoints.down('sm')]: {
         fontSize: '1.25rem',
       },
     },
     h6: {
       fontSize: '1.5rem',
       fontWeight: 400,
-      [createTheme().breakpoints.down('sm')]: {
+      [createTheme().breakpoints.down('md')]: {
         fontSize: '1.25rem',
       },
-      [createTheme().breakpoints.down('md')]: {
+      [createTheme().breakpoints.down('sm')]: {
         fontSize: '1rem',
       },
     },
     subtitle1: {
       fontSize: '1.25rem',
       fontWeight: 400,
-      [createTheme().breakpoints.down('sm')]: {
+      [createTheme().breakpoints.down('md')]: {
         fontSize: '1.125rem',
       },
-      [createTheme().breakpoints.down('md')]: {
+      [createTheme().breakpoints.down('sm')]: {
         fontSize: '1rem',
       },
     },
     subtitle2: {
       fontSize: '1.125rem',
       fontWeight: 400,
-      [createTheme().breakpoints.down('sm')]: {
+      [createTheme().breakpoints.down('md')]: {
         fontSize: '1rem',
       },
-      [createTheme().breakpoints.down('md')]: {
+      [createTheme().breakpoints.down('sm')]: {
         fontSize: '0.875rem',
       },
     },
     body1: {
       fontSize: '1rem',
       fontWeight: 400,
-      [createTheme().breakpoints.down('sm')]: {
+      [createTheme().breakpoints.down('md')]: {
         fontSize: '0.865rem',
       },
-      [createTheme().breakpoints.down('md')]: {
+      [createTheme().breakpoints.down('sm')]: {
         fontSize: '0.7rem',
       },
     },
     body2: {
       fontSize: '0.675rem',
       fontWeight: 400,
-      [createTheme().breakpoints.down('sm')]: {
+      [createTheme().breakpoints.down('md')]: {
         fontSize: '0.575rem',
       },
-      [createTheme().breakpoints.down('md')]: {
+      [createTheme().breakpoints.down('sm')]: {
         fontSize: '0.475rem',
       },
     },
     button: {
       fontSize: '0.975rem',  // Default size for buttons
       fontWeight: 600,
-      [createTheme().breakpoints.down('sm')]: {
+      [createTheme().breakpoints.down('md')]: {
         fontSize: '0.875rem', // Size for small screens
       },
-      [createTheme().breakpoints.down('md')]: {
+      [createTheme().breakpoints.down('sm')]: {
         fontSize: '0.775rem ',  // Size for medium screens
       }
     },
