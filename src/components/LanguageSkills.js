@@ -1,18 +1,29 @@
-import React from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { Box, Typography, CircularProgress } from '@mui/material';
 import { useTranslation } from 'react-i18next';
 import { styled } from '@mui/system';
 import { slideInRightAnimation, slideInLeftAnimation, slideUpAnimation } from '../styles/animations';
-import useOnScreen from '../styles/useOnScreen';
+import { useVisibility } from '../context/VisibilityContext';
 
 const LanguageSkills = () => {
     const { t } = useTranslation();
-    const [ref, isVisible] = useOnScreen({ threshold: 0 });
-    // Get the language skills object from the translation
+
+    const { visibleElements } = useVisibility();
     const languageSkills = t('aboutPage.languages', { returnObjects: true });
 
+    const [animate, setAnimate] = useState(false);
+    const [hasAnimated, setHasAnimated] = useState(false);
+
+    useEffect(() => {
+      const isVisible = visibleElements.has("about-languages");
+      if (isVisible && !hasAnimated) {
+          setAnimate(true);
+          setHasAnimated(true);
+      }
+  }, [visibleElements, hasAnimated]);
+
     return (
-        <StyledBackgroundBox ref={ref} id="about-languages">
+        <StyledBackgroundBox id="about-languages" className="track-visibility" >
             {/* Title separated from the details */}
             <NameTypography variant="h2" align="center" gutterBottom >
                 {languageSkills.title}
@@ -20,24 +31,28 @@ const LanguageSkills = () => {
             <SecondTypography variant='body1'>
                 {languageSkills.subtitle}
             </SecondTypography>
-            <StyledBox>
-                {Object.entries(languageSkills.details).map(([language, skills], index) => (
-                    <StyledSkillBox key={language}>
-                        <SecondTypography2 variant="h5" index={index} isVisible={isVisible}>
-                            {language.charAt(0).toUpperCase() + language.slice(1)}
-                        </SecondTypography2>
-                        <StyledBox2>
-                            {Object.entries(skills).map(([skill, level]) => (
-                                <StyledProgressContainer key={skill} index={index} isVisible={isVisible}>
-                                   <StyledCircularProgress variant="determinate" value={level} size={70} level={level} />
-                                    <StyledProgressText variant="body1">{level}%</StyledProgressText>
-                                    <ThirdTypography variant="body1">{skill.charAt(0).toUpperCase() + skill.slice(1)}</ThirdTypography>
-                                </StyledProgressContainer>
-                            ))}
-                        </StyledBox2>
-                    </StyledSkillBox>
-                ))}
-            </StyledBox>
+            {
+                animate &&
+                <StyledBox>
+                    {Object.entries(languageSkills.details).map(([language, skills], index) => (
+                        <StyledSkillBox key={language}>
+                            <SecondTypography2 variant="h5"  index={index}>
+                                {language.charAt(0).toUpperCase() + language.slice(1)}
+                            </SecondTypography2>
+                            <StyledBox2>
+                                {Object.entries(skills).map(([skill, level]) => (
+                                    <StyledProgressContainer key={skill} index={index}>
+                                    <StyledCircularProgress variant="determinate" value={level} size={70} level={level} />
+                                        <StyledProgressText variant="body1">{level}%</StyledProgressText>
+                                        <ThirdTypography variant="body1">{skill.charAt(0).toUpperCase() + skill.slice(1)}</ThirdTypography>
+                                    </StyledProgressContainer>
+                                ))}
+                            </StyledBox2>
+                        </StyledSkillBox>
+                    ))}
+                </StyledBox>
+            }
+            
         </StyledBackgroundBox>
     );
 };
@@ -72,12 +87,10 @@ const NameTypography = styled(Typography)(({ theme }) => ({
   }));
 
 
-const SecondTypography2 = styled(Typography)(({ theme, index, isVisible }) => ({
+const SecondTypography2 = styled(Typography)(({ theme, index }) => ({
     textAlign: 'center',
     color: theme.palette.text.primary,
-    animation: isVisible 
-      ? `${slideUpAnimation} 2s ease both` 
-      : 'none',
+    animation: `${slideUpAnimation} 2s ease both`,
     animationDelay: `${index * 0.3}s`,
     
   }));
@@ -103,15 +116,13 @@ const StyledSkillBox = styled(Box)(({ theme }) => ({
     textAlign: 'center',
 }));
 
-const StyledProgressContainer = styled(Box)(({ theme, isVisible, index }) => ({
+const StyledProgressContainer = styled(Box)(({ theme, index }) => ({
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
     marginBottom: '1rem',
     position: 'relative',
-    animation: isVisible 
-      ? `${index % 2 == 0 ? slideUpAnimation : slideUpAnimation} 2s ease both` 
-      : 'none',
+    animation: `${index % 2 == 0 ? slideUpAnimation : slideUpAnimation} 2s ease both`,
     animationDelay: `${index * 0.3}s`,
 }));
 

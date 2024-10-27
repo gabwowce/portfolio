@@ -109,7 +109,7 @@ const StyledAppBar = styled(AppBar)(({ theme }) => ({
   backdropFilter: 'blur(10px)', // Neryškumo efektas
   transition: 'background-color 0.3s ease, color 0.3s ease',
   boxShadow: theme.shadows[10], // Pridėkite šešėlį, kad atrodytų plūduriuojantis
-  zIndex: 1100, // Užtikrinkite, kad jis būtų virš kitų elementų
+  zIndex: 99999, // Užtikrinkite, kad jis būtų virš kitų elementų
   animation: `${slideDownAnimation} 2s ease forwards`,
 }));
 

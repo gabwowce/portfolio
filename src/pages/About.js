@@ -7,7 +7,6 @@ import {
   Button,
   Paper
 } from '@mui/material';
-import Grid2 from '@mui/material/Grid2'; 
 import { styled, useTheme } from '@mui/material/styles';
 import { useTranslation } from 'react-i18next'; 
 import { ThemeContext } from '../context/ThemeContext'; 
@@ -21,14 +20,36 @@ import ChatCards from '../components/ChatCards';
 import Statistics from '../components/FunStatistics';
 import CanvasComponent from '../components/CanvasComponent';
 import CanvasComponentLight from '../components/CanvasComponentLight ';
-import zIndex from '@mui/material/styles/zIndex';
+import { useVisibility } from '../context/VisibilityContext';
+import { useLoading } from '../context/LoadingContext';
+
 
 const About = () => {
     const { t } = useTranslation();
     const { themeMode } = useContext(ThemeContext); 
     const theme = useTheme();
-
+    const { setLoading } = useLoading();
+    const { visibleElements } = useVisibility();
     const [animate, setAnimate] = useState(false);
+    const [hasAnimated, setHasAnimated] = useState(false);
+
+    const loadData = async () => {
+      setLoading(true);
+      await new Promise((resolve) => setTimeout(resolve, 2000)); // Simulate an API call
+      setLoading(false);
+    };
+
+    useEffect(() => {
+      loadData(); // Load data when the component mounts
+    }, [setLoading]);
+
+    useEffect(() => {
+      const isHeroVisible = visibleElements.has("about-hero");
+      if (isHeroVisible && !hasAnimated) {
+          setAnimate(true);
+          setHasAnimated(true);
+      }
+  }, [visibleElements, hasAnimated]);
 
     useEffect(() => {
       // Trigger the animation after a short delay
@@ -39,34 +60,47 @@ const About = () => {
       return () => clearTimeout(timer); // Cleanup timer on unmount
     }, []);
   
+
     return (
       <>
 
       <BackgroundSection>
 
-        <HeroSection id="about-hero">
+        <HeroSection id="about-hero" className="track-visibility">
           <StyledContainer className='custom-container'>
             <StyledBox>
-              <NameTypography variant="h1">
-                {t('aboutPage.name')}
-              </NameTypography>
-              <SecondTypography variant="h3">
-                {t('aboutPage.jobTitle')}
-              </SecondTypography>
-              <ThirdTypography variant="body1">
-                {t('aboutPage.description')}
-              </ThirdTypography>
+              {
+                animate &&
+                <>
+                  <NameTypography variant="h1">
+                    {t('aboutPage.name')}
+                  </NameTypography>
+                  <SecondTypography variant="h3">
+                    {t('aboutPage.jobTitle')}
+                  </SecondTypography>
+                  <ThirdTypography variant="body1">
+                    {t('aboutPage.description')}
+                  </ThirdTypography>
+                </>
+
+              }
+              
             </StyledBox>
-            <BoxForPic>
-              <ImageBox component="img" src={themeMode === 'dark' ? darkPhoneImage : lightPhoneImage} alt="Phone" />
-              <StyledButton href="https://www.linkedin.com/in/gabrielė-tamaševičiūtė-06712526b" target="_blank" rel="noopener noreferrer">
-                <AddUserIcon /> Connect
-              </StyledButton>
-            </BoxForPic>
+            {
+                animate &&
+                <BoxForPic>
+                  <ImageBox component="img" src={themeMode === 'dark' ? darkPhoneImage : lightPhoneImage} alt="Phone" />
+                  <StyledButton href="https://www.linkedin.com/in/gabrielė-tamaševičiūtė-06712526b" target="_blank" rel="noopener noreferrer">
+                    <AddUserIcon /> Connect
+                  </StyledButton>
+                </BoxForPic>
+            }
+            
           </StyledContainer>
 
-          {
-            themeMode === 'dark' ?
+          {animate &&
+          
+            (themeMode === 'dark' ?
             <CanvasComponent
               layers={[
                 { speed: 0.135, scale: 0.2, count: 520 },
@@ -76,8 +110,10 @@ const About = () => {
               shootingStarSpeed={{ min: 15, max: 20 }}
             />
             :
-            <CanvasComponentLight cloudAnimation = {true} birdAnimation = {true}/>
+            <CanvasComponentLight cloudAnimation = {true} birdAnimation = {true}/>)
+          
           }
+          
           
 
             
@@ -168,7 +204,8 @@ const StyledBackgroundBox = styled(Box)(({ theme }) => ({
 export const SecondTypography = styled(Typography)(({ theme }) => ({
   textAlign: 'justify',
   color: theme.palette.text.primary,
-  animation: `${slideInLeftAnimation} 2s ease forwards`,
+  animation:`${slideInLeftAnimation} 2.5s ease forwards`,
+   animationDelay:'0.5s'
 }));
 
 const StyledPaper = styled(Paper)(({ theme }) => ({
@@ -207,19 +244,29 @@ export const ImageBox = styled(Box)(({ theme }) => ({
  
 }));                
 
-export const BoxForPic = styled(Box)`
-  position: relative;
-  width: 100%;
-  height: auto;
-  justify-items: center;
-  animation: ${slideInRightAnimation} 2s ease forwards
-`;                
+// export const BoxForPic = styled(Box)`
+//   position: relative;
+//   width: 100%;
+//   height: auto;
+//   justify-items: center;
+//   animation: animate && ${slideInRightAnimation} 2s ease forwards
+// `;    
+
+export const BoxForPic = styled(Box)(({ theme }) => ({
+  position: 'relative',
+  width: '100%',
+  height: 'auto',
+  justifyItems: 'center',
+  animation: `${slideInRightAnimation} 2.5s ease forwards`,
+  animationDelay:'0.5s'
+}));
 
 export const ThirdTypography = styled(Typography)(({ theme }) => ({
   textAlign: 'justify',
   color: theme.palette.text.third,
   marginTop: '1rem',
-  animation: `${slideInLeftAnimation} 2s ease forwards`,
+  animation: `${slideInLeftAnimation} 2.5s ease forwards`,
+   animationDelay:'0.5s'
 }));
 
 export const NameTypography = styled(Typography)(({ theme }) => ({
@@ -227,7 +274,8 @@ export const NameTypography = styled(Typography)(({ theme }) => ({
   fontWeight: '600',
   textAlign:'left',
   color: theme.palette.text.primary,
-  animation: `${slideInLeftAnimation} 2s ease forwards`,
+  animation:`${slideInLeftAnimation} 2.5s ease forwards`,
+   animationDelay:'0.5s'
 }));
 
 export const StyledContainer = styled(Container)(({ theme }) => ({

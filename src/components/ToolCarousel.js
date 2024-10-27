@@ -2,7 +2,7 @@ import Slider from 'react-slick';
 import React, { useState, useContext, useEffect } from 'react';
 import { styled, useTheme, keyframes } from '@mui/material/styles';
 import { slideToolsInAnimation } from '../styles/animations';
-import useOnScreen from '../styles/useOnScreen';
+import { useVisibility } from '../context/VisibilityContext';
 import { useTranslation } from 'react-i18next'; 
 import { ThemeContext } from '../context/ThemeContext'; 
 import { Box, Typography } from '@mui/material';
@@ -51,7 +51,6 @@ const ToolCarousel = () => {
   const { t } = useTranslation();
   const theme = useTheme();
 
-  const [ref, isVisible] = useOnScreen({ threshold: 0 });
 
   const [autoplay, setAutoplay] = useState(false);
 
@@ -90,7 +89,7 @@ const ToolCarousel = () => {
       }, []); // Single group for large screens (1 row with all tools)
 
   return (
-    <StyledBox ref={ref} id="about-skills">
+    <StyledBox id="about-skills">
       <NameTypography variant="h2">
         {t('aboutPage.skills.title')}
       </NameTypography>
@@ -102,7 +101,7 @@ const ToolCarousel = () => {
         {groupedTools.map((group, groupIndex) => (
           <StyledBox2 key={groupIndex} isExtraSmall={isExtraSmall}>
             {group.map((tool, index) => (
-              <StyledBox4 key={index} isVisible={isVisible} index={index}>
+              <StyledBox4 key={index} index={index}>
                 <StyledBox3 component="img" src={tool.image} alt={tool.name} />
                 
               </StyledBox4>

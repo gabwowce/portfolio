@@ -4,7 +4,7 @@ import { Box, Typography, Accordion, AccordionSummary, AccordionDetails } from '
 import { slideInRightAnimation, slideInLeftAnimation, slideUpAnimation, fadeInAnimation } from '../styles/animations';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { styled } from '@mui/material/styles';
-import useOnScreen from '../styles/useOnScreen';
+import { useVisibility } from '../context/VisibilityContext';
 import starImage from '../assets/stars2.png';
 
 const Timeline = () => {
@@ -15,7 +15,17 @@ const Timeline = () => {
   
   const accordionRefs = useRef([]);
 
-  const [ref, isVisible] = useOnScreen({ threshold: 0 });
+  const { visibleElements } = useVisibility();
+  const [animate, setAnimate] = useState(false);
+    const [hasAnimated, setHasAnimated] = useState(false);
+
+    useEffect(() => {
+      const isVisible = visibleElements.has("about-timeline");
+      if (isVisible && !hasAnimated) {
+          setAnimate(true);
+          setHasAnimated(true);
+      }
+  }, [visibleElements, hasAnimated]);
 
   const calcLineTopBottom = () => {
     if (accordionRefs.current.length > 0) {
@@ -37,53 +47,58 @@ const Timeline = () => {
   }, [workExperience]);
 
   return (
-    <StyledTimeline ref={ref}>
+    <StyledTimeline id='about-timeline' className="track-visibility">
       <NameTypography variant="h2">
         {t('aboutPage.workExperience.title')}
       </NameTypography>
       <SecondTypography variant='body1'>
         {t('aboutPage.workExperience.subtitle')}
       </SecondTypography>
-      <StyledTimelineContainer>
-        
-        <StyledLine top={lineY.top} bottom={lineY.bottom} isVisible={isVisible}/>
+      {
+        animate &&
 
-        {isArray && workExperience.map((exp, index) => (
-          <StyledAccordion key={index} ref={el => (accordionRefs.current[index] = el)} index={index} isVisible={isVisible}>
-            
-            <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-            {/* <StyledImage src={starImage} alt="Stars" /> */}
-              <Box>
-                <PrimaryTypography variant='h5'>
-                  {exp.title}
-                </PrimaryTypography>
-                <ThirdTypography variant='body1'>
-                  {exp.company}
-                </ThirdTypography>
-              </Box>
-              <YearTypography variant='h5' className={`year ${index % 2 === 0 ? 'left' : 'right'}`}>
-                {new Date(exp.startDate).toLocaleString('default', { year: 'numeric', month: 'short' })}
-              </YearTypography>
-              <StyledDot className={`dot ${index % 2 === 0 ? 'left' : 'right'}`} />
-            </AccordionSummary>
-            <AccordionDetails>
-            
-            <DescriptionTypography variant="subtitle2">
-                {exp.description.join(', ')}
-            </DescriptionTypography>
-              <SkillsTypography variant="subtitle2" component="div">
-                    {exp.skills.map((skill, index) => (
-                        <InnerTypography
-                        key={index}
-                        variant="subtitle2">
-                        {skill}
-                        </InnerTypography>
-                    ))}
-                    </SkillsTypography>
-            </AccordionDetails>
-          </StyledAccordion>
-        ))}
-      </StyledTimelineContainer>
+        <StyledTimelineContainer>
+          
+          <StyledLine top={lineY.top} bottom={lineY.bottom}/>
+
+          {isArray && workExperience.map((exp, index) => (
+            <StyledAccordion key={index} ref={el => (accordionRefs.current[index] = el)} index={index}>
+              
+              <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+              {/* <StyledImage src={starImage} alt="Stars" /> */}
+                <Box>
+                  <PrimaryTypography variant='h5'>
+                    {exp.title}
+                  </PrimaryTypography>
+                  <ThirdTypography variant='body1'>
+                    {exp.company}
+                  </ThirdTypography>
+                </Box>
+                <YearTypography variant='h5' className={`year ${index % 2 === 0 ? 'left' : 'right'}`}>
+                  {new Date(exp.startDate).toLocaleString('default', { year: 'numeric', month: 'short' })}
+                </YearTypography>
+                <StyledDot className={`dot ${index % 2 === 0 ? 'left' : 'right'}`} />
+              </AccordionSummary>
+              <AccordionDetails>
+              
+              <DescriptionTypography variant="subtitle2">
+                  {exp.description.join(', ')}
+              </DescriptionTypography>
+                <SkillsTypography variant="subtitle2" component="div">
+                      {exp.skills.map((skill, index) => (
+                          <InnerTypography
+                          key={index}
+                          variant="subtitle2">
+                          {skill}
+                          </InnerTypography>
+                      ))}
+                      </SkillsTypography>
+              </AccordionDetails>
+            </StyledAccordion>
+          ))}
+        </StyledTimelineContainer>
+      }
+     
     </StyledTimeline>
   );
 };
@@ -122,17 +137,15 @@ const InnerTypography = styled(Typography)(({ theme }) => ({
     color: theme.palette.mode === 'dark' ? '#985E2C' : '#0A82B6',
   }));
 
-  const StyledAccordion = styled(Accordion)(({ theme, index, isVisible }) => ({
+  const StyledAccordion = styled(Accordion)(({ theme, index }) => ({
     position:'relative',
     width: '40%',
     height: 'auto',
     background: theme.palette.mode === 'dark' ? 'rgba(0, 0, 0, 0.3)' : 'rgba(255, 0, 0, 0.1)',
     alignSelf: index % 2 === 0 ? 'flex-start' : 'flex-end',
     margin: '1rem 0',
-    animation: isVisible 
-      ? `${index % 2 == 0 ? slideInLeftAnimation : slideInRightAnimation} 2s ease both` 
-      : 'none',
-    animationDelay: `${index * 0.3}s`,
+    animation:`${index % 2 == 0 ? slideInLeftAnimation : slideInRightAnimation} 2.5s ease both`,
+    animationDelay: `${index * 0.5}s`,
     boxShadow: theme.palette.mode === 'dark' 
   ? '0 7px 6px -2px rgba(0, 0, 0, 0.5), 7px 0 6px -2px rgba(0, 0, 0, 0.5)' 
   : '0 7px 6px -2px rgba(0, 0, 0, 0.2), 7px 0 6px -2px rgba(0, 0, 0, 0.2)',
@@ -195,7 +208,7 @@ const StyledTimelineContainer = styled(Box)(({ theme }) => ({
     
 }));
 
-const StyledLine = styled(Box)(({theme, top, bottom, isVisible }) => ({
+const StyledLine = styled(Box)(({theme, top, bottom }) => ({
     position: 'absolute',
     left: 'calc(50% - 4px)',
     width: '8px',
@@ -203,7 +216,7 @@ const StyledLine = styled(Box)(({theme, top, bottom, isVisible }) => ({
     backgroundColor: theme.palette.mode === 'dark' ? 'rgb(29,29,29,0.5)' : 'rgb(255,249,242,0.9)',
     top: top, 
     bottom: `calc(100% - ${bottom}px)`,
-    animation: isVisible ? `${fadeInAnimation} 5s ease forwards` : 'none',
+    animation: `${fadeInAnimation} 7s ease forwards`
   }));
 
 const StyledDot = styled(Box)(({ theme }) => ({

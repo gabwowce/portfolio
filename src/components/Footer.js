@@ -10,30 +10,35 @@ import starImage from '../assets/stars.png';
 import { Link } from 'react-router-dom';
 import CanvasComponent from '../components/CanvasComponent';
 import CanvasComponentLight from '../components/CanvasComponentLight ';
+import { useVisibility } from '../context/VisibilityContext';
 
 export default function Footer() {
   const { t } = useTranslation();
   const { themeMode } = useContext(ThemeContext); 
+  const { visibleElements } = useVisibility();
+  const isFooterVisible = visibleElements.has('myFooter');
 
-  // Get the pageLinks from the i18n translation
   const pageLinks = t('footer.pageLinks', { returnObjects: true });
 
   return (
     <BackgroundBox>
-      <StyledBox component="footer">
-      {
-            themeMode === 'dark' ?
-            <CanvasComponent
-              layers={[
-                { speed: 0.135, scale: 0.2, count: 520 },
-                { speed: 0.1, scale: 0.5, count: 100 },
-                { speed: 0.2, scale: 0.75, count: 60 }
-              ]}
-              shootingStarSpeed={{ min: 15, max: 20 }}
-            />
-            :
-            <CanvasComponentLight cloudAnimation = {true} birdAnimation = {false}/>
-          }
+      <StyledBox component="footer" id='myFooter' className="track-visibility">
+        {isFooterVisible &&
+        
+          (themeMode === 'dark' ?
+          <CanvasComponent
+            layers={[
+              { speed: 0.135, scale: 0.1, count: 400 },
+              { speed: 0.1, scale: 0.4, count: 60 },
+              { speed: 0.2, scale: 0.65, count: 40 }
+            ]}
+            
+          />
+          :
+          <CanvasComponentLight cloudAnimation = {true} birdAnimation = {false}/>)
+        
+        }
+      
         <StyledContainer>
           <PageLinksBox>
             {pageLinks.map((section, index) => (
