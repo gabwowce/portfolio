@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom'; 
 import Header from './components/Header';
 import Footer from './components/Footer';
@@ -12,20 +12,41 @@ import './i18n';
 import ScrollToTop from './context/ScrollToTop';
 import { VisibilityProvider } from './context/VisibilityContext';
 import LoadingProvider, { useLoading } from './context/LoadingContext';
-import Loading from './components/Loading'; // Your loading component
+import Loading from './components/Loading'; 
 
 const App = () => {
+  const [initialLoading, setInitialLoading] = useState(true);
+  const [animateHeader, setAnimateHeader] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setInitialLoading(false); 
+      setAnimateHeader(true);
+    }, 1000); // Pradinio įkėlimo laikas
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  // Display loading screen during initial loading
+  if (initialLoading) {
+    return (
+      <ThemeContextProvider> {/* Wrap Loading with ThemeContextProvider */}
+        <Loading />
+      </ThemeContextProvider>
+    );
+  }
+
   return (
     <Router>
       <VisibilityProvider>
-      <LoadingProvider>
+        <LoadingProvider>
           <ThemeContextProvider>
             <LanguageProvider>
               <LoadingIndicator />
               <ScrollToTop />
               <Header />
               <div className="content"> 
-              <Routes> 
+                <Routes> 
                   <Route path="/about" element={<PageWrapper><About /></PageWrapper>} />
                   <Route path="/portfolio" element={<PageWrapper><Portfolio /></PageWrapper>} />
                   <Route path="/contact" element={<PageWrapper><Contact /></PageWrapper>} />
@@ -35,7 +56,7 @@ const App = () => {
               <Footer />
             </LanguageProvider>
           </ThemeContextProvider>
-      </LoadingProvider>
+        </LoadingProvider>
       </VisibilityProvider>
     </Router>
   );
@@ -43,21 +64,21 @@ const App = () => {
 
 const LoadingIndicator = () => {
   const { loading } = useLoading();
-  return loading ? <Loading /> : null; // Show loading component
+  return loading ? <Loading /> : null; // Show loading component on navigation
 };
 
-// Wrapper for loading behavior
+// Wrapper for loading behavior on navigation
 const PageWrapper = ({ children }) => {
   const { setLoading } = useLoading();
   const location = useLocation();
 
-  React.useEffect(() => {
+  useEffect(() => {
     setLoading(true);
     const timer = setTimeout(() => {
       setLoading(false);
-    }, 2000); // Simulate loading time; adjust as needed
+    }, 20); // Sutrumpintas laikas
 
-    return () => clearTimeout(timer); // Cleanup on unmount
+    return () => clearTimeout(timer);
   }, [location, setLoading]);
 
   return children;

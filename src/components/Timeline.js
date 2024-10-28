@@ -141,7 +141,7 @@ const InnerTypography = styled(Typography)(({ theme }) => ({
     alignSelf: index % 2 === 0 ? 'flex-start' : 'flex-end',
     margin: '1rem 0',
     animation: animate &&`${index % 2 == 0 ? slideInLeftAnimation : slideInRightAnimation} 2.5s ease both`,
-    animationDelay: animate &&`${index * 0.7}s`,
+    animationDelay: animate &&`${index * 0.4}s`,
     boxShadow: theme.palette.mode === 'dark' 
   ? '0 7px 6px -2px rgba(0, 0, 0, 0.5), 7px 0 6px -2px rgba(0, 0, 0, 0.5)' 
   : '0 7px 6px -2px rgba(0, 0, 0, 0.2), 7px 0 6px -2px rgba(0, 0, 0, 0.2)',
@@ -212,7 +212,7 @@ const StyledLine = styled(Box)(({theme, top, bottom, animate }) => ({
     backgroundColor: theme.palette.mode === 'dark' ? 'rgb(29,29,29,0.5)' : 'rgb(255,249,242,0.9)',
     top: top, 
     bottom: `calc(100% - ${bottom}px)`,
-    animation: animate && `${fadeInAnimation} 7s ease forwards`,
+    animation: animate && `${fadeInAnimation} 2.5s ease forwards`,
     [theme.breakpoints.down('md')]: {
       display: 'none',
     },

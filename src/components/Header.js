@@ -39,23 +39,25 @@ export default function Header() {
   };
 
   // Use effect to trigger animation on location change
-  useEffect(() => {
-    // Reset animation when the route changes
-    setAnimate(true);
-    const timer = setTimeout(() => setAnimate(false), 2000); // Duration of the animation
+  // useEffect(() => {
+  //   // Reset animation when the route changes
+  //   setAnimate(true);
+  //   const timer = setTimeout(() => setAnimate(false), 2000); // Duration of the animation
 
-    return () => clearTimeout(timer); // Cleanup
-  }, [location]);
+  //   return () => clearTimeout(timer); // Cleanup
+  // }, [location]);
 
-  useEffect(() => {
-    const isVisible = visibleElements.has("header");
-    if (isVisible) {
-        setAnimate(true);
-    }
-  }, [visibleElements]);
+  
+
+  // useEffect(() => {
+  //   const isVisible = visibleElements.has("header");
+  //   if (isVisible) {
+  //       setAnimate(true);
+  //   }
+  // }, [visibleElements]);
 
   return (
-    <StyledAppBar position="fixed" id='header' className="track-visibility" animate={animate}> 
+    <StyledAppBar position="fixed" id='header'> 
       <StyledToolbar>
         {isMobile && (
           <IconButton color="inherit" onClick={handleMobileMenuOpen}>
@@ -129,7 +131,7 @@ const StyledAppBar = styled(AppBar)(({ theme, animate }) => ({
   transition: 'background-color 0.3s ease, color 0.3s ease',
   boxShadow: theme.shadows[10], // Pridėkite šešėlį, kad atrodytų plūduriuojantis
   zIndex: 99999, // Užtikrinkite, kad jis būtų virš kitų elementų
-  animation: animate && `${slideDownAnimation} 2s ease forwards`,
+  animation: `${slideDownAnimation} 2.5s ease forwards`,
 }));
 
   

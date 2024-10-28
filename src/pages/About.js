@@ -1,5 +1,5 @@
 import React, { useState, useContext, useEffect } from 'react';
-import { slideInRightAnimation, slideInLeftAnimation} from '../styles/animations';
+import { slideInRightAnimation, slideInLeftAnimation, fadeInAnimation, slideDownAnimation} from '../styles/animations';
 import {
   Box,
   Typography,
@@ -31,24 +31,33 @@ const About = () => {
     const { setLoading } = useLoading();
     const { visibleElements } = useVisibility();
     const [animate, setAnimate] = useState(false);
+    const [animateAboutPage, setanimateAboutPage] = useState(false);
     const [hasAnimated, setHasAnimated] = useState(false);
 
     useEffect(() => {
       const isHeroVisible = visibleElements.has("about-hero");
+      
       if (isHeroVisible && !hasAnimated) {
         setAnimate(true);
         setHasAnimated(true);
       }
     }, [visibleElements, hasAnimated]);
+
+    useEffect(() => {
+      const isAboutPageVisible = visibleElements.has("about-page");
+      if (isAboutPageVisible) {
+        setAnimate(true); // Animacija prasideda, kai elementas tampa matomas
+      }
+    }, [visibleElements]);
   
 
     return (
       <>
 
-      <BackgroundSection>
+      <BackgroundSection id="about-page" className="track-visibility" animate={animate}>
 
-        <HeroSection id="about-hero" className="track-visibility">
-          <StyledContainer className='custom-container'>
+        <HeroSection id="about-hero" className="track-visibility"  animate={animate}>
+          <StyledContainer className='custom-container' animate={animate}>
             <StyledBox>
               <NameTypography variant="h1" animate={animate}>
                 {t('aboutPage.name')}
@@ -129,7 +138,7 @@ const About = () => {
 export default About;
 
 
-const HeroSection = styled(Box)(({ theme }) => ({
+const HeroSection = styled(Box)(({ theme,animate }) => ({
   position: 'relative', // Make sure the container is relatively positioned
   background: `radial-gradient(circle at 20% 30%, rgba(255, 0, 0, 0.3), transparent 40%),
                radial-gradient(circle at 60% 80%, rgba(255, 0, 0, 0.3), transparent 40%),
@@ -145,7 +154,10 @@ const HeroSection = styled(Box)(({ theme }) => ({
   justifyContent: 'center',
   alignItems: 'center',
   padding: '4rem 0',
-  overflow:'hidden'
+  overflow:'hidden',
+  // animation: animate && `${slideDownAnimation} 2.5s ease forwards`,
+  //  animationDelay: animate && '0.5s'
+
 }));
 
 
@@ -176,7 +188,7 @@ export const SecondTypography = styled(Typography)(({ theme, animate }) => ({
   textAlign: 'justify',
   color: theme.palette.text.primary,
   animation: animate && `${slideInLeftAnimation} 2.5s ease forwards`,
-   animationDelay: animate && '0.5s'
+  //  animationDelay: animate && '1.5s'
 }));
 
 const StyledPaper = styled(Paper)(({ theme }) => ({
@@ -229,7 +241,7 @@ export const BoxForPic = styled(Box)(({ theme, animate }) => ({
   height: 'auto',
   justifyItems: 'center',
   animation: animate &&`${slideInRightAnimation} 2.5s ease forwards`,
-  animationDelay: animate && '0.5s'
+  // animationDelay: animate && '1.5s'
 }));
 
 export const ThirdTypography = styled(Typography)(({ theme, animate }) => ({
@@ -237,7 +249,7 @@ export const ThirdTypography = styled(Typography)(({ theme, animate }) => ({
   color: theme.palette.text.third,
   marginTop: '1rem',
   animation: animate && `${slideInLeftAnimation} 2.5s ease forwards`,
-   animationDelay: animate && '0.5s'
+  //  animationDelay: animate && '1.5s'
 }));
 
 export const NameTypography = styled(Typography)(({ theme, animate }) => ({
@@ -246,7 +258,7 @@ export const NameTypography = styled(Typography)(({ theme, animate }) => ({
   textAlign:'left',
   color: theme.palette.text.primary,
   animation:animate &&`${slideInLeftAnimation} 2.5s ease forwards`,
-   animationDelay: animate && '0.5s'
+  //  animationDelay: animate && '1.5s'
 }));
 
 export const StyledContainer = styled(Container)(({ theme }) => ({
@@ -259,7 +271,7 @@ export const StyledContainer = styled(Container)(({ theme }) => ({
   [theme.breakpoints.down('md')]: {
     flexDirection: 'column-reverse',
   },
-  zIndex:'1'
+  zIndex:'1',
 }));
 
 
@@ -343,9 +355,11 @@ const HeroStyleSection = styled(Box)(({ theme }) => ({
 
 
 
-const BackgroundSection = styled(Box)(({ theme }) => ({
+const BackgroundSection = styled(Box)(({ theme, animate }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#393736' : 'rgb(196, 225,246,0.3)',
   width: '100%',
+  opacity: animate ? 1 : 0, 
+  transition: 'opacity 1s ease',
 })); 
 
 
