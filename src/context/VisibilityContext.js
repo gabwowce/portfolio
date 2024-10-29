@@ -1,10 +1,11 @@
-// VisibilityContext.js
 import React, { createContext, useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom'; // Importuojame useLocation iš react-router-dom
 
 const VisibilityContext = createContext();
 
 export const VisibilityProvider = ({ children }) => {
   const [visibleElements, setVisibleElements] = useState(new Set());
+  const location = useLocation(); // Naudojame useLocation norint sekti kelio pasikeitimus
 
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
@@ -21,14 +22,15 @@ export const VisibilityProvider = ({ children }) => {
       });
     });
 
-    // Taikykite stebėjimą visiems elementams, kuriuos norite stebėti
     const elements = document.querySelectorAll('.track-visibility');
     elements.forEach((element) => observer.observe(element));
 
+    // Išvalome stebėjimą, kai komponentas atšaukiamas arba kelias pasikeičia
     return () => {
       elements.forEach((element) => observer.unobserve(element));
+      observer.disconnect(); // Užtikriname, kad ankstesnis observer bus išjungtas
     };
-  }, []);
+  }, [location.pathname]); // Kai kelias pasikeičia, stebėjimas iš naujo inicializuojamas
 
   return (
     <VisibilityContext.Provider value={{ visibleElements }}>

@@ -68,3 +68,16 @@ export const fadeInAnimation = keyframes`
     opacity: 1;
   }
 `;
+
+
+// export const fadeInLoading = keyframes`
+//   0% {
+//     opacity: 0;
+//   }
+//   90%{
+//     opacity: 0;
+//   }
+//   100% {
+//     opacity: 1;
+//   }
+// `;

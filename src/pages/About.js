@@ -32,29 +32,31 @@ const About = () => {
     const { visibleElements } = useVisibility();
     const [animate, setAnimate] = useState(false);
     const [animateAboutPage, setanimateAboutPage] = useState(false);
-    const [hasAnimated, setHasAnimated] = useState(false);
-
+     const [animateChats, setanimateChats] = useState(false);
+    
     useEffect(() => {
       const isHeroVisible = visibleElements.has("about-hero");
-      
-      if (isHeroVisible && !hasAnimated) {
-        setAnimate(true);
-        setHasAnimated(true);
-      }
-    }, [visibleElements, hasAnimated]);
+      isHeroVisible && setAnimate(true);
+    }, [visibleElements]);
 
     useEffect(() => {
       const isAboutPageVisible = visibleElements.has("about-page");
       if (isAboutPageVisible) {
-        setAnimate(true); // Animacija prasideda, kai elementas tampa matomas
+        setanimateAboutPage(true); 
       }
+    }, [visibleElements]);
+
+    useEffect(() => {
+      const isChatsVisible = visibleElements.has("about-chats");
+      isChatsVisible && setanimateChats(true);
+
     }, [visibleElements]);
   
 
     return (
       <>
 
-      <BackgroundSection id="about-page" className="track-visibility" animate={animate}>
+      <BackgroundSection id="about-page" className="track-visibility" animate={animateAboutPage}>
 
         <HeroSection id="about-hero" className="track-visibility"  animate={animate}>
           <StyledContainer className='custom-container' animate={animate}>
@@ -116,9 +118,9 @@ const About = () => {
         
 
         <HeroStyleSection>
-        <Container className='custom-container'>
+        <ChatsContainer className='custom-container track-visibility' id="about-chats" animate={animateChats}>
             <ChatCards/>
-        </Container>
+        </ChatsContainer>
         </HeroStyleSection>
         
         <StyledBackgroundBox2>
@@ -354,7 +356,6 @@ const HeroStyleSection = styled(Box)(({ theme }) => ({
 
 
 
-
 const BackgroundSection = styled(Box)(({ theme, animate }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#393736' : 'rgb(196, 225,246,0.3)',
   width: '100%',
@@ -363,3 +364,7 @@ const BackgroundSection = styled(Box)(({ theme, animate }) => ({
 })); 
 
 
+const ChatsContainer = styled(Container)(({ theme, animate }) => ({
+  opacity: animate ? 1 : 0, 
+  transition: 'opacity 1.5s ease',
+})); 

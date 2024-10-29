@@ -5,11 +5,10 @@ import { slideInRightAnimation, slideInLeftAnimation, slideUpAnimation, fadeInAn
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { styled } from '@mui/material/styles';
 import { useVisibility } from '../context/VisibilityContext';
-import starImage from '../assets/stars2.png';
 
 const Timeline = () => {
   const { t } = useTranslation();
-  const workExperience = t('aboutPage.workExperience.experiences', { returnObjects: true });             //gt reikai useEffect kad atidaryti pirma experienca ant uzkrovimo
+  const workExperience = t('aboutPage.workExperience.experiences', { returnObjects: true });           
   const isArray = Array.isArray(workExperience);
   const [lineY, setLineY] = useState({ top: 0, bottom: 0 });
   
@@ -47,7 +46,7 @@ const Timeline = () => {
   }, [workExperience]);
 
   return (
-    <StyledTimeline id='about-timeline' className="track-visibility">
+    <StyledTimeline id='about-timeline' className="track-visibility" animate={animate}>
       <NameTypography variant="h2">
         {t('aboutPage.workExperience.title')}
       </NameTypography>
@@ -59,10 +58,10 @@ const Timeline = () => {
           <StyledLine animate={animate} top={lineY.top} bottom={lineY.bottom}/>
 
           {isArray && workExperience.map((exp, index) => (
-            <StyledAccordion animate={animate} key={index} ref={el => (accordionRefs.current[index] = el)} index={index}>
+            <StyledAccordion expanded={index === 0} animate={animate} key={index} ref={el => (accordionRefs.current[index] = el)} index={index}>
               
               <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-              {/* <StyledImage src={starImage} alt="Stars" /> */}
+             
                 <Box>
                   <PrimaryTypography variant='h5'>
                     {exp.title}
@@ -121,6 +120,7 @@ const SkillsTypography = styled(Typography)(({ theme }) => ({
   }));
 
 const DescriptionTypography = styled(Typography)(({ theme }) => ({
+    color: theme.palette.text.third,
     lineHeight: 1.2, 
     paddingBottom:'0.5rem'
   }));
@@ -129,6 +129,7 @@ const InnerTypography = styled(Typography)(({ theme }) => ({
     display: 'inline-block',
     backgroundColor: theme.palette.mode === 'dark' ? 'rgb(152,94,44,0.2)' : 'rgb(10,130,182,0.2)',
     padding: '2px 10px',
+    margin:'1rem 0',
     borderRadius: '24px',
     color: theme.palette.mode === 'dark' ? '#985E2C' : '#0A82B6',
   }));
@@ -141,17 +142,17 @@ const InnerTypography = styled(Typography)(({ theme }) => ({
     alignSelf: index % 2 === 0 ? 'flex-start' : 'flex-end',
     margin: '1rem 0',
     animation: animate &&`${index % 2 == 0 ? slideInLeftAnimation : slideInRightAnimation} 2.5s ease both`,
-    animationDelay: animate &&`${index * 0.4}s`,
+    animationDelay: animate &&`${index * 0.3}s`,
     boxShadow: theme.palette.mode === 'dark' 
   ? '0 7px 6px -2px rgba(0, 0, 0, 0.5), 7px 0 6px -2px rgba(0, 0, 0, 0.5)' 
   : '0 7px 6px -2px rgba(0, 0, 0, 0.2), 7px 0 6px -2px rgba(0, 0, 0, 0.2)',
 
     '&:last-of-type': {
-    borderBottomLeftRadius: '10px', // Užtikrina, kad paskutinis elementas turės apvalius kampus
+    borderBottomLeftRadius: '10px', 
     borderBottomRightRadius: '10px',
   },
    
-    borderRadius: '10px',  // Švelnūs kampai, kad atrodytų kaip stiklas
+    borderRadius: '10px', 
     '&::before': {
         content: 'none',
     },
@@ -164,14 +165,17 @@ const InnerTypography = styled(Typography)(({ theme }) => ({
 }));
 
 const PrimaryTypography = styled(Typography)(({ theme }) => ({
-  fontWeight: '500',
+  fontWeight: '600',
   fontFamily: 'Outfit, sans-serif', 
-  color: theme.palette.text.primary
+  color: theme.palette.text.primary,
+  marginBottom: '-6px',
 }));
 
 const ThirdTypography = styled(Typography)(({ theme }) => ({
+  fontWeight: '300 !important',
   textAlign: 'justify',
   color: theme.palette.text.primary,
+  marginTop: '0',
 }));
 
 const SecondTypography = styled(Typography)(({ theme }) => ({
@@ -180,7 +184,7 @@ const SecondTypography = styled(Typography)(({ theme }) => ({
   marginBottom:'3rem',
 }));
 
-const StyledTimeline = styled(Box)(({ theme }) => ({
+const StyledTimeline = styled(Box)(({ theme, animate }) => ({
   display: 'flex',
   flexDirection: 'column',
   justifyContent: 'center',
@@ -189,7 +193,8 @@ const StyledTimeline = styled(Box)(({ theme }) => ({
   padding: '0 0',
   width: '100%',
   padding: '7rem 0 7rem 0',
-  
+  opacity: animate ? 1 : 0, 
+  transition: 'opacity 1.5s ease',
   
 }));
 
@@ -212,7 +217,7 @@ const StyledLine = styled(Box)(({theme, top, bottom, animate }) => ({
     backgroundColor: theme.palette.mode === 'dark' ? 'rgb(29,29,29,0.5)' : 'rgb(255,249,242,0.9)',
     top: top, 
     bottom: `calc(100% - ${bottom}px)`,
-    animation: animate && `${fadeInAnimation} 2.5s ease forwards`,
+    animation: animate && `${slideUpAnimation} 2.5s ease forwards`,
     [theme.breakpoints.down('md')]: {
       display: 'none',
     },
@@ -220,8 +225,8 @@ const StyledLine = styled(Box)(({theme, top, bottom, animate }) => ({
 
 const StyledDot = styled(Box)(({ theme }) => ({
   position: 'absolute',
-  width: '25px',
-  height: '25px',
+  width: '80px',
+  height: '80px',
   backgroundColor: theme.palette.mode === 'dark' ? 'rgb(29,29,29,0.9)' : 'rgb(254,249,242,0.9)',
   border: theme.palette.mode === 'dark' ? '5px solid #1D1D1D' : '5px solid #FEF9F2',
   borderRadius: '50%',

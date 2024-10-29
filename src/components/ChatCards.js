@@ -1,13 +1,15 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { Card, CardContent, Typography, Avatar, Box, TextField, Button } from '@mui/material';
 import { blue, green } from '@mui/material/colors';
 import { useTranslation } from 'react-i18next';
 import { styled } from '@mui/material/styles';
 import { ThemeContext } from '../context/ThemeContext'; 
 import starImage from '../assets/stars2.png';
-
+import { fadeInAnimation } from '../styles/animations';
+import { useVisibility } from '../context/VisibilityContext';
 
 const ChatCards = () => {
+    const { visibleElements } = useVisibility();
     const { t } = useTranslation();
     const messages = t('messages', { returnObjects: true });
     const { themeMode } = useContext(ThemeContext); 
@@ -17,6 +19,15 @@ const ChatCards = () => {
         chat2: messages.filter((msg) => msg.sender === 'Mama'),
         chat3: messages.filter((msg) => msg.sender === 'Tetis')
     };
+
+    const [animate, setAnimate] = useState(false);
+
+    useEffect(() => {
+      const isVisible = visibleElements.has("Styled-Chat-Container");
+      if (isVisible) {
+          setAnimate(true);
+      }
+  }, [visibleElements]);
 
     return (
         <>
@@ -28,8 +39,8 @@ const ChatCards = () => {
             </SecondTypography>
             <StyledChatRow>
             
-            {['chat1', 'chat2', 'chat3'].map((chatId) => (
-                <StyledChatContainer key={chatId}>
+            {['chat1', 'chat2', 'chat3'].map((chatId, index) => (
+                <StyledChatContainer key={chatId} index={index} className="track-visibility" id="Styled-Chat-Container" animate={animate}>
                     <StyledImage src={starImage} alt="Stars" />
                  {chatMessages[chatId].map((msg) => (
                         <StyledHeaderBox key={msg.id}> {/* Pridėkite unikalų raktą */}
@@ -189,10 +200,10 @@ const StyledChatRow = styled(Box)(({ theme }) => ({
     width: '100%',
     height:'auto',
     margin:"3rem 0",
-    gap:"1rem"
+    gap:"1.2rem"
 }));
 
-const StyledChatContainer = styled(Box)(({ theme }) => ({
+const StyledChatContainer = styled(Box)(({ theme, animate, index }) => ({
     flexGrow: 1,
     display: 'flex',
     flexDirection: 'column',
@@ -204,7 +215,8 @@ const StyledChatContainer = styled(Box)(({ theme }) => ({
     boxShadow: theme.palette.mode === 'dark' 
   ? '0 7px 6px -2px rgba(0, 0, 0, 0.5), 7px 0 6px -2px rgba(0, 0, 0, 0.5)' 
   : '0 7px 6px -2px rgba(0, 0, 0, 0.2), 7px 0 6px -2px rgba(0, 0, 0, 0.2)',
-    
+  opacity: animate ? 1 : 0, 
+  transition: animate ? `opacity 2.5s ease ${index * 0.3}s` : 'none',
 }));
 
 const StyledMessage = styled(Box)(({ isSent }) => ({

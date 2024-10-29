@@ -12,18 +12,16 @@ const LanguageSkills = () => {
     const languageSkills = t('aboutPage.languages', { returnObjects: true });
 
     const [animate, setAnimate] = useState(false);
-    const [hasAnimated, setHasAnimated] = useState(false);
 
     useEffect(() => {
       const isVisible = visibleElements.has("about-languages");
-      if (isVisible && !hasAnimated) {
+      if (isVisible) {
           setAnimate(true);
-          setHasAnimated(true);
       }
-  }, [visibleElements, hasAnimated]);
+  }, [visibleElements]);
 
     return (
-        <StyledBackgroundBox id="about-languages" className="track-visibility" >
+        <StyledBackgroundBox id="about-languages" className="track-visibility" animate={animate}>
             {/* Title separated from the details */}
             <NameTypography variant="h2" align="center" gutterBottom >
                 {languageSkills.title}
@@ -103,10 +101,12 @@ const SecondTypography2 = styled(Typography)(({ theme, index, animate }) => ({
     marginBottom:'3rem',
   }));
 
-const StyledBackgroundBox = styled(Box)(({ theme }) => ({
+const StyledBackgroundBox = styled(Box)(({ theme, animate }) => ({
     width: '100%',
     background: theme.palette.background.paper,
     padding: '8rem 0 8rem 0',
+    opacity: animate ? 1 : 0, 
+    transition: 'opacity 1.5s ease',
 }));
 
 const StyledSkillBox = styled(Box)(({ theme }) => ({
