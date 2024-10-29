@@ -33,7 +33,7 @@ const About = () => {
     const [animate, setAnimate] = useState(false);
     const [animateAboutPage, setanimateAboutPage] = useState(false);
      const [animateChats, setanimateChats] = useState(false);
-    
+     const [animateHistory, setanimateHistory] = useState(false);
     useEffect(() => {
       const isHeroVisible = visibleElements.has("about-hero");
       isHeroVisible && setAnimate(true);
@@ -51,7 +51,11 @@ const About = () => {
       isChatsVisible && setanimateChats(true);
 
     }, [visibleElements]);
-  
+    useEffect(() => {
+      const isHistoryVisible = visibleElements.has("about-history");
+      isHistoryVisible && setanimateHistory(true);
+
+    }, [visibleElements]);
 
     return (
       <>
@@ -103,11 +107,11 @@ const About = () => {
 
         <ToolCarousel/>
 
-        <StyledBackgroundBox>
-        <Container className='custom-container' id="about-history">
+        <StyledBackgroundBox2 animate={animateHistory}>
+        <StyledCardBox id="about-history" >
             <Timeline/>
-        </Container>
-        </StyledBackgroundBox>
+        </StyledCardBox>
+        </StyledBackgroundBox2>
         
         <StyledBackgroundBox2>
           <Container className='custom-container'>
@@ -117,17 +121,17 @@ const About = () => {
 
         
 
-        <HeroStyleSection>
+        {/* <StyledBackgroundBox2>
         <ChatsContainer className='custom-container track-visibility' id="about-chats" animate={animateChats}>
             <ChatCards/>
         </ChatsContainer>
-        </HeroStyleSection>
+        </StyledBackgroundBox2> */}
         
-        <StyledBackgroundBox2>
+        {/* <StyledBackgroundBox2>
           <Container className='custom-container'>
             <Statistics/>
           </Container>
-        </StyledBackgroundBox2>
+        </StyledBackgroundBox2> */}
         
 
       </BackgroundSection>
@@ -138,6 +142,34 @@ const About = () => {
 };
 
 export default About;
+
+
+
+
+const StyledCardBox = styled(Box)(({ theme }) => ({
+  margin:'0 7rem',
+  width:'100%',
+  borderRadius:'82% 18% 89% 11% / 23% 79% 21% 77% ',
+  backgroundColor: theme.palette.background.default,
+  background: `radial-gradient(circle at 80% 30%, rgba(255, 0, 0, 0.2), transparent 40%),
+  radial-gradient(circle at 40% 80%, rgba(255, 0, 0, 0.2), transparent 40%),
+  radial-gradient(circle at 100% 20%, rgba(0, 0, 255, 0.2), transparent 30%),
+  radial-gradient(circle at 20% 100%, rgba(0, 0, 255, 0.2), transparent 30%),
+  radial-gradient(circle at 60% 60%, rgba(0, 0, 255, 0.2), transparent 30%)`,
+  backdropFilter: 'blur(15px)',
+  padding: '2rem 0 2rem 0',
+  boxShadow: theme.palette.mode === 'dark' 
+  ? '0 -10px 6px -2px rgba(0, 0, 0, 0.5), 0 10px 6px -2px rgba(0, 0, 0, 0.5)' 
+  : '0 -10px 6px -2px rgba(0, 0, 0, 0.2), 0 10px 6px -2px rgba(0, 0, 0, 0.2)',
+  [theme.breakpoints.down('lg')]: {
+    margin:'0 2rem',
+},
+[theme.breakpoints.down('sm')]: {
+  borderRadius:'30px',
+  padding: '1rem 0 1rem 0',
+},
+
+}));
 
 
 const HeroSection = styled(Box)(({ theme,animate }) => ({
@@ -163,10 +195,14 @@ const HeroSection = styled(Box)(({ theme,animate }) => ({
 }));
 
 
+
 const StyledBackgroundBox2 = styled(Box)(({ theme }) => ({
   width: '100%',
   background: theme.palette.background.paper,
   padding: '0',
+  display:'flex',
+  justifyContent:'center',
+
 }));
 
 const StyledBackgroundBox = styled(Box)(({ theme }) => ({
@@ -360,7 +396,7 @@ const BackgroundSection = styled(Box)(({ theme, animate }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#393736' : 'rgb(196, 225,246,0.3)',
   width: '100%',
   opacity: animate ? 1 : 0, 
-  transition: 'opacity 1s ease',
+  transition: 'opacity 1.5s ease',
 })); 
 
 

@@ -41,11 +41,11 @@ const CanvasComponentLight = ({ cloudAnimation, birdAnimation}) => {
             z-index: 0;
           }
           .c1.one,
-          .c2.one { top: -400px; left: 0px; }
+          .c2.one { top: -400px; left: -100px; }
           .c1.two,
-          .c2.two { top: 200px; left: 700px; }
+          .c2.two { top: 200px; left: 500px; }
           .c1.three,
-          .c2.three { top: 400px; right: 100px; }
+          .c2.three { top: 400px; right: 50px; }
           .c1.four,
           .c2.four { top: -180px; right: 0px; }
           .c2 .one { top: -209px; }

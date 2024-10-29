@@ -158,10 +158,13 @@ const StyledBox2 = styled(Box)(({ theme, isExtraSmall, animate }) => ({
   
 
 const StyledBox = styled(Box)(({ theme }) => ({
-padding: '2rem 0',
+padding: '5rem 0',
 backgroundColor:  theme.palette.background.paper, 
 width: '100%', 
 overflow: 'hidden',
+[theme.breakpoints.down('sm')]: {
+  padding: '2rem 0',
+},
 
 }));
 
