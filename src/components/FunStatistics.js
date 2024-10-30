@@ -18,14 +18,22 @@ const Statistics = () => {
 
     return (
         <StyledBox>
-            {statisticsData.map((stat) => (
-                <StyledCard key={stat.key}>
-                    <CardContent>
-                        <Typography variant="h6">{t(`statistics.${stat.key}.title`)}</Typography>
-                        <Typography variant="body1">{t(`statistics.${stat.key}.number`)}</Typography>
-                    </CardContent>
-                </StyledCard>
-            ))}
+                <NameTypography variant="h2" animate={animate}>
+                    {t('aboutPage.skills.title')}
+                  </NameTypography>
+                  <SecondTypography variant='body1' animate={animate}>
+                    {t('aboutPage.skills.subtitle')}
+                  </SecondTypography>
+                <StyledBox>
+                    {statisticsData.map((stat) => (
+                        <StyledCard key={stat.key}>
+                            <CardContent>
+                                <Typography variant="h6">{t(`statistics.${stat.key}.title`)}</Typography>
+                                <Typography variant="body1">{t(`statistics.${stat.key}.number`)}</Typography>
+                            </CardContent>
+                        </StyledCard>
+                    ))}
+                </StyledBox>
         </StyledBox>
     );
 };
