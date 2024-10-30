@@ -156,6 +156,7 @@ const StyledBox2 = styled(Box)(({ theme, isExtraSmall, animate }) => ({
     transition: 'opacity 3.5s ease',
 }));
   
+{/*
 
 const StyledBox = styled(Box)(({ theme }) => ({
 padding: '5rem 0',
@@ -167,6 +168,36 @@ overflow: 'hidden',
 },
 
 }));
+
+*/}
+
+const StyledBox = styled(Box)(({ theme }) => ({
+  padding: '5rem 0',
+  backgroundColor: theme.palette.background.paper,
+  width: '100%',
+  overflow: 'hidden',
+  position: 'relative', // Make sure it's positioned relative for the pseudo-elements
+  [theme.breakpoints.down('sm')]: {
+    padding: '2rem 0',
+  },
+  '&::before, &::after': {
+    content: '""',
+    position: 'absolute',
+    top: 0,
+    height: '100%',
+    width: '50px', // Width for the fade effect
+    zIndex: 1,
+  },
+  '&::before': {
+    left: 0,
+    background: 'linear-gradient(to right, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 100%)',
+  },
+  '&::after': {
+    right: 0,
+    background: 'linear-gradient(to left, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 100%)',
+  },
+}));
+
 
 const NameTypography = styled(Typography)(({ theme, animate }) => ({
     fontFamily: 'Outfit, sans-serif',
