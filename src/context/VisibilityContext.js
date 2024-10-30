@@ -20,17 +20,20 @@ export const VisibilityProvider = ({ children }) => {
           });
         }
       });
+    }, {
+      //rootMargin: "0px 0px -100px 0px", // Galima koreguoti papildomai
+      threshold: 0.2 // 20% elemento turi būti matoma
     });
 
     const elements = document.querySelectorAll('.track-visibility');
     elements.forEach((element) => observer.observe(element));
 
-    // Išvalome stebėjimą, kai komponentas atšaukiamas arba kelias pasikeičia
     return () => {
       elements.forEach((element) => observer.unobserve(element));
-      observer.disconnect(); // Užtikriname, kad ankstesnis observer bus išjungtas
+      observer.disconnect();
     };
-  }, [location.pathname]); // Kai kelias pasikeičia, stebėjimas iš naujo inicializuojamas
+  }, [location.pathname]);
+
 
   return (
     <VisibilityContext.Provider value={{ visibleElements }}>
