@@ -105,17 +105,14 @@ const About = () => {
             
       </HeroSection>
 
+        <Statistics/>
+        
         <ToolCarousel/>
 
-        <StyledBackgroundBox2>
-           <Statistics/>
-        </StyledBackgroundBox2> 
 
-        <StyledBackgroundBox2 animate={animateHistory}>
-          <StyledCardBox id="about-history" >
-              <Timeline/>
-          </StyledCardBox>
-        </StyledBackgroundBox2>
+        <StyledBackgroundBox3 animate={animateHistory}id="about-history" >
+          <Timeline/>
+        </StyledBackgroundBox3>
         
         <StyledBackgroundBox2>
           <Container className='custom-container'>
@@ -158,8 +155,8 @@ const StyledCardBox = styled(Box)(({ theme }) => ({
   backdropFilter: 'blur(15px)',
   padding: '2rem 0 2rem 0',
   boxShadow: theme.palette.mode === 'dark' 
-  ? '0 -10px 6px -2px rgba(0, 0, 0, 0.5), 0 10px 6px -2px rgba(0, 0, 0, 0.5)' 
-  : '0 -10px 6px -2px rgba(0, 0, 0, 0.2), 0 10px 6px -2px rgba(0, 0, 0, 0.2)',
+  ? '0 -5px 3px -2px rgba(0, 0, 0, 0.5), 0 5px 3px -2px rgba(0, 0, 0, 0.5)' 
+  : '0 -5px 3px -2px rgba(0, 0, 0, 0.2), 0 5px 3px -2px rgba(0, 0, 0, 0.2)',
   [theme.breakpoints.down('lg')]: {
     margin:'0 2rem',
 },
@@ -179,8 +176,8 @@ const HeroSection = styled(Box)(({ theme,animate }) => ({
                radial-gradient(circle at 80% 100%, rgba(0, 0, 255, 0.3), transparent 30%),
                radial-gradient(circle at 40% 60%, rgba(0, 0, 255, 0.3), transparent 30%)`,
   boxShadow: theme.palette.mode === 'dark' 
-  ? '0 -10px 6px -2px rgba(0, 0, 0, 0.5), 0 10px 6px -2px rgba(0, 0, 0, 0.5)' 
-  : '0 -10px 6px -2px rgba(0, 0, 0, 0.2), 0 10px 6px -2px rgba(0, 0, 0, 0.2)',
+  ? '0 -5px 3px -2px rgba(0, 0, 0, 0.5), 0 5px 3px -2px rgba(0, 0, 0, 0.5)' 
+  : '0 -5px 3px -2px rgba(0, 0, 0, 0.2), 0 5px 3px -2px rgba(0, 0, 0, 0.2)',
   textAlign: 'center',
   width: '100%',
   display: 'flex',
@@ -193,7 +190,13 @@ const HeroSection = styled(Box)(({ theme,animate }) => ({
 
 }));
 
-
+const StyledBackgroundBox3 = styled(Box)(({ theme }) => ({
+  width: '100%',
+  background: theme.palette.background.paper,
+  padding: '0',
+  display:'flex',
+  justifyContent:'center',
+}));
 
 const StyledBackgroundBox2 = styled(Box)(({ theme }) => ({
   width: '100%',
@@ -215,8 +218,8 @@ const StyledBackgroundBox = styled(Box)(({ theme }) => ({
   backdropFilter: 'blur(15px)',
   padding: '2rem 0 2rem 0',
   boxShadow: theme.palette.mode === 'dark' 
-  ? '0 -10px 6px -2px rgba(0, 0, 0, 0.5), 0 10px 6px -2px rgba(0, 0, 0, 0.5)' 
-  : '0 -10px 6px -2px rgba(0, 0, 0, 0.2), 0 10px 6px -2px rgba(0, 0, 0, 0.2)',
+  ? '0 -5px 3px -2px rgba(0, 0, 0, 0.5), 0 5px 3px -2px rgba(0, 0, 0, 0.5)' 
+  : '0 -5px 3px -2px rgba(0, 0, 0, 0.2), 0 5px 3px -2px rgba(0, 0, 0, 0.2)',
 
 
 }));
@@ -362,8 +365,8 @@ export const StyledBox = styled(Box)(({ theme }) => ({
     backgroundColor: 'rgba(255, 255, 255, 0.1)', // Adjust the color and opacity as needed
     backdropFilter: 'blur(10px)', // Adjust blur amount for desired effect
     boxShadow: theme.palette.mode === 'dark' 
-      ? '0 4px 10px rgba(0, 0, 0, 0.5)' 
-      : '0 4px 10px rgba(0, 0, 0, 0.5)', // Optional: add a shadow for depth
+      ? '0 2px 5px rgba(0, 0, 0, 0.5)' 
+      : '0 2px 5px rgba(0, 0, 0, 0.5)', // Optional: add a shadow for depth
     padding: theme.spacing(2),
   },
 }));
@@ -383,8 +386,8 @@ const HeroStyleSection = styled(Box)(({ theme }) => ({
   justifyContent: 'center',
   alignItems: 'center',
   boxShadow: theme.palette.mode === 'dark' 
-  ? '0 -10px 6px -2px rgba(0, 0, 0, 0.5), 0 10px 6px -2px rgba(0, 0, 0, 0.5)' 
-  : '0 -10px 6px -2px rgba(0, 0, 0, 0.2), 0 10px 6px -2px rgba(0, 0, 0, 0.2)',
+  ? '0 -5px 3px -2px rgba(0, 0, 0, 0.5), 0 5px 3px -2px rgba(0, 0, 0, 0.5)' 
+  : '0 -5px 3px -2px rgba(0, 0, 0, 0.2), 0 5px 3px -2px rgba(0, 0, 0, 0.2)',
   padding: '4rem 0 4rem 0',
 
 }));

@@ -375,7 +375,25 @@ const NameTypography = styled(Typography)(({ theme }) => ({
   fontWeight: '600',
   textAlign: 'center',
   color: theme.palette.text.primary,
+  position: 'relative', 
+
+  '&::before, &::after': {
+    content: '""',
+    display: 'block',
+    position: 'absolute',
+    top: '50%', 
+    width: '200px', 
+    height: '1px', 
+    backgroundColor: theme.palette.text.primary, 
+  },
+  '&::before': {
+    left: '-250px', 
+  },
+  '&::after': {
+    right: '-250px', 
+  },
 }));
+
 
 const YearTypography = styled(Typography)(({ theme, index }) => ({
   position: 'absolute',

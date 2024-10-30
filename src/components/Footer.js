@@ -169,7 +169,7 @@ const StyledBox = styled(Box)(({ theme }) => ({
                radial-gradient(circle at 20% 100%, rgba(0, 0, 255, 0.2), transparent 30%),
                radial-gradient(circle at 60% 60%, rgba(0, 0, 255, 0.2), transparent 30%)`,
   backdropFilter: 'blur(15px)',
-  boxShadow: theme.palette.mode === 'dark'
-    ? '0 -10px 6px -2px rgba(0, 0, 0, 0.5), 0 10px 6px -2px rgba(0, 0, 0, 0.5)'
-    : '0 -10px 6px -2px rgba(0, 0, 0, 0.2), 0 10px 6px -2px rgba(0, 0, 0, 0.2)',
+  boxShadow: theme.palette.mode === 'dark' 
+  ? '0 -5px 3px -2px rgba(0, 0, 0, 0.5), 0 5px 3px -2px rgba(0, 0, 0, 0.5)' 
+  : '0 -5px 3px -2px rgba(0, 0, 0, 0.2), 0 5px 3px -2px rgba(0, 0, 0, 0.2)',
 }));

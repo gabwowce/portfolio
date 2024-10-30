@@ -97,12 +97,15 @@ const ToolCarousel = () => {
 
   return (
     <StyledBox id="about-skills" className="track-visibility">
-      <NameTypography variant="h2" animate={animate}>
-        {t('aboutPage.skills.title')}
-      </NameTypography>
-      <SecondTypography variant='body1' animate={animate}>
-        {t('aboutPage.skills.subtitle')}
-      </SecondTypography>
+      {/* <StyledBox>
+        <NameTypography variant="h2" animate={animate}>
+          {t('aboutPage.skills.title')}
+        </NameTypography>
+        <SecondTypography variant='body1' animate={animate}>
+          {t('aboutPage.skills.subtitle')}
+        </SecondTypography>
+      </StyledBox> */}
+      
       <Slider {...settings}>
         {/* Use flexbox layout to make sure the tools align in rows and columns */}
         {groupedTools.map((group, groupIndex) => (
@@ -176,38 +179,48 @@ const StyledBox = styled(Box)(({ theme }) => ({
   backgroundColor: theme.palette.background.paper,
   width: '100%',
   overflow: 'hidden',
-  position: 'relative', // Make sure it's positioned relative for the pseudo-elements
+   // Make sure it's positioned relative for the pseudo-elements
   [theme.breakpoints.down('sm')]: {
     padding: '2rem 0',
   },
-  '&::before, &::after': {
-    content: '""',
-    position: 'absolute',
-    top: 0,
-    height: '100%',
-    width: '50px', // Width for the fade effect
-    zIndex: 1,
-  },
-  '&::before': {
-    left: 0,
-    background: 'linear-gradient(to right, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 100%)',
-  },
-  '&::after': {
-    right: 0,
-    background: 'linear-gradient(to left, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 100%)',
-  },
+
+  
+ 
 }));
 
 
-const NameTypography = styled(Typography)(({ theme, animate }) => ({
-    fontFamily: 'Outfit, sans-serif',
-    fontWeight: '600',
-    textAlign: 'center',
-    color: theme.palette.text.primary,
-    opacity: animate ? 1 : 0, 
-    transition: 'opacity 3.5s ease',
-  }));
+// const NameTypography = styled(Typography)(({ theme, animate }) => ({
+//     fontFamily: 'Outfit, sans-serif',
+//     fontWeight: '600',
+//     textAlign: 'center',
+//     color: theme.palette.text.primary,
+//     opacity: animate ? 1 : 0, 
+//     transition: 'opacity 3.5s ease',
+//   }));
 
+const NameTypography = styled(Typography)(({ theme }) => ({
+  fontFamily: 'Outfit, sans-serif',
+  fontWeight: '600',
+  textAlign: 'center',
+  color: theme.palette.text.primary,
+  position: 'relative', 
+
+  '&::before, &::after': {
+    content: '""',
+    display: 'block',
+    position: 'absolute',
+    top: '50%', 
+    width: '200px', 
+    height: '1px', 
+    backgroundColor: theme.palette.text.primary, 
+  },
+  '&::before': {
+    left: '-250px', 
+  },
+  '&::after': {
+    right: '-250px', 
+  },
+}));
   
 
 const SecondTypography = styled(Typography)(({ theme,animate }) => ({

@@ -23,7 +23,7 @@ const LanguageSkills = () => {
     return (
         <StyledBackgroundBox id="about-languages" className="track-visibility" animate={animate}>
             {/* Title separated from the details */}
-            <NameTypography variant="h2" align="center" gutterBottom >
+            <NameTypography variant="h2" >
                 {languageSkills.title}
             </NameTypography>
             <SecondTypography variant='body1'>
@@ -65,7 +65,7 @@ const StyledBox2 = styled(Box)(({ theme, isVisible, index }) => ({
 const StyledBox = styled(Box)(({ theme }) => ({
     display: 'grid', 
     gridTemplateColumns: 'repeat(3, 1fr)', 
-    gap: '2rem'
+    gap: '7rem'
 }));
 
 const StyledCircularProgress = styled(CircularProgress)(({ theme, level }) => ({
@@ -74,19 +74,37 @@ const StyledCircularProgress = styled(CircularProgress)(({ theme, level }) => ({
            (theme.palette.mode === 'dark' ? '#392660' : '#d2d2fc'),
 }));
 
+
 const NameTypography = styled(Typography)(({ theme }) => ({
     fontFamily: 'Outfit, sans-serif',
     fontWeight: '600',
     textAlign: 'center',
     color: theme.palette.text.primary,
+    position: 'relative', 
+  
+    '&::before, &::after': {
+      content: '""',
+      display: 'block',
+      position: 'absolute',
+      top: '50%', 
+      width: '200px', 
+      height: '1px', 
+      backgroundColor: theme.palette.text.primary, 
+    },
+    '&::before': {
+      left: '-250px', 
+    },
+    '&::after': {
+      right: '-250px', 
+    },
   }));
 
 
 const SecondTypography2 = styled(Typography)(({ theme, index, animate }) => ({
     textAlign: 'center',
     color: theme.palette.text.primary,
-    animation: animate &&`${slideUpAnimation} 2s ease both`,
-    animationDelay: animate && `${index * 0.5}s`,
+    animation: animate &&`${slideUpAnimation} 1.5s ease both`,
+    animationDelay: animate && `${index * 0.3}s`,
     
   }));
 
@@ -102,11 +120,26 @@ const SecondTypography2 = styled(Typography)(({ theme, index, animate }) => ({
   }));
 
 const StyledBackgroundBox = styled(Box)(({ theme, animate }) => ({
-    width: '100%',
-    background: theme.palette.background.paper,
-    padding: '8rem 0 8rem 0',
-    opacity: animate ? 1 : 0, 
-    transition: 'opacity 1.5s ease',
+    // width: '100%',
+    // background: theme.palette.background.paper,
+    // padding: '8rem 0 8rem 0',
+    // opacity: animate ? 1 : 0, 
+    // transition: 'opacity 1.5s ease',
+    // position:'relative'
+
+    display: 'flex',
+  flexDirection: 'column',
+  justifyContent: 'center',
+  alignItems: 'center',
+  position: 'relative',
+  padding: '0 0',
+  width: '100%',
+  padding: '3rem 0 3rem 0',
+  opacity: animate ? 1 : 0, 
+  transition: 'opacity 1.5s ease',
+  [theme.breakpoints.down('sm')]: {
+    padding: '2rem 0 0 0',
+},
 }));
 
 const StyledSkillBox = styled(Box)(({ theme }) => ({
@@ -120,7 +153,7 @@ const StyledProgressContainer = styled(Box)(({ theme, index, animate }) => ({
     marginBottom: '1rem',
     position: 'relative',
     animation: animate && `${index % 2 == 0 ? slideUpAnimation : slideUpAnimation} 2s ease both`,
-    animationDelay: animate && `${index * 0.5}s`,
+    animationDelay: animate && `${index * 0.3}s`,
 }));
 
 const StyledProgressText = styled(Typography)(({ theme }) => ({
