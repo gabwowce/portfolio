@@ -107,10 +107,14 @@ const About = () => {
 
         <ToolCarousel/>
 
+        <StyledBackgroundBox2>
+           <Statistics/>
+        </StyledBackgroundBox2> 
+
         <StyledBackgroundBox2 animate={animateHistory}>
-        <StyledCardBox id="about-history" >
-            <Timeline/>
-        </StyledCardBox>
+          <StyledCardBox id="about-history" >
+              <Timeline/>
+          </StyledCardBox>
         </StyledBackgroundBox2>
         
         <StyledBackgroundBox2>
@@ -126,12 +130,7 @@ const About = () => {
             <ChatCards/>
         </ChatsContainer>
         </StyledBackgroundBox2> */}
-        
-        {/* <StyledBackgroundBox2>
-          <Container className='custom-container'>
-            <Statistics/>
-          </Container>
-        </StyledBackgroundBox2> */}
+      
         
 
       </BackgroundSection>
