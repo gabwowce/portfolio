@@ -11,6 +11,10 @@ i18n
     resources: {
       en: {
         translation: {
+          error: {
+            text: "Oops! The page you’re looking for doesn’t exist.",
+            btn: "Back to Home",
+          },
           header: {
             about: "About",
             portfolio: "Portfolio",
@@ -92,6 +96,10 @@ i18n
             name: "Gabrielė Tamaševičiūtė",
             jobTitle: "Junior Developer",
             description: "Programming is my driving passion. I enjoy every moment spent tackling challenges, seeking creative solutions, building and coding. I dedicate myself to hard work and continuous learning, not only because I aspire to become a professional in this field, but also because software development is my number one hobby.",
+            stats:{
+              title:"Some Statistic",
+              subtitle:""
+            },
             workExperience: {
               title: "My History",
               subtitle:"Although the storyline is straight, the twists in it are unexpected.",
@@ -262,7 +270,7 @@ i18n
               text: [
                 
                 { type: "received", content: "How can you sit in such darkness? Open the curtains." },
-                { type: "sent", content: "No! It attracts bugs" },
+                { type: "sent", content: "No! It the light attracts bugs" },
               ]
             },
             {
@@ -290,6 +298,10 @@ i18n
       },
       lt: {
         translation: {
+          error: {
+            text: "Ups! Puslapis, kurio ieškote, neegzistuoja.",
+            btn: "Grįžti į pradžią",
+          },
           header: {
             about: "Apie mane",
             portfolio: "Portfolio",
@@ -370,6 +382,10 @@ i18n
             name: "Gabrielė Tamaševičiūtė",
             jobTitle: "Jaunesnioji programuotoja",
             description: "Programavimas, o ypač vartotojo sąsajos, yra mano gyvenimo varikliukas. Aš mėgaujuosi kiekviena minute praleista gilinantis į užduotis, ieškant kūrybiškų sprendimų, kuriant ir programuojant. Tikrai daug dirbu ir daug mokausi, gal dėl to, kad noriu tapti šios srities profesionale, bet manau ir dėl to, kad programų kūrimas yra mano top 1 hobis.",
+            stats:{
+              title:"Šiek tiek statistokos",
+              subtitle:""
+            },
             workExperience: {
               title: "Mano istorija",
               subtitle:"Nors istorijos linija tiesi, bet posūkiai joje netikėti.",
