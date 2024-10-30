@@ -19,11 +19,9 @@ const Statistics = () => {
     return (
         <StyledBox>
                 <NameTypography variant="h2" animate={animate}>
-                    {t('aboutPage.skills.title')}
+                    {t('aboutPage.stats.title')}
                   </NameTypography>
-                  <SecondTypography variant='body1' animate={animate}>
-                    {t('aboutPage.skills.subtitle')}
-                  </SecondTypography>
+                  
                 <StyledBox>
                     {statisticsData.map((stat) => (
                         <StyledCard key={stat.key}>
@@ -39,6 +37,16 @@ const Statistics = () => {
 };
 
 export default Statistics;
+
+const NameTypography = styled(Typography)(({ theme, animate }) => ({
+    fontFamily: 'Outfit, sans-serif',
+    fontWeight: '600',
+    textAlign: 'center',
+    color: theme.palette.text.primary,
+    opacity: animate ? 1 : 0, 
+    transition: 'opacity 3.5s ease',
+  }));
+
 
 const StyledCard = styled(Card)(({ theme }) => ({
   mb: 2, 
