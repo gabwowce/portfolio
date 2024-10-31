@@ -31,12 +31,12 @@ const ChatCards = () => {
 
     return (
         <>
-        <NameTypography variant="h2">
+        {/* <NameTypography variant="h2">
                 Fun Chats From Developer Life
             </NameTypography>
             <SecondTypography variant='body1'>
                 Kad nepavargtumete scrollinti - pasijuokite
-            </SecondTypography>
+            </SecondTypography> */}
             <StyledChatRow>
             
             {['chat1', 'chat2', 'chat3'].map((chatId, index) => (

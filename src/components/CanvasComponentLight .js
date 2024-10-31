@@ -145,7 +145,7 @@ const CanvasComponentLight = ({ cloudAnimation, birdAnimation}) => {
         `}
       </style>
       
-      <div className="sky">
+      <div className="sky" style={{ overflow: 'hidden'}}>
         <div className="clouds">
           <div className="c1 one"></div>
           <div className="c1 two"></div>

@@ -7,8 +7,19 @@ import { styled } from '@mui/material/styles';
 import { useVisibility } from '../context/VisibilityContext';
 
 
-const colorsDark = ['#19121d', '#211925', '#19121d', '#211925'];
-const colorsLight = ['#f4c9cd', '#E1BFC2', '#f4c9cd', '#E1BFC2'];
+
+const colorsGradientDark = [
+  'linear-gradient(45deg, #1d1d1d, #181818)',
+  'linear-gradient(45deg, #181818, #1d1d1d)',
+  'linear-gradient(45deg, #1d1d1d, #181818)',
+  'linear-gradient(45deg, #181818, #1d1d1d)'
+];
+const colorsGradientLight = [
+  'linear-gradient(45deg, #EBE5DC, #FEF9F2)',
+  'linear-gradient(45deg, #FEF9F2, #EBE5DC)',
+  'linear-gradient(45deg, #EBE5DC, #FEF9F2)',
+  'linear-gradient(45deg, #FEF9F2, #EBE5DC)'
+];
 
 const Timeline = () => {
   const { t } = useTranslation();
@@ -200,11 +211,11 @@ const DescriptionTypography = styled(Typography)(({ theme }) => ({
 
 const InnerTypography = styled(Typography)(({ theme }) => ({
     display: 'inline-block',
-    backgroundColor: theme.palette.mode === 'dark' ? 'rgb(206,144,242,0.2)' : 'rgb(121,76,79,0.2)',
+    backgroundColor: theme.palette.mode === 'dark' ? 'rgb(206,144,242,0.2)' : 'rgb(228,76,131,0.2)',
     padding: '2px 10px',
     margin:'0.1rem 0',
     borderRadius: '24px',
-    color: theme.palette.mode === 'dark' ? '#CE90F2' : '#794C4F',
+    color: theme.palette.mode === 'dark' ? '#CE90F2' : '#E44C83',
   }));
 
   const StyledAccordion = styled(Accordion)(({ theme, index, animate }) => ({
@@ -212,7 +223,7 @@ const InnerTypography = styled(Typography)(({ theme }) => ({
     width: '40%',
     height: 'auto',
     borderRadius: '24px !important', // Suapvalina visus kampus
-    background: theme.palette.mode === 'dark' ? colorsDark[index %  colorsDark.length] : colorsLight[index %  colorsLight.length],
+    background: theme.palette.mode === 'dark' ? colorsGradientDark[index %  colorsGradientDark.length] : colorsGradientLight[index %  colorsGradientLight.length],
     alignSelf: index % 2 === 0 ? 'flex-start' : 'flex-end',
     margin: '2rem 0',
     zIndex: '100',
@@ -269,7 +280,7 @@ const StyledTimeline = styled(Box)(({ theme, animate }) => ({
   position: 'relative',
   padding: '0 0',
   width: '100%',
-  padding: '3rem 0 3rem 0',
+  padding: '5rem 0 2rem 0',
   opacity: animate ? 1 : 0, 
   transition: 'opacity 1.5s ease',
   [theme.breakpoints.down('sm')]: {
@@ -311,31 +322,17 @@ const StyledDot = styled(Box)(({ theme, index, isLast }) => ({
   position: 'relative',
   width: '100px',
   height: '100px',
-  backgroundColor: theme.palette.mode === 'dark' ? colorsDark[index %  colorsDark.length] : colorsLight[index %  colorsLight.length],
-  border: theme.palette.mode === 'dark' ? colorsDark[index %  colorsDark.length] : colorsLight[index %  colorsLight.length],
+  backgroundColor: theme.palette.mode === 'dark' ? '#181818' : '#EBE5DC',
+  border: theme.palette.mode === 'dark' ? '#181818' : '#EBE5DC',
   borderRadius: '59% 41% 55% 45% / 48% 59% 41% 52%', // Unified border radius for all dots
 
-  // Horizontal line
-  // '&::before': {
-  //   content: '""',
-  //   position: 'absolute',
-  //   width: '5px', // Linijos plotis
-  //   height: 'auto',
-  //   background: theme.palette.mode === 'dark' ? colorsDark[index %  colorsDark.length] : colorsLight[index %  colorsLight.length], 
-  //   top: '0',
-  //   left: '50%', // Centruoja horizontalioje ašyje
-  //   transform: 'translateX(-50%)',
-  //   zIndex: -1, // Įsitikinkite, kad linija yra po dotu
-  //   display: isLast ? 'none' : 'block',
-  // },
 
-  // Vertical line
   '&::after': {
     content: '""',
     position: 'absolute',
     width: '350%', // Ilgis, kad padengtų dotą
     height: '5px', // Linijos aukštis
-    background: theme.palette.mode === 'dark' ? colorsDark[index %  colorsDark.length] : colorsLight[index %  colorsLight.length], 
+    background: theme.palette.mode === 'dark' ? '#181818' : '#EBE5DC',
     top: '50%', // Centruoja vertikalioje ašyje
     right: index % 2 === 0 ? '0' : 'none',
     left: index % 2 === 0 ? 'none' : '0',
@@ -360,12 +357,12 @@ const LineBefore = styled(Box)(({ height, theme, index }) => ({
   position: 'absolute',
   width: '5px', // Linijos plotis
   height: height || '0px', // Aukštis gali būti perduotas kaip prop
-  backgroundColor: theme.palette.mode === 'dark' ? colorsDark[index % colorsDark.length] : colorsLight[index % colorsLight.length],
+  backgroundColor: theme.palette.mode === 'dark' ? '#181818' : '#EBE5DC',
   left: index % 2 === 0 ? '78%' : 'none',
   right: index % 2 === 0 ? 'none' : '78%',
   transform: 'translateX(-50%)', // Centruoja horizontaliai
   zIndex: -1,
-  top: '100%', // Pradeda nuo dot apatinės dalies
+  top: '90%', // Pradeda nuo dot apatinės dalies
 }));
 
 
@@ -391,6 +388,24 @@ const NameTypography = styled(Typography)(({ theme }) => ({
   },
   '&::after': {
     right: '-250px', 
+  },
+
+  [theme.breakpoints.down('lg')]: {
+    '&::before, &::after': {
+        width: '130px', 
+    },
+    '&::before': {
+      left: '-200px', 
+    },
+    '&::after': {
+      right: '-200px', 
+    },
+  },
+  [theme.breakpoints.down('md')]: {
+
+    '&::before, &::after': {
+       display:'none'
+    },
   },
 }));
 

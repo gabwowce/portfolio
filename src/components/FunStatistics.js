@@ -3,7 +3,7 @@ import { Card, CardContent, Typography, Box } from '@mui/material';
 import { useTranslation } from 'react-i18next';
 import { styled, useTheme } from '@mui/material/styles';
 import { ThemeContext } from '../context/ThemeContext'; 
-import { slideInRightAnimation, slideInLeftAnimation } from '../styles/animations'; // Import both animations
+import { slideUpAnimation, slideInLeftAnimation } from '../styles/animations'; // Import both animations
 import { useVisibility } from '../context/VisibilityContext';
 
 import CodeIcon from '@mui/icons-material/Code';
@@ -31,7 +31,7 @@ const Statistics = () => {
     }, [visibleElements]);
 
     return (
-        <StyledBox id="about-stats" className="track-visibility">
+        <StyledBox id="about-stats" className="track-visibility" animate={animate}>
             {/* <NameTypography variant="h2" animate={animate}>
                 {t('aboutPage.stats.title')}
             </NameTypography>
@@ -42,11 +42,12 @@ const Statistics = () => {
 
                     return (
                         <StyledCard key={stat.key} animate={animate} index={index}>
-                            <CardContent>
-                                <StyledIconComponent as={IconComponent} />
-                                <Typography variant="h6">{t(`statistics.${stat.key}.title`)}</Typography>
-                                <Typography variant="body1">{t(`statistics.${stat.key}.number`)}</Typography>
-                            </CardContent>
+                            <StyledCardContent>
+
+                                <NumberTypography variant="h2">{t(`statistics.${stat.key}.number`)}</NumberTypography>
+                                <TitleTypography variant="body1">{t(`statistics.${stat.key}.title`)}</TitleTypography>
+                                
+                            </StyledCardContent>
                         </StyledCard>
                     );
                 })}
@@ -57,12 +58,33 @@ const Statistics = () => {
 
 export default Statistics;
 
+
+
+const StyledCardContent = styled(CardContent)(({ theme }) => ({
+    display:'flex',
+    flexDirection:'column',
+    justifyContent:'center',
+    alignItems:'center',
+    position:'relative'
+}));
+
+const TitleTypography = styled(Typography)(({ theme }) => ({
+    fontWeight: '300 !important',
+  lineHeight: '1.2', 
+  color: theme.palette.text.third,
+  marginTop: '0',
+}));
+const NumberTypography = styled(Typography)(({ theme }) => ({
+    fontWeight: '600',
+  fontFamily: 'Outfit, sans-serif', 
+  color: theme.palette.text.primary,
+ 
+}));
+
 const StyledIconComponent = styled(Box)(({ theme }) => ({
-    fontSize: "3rem",
-    color: theme.palette.primary.main,
-    position: 'absolute',
-    left: '50%',
-    top: "-50%",
+    fontSize: "2rem",
+    color: theme.palette.text.primary,
+    
 }));
 
 const NameTypography = styled(Typography)(({ theme, animate }) => ({
@@ -74,20 +96,39 @@ const NameTypography = styled(Typography)(({ theme, animate }) => ({
     transition: 'opacity 3.5s ease',
 }));
 
-const StyledCard = styled(Card)(({ theme, animate, index }) => ({
-    mb: 2, 
-    width: '100%', 
+const StyledCard = styled(Box)(({ theme, animate, index }) => ({
     textAlign: 'center',
-    animation: animate && `${slideInLeftAnimation} 2.5s ease forwards`,
-    animationDelay: animate && `${index * 0.3}s`,
     position: 'relative',
-    borderTop: `2px solid gray`, 
-    paddingTop: '20px',
+    backgroundColor: theme.palette.background.default,
+    borderRadius: '10px',
+    margin: '10px',
+    flexBasis: 'calc(25% - 20px)',
+    flexGrow: 1,
+    minWidth: '200px',
+    height: '150px',
+    display: 'flex',               
+    justifyContent: 'center',       
+    alignItems: 'center',
+    opacity: animate ? 1 : 0, 
+    transition: 'opacity 1.5s ease',
+
+
+    [theme.breakpoints.down('sm')]: {
+        minWidth: '155px',
+        height: '120px',
+        margin: '4px',
+    },
+   
 }));
 
-const StyledBox = styled(Box)(({ theme }) => ({
+const StyledBox = styled(Box)(({ theme, animate }) => ({
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
-    width: '100%'
+    justifyContent: 'center',
+    width: '100%',
+    flexWrap: 'wrap',
+    backgroundColor: theme.palette.background.paper2,
+    padding:'0 5px',
+    
 }));

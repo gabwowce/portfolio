@@ -44,7 +44,6 @@ const tools = [
   { name: 'AutoCAD', image: autocadLogo },
   { name: 'AxureRP', image: axureRPLogo },
   { name: 'CMD', image: cmdLogo },
-  { name: 'ChatGPT', image: chatgptLogo },
 ];
 
 const ToolCarousel = () => {
@@ -62,7 +61,7 @@ const ToolCarousel = () => {
   }, [visibleElements]);
 
   const [autoplay, setAutoplay] = useState(false);
-  const isMedium = useMediaQuery(theme.breakpoints.down('md'));
+  const isMedium = useMediaQuery(theme.breakpoints.down('lg'));
   const isExtraSmall = useMediaQuery(theme.breakpoints.down('sm'));
   const settings = {
     infinite: true,
@@ -96,7 +95,8 @@ const ToolCarousel = () => {
       }, []); // Single group for large screens (1 row with all tools)
 
   return (
-    <StyledBox id="about-skills" className="track-visibility">
+  
+      <StyledBox id="about-skills" className="track-visibility">
       {/* <StyledBox>
         <NameTypography variant="h2" animate={animate}>
           {t('aboutPage.skills.title')}
@@ -113,41 +113,59 @@ const ToolCarousel = () => {
             {group.map((tool, index) => (
               <StyledBox4 key={index} index={index}>
                 <StyledBox3 component="img" src={tool.image} alt={tool.name} />
-                
+                <ToolNameTypography>
+                  {tool.name}
+                </ToolNameTypography>
               </StyledBox4>
             ))}
           </StyledBox2>
         ))}
       </Slider>
     </StyledBox>
+  
+    
   );
 };
 
 export default ToolCarousel;
 
 const ToolNameTypography = styled(Typography)(({ theme }) => ({
-  color: theme.palette.text.primary
+  color: theme.palette.text.primary, 
 }));
 
 const StyledBox4 = styled(Box)(({ theme, isVisible, index }) => ({
       display: 'flex', 
-      flexDirection: 'column', 
+      flexDirection: 'row', 
       alignItems: 'center', 
       justifyContent: 'center', 
       textAlign: 'center', 
       padding: '10px',
+      // border:theme.palette.mode === 'dark' ? '1px solid #CE90F2' : '1px solid #E44C83',
+      borderRadius:'10px',
+      gap:'5px',
+      margin:'0 5px',
       
+      backgroundColor: theme.palette.background.default,
+      // boxShadow: theme.palette.mode === 'dark' 
+      //   ? '5px 7px 6px -2px rgba(0, 0, 0, 0.5), 7px 5px 6px -2px rgba(0, 0, 0, 0.5)' 
+      //   : '0 7px 6px -2px rgba(0, 0, 0, 0.2), 7px 0 6px -2px rgba(0, 0, 0, 0.2)',
+      // background:theme.palette.mode === 'dark' ? 'rgb(206,144,242,0.2)' : 'rgb(228,76,131,0.2)',
+      [theme.breakpoints.down('lg')]: {
+        margin:'10px 5px'
+      },
 }));
 
 const StyledBox3 = styled(Box)(({ theme }) => ({
-      width: '80px', 
-      height: '80px', 
-      marginBottom: '5px', 
+      width: '25px', 
+      height: '25px', 
+      // marginBottom: '5px', 
       display: 'block',
+      
       [theme.breakpoints.down('lg')]: {
-        width: '60px', 
-        height: '60px', 
+        width: '25px', 
+        height: '25px', 
       },
+
 }));
 
 const StyledBox2 = styled(Box)(({ theme, isExtraSmall, animate }) => ({
@@ -156,7 +174,9 @@ const StyledBox2 = styled(Box)(({ theme, isExtraSmall, animate }) => ({
       justifyContent: 'space-around',
       width: '100%',
       opacity: animate ? 1 : 0, 
-    transition: 'opacity 3.5s ease',
+      transition: 'opacity 3.5s ease',
+     
+
 }));
   
 {/*
@@ -175,20 +195,21 @@ overflow: 'hidden',
 */}
 
 const StyledBox = styled(Box)(({ theme }) => ({
-  padding: '5rem 0',
-  backgroundColor: theme.palette.background.paper,
+  padding: '10px 0',
+  backgroundColor: theme.palette.background.paper2,
   width: '100%',
-  overflow: 'hidden',
-   // Make sure it's positioned relative for the pseudo-elements
-  [theme.breakpoints.down('sm')]: {
-    padding: '2rem 0',
-  },
-
-  
+  overflow: 'hidden',  
  
 }));
 
-
+const StyledBoxBg = styled(Box)(({ theme }) => ({
+  padding: '10px 0',
+  // backgroundColor: theme.palette.background.paper2,
+  width: '100%',
+  overflow: 'hidden',
+  background:theme.palette.mode === 'dark' ? 'rgb(206,144,242,0.2)' : 'rgb(228,76,131,0.2)',
+ 
+}));
 // const NameTypography = styled(Typography)(({ theme, animate }) => ({
 //     fontFamily: 'Outfit, sans-serif',
 //     fontWeight: '600',

@@ -4,6 +4,21 @@ import { initReactI18next } from 'react-i18next';
 import adminPic from '../assets/experience/admin.jpg';
 import codingPic from '../assets/experience/coding.jpg';
 import planningPic from '../assets/experience/planning.jpg';
+import blueBg from '../assets/projects/blue-bg.png';
+import LibraryPic from '../assets/projects/LabraryWeb.png';
+import buildingBg from '../assets/projects/building-bg.png';
+import RealEstatePic from '../assets/projects/RealEstateWeb.png';
+
+import portfolioBgLight from '../assets/projects/portfolioBgLight.png';
+import portfolioBgDark from '../assets/projects/portfolioBgDark.png';
+
+import portfolioDark from '../assets/projects/portfolioDark.png';
+import portfolioLight from '../assets/projects/portfolioLight.png';
+
+import RealEstateMobile from '../assets/projects/RealEstateMobile.png';
+import porfolioLightMobile from '../assets/projects/porfolioLightMobile.png';
+import porfolioDarkMobile from '../assets/projects/porfolioDarkMobile.png';
+import { light } from '@mui/material/styles/createPalette';
 
 i18n
   .use(initReactI18next)
@@ -225,18 +240,72 @@ i18n
             }
           },
           portfolioPage: {
-            title: "My Works",
+            title: "My Projects",
             description: "My programming journey has been diverse, involving various projects that served as valuable learning resources. I've created a range of applications, from data analytics projects to desktop applications. In this portfolio, I present my recent works that I am most passionate about.",
             projects: [
               {
                 title: "Library Management App",
                 description: "The library management system is designed for managing library data. The system allows tracking of book information, administering debts, and managing borrowers. It includes three modes: administrator, manager, and user, each with different rights and functionalities.",
-                tools: ["React", "CSS/SCSS", "ASP.NET Core Web API", "MySQL"]
+                tools: ["React", "SCSS", "ASP.NET Core Web API", "MySQL"],
+                links:{
+                  front:'https://github.com/gabwowce/LibraryManagement-frontend',
+                  back:'https://github.com/gabwowce/LibraryManagement-backend'
+                },
+                images:{
+                  dark:{
+                    bg: blueBg,
+                    pic: LibraryPic,
+                    pic2: null
+                  },
+                  light:{
+                    bg: blueBg,
+                    pic: LibraryPic,
+                    pic2: null
+                  }
+                },
+                
               },
               {
                 title: "Real Estate Website",
                 description: "This real estate website is designed to provide users with an intuitive platform for browsing and managing property listings. Built with React and TypeScript, the site features a responsive design using SCSS, ensuring an optimal experience across various devices.",
-                tools: ["React", "TypeScript", "SCSS", "Responsive Design"]
+                tools: ["React", "TypeScript", "SCSS"],
+                links:{
+                  front:'https://github.com/gabwowce/real-estate-fronted-app',
+                  link:'https://gabwowce.github.io/real-estate-fronted-app'
+                },
+                images:{
+                  light:{
+                    bg: buildingBg,
+                    pic: RealEstatePic,
+                    pic2: RealEstateMobile,
+                  },
+                  dark:{
+                    bg: buildingBg,
+                    pic: RealEstatePic,
+                    pic2: RealEstateMobile,
+                  }
+                },
+                
+              },
+              {
+                title: "My Portfolio Website",
+                description: "This portfolio website is designed to showcase my skills, projects, and experience in the programming field. The site is responsive and optimized to look great on both mobile and desktop devices. Key sections include information about me, my projects, contact details.",
+                tools: ["React", "Material-UI", "CSS", "i18next"],
+                links:{
+                  front:'https://github.com/gabwowce/portfolio',
+                },
+                images: {
+                  light: {
+                    bg: portfolioBgDark,
+                    pic: portfolioDark, 
+                    pic2: porfolioDarkMobile,
+                  },
+                  dark: {
+                    bg: portfolioBgLight,
+                    pic: portfolioLight,
+                    pic2: porfolioLightMobile,
+                  }
+                },
               }
             ]
           },
@@ -247,7 +316,7 @@ i18n
           statistics: {
             linesOfCode: {
               title: "Lines of Code Written",
-              number: 50000
+              number: '50000+'
             },
             codeFirstTry: {
               title: "Code Written on First Try Without Errors",
@@ -255,11 +324,11 @@ i18n
             },
             bugsSquashed: {
               title: "Bugs Squashed",
-              number: 120
+              number: '120+'
             },
             monitorsUsed: {
               title: "Monitors Used",
-              number: 3
+              number: '3+'
             }
           },
           messages: [
@@ -517,12 +586,65 @@ i18n
               {
                 title: "Bibliotekos valdymo sistema",
                 description: "Sistema skirta bibliotekų duomenims tvarkyti, leidžianti stebėti knygų informaciją, administruoti skolas ir tvarkyti skolintojus. Sistemoje yra trys režimai: administratoriaus, vadybininko ir vartotojo. Kiekvienas režimas turi skirtingas teises ir funkcijas.",
-                tools: ["React", "CSS/SCSS", "ASP.NET Core Web API", "MySQL"]
+                tools: ["React", "SCSS", "ASP.NET Core Web API", "MySQL"],
+                links:{
+                  front:'https://github.com/gabwowce/LibraryManagement-frontend',
+                  back:'https://github.com/gabwowce/LibraryManagement-backend'
+                },
+                images:{
+                  dark:{
+                    bg: blueBg,
+                    pic: LibraryPic,
+                    pic2: null
+                  },
+                  light:{
+                    bg: blueBg,
+                  pic: LibraryPic,
+                  pic2: null
+                  }
+                },
+                
               },
               {
                 title: "Nekilnojamojo turto svetainė",
                 description: "Ši nekilnojamojo turto svetainė sukurta tam, kad vartotojai galėtų lengvai naršyti ir tvarkyti turto įrašus. Svetainė sukurta naudojant React ir TypeScript, turi adaptyvų dizainą, kuris užtikrina optimalią patirtį visų tipų įrenginiuose.",
-                tools: ["React", "TypeScript", "SCSS", "Adaptyvus dizainas"]
+                tools: ["React", "TypeScript", "SCSS"],
+                links:{
+                  front:'https://github.com/gabwowce/real-estate-fronted-app',
+                  link:'https://gabwowce.github.io/real-estate-fronted-app'
+                },
+                images:{
+                  dark:{
+                    bg: buildingBg,
+                    pic: RealEstatePic,
+                    pic2: RealEstateMobile,
+                  },
+                  light:{
+                    bg: buildingBg,
+                    pic: RealEstatePic,
+                    pic2: RealEstateMobile,
+                  }
+                },
+              },
+              {
+                title: "Mano Portfelio Svetainė",
+                description: "Ši portfelio svetainė sukurta siekiant pristatyti mano įgūdžius, projektus ir patirtį programavimo srityje. Svetainė yra responsyvi ir pritaikyta, kad gerai atrodytų tiek mobiliajame, tiek stacionariame įrenginyje. Pagrindiniai skyriai apima informacijos apie mane, projektus, kontaktus.",
+                tools: ["React", "Material-UI", "CSS", "i18next"],
+                links:{
+                  front:'https://github.com/gabwowce/portfolio',
+                },
+                images: {
+                  light: {
+                    bg: portfolioBgDark,
+                    pic: portfolioDark, 
+                    pic2: porfolioDarkMobile,
+                  },
+                  dark: {
+                    bg: portfolioBgLight,
+                    pic: portfolioLight,
+                    pic2: porfolioLightMobile,
+                  }
+                },
               }
             ]
           },
@@ -533,7 +655,7 @@ i18n
           statistics: {
             linesOfCode: {
               title: "Parašyta kodo eilučių",
-              number: 50000
+              number: '50000+'
             },
             codeFirstTry: {
               title: "Kodas parašytas iš pirmo karto be klaidų",
@@ -541,11 +663,11 @@ i18n
             },
             bugsSquashed: {
               title: "Sunaikinta klaidų",
-              number: 120
+              number: '120+'
             },
             monitorsUsed: {
               title: "Naudoti monitoriai",
-              number: 3
+              number: '3+'
             }
           },
           messages: [

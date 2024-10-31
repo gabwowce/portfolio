@@ -22,7 +22,7 @@ export const VisibilityProvider = ({ children }) => {
       });
     }, {
       //rootMargin: "0px 0px -100px 0px", // Galima koreguoti papildomai
-      threshold: 0.1 // 20% elemento turi būti matoma
+      threshold: 0.2 // 20% elemento turi būti matoma
     });
 
     const elements = document.querySelectorAll('.track-visibility');

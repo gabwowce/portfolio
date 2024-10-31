@@ -65,7 +65,14 @@ const StyledBox2 = styled(Box)(({ theme, isVisible, index }) => ({
 const StyledBox = styled(Box)(({ theme }) => ({
     display: 'grid', 
     gridTemplateColumns: 'repeat(3, 1fr)', 
-    gap: '7rem'
+    gap: '7rem',
+    [theme.breakpoints.down('md')]: {
+        gap: '4rem',
+      },
+
+    [theme.breakpoints.down('sm')]: {
+        gap: '2rem',
+    },
 }));
 
 const StyledCircularProgress = styled(CircularProgress)(({ theme, level }) => ({
@@ -97,6 +104,24 @@ const NameTypography = styled(Typography)(({ theme }) => ({
     '&::after': {
       right: '-250px', 
     },
+    [theme.breakpoints.down('lg')]: {
+        '&::before, &::after': {
+            width: '130px', 
+        },
+        '&::before': {
+          left: '-200px', 
+        },
+        '&::after': {
+          right: '-200px', 
+        },
+      },
+
+      [theme.breakpoints.down('md')]: {
+
+        '&::before, &::after': {
+           display:'none'
+        },
+      },
   }));
 
 

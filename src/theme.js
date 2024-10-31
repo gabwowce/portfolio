@@ -10,9 +10,15 @@ export const lightTheme = createTheme({
       dark: '#FFBD73',   // Light orange (for darker button states)
     },
     background: {
-      default: '#FDFCEE', // Very light yellow
+      default: '#EBE5DC', // Very light yellow
       paper: '#FEF9F2',   // Light yellow paper background
+      paper2:'#FAF8F3',
       hover: '#e4a0b8',   // Orange for hover effects
+      portfolio: `radial-gradient(circle at 20% 30%, rgba(255, 0, 0, 0.3), transparent 40%),
+               radial-gradient(circle at 60% 80%, rgba(255, 0, 0, 0.3), transparent 40%),
+               radial-gradient(circle at 0% 20%, rgba(0, 0, 255, 0.3), transparent 30%),
+               radial-gradient(circle at 80% 100%, rgba(0, 0, 255, 0.3), transparent 30%),
+               radial-gradient(circle at 40% 60%, rgba(0, 0, 255, 0.3), transparent 30%)`
     },
     text: {
       primary: '#243642', // Dark blue for main text
@@ -156,7 +162,9 @@ export const darkTheme = createTheme({
     background: {
       default: '#121212', // Dark background
       paper: '#1d1d1d',   // Dark paper background
+      paper2: '#1F1F1F',
       hover: '#612a30',   // Light gray for hover effects
+      portfolio: '#1d1d1d'
     },
     text: {
       primary: '#E5E5CB', // Light gray for main text

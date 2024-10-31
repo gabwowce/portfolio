@@ -105,10 +105,11 @@ const About = () => {
             
       </HeroSection>
 
+      <ToolCarousel/>
+
         <Statistics/>
         
-        <ToolCarousel/>
-
+        
 
         <StyledBackgroundBox3 animate={animateHistory}id="about-history" >
           <Timeline/>
@@ -168,7 +169,7 @@ const StyledCardBox = styled(Box)(({ theme }) => ({
 }));
 
 
-const HeroSection = styled(Box)(({ theme,animate }) => ({
+export const HeroSection = styled(Box)(({ theme,animate }) => ({
   position: 'relative', // Make sure the container is relatively positioned
   background: `radial-gradient(circle at 20% 30%, rgba(255, 0, 0, 0.3), transparent 40%),
                radial-gradient(circle at 60% 80%, rgba(255, 0, 0, 0.3), transparent 40%),
@@ -192,13 +193,14 @@ const HeroSection = styled(Box)(({ theme,animate }) => ({
 
 const StyledBackgroundBox3 = styled(Box)(({ theme }) => ({
   width: '100%',
-  background: theme.palette.background.paper,
+  background: theme.palette.background.paper2,
   padding: '0',
   display:'flex',
   justifyContent:'center',
+  
 }));
 
-const StyledBackgroundBox2 = styled(Box)(({ theme }) => ({
+export const StyledBackgroundBox2 = styled(Box)(({ theme }) => ({
   width: '100%',
   background: theme.palette.background.paper,
   padding: '0',
@@ -225,9 +227,10 @@ const StyledBackgroundBox = styled(Box)(({ theme }) => ({
 }));
 
 export const SecondTypography = styled(Typography)(({ theme, animate }) => ({
-  textAlign: 'justify',
+  textAlign: 'center',
   color: theme.palette.text.primary,
   animation: animate && `${slideInLeftAnimation} 2.5s ease forwards`,
+  
   //  animationDelay: animate && '1.5s'
 }));
 
@@ -394,7 +397,7 @@ const HeroStyleSection = styled(Box)(({ theme }) => ({
 
 
 
-const BackgroundSection = styled(Box)(({ theme, animate }) => ({
+export const BackgroundSection = styled(Box)(({ theme, animate }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#393736' : 'rgb(196, 225,246,0.3)',
   width: '100%',
   opacity: animate ? 1 : 0, 
