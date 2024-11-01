@@ -45,7 +45,7 @@ const App = () => {
   }
 
   return (
-    <Router basename="/portfolio">
+    <Router>
       <VisibilityProvider>
         <LoadingProvider>
           <ThemeContextProvider>

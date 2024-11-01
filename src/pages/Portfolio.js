@@ -201,7 +201,7 @@ const SkillsTypography = styled(Typography)(({ theme, isHovered }) => ({
     transition: 'height 1s ease',
     zIndex: '10',
     [theme.breakpoints.down('sm')]: {
-      height: isHovered ? '280px' : '140px', 
+      height: isHovered ? '320px' : '140px', 
    },
 }));
 
@@ -275,7 +275,7 @@ export const BackgroundSection = styled(Box)(({ theme }) => ({
     [theme.breakpoints.down('sm')]: {
       maxWidth: 'calc(100% - 2rem)',
       minWidth: '350px',
-      height: '500px',
+      height: '550px',
     },
   }));
 
