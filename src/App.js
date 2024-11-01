@@ -54,12 +54,14 @@ const App = () => {
               <LoadingIndicator />
               <Header />
               <div className="content"> 
+              <BrowserRouter basename="/portfolio">
                 <Routes> 
                   <Route path="/about" element={<PageWrapper><About /></PageWrapper>} />
                   <Route path="/portfolio" element={<PageWrapper><Portfolio /></PageWrapper>} />
                   <Route path="/contact" element={<PageWrapper><Contact /></PageWrapper>} />
                   <Route path="/" element={<PageWrapper><About /></PageWrapper>} /> 
                 </Routes>
+                </BrowserRouter>
               </div>
               <Footer />
             </LanguageProvider>
