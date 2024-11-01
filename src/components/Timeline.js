@@ -165,9 +165,9 @@ export default Timeline;
 
 const YearDotContainer = styled(Box)(({ theme, index}) => ({
   display: 'flex',
-  flexDirection: 'row', // Horizontaliam išdėstymui
-  alignItems: 'center', // Vertikaliai centruoti
-  justifyContent: index % 2 === 0 ? 'flex-end' : 'flex-start', // Išdėstyti dešinėje pusėje
+  flexDirection: 'row', 
+  alignItems: 'center', 
+  justifyContent: index % 2 === 0 ? 'flex-end' : 'flex-start', 
   position: 'relative', 
   height: 'auto', 
   width: '232px',
@@ -222,13 +222,12 @@ const InnerTypography = styled(Typography)(({ theme }) => ({
     position: 'relative',
     width: '40%',
     height: 'auto',
-    borderRadius: '24px !important', // Suapvalina visus kampus
+    borderRadius: '24px !important', 
     background: theme.palette.mode === 'dark' ? colorsGradientDark[index %  colorsGradientDark.length] : colorsGradientLight[index %  colorsGradientLight.length],
     alignSelf: index % 2 === 0 ? 'flex-start' : 'flex-end',
     margin: '2rem 0',
     zIndex: '100',
-    // animation: animate && `${index % 2 === 0 ? slideInLeftAnimation : slideInRightAnimation} 2.5s ease both`,
-    // animationDelay: animate && `${index * 0.3}s`,
+
     boxShadow: theme.palette.mode === 'dark' 
         ? '0 7px 6px -2px rgba(0, 0, 0, 0.5), 7px 0 6px -2px rgba(0, 0, 0, 0.5)' 
         : '0 7px 6px -2px rgba(0, 0, 0, 0.2), 7px 0 6px -2px rgba(0, 0, 0, 0.2)',
@@ -236,7 +235,6 @@ const InnerTypography = styled(Typography)(({ theme }) => ({
     [theme.breakpoints.down('md')]: {
         width: '40%',
         margin: '1rem 0',
-        // transform: index % 2 === 0 ? 'translateX(-8%)' : 'translateX(8%)',
         alignSelf: 'center'
     },
     [theme.breakpoints.down('sm')]: {
@@ -303,20 +301,6 @@ const StyledTimelineContainer = styled(Box)(({ theme }) => ({
     
 }));
 
-// const StyledLine = styled(Box)(({ theme, top, bottom, animate }) => ({
-//   position: 'absolute',
-//   left: 'calc(50% - 4px)',
-//   width: '8px',
-//   height: `calc(${bottom}px - ${top}px)`, // Nustatykite aukštį
-//   borderRadius: '50px',
-//   backgroundColor: theme.palette.mode === 'dark' ? 'rgb(29,29,29,0.5)' : 'rgb(255,249,242,0.9)',
-//   top: top, 
-//   bottom: `calc(100% - ${bottom}px)`,
-//   animation: animate && `${slideUpAnimation} 2.5s ease forwards`,
-//   [theme.breakpoints.down('md')]: {
-//       display: 'none',
-//   },
-// }));
 
 const StyledDot = styled(Box)(({ theme, index, isLast }) => ({
   position: 'relative',
@@ -330,19 +314,18 @@ const StyledDot = styled(Box)(({ theme, index, isLast }) => ({
   '&::after': {
     content: '""',
     position: 'absolute',
-    width: '350%', // Ilgis, kad padengtų dotą
-    height: '5px', // Linijos aukštis
+    width: '350%', 
+    height: '5px', 
     background: theme.palette.mode === 'dark' ? '#181818' : '#EBE5DC',
-    top: '50%', // Centruoja vertikalioje ašyje
+    top: '50%', 
     right: index % 2 === 0 ? '0' : 'none',
     left: index % 2 === 0 ? 'none' : '0',
     transform: 'translateY(-50%)',
-    zIndex: -1, // Įsitikinkite, kad linija yra po dotu
+    zIndex: -1, 
     
   },
 
   [theme.breakpoints.down('md')]: {
-    // display:'none'
     width: '80px',
     height: '80px',
   },
@@ -355,14 +338,14 @@ const StyledDot = styled(Box)(({ theme, index, isLast }) => ({
 
 const LineBefore = styled(Box)(({ height, theme, index }) => ({
   position: 'absolute',
-  width: '5px', // Linijos plotis
-  height: height || '0px', // Aukštis gali būti perduotas kaip prop
+  width: '5px', 
+  height: height || '0px', 
   backgroundColor: theme.palette.mode === 'dark' ? '#181818' : '#EBE5DC',
   left: index % 2 === 0 ? '78%' : 'none',
   right: index % 2 === 0 ? 'none' : '78%',
-  transform: 'translateX(-50%)', // Centruoja horizontaliai
+  transform: 'translateX(-50%)',
   zIndex: -1,
-  top: '90%', // Pradeda nuo dot apatinės dalies
+  top: '90%', 
 }));
 
 

@@ -145,13 +145,6 @@ const SecondTypography2 = styled(Typography)(({ theme, index, animate }) => ({
   }));
 
 const StyledBackgroundBox = styled(Box)(({ theme, animate }) => ({
-    // width: '100%',
-    // background: theme.palette.background.paper,
-    // padding: '8rem 0 8rem 0',
-    // opacity: animate ? 1 : 0, 
-    // transition: 'opacity 1.5s ease',
-    // position:'relative'
-
     display: 'flex',
   flexDirection: 'column',
   justifyContent: 'center',
@@ -162,9 +155,7 @@ const StyledBackgroundBox = styled(Box)(({ theme, animate }) => ({
   padding: '3rem 0 3rem 0',
   opacity: animate ? 1 : 0, 
   transition: 'opacity 1.5s ease',
-  [theme.breakpoints.down('sm')]: {
-    padding: '2rem 0 0 0',
-},
+
 }));
 
 const StyledSkillBox = styled(Box)(({ theme }) => ({

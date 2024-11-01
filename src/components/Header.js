@@ -18,7 +18,7 @@ export default function Header() {
   const isMobile = useMediaQuery((theme) => theme.breakpoints.down('sm'));
   const { visibleElements } = useVisibility();
   const [animate, setAnimate] = useState(false);
-  const location = useLocation(); // Get the current location
+  const location = useLocation(); 
 
   const handleMenuClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -38,23 +38,7 @@ export default function Header() {
     setMobileMenuOpen(!mobileMenuOpen);
   };
 
-  // Use effect to trigger animation on location change
-  // useEffect(() => {
-  //   // Reset animation when the route changes
-  //   setAnimate(true);
-  //   const timer = setTimeout(() => setAnimate(false), 2000); // Duration of the animation
-
-  //   return () => clearTimeout(timer); // Cleanup
-  // }, [location]);
-
   
-
-  // useEffect(() => {
-  //   const isVisible = visibleElements.has("header");
-  //   if (isVisible) {
-  //       setAnimate(true);
-  //   }
-  // }, [visibleElements]);
 
   return (
     <StyledAppBar position="fixed" id='header'> 
@@ -93,7 +77,7 @@ export default function Header() {
             <IconButton onClick={handleMenuClick}>
               <StyledLanguageIcon />
             </IconButton>
-          <Menu anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={handleMenuClose}>
+          <Menu anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={handleMenuClose} sx={{ zIndex: 999999}}>
             <MenuItem onClick={() => changeLanguage('en')}>EN</MenuItem>
             <MenuItem onClick={() => changeLanguage('lt')}>LT</MenuItem>
           </Menu>
@@ -121,16 +105,16 @@ const StyledLanguageIcon = styled(LanguageIcon)(({ theme }) => ({
 
 const StyledAppBar = styled(AppBar)(({ theme, animate }) => ({
   position: 'fixed',
-  top: '1rem', // Nustatykite viršutinę atstumą
-  left: '2rem', // Nustatykite kairįjį atstumą
-  right: '2rem', // Nustatykite dešinįjį atstumą
-  borderRadius: '24px', // Apvalūs kampai
+  top: '1rem', 
+  left: '2rem', 
+  right: '2rem', 
+  borderRadius: '24px', 
   width: 'calc(100% - 4rem)',
-  backgroundColor: theme.palette.mode === 'dark' ? 'rgba(0, 0, 0, 0.2)' : 'rgba(255, 255, 255, 0.2)', // Skaidrus fonas
-  backdropFilter: 'blur(10px)', // Neryškumo efektas
+  backgroundColor: theme.palette.mode === 'dark' ? 'rgba(0, 0, 0, 0.2)' : 'rgba(255, 255, 255, 0.2)', 
+  backdropFilter: 'blur(10px)', 
   transition: 'background-color 0.3s ease, color 0.3s ease',
-  boxShadow: theme.shadows[10], // Pridėkite šešėlį, kad atrodytų plūduriuojantis
-  zIndex: 99999, // Užtikrinkite, kad jis būtų virš kitų elementų
+  boxShadow: theme.shadows[10], 
+  zIndex: 99999, 
   animation: `${slideDownAnimation} 2.5s ease forwards`,
 }));
 
@@ -139,7 +123,7 @@ const StyledToolbar = styled(Toolbar)(({ theme }) => ({
   display: 'flex',
   justifyContent: 'space-between',
   alignItems: 'center',
-  padding: '0.5rem', // Pridėkite vidinį atstumą, jei reikia
+  padding: '0.5rem', 
 }));
   
 const StyledButton = styled(Button)(({ theme }) => ({
@@ -169,12 +153,12 @@ const StyledMobileMenu = styled(Box)(({ theme, open }) => ({
     position: 'absolute',
     color: theme.palette.text.primary,
     top: '0',
-    left: open ? '0' : '-100%', // Move off-screen when closed
+    left: open ? '0' : '-100%', 
     backgroundColor: theme.palette.background.paper,
     boxShadow: theme.shadows[3],
     display: 'flex',
     flexDirection: 'column', 
     padding: theme.spacing(1),
     zIndex: 1000, 
-    transition: 'left 0.3s ease', // Smooth transition
+    transition: 'left 0.3s ease', 
 }));

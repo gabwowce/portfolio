@@ -30,6 +30,14 @@ i18n
             text: "Oops! The page you’re looking for doesn’t exist.",
             btn: "Back to Home",
           },
+          contact: {
+            title: "Let's chat. Tell me about your project",
+            subtitle: "Let's create something together 👋",
+            message:'Send me a message 🚀',
+            sendMessage: "SEND MESSAGE",
+            name:'Name',
+            mss:"Message"
+          },
           header: {
             about: "About",
             portfolio: "Portfolio",
@@ -41,83 +49,32 @@ i18n
               {
                 title:"About",
                 link:'/about',
-                links:[
-                  {
-                    title:"Hero section",
-                    link:"about-hero"
-                  },
-                  {
-                    title: "My Skills",
-                    link:"about-skills"
-                  },
-                  {
-                    title: "My History",
-                    link:"about-history"
-                  },
-                  {
-                    title: "Language Skills",
-                    link:"about-languages"
-                  }
-                ]
+                
               },
               {
                 title:"Portfolio",
-                link:'/porfolio',
-                links:[
-                  {
-                    title:"Hero skiltis",
-                    link:"portfolio-hero"
-                  },
-                  {
-                    title: "Mano Įgūdžiai",
-                    link:"about-skills"
-                  },
-                  {
-                    title:"Mano Istorija",
-                    link:"about-history"
-                  },
-                  {
-                    title: "Kalbų Įgūdžiai",
-                    link:"about-language"
-                  }
-                ]
+                link:'/portfolio',
+                
               },
               
               {
-                title:"Kontaktai",
+                title:"Contact",
                 link:'/contact',
-                links:[
-                  {
-                    title:"Hero skiltis",
-                    link:"contact-hero"
-                  },
-                  {
-                    title: "Mano Įgūdžiai",
-                    link:"about-skills"
-                  },
-                  {
-                    title: "Mano Istorija",
-                    link:"about-history"
-                  },
-                  {
-                    title: "Kalbų Įgūdžiai",
-                    link:"about-language"
-                  }
-                ]
+               
               }
             ],
           },
           aboutPage: {
             name: "Gabrielė Tamaševičiūtė",
             jobTitle: "Junior Developer",
-            description: "Programming is my driving passion. I enjoy every moment spent tackling challenges, seeking creative solutions, building and coding. I dedicate myself to hard work and continuous learning, not only because I aspire to become a professional in this field, but also because software development is my number one hobby.",
+            description: "Software development is my driving passion. I enjoy every moment spent tackling challenges, seeking creative solutions, building and coding. I dedicate myself to hard work and continuous learning, not only because I aspire to become a professional in this field, but also because software development is my number one hobby.",
             stats:{
               title:"Some Statistic",
               subtitle:""
             },
             workExperience: {
               title: "My History",
-              subtitle:"Although the storyline is straight, the twists in it are unexpected.",
+              subtitle:"Like a storyline, my story has many unexpected twists",
               experiences: [
                 {
                   title: "Junior Developer",
@@ -129,8 +86,9 @@ i18n
                   description: [
                     "Working with the user interface of POS systems",
                     "Modifying design elements if the original plan requires changes",
-                    "Collaborating with team members"
-                  ],
+                    "Collaborating with team members",
+                    "Solving problems and fixing bugs"
+                ],
                   skills: ["C# .NET", "XAML", "XML", "WPF", "HTML/CSS"]
                 },
                 {
@@ -201,7 +159,7 @@ i18n
                   writing: 100
                 },
                 english: {
-                  speaking: 50,
+                  speaking: 60,
                   comprehension: 80,
                   writing: 80
                 }
@@ -267,7 +225,7 @@ i18n
               },
               {
                 title: "Real Estate Website",
-                description: "This real estate website is designed to provide users with an intuitive platform for browsing and managing property listings. Built with React and TypeScript, the site features a responsive design using SCSS, ensuring an optimal experience across various devices.",
+                description: "This real estate website project was created to deepen knowledge of React and TypeScript. Additionally, the site was developed as a practical tool to enhance skills in accurately replicating designs from Figma.",
                 tools: ["React", "TypeScript", "SCSS"],
                 links:{
                   front:'https://github.com/gabwowce/real-estate-fronted-app',
@@ -289,7 +247,7 @@ i18n
               },
               {
                 title: "My Portfolio Website",
-                description: "This portfolio website is designed to showcase my skills, projects, and experience in the programming field. The site is responsive and optimized to look great on both mobile and desktop devices. Key sections include information about me, my projects, contact details.",
+                description: "This portfolio website is a personal project showcasing my skills and experience in programming. I designed it myself to deepen my design and programming abilities. Focused on creating user-friendly interfaces, I continuously refine my development approach. The responsive layout offers a seamless experience across devices, reflecting my enthusiasm for engaging web experiences.",
                 tools: ["React", "Material-UI", "CSS", "i18next"],
                 links:{
                   front:'https://github.com/gabwowce/portfolio',
@@ -324,7 +282,7 @@ i18n
             },
             bugsSquashed: {
               title: "Bugs Squashed",
-              number: '120+'
+              number: '99+'
             },
             monitorsUsed: {
               title: "Monitors Used",
@@ -367,6 +325,14 @@ i18n
       },
       lt: {
         translation: {
+          contact: {
+            title: "Pasikalbėkime. Papasakok apie savo projektą",
+            subtitle: "Sukurkime ką nors kartu 👋",
+            message: 'Parašyk man žinutę 🚀',
+            sendMessage: "SIŲSTI ŽINUTĘ",
+            name:'Vardas',
+            mss:"Žinutė"
+        },
           error: {
             text: "Ups! Puslapis, kurio ieškote, neegzistuoja.",
             btn: "Grįžti į pradžią",
@@ -382,82 +348,31 @@ i18n
               {
                 title:"Apie mane",
                 link:'/about',
-                links:[
-                  {
-                    title:"Hero skiltis",
-                    link:"abaut-hero"
-                  },
-                  {
-                    title: "Mano Įgūdžiai",
-                    link:"about-skills"
-                  },
-                  {
-                    title: "Mano Istorija",
-                    link:"about-history"
-                  },
-                  {
-                    title: "Kalbų Įgūdžiai",
-                    link:"about-languages"
-                  }
-                ]
+                
               },
               {
                 title:"Portfolio",
-                link:'/porfolio',
-                links:[
-                  {
-                    title:"Hero skiltis",
-                    link:"portfolio-hero"
-                  },
-                  {
-                    title: "Mano Įgūdžiai",
-                    link:"about-skills"
-                  },
-                  {
-                    title:"Mano Istorija",
-                    link:"about-history"
-                  },
-                  {
-                    title: "Kalbų Įgūdžiai",
-                    link:"about-language"
-                  }
-                ]
+                link:'/portfolio',
+                
               },
               {
                 title:"Kontaktai",
                 link:'/contact',
-                links:[
-                  {
-                    title:"Hero skiltis",
-                    link:"contact-hero"
-                  },
-                  {
-                    title: "Mano Įgūdžiai",
-                    link:"about-skills"
-                  },
-                  {
-                    title: "Mano Istorija",
-                    link:"about-history"
-                  },
-                  {
-                    title: "Kalbų Įgūdžiai",
-                    link:"about-language"
-                  }
-                ]
+               
               }
             ],
           },
           aboutPage: {
             name: "Gabrielė Tamaševičiūtė",
             jobTitle: "Jaunesnioji programuotoja",
-            description: "Programavimas, o ypač vartotojo sąsajos, yra mano gyvenimo varikliukas. Aš mėgaujuosi kiekviena minute praleista gilinantis į užduotis, ieškant kūrybiškų sprendimų, kuriant ir programuojant. Tikrai daug dirbu ir daug mokausi, gal dėl to, kad noriu tapti šios srities profesionale, bet manau ir dėl to, kad programų kūrimas yra mano top 1 hobis.",
+            description: "Programų kūrimas yra mano gyvenimo varikliukas. Aš mėgaujuosi kiekviena minute praleista gilinantis į užduotis, ieškant kūrybiškų sprendimų, kuriant ir programuojant. Tikrai daug dirbu ir daug mokausi, gal dėl to, kad noriu tapti šios srities profesionale, bet manau ir dėl to, kad programų kūrimas yra mano top 1 hobis.",
             stats:{
               title:"Šiek tiek statistokos",
               subtitle:""
             },
             workExperience: {
               title: "Mano istorija",
-              subtitle:"Nors istorijos linija tiesi, bet posūkiai joje netikėti.",
+              subtitle:"Kaip ir istorijos linija, taip ir mano istorija - daug netikėtų posukių",
               experiences: [
                 {
                   title: "Jaunesnioji programuotoja",
@@ -469,7 +384,8 @@ i18n
                   description: [
                     "Dirbu su POS sistemų vartotojo sąsaja",
                     "Koreguoju dizaino elementus, jei pirminis planas reikalauja pakeitimų",
-                    "Dirbu komandoje"
+                    "Dirbu komandoje",
+                    "Sprendžiu problemas ir taisau klaidas"
                   ],
                   skills: ["C# .NET", "XAML", "XML", "WPF", "HTML/CSS"]
                 },
@@ -541,7 +457,7 @@ i18n
                   rašymas: 100
                 },
                 anglų: {
-                  kalbėjimas: 50,
+                  kalbėjimas: 60,
                   supratimas: 80,
                   rašymas: 80
                 }
@@ -581,7 +497,7 @@ i18n
           },
           portfolioPage: {
             title: "Mano darbai",
-            description: "Mano programavimo kelias buvo labai įvairus ir susijęs su daugybe projektų, kurie tapo puikiais mokymosi šaltiniais. Nuo duomenų analizės projektų iki darbalaukio programų kūrimo, mano kelias buvo pilnas iššūkių ir atradimų. Šiame portfolio pateikiu naujausius darbus, kuriais labiausiai didžiuojuosi.",
+            description: "Mano programavimo kelias buvo įvairus, apimantis įvairius projektus, kurie buvo vertingi mokymosi šaltiniai. Nuo duomenų analizės projektų iki darbalaukio programų kūrimo, mano kelias buvo pilnas iššūkių ir atradimų. Šiame portfolio pateikiu naujausius darbus, kuriais labiausiai džiaugiuosi.",
             projects: [
               {
                 title: "Bibliotekos valdymo sistema",
@@ -607,7 +523,7 @@ i18n
               },
               {
                 title: "Nekilnojamojo turto svetainė",
-                description: "Ši nekilnojamojo turto svetainė sukurta tam, kad vartotojai galėtų lengvai naršyti ir tvarkyti turto įrašus. Svetainė sukurta naudojant React ir TypeScript, turi adaptyvų dizainą, kuris užtikrina optimalią patirtį visų tipų įrenginiuose.",
+                description: "Šis nekilnojamojo turto svetainės projektas buvo sukurtas siekiant gilinti žinias apie React ir TypeScript. Taip pat puslapis buvo kuriamas kaip praktinis įrankis tobulinti įgūdžius atkuriant tikslų dizainą iš Figma.",
                 tools: ["React", "TypeScript", "SCSS"],
                 links:{
                   front:'https://github.com/gabwowce/real-estate-fronted-app',
@@ -628,7 +544,7 @@ i18n
               },
               {
                 title: "Mano Portfelio Svetainė",
-                description: "Ši portfelio svetainė sukurta siekiant pristatyti mano įgūdžius, projektus ir patirtį programavimo srityje. Svetainė yra responsyvi ir pritaikyta, kad gerai atrodytų tiek mobiliajame, tiek stacionariame įrenginyje. Pagrindiniai skyriai apima informacijos apie mane, projektus, kontaktus.",
+                description: "Ši porfolio svetainė yra asmeninis projektas, pristatantis mano įgūdžius ir patirtį programavime. Svetainės dizainą sukūriau pati, siekdama gilinti dizaino ir programavimo žinias. Dėmesys vartotojui draugiškoms sąsajoms leidžia nuolat tobulinti savo požiūrį. Reaguojantis dizainas užtikrina sklandžią patirtį įvairiuose įrenginiuose, atspindint mano entuziazmą kurti patrauklias žiniatinklio patirtis.",
                 tools: ["React", "Material-UI", "CSS", "i18next"],
                 links:{
                   front:'https://github.com/gabwowce/portfolio',
@@ -663,7 +579,7 @@ i18n
             },
             bugsSquashed: {
               title: "Sunaikinta klaidų",
-              number: '120+'
+              number: '99+'
             },
             monitorsUsed: {
               title: "Naudoti monitoriai",

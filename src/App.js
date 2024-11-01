@@ -14,6 +14,14 @@ import { VisibilityProvider } from './context/VisibilityContext';
 import LoadingProvider, { useLoading } from './context/LoadingContext';
 import Loading from './components/Loading'; 
 
+if (typeof window !== 'undefined') {
+  window.ResizeObserver = class {
+    observe() {}
+    unobserve() {}
+    disconnect() {}
+  };
+}
+
 const App = () => {
   const [initialLoading, setInitialLoading] = useState(true);
   const [animateHeader, setAnimateHeader] = useState(false);
@@ -30,7 +38,7 @@ const App = () => {
   // Display loading screen during initial loading
   if (initialLoading) {
     return (
-      <ThemeContextProvider> {/* Wrap Loading with ThemeContextProvider */}
+      <ThemeContextProvider>
         <Loading />
       </ThemeContextProvider>
     );
@@ -42,8 +50,8 @@ const App = () => {
         <LoadingProvider>
           <ThemeContextProvider>
             <LanguageProvider>
-              <LoadingIndicator />
               <ScrollToTop />
+              <LoadingIndicator />
               <Header />
               <div className="content"> 
                 <Routes> 
@@ -70,16 +78,16 @@ const LoadingIndicator = () => {
 // Wrapper for loading behavior on navigation
 const PageWrapper = ({ children }) => {
   const { setLoading } = useLoading();
-  const location = useLocation();
+  const location = useLocation(); // Move useLocation here
 
   useEffect(() => {
     setLoading(true);
     const timer = setTimeout(() => {
       setLoading(false);
-    }, 20); // Sutrumpintas laikas
+    }, 20); // Shortened time
 
     return () => clearTimeout(timer);
-  }, [location, setLoading]);
+  }, [location, setLoading]); // Add setLoading to dependency array
 
   return children;
 };

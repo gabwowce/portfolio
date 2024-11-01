@@ -1,5 +1,5 @@
 import React from 'react';
-import cloud from '../assets/cloudOne.png'; // Ensure this path is correct
+import cloud from '../assets/cloudOne.png'; 
 
 const CanvasComponentLight = ({ cloudAnimation, birdAnimation}) => {
   return (

@@ -76,35 +76,18 @@ const ToolCarousel = () => {
     draggable: true
   };
 
-  // useEffect(() => {
-  //   if (isVisible) {
-  //     const timer = setTimeout(() => {
-  //       setAutoplay(true); // Įjunkite autoplay po 2 sekundžių (arba kitokio laiko, jei animacija ilgesnė)
-  //     }, 3000); // Laikas turi būti tas pats, kaip ir animacijos trukmė
-  
-  //     return () => clearTimeout(timer); // Išvalykite timer
-  //   }
-  // }, [isVisible]);
 
-  // Group tools based on screen size
   const groupedTools = tools.reduce((acc, tool, index) => {
-        const groupIndex = Math.floor(index / (isMedium || isExtraSmall ? 2 : 1)); // 2 tools per row for small screens
+        const groupIndex = Math.floor(index / (isMedium || isExtraSmall ? 2 : 1)); 
         if (!acc[groupIndex]) acc[groupIndex] = [];
         acc[groupIndex].push(tool);
         return acc;
-      }, []); // Single group for large screens (1 row with all tools)
+      }, []); 
 
   return (
   
       <StyledBox id="about-skills" className="track-visibility">
-      {/* <StyledBox>
-        <NameTypography variant="h2" animate={animate}>
-          {t('aboutPage.skills.title')}
-        </NameTypography>
-        <SecondTypography variant='body1' animate={animate}>
-          {t('aboutPage.skills.subtitle')}
-        </SecondTypography>
-      </StyledBox> */}
+   
       
       <Slider {...settings}>
         {/* Use flexbox layout to make sure the tools align in rows and columns */}
@@ -140,16 +123,10 @@ const StyledBox4 = styled(Box)(({ theme, isVisible, index }) => ({
       justifyContent: 'center', 
       textAlign: 'center', 
       padding: '10px',
-      // border:theme.palette.mode === 'dark' ? '1px solid #CE90F2' : '1px solid #E44C83',
       borderRadius:'10px',
       gap:'5px',
       margin:'0 5px',
-      
       backgroundColor: theme.palette.background.default,
-      // boxShadow: theme.palette.mode === 'dark' 
-      //   ? '5px 7px 6px -2px rgba(0, 0, 0, 0.5), 7px 5px 6px -2px rgba(0, 0, 0, 0.5)' 
-      //   : '0 7px 6px -2px rgba(0, 0, 0, 0.2), 7px 0 6px -2px rgba(0, 0, 0, 0.2)',
-      // background:theme.palette.mode === 'dark' ? 'rgb(206,144,242,0.2)' : 'rgb(228,76,131,0.2)',
       [theme.breakpoints.down('lg')]: {
         margin:'10px 5px'
       },
@@ -158,9 +135,7 @@ const StyledBox4 = styled(Box)(({ theme, isVisible, index }) => ({
 const StyledBox3 = styled(Box)(({ theme }) => ({
       width: '25px', 
       height: '25px', 
-      // marginBottom: '5px', 
       display: 'block',
-      
       [theme.breakpoints.down('lg')]: {
         width: '25px', 
         height: '25px', 
@@ -170,7 +145,7 @@ const StyledBox3 = styled(Box)(({ theme }) => ({
 
 const StyledBox2 = styled(Box)(({ theme, isExtraSmall, animate }) => ({
       display: 'flex',
-      flexWrap: isExtraSmall ? 'wrap' : 'nowrap', // Allow wrapping on small screens, no wrap on large screens
+      flexWrap: isExtraSmall ? 'wrap' : 'nowrap', 
       justifyContent: 'space-around',
       width: '100%',
       opacity: animate ? 1 : 0, 
@@ -179,20 +154,6 @@ const StyledBox2 = styled(Box)(({ theme, isExtraSmall, animate }) => ({
 
 }));
   
-{/*
-
-const StyledBox = styled(Box)(({ theme }) => ({
-padding: '5rem 0',
-backgroundColor:  theme.palette.background.paper, 
-width: '100%', 
-overflow: 'hidden',
-[theme.breakpoints.down('sm')]: {
-  padding: '2rem 0',
-},
-
-}));
-
-*/}
 
 const StyledBox = styled(Box)(({ theme }) => ({
   padding: '10px 0',
@@ -204,20 +165,11 @@ const StyledBox = styled(Box)(({ theme }) => ({
 
 const StyledBoxBg = styled(Box)(({ theme }) => ({
   padding: '10px 0',
-  // backgroundColor: theme.palette.background.paper2,
   width: '100%',
   overflow: 'hidden',
   background:theme.palette.mode === 'dark' ? 'rgb(206,144,242,0.2)' : 'rgb(228,76,131,0.2)',
  
 }));
-// const NameTypography = styled(Typography)(({ theme, animate }) => ({
-//     fontFamily: 'Outfit, sans-serif',
-//     fontWeight: '600',
-//     textAlign: 'center',
-//     color: theme.palette.text.primary,
-//     opacity: animate ? 1 : 0, 
-//     transition: 'opacity 3.5s ease',
-//   }));
 
 const NameTypography = styled(Typography)(({ theme }) => ({
   fontFamily: 'Outfit, sans-serif',

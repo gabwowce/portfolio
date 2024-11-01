@@ -3,18 +3,11 @@ import styled, { keyframes } from 'styled-components';
 import { ThemeContext } from '../context/ThemeContext';
 
 const Loading = () => {
-  // const { themeMode } = useContext(ThemeContext);
+
   return (
     <LoadingBackground >
       <LoadingOverlay>
         <Loader>
-          {/* <span>L</span>
-          <span>O</span>
-          <span>A</span>
-          <span>D</span>
-          <span>I</span>
-          <span>N</span>
-          <span>G</span> */}
         </Loader>
       </LoadingOverlay>
     </LoadingBackground>

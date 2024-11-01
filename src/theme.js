@@ -33,6 +33,7 @@ export const lightTheme = createTheme({
         thumb: '#e4a0b8',   // color of the thumb
         track: '#F6EFBD',   // color of the track when off
       },
+
   },
   typography: {
     fontFamily: "PT Serif, sans-serif",

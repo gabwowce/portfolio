@@ -5,7 +5,7 @@ import Loader from './Loader';
 
 const LoaderComponent = () => (
   <LoaderContainer>
-    <Loader color="#3498db" size="50px" /> {/* Galite keisti spalvą ir dydį */}
+    <Loader color="#3498db" size="50px" /> 
   </LoaderContainer>
 );
 

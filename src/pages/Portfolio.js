@@ -1,129 +1,136 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState, useContext, useEffect,useRef } from 'react';
 import { Box, Typography, Card, CardContent, CardMedia, Chip, Button, Container } from '@mui/material';
+import { slideInRightAnimation, slideInLeftAnimation, fadeInAnimation, slideDownAnimation} from '../styles/animations';
 import { useTranslation } from 'react-i18next';
 import { styled, useTheme } from '@mui/material/styles';
 import { ThemeContext } from '../context/ThemeContext'; 
-import { StyledContainer, StyledBox, NameTypography, ThirdTypography} from '../pages/About';
-import CanvasComponent from '../components/CanvasComponent';
-import CanvasComponentLight from '../components/CanvasComponentLight ';
+import { StyledContainer, NameTypography, ThirdTypography} from '../pages/About';
 import LaunchIcon from '@mui/icons-material/Launch';
 import GitHubIcon from '@mui/icons-material/GitHub';
+import { useVisibility } from '../context/VisibilityContext';
 
 const Portfolio = () => {
-    const { t } = useTranslation();
-    const theme = useTheme();
-    const { themeMode } = useContext(ThemeContext); 
-    const projects = t('portfolioPage.projects', { returnObjects: true });
+  const { t } = useTranslation();
+  const theme = useTheme();
+  const { themeMode } = useContext(ThemeContext); 
+  const projects = t('portfolioPage.projects', { returnObjects: true });
+  const { visibleElements } = useVisibility();
+  const [animate, setAnimate] = useState(false);
+  const [animateCards, setanimateCards] = useState(false);
+  const hasAnimatedRef = useRef(false);
 
-    const ProjectCard = ({ project }) => {
-        const { themeMode } = useContext(ThemeContext);
-        const [isHovered, setIsHovered] = useState(false);
+  useEffect(() => {
+      window.scrollTo(0, 0);
+  }, []);
 
-        return (
-            <StyledCard bg={project.images[themeMode].bg}  onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
+  useEffect(() => {
+      const isVisible = visibleElements.has("portfolio");
+      if (isVisible) {
+          setAnimate(true);
+         
+      }
+  }, [visibleElements]);
+
+
+  const ProjectCard = ({ project, delay }) => { 
+      const { themeMode } = useContext(ThemeContext);
+      const [isHovered, setIsHovered] = useState(false);
+
+      return (
+          <StyledCard bg={project.images[themeMode].bg} onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)} >
               <BoxForPic isHovered={isHovered}>
-                <StyledImageBox component="img" src={project.images[themeMode].pic} alt="project picture loptop" />
-                {
-                    project.images[themeMode].pic2 && <StyledImageBox2 component="img" src={project.images[themeMode].pic2} alt="project picture phone" />
-                }
-                
+                  <StyledImageBox component="img" src={project.images[themeMode].pic} alt="project picture laptop" />
+                  {
+                      project.images[themeMode].pic2 && <StyledImageBox2 component="img" src={project.images[themeMode].pic2} alt="project picture phone" />
+                  }
               </BoxForPic>
               <StyledContentBox isHovered={isHovered}>
-                <SecondTypography variant='h3'>
-                    {project.title}
-                </SecondTypography>
-                <StyledDescBox isHovered={isHovered}>
-                    {project.description}
-                </StyledDescBox>
-                <SkillsTypography variant="subtitle2" component="div" isHovered={isHovered}>
-                  {project.tools.map((tools, Index) => (
-                    <InnerTypography key={Index} variant="subtitle2">
-                      {tools}
-                    </InnerTypography>
-                  ))}
-                </SkillsTypography>
-                <Box display="flex" justifyContent="center" gap={1} mt={2}>
-                    {project.links.front && (
-                        <Button
-                            variant="outlined"
-                            color="primary"
-                            startIcon={<GitHubIcon />}
-                            onClick={() => window.open(project.links.front, '_blank')}
-                        >
-                            Frontend
-                        </Button>
-                    )}
-                    {project.links.back && (
-                        <Button
-                            variant="outlined"
-                            color="primary"
-                            startIcon={<GitHubIcon />}
-                            onClick={() => window.open(project.links.back, '_blank')}
-                        >
-                            Backend
-                        </Button>
-                    )}
-                    {project.links.link && (
-                        <Button
-                            variant="outlined"
-                            color="primary"
-                            startIcon={<LaunchIcon />}
-                            onClick={() => window.open(project.links.link, '_blank')}
-                        >
-                            Live Demo
-                        </Button>
-                    )}
-                </Box>
+                  <SecondTypography variant='h3'>{project.title}</SecondTypography>
+                  <StyledDescBox isHovered={isHovered}>{project.description}</StyledDescBox>
+                  <SkillsTypography variant="subtitle2" component="div" isHovered={isHovered}>
+                      {project.tools.map((tools, Index) => (
+                          <InnerTypography key={Index} variant="subtitle2">{tools}</InnerTypography>
+                      ))}
+                  </SkillsTypography>
+                  <BtnBox display="flex" justifyContent="center" gap={1} mt={2} isHovered={isHovered}>
+                      {project.links.front && (
+                          <StyledButton
+                              variant="outlined"
+                              startIcon={<GitHubIcon />}
+                              onClick={() => window.open(project.links.front, '_blank')}
+                          >
+                              Frontend
+                          </StyledButton>
+                      )}
+                      {project.links.back && (
+                          <StyledButton
+                              variant="outlined"
+                              startIcon={<GitHubIcon />}
+                              onClick={() => window.open(project.links.back, '_blank')}
+                          >
+                              Backend
+                          </StyledButton>
+                      )}
+                      {project.links.link && (
+                          <StyledButton
+                              variant="outlined"
+                              startIcon={<LaunchIcon />}
+                              onClick={() => window.open(project.links.link, '_blank')}
+                          >
+                              Live Demo
+                          </StyledButton>
+                      )}
+                  </BtnBox>
               </StyledContentBox>
-            </StyledCard>
-        );
-    };
+          </StyledCard>
+      );
+  };
 
-    return (
-      
-        <StyledBackgroundBox2 id="about-hero" className="track-visibility"  paddingTop='3rem'>
-            <StyledContainer className='custom-container' >
-                <StyledBox>
-                <NameTypography variant="h1">
-                {t('portfolioPage.title')}
-                </NameTypography>
-                <ThirdTypography variant="body1">
-                {t('portfolioPage.description')}
-                </ThirdTypography>
-                
-                </StyledBox>
-                
-            </StyledContainer>
+  return (
+      <StyledBackgroundBox2 id="portfolio" className="track-visibility" paddingTop='3rem' animate={animate}>
+          <StyledContainer className='custom-container'>
+              <StyledBox>
+                  <NameTypography variant="h1" animate={animate}>{t('portfolioPage.title')}</NameTypography>
+                  <ThirdTypography variant="body1" animate={animate}>{t('portfolioPage.description')}</ThirdTypography>
+              </StyledBox>
+          </StyledContainer>
 
-            
-                
-           
-
-
-
-            <Box className='custom-container' display="flex" flexWrap="wrap" justifyContent="center" alignItems="center" width="100%" gap={2} mt={4} mb={4}>
-                {projects.map((project, index) => (
-                    <ProjectCard key={index} project={project} />
-                ))}
-            </Box>
-
-            {themeMode === 'dark' ?
-                <CanvasComponent
-                layers={[
-                    { speed: 0.11, scale: 0.2, count: 620 },
-                    { speed: 0.1, scale: 0.3, count: 100 },
-                    { speed: 0.2, scale: 0.5, count: 60 }
-                ]}
-                // shootingStarSpeed={{ min: 15, max: 20 }}
-                />
-                :
-                <CanvasComponentLight cloudAnimation = {true} birdAnimation = {false}/>}
-        </StyledBackgroundBox2>
-        
-    );
+          <Box className='custom-container track-visibility' id="portfolio-projects" display="flex" flexWrap="wrap" justifyContent="center" alignItems="center" width="100%" gap={2} mt={4} mb={4}>
+              {projects.map((project, index) => (
+                  <ProjectCard key={index} project={project} />
+              ))}
+          </Box>
+      </StyledBackgroundBox2>
+  );
 };
 
 export default Portfolio;
+
+export const StyledBox = styled(Box)(({ theme }) => ({
+  padding: theme.spacing(3),
+  maxWidth: '750px',
+  display: 'flex',
+  flexDirection: 'column',
+  justifyContent: 'center',
+  alignItems: 'flex-start',
+
+}));
+
+export const StyledButton = styled(Button)(({ theme, isHovered }) => ({
+  color: '#FEF9F2',
+  borderRadius:'10px',
+}));
+
+
+export const BtnBox = styled(Box)(({ theme, isHovered }) => ({
+
+  transition: '1s',
+  opacity: isHovered ? 1 : 0,
+  visibility: isHovered ? 'visible' : 'hidden',
+  paddingTop: 0,
+  paddingBottom: 0,
+  transitionDelay: isHovered ? '1s' : 'none',
+}));
 
 export const SecondTypography = styled(Typography)(({ theme }) => ({
     fontFamily: 'Outfit, sans-serif', 
@@ -147,7 +154,7 @@ export const StyledDescBox = styled(Box)(({ theme, isHovered }) => ({
     transitionDelay: isHovered ? '0.5s' : 'none',
   }));
 
-export const StyledBackgroundBox2 = styled(Box)(({ theme }) => ({
+export const StyledBackgroundBox2 = styled(Box)(({ theme, animate }) => ({
     width: '100%',
     background: theme.palette.background.portfolio,
     padding: '5rem 0',
@@ -156,7 +163,9 @@ export const StyledBackgroundBox2 = styled(Box)(({ theme }) => ({
     justifyContent:'center',
     alignItems:'center',
     overflow:'hidden',
-    position: 'relative'
+    position: 'relative',
+    opacity: animate ? 1 : 0, 
+  transition: 'opacity 1.5s ease',
   }));
 
 
@@ -187,31 +196,43 @@ const SkillsTypography = styled(Typography)(({ theme, isHovered }) => ({
     bottom: 0,
     width: '100%',
     padding:'0 2rem',
-    height: isHovered ? '280px' : '150px', // Keičiamas height pagal isHovered būseną
+    height: isHovered ? '300px' : '170px', 
     textAlign: 'center',
     transition: 'height 1s ease',
     zIndex: '10',
+    [theme.breakpoints.down('sm')]: {
+      height: isHovered ? '280px' : '140px', 
+   },
 }));
 
 export const StyledImageBox2 = styled(Box)(({ theme }) => ({
     position: 'absolute',
-    top: '67%',
+    top: '62%',
     left:' 78%',
     transform: 'translate(-50%, -50%) rotate(10deg)',
     width: '100px',
+    [theme.breakpoints.down('lg')]: {
+      top: '47%',
+      width: '90px',
+   },
+   
 
   })); 
 
 export const StyledImageBox = styled(Box)(({ theme }) => ({
     position: 'absolute',
-    top: '50%',
+    top: '45%',
     left:'48%',
     transform: 'translate(-50%, -50%) rotate(-10deg)',
     width: '470px',
-
+    [theme.breakpoints.down('lg')]: {
+      top: '30%',
+      width: '370px',
+   },
+   
   })); 
 
-export const BoxForPic = styled(Box)(({ theme, isHovered }) => ({
+export const BoxForPic = styled(Box)(({ theme, isHovered, animate }) => ({
     position: 'absolute',
     top: isHovered ? '5%' : '25%',
     transform: 'translateY(-50%)',
@@ -219,40 +240,44 @@ export const BoxForPic = styled(Box)(({ theme, isHovered }) => ({
     width: '100%',
     height: '220px',
     transition: '0.5s',
-    transform: isHovered ? 'translateY(0%)' : 'none'
+    transform: isHovered ? 'translateY(0%)' : 'none',
 
   })); 
 
 export const BackgroundSection = styled(Box)(({ theme }) => ({
-    // backgroundColor: theme.palette.mode === 'dark' ? '#393736' : 'rgb(196, 225,246,0.3)',
     width: '100%',
    
 
   })); 
 
-  const StyledCard = styled(Card)(({ theme, bg }) => ({
-    flex: '1 1 300px', // Allow card to grow and shrink, with a base width of 300px
-    maxWidth: '40%', // Maximum width for larger screens
-    minWidth: '400px', // Minimum width to maintain layout on small screens
-    height: '600px', // Maintain the height, or adjust as needed
+  const StyledCard = styled(Card)(({ theme, bg, delay, animate }) => ({
+    flex: '1 1 300px', 
+    maxWidth: '50%',
+    minWidth: '400px',
+    height: '600px',
     backgroundImage: `url(${bg})`,
     color: theme.palette.mode === 'dark' ? '#D5CEA3' : '#EAF5F7',
     borderRadius: 20,
     overflow: 'hidden',
-    boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.1)',
+    boxShadow: theme.palette.mode === 'dark' 
+        ? '0 7px 6px -2px rgba(0, 0, 0, 0.5), 7px 0 6px -2px rgba(0, 0, 0, 0.5)' 
+        : '0 7px 6px -2px rgba(0, 0, 0, 0.2), 7px 0 6px -2px rgba(0, 0, 0, 0.2)',
     position: 'relative',
     textAlign: 'center',
-    transition: '0.5s',
+   
     zIndex: '9999',
-    boxShadow: theme.palette.mode === 'dark' 
-        ? '0 -5px 3px -2px rgba(0, 0, 0, 0.5), 0 5px 3px -2px rgba(0, 0, 0, 0.5)' 
-        : '0 -5px 3px -2px rgba(0, 0, 0, 0.2), 0 5px 3px -2px rgba(0, 0, 0, 0.2)',
-
-    // // Optional: Add media queries for further customization
-    // '@media (max-width: 600px)': {
-    //     height: '400px', // Adjust height for smaller screens if needed
-    // },
-}));
+    animationFillMode: 'forwards',
+  
+    [theme.breakpoints.down('lg')]: {
+       minWidth: '550px'
+    },
+  
+    [theme.breakpoints.down('sm')]: {
+      maxWidth: 'calc(100% - 2rem)',
+      minWidth: '350px',
+      height: '500px',
+    },
+  }));
 
 
 

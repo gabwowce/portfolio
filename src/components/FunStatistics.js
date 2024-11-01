@@ -1,9 +1,8 @@
 import React, { useState, useContext, useEffect } from 'react';
-import { Card, CardContent, Typography, Box } from '@mui/material';
+import { CardContent, Typography, Box } from '@mui/material';
 import { useTranslation } from 'react-i18next';
 import { styled, useTheme } from '@mui/material/styles';
 import { ThemeContext } from '../context/ThemeContext'; 
-import { slideUpAnimation, slideInLeftAnimation } from '../styles/animations'; // Import both animations
 import { useVisibility } from '../context/VisibilityContext';
 
 import CodeIcon from '@mui/icons-material/Code';
@@ -22,7 +21,7 @@ const Statistics = () => {
     const { t } = useTranslation();
     const { themeMode } = useContext(ThemeContext); 
     const theme = useTheme();
-    const { visibleElements } = useVisibility(); // Extract visibleElements from context
+    const { visibleElements } = useVisibility(); 
 
     const [animate, setAnimate] = useState(false);
     useEffect(() => {
@@ -32,10 +31,7 @@ const Statistics = () => {
 
     return (
         <StyledBox id="about-stats" className="track-visibility" animate={animate}>
-            {/* <NameTypography variant="h2" animate={animate}>
-                {t('aboutPage.stats.title')}
-            </NameTypography>
-             */}
+           
             <StyledBox>
                 {statisticsData.map((stat, index) => {
                     const IconComponent = stat.icon;

@@ -149,7 +149,7 @@ const StyledHeaderBox = styled(Box)(({ theme }) => ({
 
 const StyledTextBox = styled(Box)(({ theme, isSent }) => ({
     display: 'inline-block',
-    background: 'transparent', // Nustatykite norimą foną
+    background: 'transparent',
     padding: '0.7rem 1rem',
     marginLeft:'0.3rem',
     maxWidth: '80%',
@@ -268,7 +268,7 @@ const StyledButton = styled(Button)(({ theme }) => ({
     
     '&:hover': {
         backgroundColor: theme.palette.background.hover,
-        boxShadow: theme.shadows[4], // Pridėkite šešėlį ant hover
-        transform: 'scale(1.05)', // Šiek tiek padidinkite mygtuką ant hover, kad sukurtumėte efekto jausmą
+        boxShadow: theme.shadows[4], 
+        transform: 'scale(1.05)',
     },
 }));

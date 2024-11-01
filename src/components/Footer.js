@@ -23,7 +23,7 @@ export default function Footer() {
   return (
     <BackgroundBox>
       <StyledBox component="footer" id='myFooter' className="track-visibility">
-        {isFooterVisible &&
+        {/* {isFooterVisible &&
         
           (themeMode === 'dark' ?
           <CanvasComponent
@@ -38,27 +38,24 @@ export default function Footer() {
           <CanvasComponentLight cloudAnimation = {true} birdAnimation = {false}/>)
         
         }
-      
+       */}
         <StyledContainer>
-          <PageLinksBox>
+          
+
+          <RightsAndIconsBox>
+            <Typography variant="subtitle2">
+              &copy; {new Date().getFullYear()} {t('footer.copyright')}
+            </Typography>
+            <PageLinksBox>
             {pageLinks.map((section, index) => (
               <PageLinksSectionBox key={index}>
                  <StyledLink variant="h3" key={index} to={section.link}>
                   {section.title}
                 </StyledLink>
-                {section.links.map((link, linkIndex) => (
-                  <StyledLink2 key={linkIndex} to={`#${link.link}`} >
-                  {link.title}
-                </StyledLink2>
-                ))}
+                
               </PageLinksSectionBox>
             ))}
           </PageLinksBox>
-
-          <RightsAndIconsBox>
-            <Typography variant="body1">
-              &copy; {new Date().getFullYear()} {t('footer.copyright')}
-            </Typography>
             <SocialMediaBox>
               <IconButton color="inherit" component="a" href="https://www.facebook.com/gabriele.tamaseviciute" target="_blank" rel="noopener noreferrer">
                 <FacebookIcon sx={{ fontSize: '2rem' }} />
@@ -90,10 +87,7 @@ const StyledLink2 = styled(Link)(({ theme }) => ({
 const StyledLink = styled(Link)(({ theme }) => ({
   color: 'inherit', 
   textDecoration: 'none', 
-  fontFamily: 'Outfit, sans-serif', 
-  fontWeight:'600',
-  fontSize:'1.5rem',
-  marginBottom:'0.5rem',
+  fontFamily: 'Outfit, sans-serif',
   '&:hover': {
   color: theme.palette.primary.main,
   
@@ -114,15 +108,21 @@ const RightsAndIconsBox = styled(Box)(({ theme }) => ({
   justifyContent: 'space-between',
   alignItems: 'center',
   width: '100%',
+  zIndex:999,
+  padding:'1.5rem 0',
+  [theme.breakpoints.down('sm')]: {
+    flexDirection: 'column-reverse', 
+    gap:'0.5rem'
+  },
 }));
 
 const StyledContainer = styled(Container)(({ theme }) => ({
   display: 'flex',
-  flexDirection: 'column',
+  flexDirection: 'row',
   justifyContent: 'flex-end',
   alignItems: 'center',
   height: '100%',
-  paddingBottom: '1rem'
+
 }));
 
 const SocialMediaBox = styled(Box)(({ theme }) => ({
@@ -134,12 +134,11 @@ const SocialMediaBox = styled(Box)(({ theme }) => ({
 const PageLinksBox = styled(Box)(({ theme }) => ({
   display: 'flex',
   flexDirection: 'row',
-  justifyContent: 'flex-end',
-  alignItems: 'center',
-  gap: '2rem',
-  width: '100%',
-  zIndex: '10',
-  padding: '2rem 0'
+  justifyContent: 'center',
+  alignItems: 'flex-end',
+  gap: '1rem',
+
+
 }));
 
 const StyledImage = styled('img')(({ theme }) => ({

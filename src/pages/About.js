@@ -1,5 +1,5 @@
 import React, { useState, useContext, useEffect } from 'react';
-import { slideInRightAnimation, slideInLeftAnimation, fadeInAnimation, slideDownAnimation} from '../styles/animations';
+import { slideInRightAnimation, slideInLeftAnimation} from '../styles/animations';
 import {
   Box,
   Typography,
@@ -16,7 +16,6 @@ import { ReactComponent as AddUserIcon } from '../assets/add-user.svg';
 import Timeline from '../components/Timeline';
 import ToolCarousel from '../components/ToolCarousel';
 import LanguageSkills from '../components/LanguageSkills';
-import ChatCards from '../components/ChatCards';
 import Statistics from '../components/FunStatistics';
 import CanvasComponent from '../components/CanvasComponent';
 import CanvasComponentLight from '../components/CanvasComponentLight ';
@@ -34,6 +33,12 @@ const About = () => {
     const [animateAboutPage, setanimateAboutPage] = useState(false);
      const [animateChats, setanimateChats] = useState(false);
      const [animateHistory, setanimateHistory] = useState(false);
+
+     useEffect(() => {
+      window.scrollTo(0, 0);
+  }, []);
+
+
     useEffect(() => {
       const isHeroVisible = visibleElements.has("about-hero");
       isHeroVisible && setAnimate(true);
@@ -59,9 +64,7 @@ const About = () => {
 
     return (
       <>
-
       <BackgroundSection id="about-page" className="track-visibility" animate={animateAboutPage}>
-
         <HeroSection id="about-hero" className="track-visibility"  animate={animate}>
           <StyledContainer className='custom-container' animate={animate}>
             <StyledBox>
@@ -81,11 +84,9 @@ const About = () => {
               <StyledButton href="https://www.linkedin.com/in/gabrielė-tamaševičiūtė-06712526b" target="_blank" rel="noopener noreferrer">
                 <AddUserIcon /> Connect
               </StyledButton>
-            </BoxForPic>
-            
+            </BoxForPic>   
           </StyledContainer>
 
-          
             {themeMode === 'dark' ?
             <CanvasComponent
               layers={[
@@ -97,19 +98,12 @@ const About = () => {
             />
             :
             <CanvasComponentLight cloudAnimation = {true} birdAnimation = {true}/>}
-          
-         
-          
-          
+           
+        </HeroSection>
 
-            
-      </HeroSection>
-
-      <ToolCarousel/>
+        <ToolCarousel/>
 
         <Statistics/>
-        
-        
 
         <StyledBackgroundBox3 animate={animateHistory}id="about-history" >
           <Timeline/>
@@ -120,17 +114,6 @@ const About = () => {
             <LanguageSkills/>
           </Container>
         </StyledBackgroundBox2>
-
-        
-
-        {/* <StyledBackgroundBox2>
-        <ChatsContainer className='custom-container track-visibility' id="about-chats" animate={animateChats}>
-            <ChatCards/>
-        </ChatsContainer>
-        </StyledBackgroundBox2> */}
-      
-        
-
       </BackgroundSection>
       </>
       
@@ -170,7 +153,7 @@ const StyledCardBox = styled(Box)(({ theme }) => ({
 
 
 export const HeroSection = styled(Box)(({ theme,animate }) => ({
-  position: 'relative', // Make sure the container is relatively positioned
+  position: 'relative', 
   background: `radial-gradient(circle at 20% 30%, rgba(255, 0, 0, 0.3), transparent 40%),
                radial-gradient(circle at 60% 80%, rgba(255, 0, 0, 0.3), transparent 40%),
                radial-gradient(circle at 0% 20%, rgba(0, 0, 255, 0.3), transparent 30%),
@@ -186,9 +169,6 @@ export const HeroSection = styled(Box)(({ theme,animate }) => ({
   alignItems: 'center',
   padding: '4rem 0',
   overflow:'hidden',
-  // animation: animate && `${slideDownAnimation} 2.5s ease forwards`,
-  //  animationDelay: animate && '0.5s'
-
 }));
 
 const StyledBackgroundBox3 = styled(Box)(({ theme }) => ({
@@ -230,8 +210,7 @@ export const SecondTypography = styled(Typography)(({ theme, animate }) => ({
   textAlign: 'center',
   color: theme.palette.text.primary,
   animation: animate && `${slideInLeftAnimation} 2.5s ease forwards`,
-  
-  //  animationDelay: animate && '1.5s'
+
 }));
 
 const StyledPaper = styled(Paper)(({ theme }) => ({
@@ -245,7 +224,7 @@ const StyledPaper = styled(Paper)(({ theme }) => ({
   transition: 'transform 0.3s',
   display: 'flex',
   flexDirection: 'row',
-  alignItems: 'center', // Aligns content vertically center
+  alignItems: 'center', 
 
 }));
 
@@ -269,14 +248,6 @@ export const ImageBox = styled(Box)(({ theme }) => ({
   },
  
 }));                
-
-// export const BoxForPic = styled(Box)`
-//   position: relative;
-//   width: 100%;
-//   height: auto;
-//   justify-items: center;
-//   animation: animate && ${slideInRightAnimation} 2s ease forwards
-// `;    
 
 export const BoxForPic = styled(Box)(({ theme, animate }) => ({
   position: 'relative',
@@ -340,7 +311,7 @@ export const StyledButton = styled(Button)(({ theme }) => ({
     fill: theme.palette.mode === 'dark' ? '#0f121b' : '#fbfbff'
   },
 
-  [theme.breakpoints.down('lg')]: {                     //gt reikia tvarkyti overflow: hidden; kazkur nes animacijoms vykstant yra paslinkimas i desine
+  [theme.breakpoints.down('lg')]: {                   
     left: '44px',
     top: '290px',
   },
@@ -361,15 +332,15 @@ export const StyledBox = styled(Box)(({ theme }) => ({
   justifyContent: 'center',
   alignItems: 'flex-start',
   
-  // Media query for smaller screens
+
   [theme.breakpoints.down('md')]: {
     borderRadius:'10px',
     zIndex:'100',
-    backgroundColor: 'rgba(255, 255, 255, 0.1)', // Adjust the color and opacity as needed
-    backdropFilter: 'blur(10px)', // Adjust blur amount for desired effect
+    backgroundColor: 'rgba(255, 255, 255, 0.1)', 
+    backdropFilter: 'blur(10px)', 
     boxShadow: theme.palette.mode === 'dark' 
       ? '0 2px 5px rgba(0, 0, 0, 0.5)' 
-      : '0 2px 5px rgba(0, 0, 0, 0.5)', // Optional: add a shadow for depth
+      : '0 2px 5px rgba(0, 0, 0, 0.5)', 
     padding: theme.spacing(2),
   },
 }));

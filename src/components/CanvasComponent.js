@@ -212,9 +212,7 @@ const CanvasComponent  = ({layers, shootingStarSpeed }) => {
   
     start();
   
-    // return () => {
-    //   window.removeEventListener('resize', resizeCanvas);
-    // };
+
   }, []);
   
 
