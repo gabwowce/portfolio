@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom'; 
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import { LanguageProvider } from './context/LanguageContext';
@@ -45,7 +45,7 @@ const App = () => {
   }
 
   return (
-    <Router>
+    <Router basename="/portfolio">
       <VisibilityProvider>
         <LoadingProvider>
           <ThemeContextProvider>
@@ -54,14 +54,12 @@ const App = () => {
               <LoadingIndicator />
               <Header />
               <div className="content"> 
-              <BrowserRouter basename="/portfolio">
                 <Routes> 
                   <Route path="/about" element={<PageWrapper><About /></PageWrapper>} />
                   <Route path="/portfolio" element={<PageWrapper><Portfolio /></PageWrapper>} />
                   <Route path="/contact" element={<PageWrapper><Contact /></PageWrapper>} />
                   <Route path="/" element={<PageWrapper><About /></PageWrapper>} /> 
                 </Routes>
-                </BrowserRouter>
               </div>
               <Footer />
             </LanguageProvider>
