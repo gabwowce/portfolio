@@ -105,7 +105,7 @@ const About = () => {
 
         <Statistics/>
 
-        <StyledBackgroundBox3 animate={animateHistory}id="about-history" >
+        <StyledBackgroundBox3 animate={animateHistory} id="about-history" >
           <Timeline/>
         </StyledBackgroundBox3>
         

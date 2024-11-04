@@ -95,7 +95,7 @@ const NameTypography = styled(Typography)(({ theme, animate }) => ({
 const StyledCard = styled(Box)(({ theme, animate, index }) => ({
     textAlign: 'center',
     position: 'relative',
-    backgroundColor: theme.palette.background.default,
+    // backgroundColor: theme.palette.background.default,
     borderRadius: '10px',
     margin: '10px',
     flexBasis: 'calc(25% - 20px)',
@@ -107,6 +107,15 @@ const StyledCard = styled(Box)(({ theme, animate, index }) => ({
     alignItems: 'center',
     opacity: animate ? 1 : 0, 
     transition: 'opacity 1.5s ease',
+
+    
+    zIndex:'100',
+    backgroundColor: 'rgba(255, 255, 255, 0.1)', 
+    backdropFilter: 'blur(10px)', 
+    boxShadow: theme.palette.mode === 'dark' 
+        ? '0 2px 5px rgba(0, 0, 0, 0.5)' 
+        : '0 2px 5px rgba(0, 0, 0, 0.5)', 
+ 
 
 
     [theme.breakpoints.down('sm')]: {

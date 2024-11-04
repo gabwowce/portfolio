@@ -99,7 +99,7 @@ const Timeline = () => {
 
 
   return (
-    <StyledTimeline id='about-timeline' className="track-visibility" animate={animate}>
+    <StyledTimeline id='about-timeline' className='custom-container track-visibility' animate={animate}>
       <NameTypography variant="h2">
         {t('aboutPage.workExperience.title')}
       </NameTypography>
@@ -109,7 +109,7 @@ const Timeline = () => {
       <StyledTimelineContainer>
 
         {isArray && workExperience.map((exp, index) => (
-          <Box key={index} display="flex" flexDirection={index % 2 === 0 ? 'row' : 'row-reverse'} justifyContent={'center'} alignItems="center">
+          <Box key={index} display="flex" flexDirection={index % 2 === 0 ? 'row' : 'row-reverse'} justifyContent={'space-between'} alignItems="center">
             <StyledAccordion expanded={expandedIndex.includes(index)} onChange={handleAccordionChange(index)} animate={animate} ref={el => (accordionRefs.current[index] = el)} index={index}>
               <AccordionSummary expandIcon={<ExpandMoreIcon />}>
                 <Box>
@@ -220,7 +220,7 @@ const InnerTypography = styled(Typography)(({ theme }) => ({
 
   const StyledAccordion = styled(Accordion)(({ theme, index, animate }) => ({
     position: 'relative',
-    width: '40%',
+    width: '60%',
     height: 'auto',
     borderRadius: '24px !important', 
     background: theme.palette.mode === 'dark' ? colorsGradientDark[index %  colorsGradientDark.length] : colorsGradientLight[index %  colorsGradientLight.length],
@@ -278,7 +278,7 @@ const StyledTimeline = styled(Box)(({ theme, animate }) => ({
   position: 'relative',
   padding: '0 0',
   width: '100%',
-  padding: '5rem 0 2rem 0',
+  padding: '7rem 0 2rem 0',
   opacity: animate ? 1 : 0, 
   transition: 'opacity 1.5s ease',
   [theme.breakpoints.down('sm')]: {
@@ -294,6 +294,7 @@ const StyledTimelineContainer = styled(Box)(({ theme }) => ({
     flexDirection: 'column',
     alignSelf: 'center',
     paddingBottom: '3rem',
+    paddingTop:'2rem',
     [theme.breakpoints.down('sm')]: {
       marginBottom:'1rem',
       margin:'0',
@@ -314,7 +315,7 @@ const StyledDot = styled(Box)(({ theme, index, isLast }) => ({
   '&::after': {
     content: '""',
     position: 'absolute',
-    width: '350%', 
+    width: '550%', 
     height: '5px', 
     background: theme.palette.mode === 'dark' ? '#181818' : '#EBE5DC',
     top: '50%', 
