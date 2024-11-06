@@ -393,13 +393,13 @@ i18n
                   skills: ["C# .NET", "XAML", "XML", "WPF", "HTML/CSS"]
                 },
                 {
-                  title: "Programų inžinerijos studentė",
+                  title: "Programų sistemų studentė",
                   company: "Vilniaus Kolegija",
                   startDate: "2023-09-01",
                   endDate: "2027-01-01",
                   employmentType: "Sesijinis mokymas",
                   description: [
-                    "Programų inžinerijos mokslai",
+                    "Programų sistemos mokslai",
                     "Struktūrinis/Objektinis programavimas: Python, C++, C# .NET",
                     "Duomenų bazės valdymas, SQL kalbos naudojimas",
                     "Sistemų analizė ir projektavimas"
@@ -407,7 +407,7 @@ i18n
                   skills: ["Python", "C++", "C#", "SQL", "Axure RP", "AutoCAD"]
                 },
                 {
-                  title: "Planavimo specialistas",
+                  title: "Planuotoja",
                   company: "Girteka Europe West, UAB",
                   startDate: "2021-10-01",
                   endDate: "2023-09-01",
@@ -441,7 +441,7 @@ i18n
             education: {
               institution: "Vilniaus kolegija",
               degree: "Aukštasis neuniversitetinis (profesinis bakalauras)",
-              fieldOfStudy: "Programų inžinerija",
+              fieldOfStudy: "Programų sistemos",
               startYear: 2023,
               endYear: 2027
             },
