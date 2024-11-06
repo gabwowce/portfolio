@@ -9,6 +9,7 @@ import LaunchIcon from '@mui/icons-material/Launch';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import { useVisibility } from '../context/VisibilityContext';
 
+
 const Portfolio = () => {
   const { t } = useTranslation();
   const theme = useTheme();
@@ -37,7 +38,7 @@ const Portfolio = () => {
       const [isHovered, setIsHovered] = useState(false);
 
       return (
-          <StyledCard bg={project.images[themeMode].bg} onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)} >
+          <StyledCardBox bg={project.images[themeMode].bg} onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)} animate={animate} delay={delay}>
               <BoxForPic isHovered={isHovered}>
                   <StyledImageBox component="img" src={project.images[themeMode].pic} alt="project picture laptop" />
                   {
@@ -82,7 +83,7 @@ const Portfolio = () => {
                       )}
                   </BtnBox>
               </StyledContentBox>
-          </StyledCard>
+          </StyledCardBox>
       );
   };
 
@@ -95,16 +96,33 @@ const Portfolio = () => {
               </StyledBox>
           </StyledContainer>
 
-          <Box className='custom-container track-visibility' id="portfolio-projects" display="flex" flexWrap="wrap" justifyContent="center" alignItems="center" width="100%" gap={2} mt={4} mb={4}>
+          <StyledBox2 animate={animate}>
               {projects.map((project, index) => (
-                  <ProjectCard key={index} project={project} />
+                  <ProjectCard key={index} project={project} delay={index * 1.6}/>
               ))}
-          </Box>
+          </StyledBox2>
       </StyledBackgroundBox2>
   );
 };
 
 export default Portfolio;
+
+
+export const StyledBox2 = styled(Box)(({ theme, animate }) => ({
+    className:'custom-container track-visibility',
+     id:"portfolio-projects",
+    display:"flex",
+    flexWrap:"wrap",
+    justifyContent:"center",
+    alignItems:"center",
+    width:"100%",
+    padding: theme.spacing(3),
+    gap:'2rem',
+    opacity: animate ? 1 : 0, 
+  transition: 'opacity 2s ease',
+  animation: animate ? `${slideInRightAnimation} 2.5s ease` : 'none', 
+  
+  }));
 
 export const StyledBox = styled(Box)(({ theme }) => ({
   padding: theme.spacing(3),
@@ -250,8 +268,8 @@ export const BackgroundSection = styled(Box)(({ theme }) => ({
 
   })); 
 
-  const StyledCard = styled(Card)(({ theme, bg, delay, animate }) => ({
-    flex: '1 1 300px', 
+  const StyledCardBox = styled(Box)(({ theme, bg, delay, animate }) => ({
+    flex: '1 1 300px',
     maxWidth: '50%',
     minWidth: '400px',
     height: '600px',
@@ -264,20 +282,23 @@ export const BackgroundSection = styled(Box)(({ theme }) => ({
         : '0 7px 6px -2px rgba(0, 0, 0, 0.2), 7px 0 6px -2px rgba(0, 0, 0, 0.2)',
     position: 'relative',
     textAlign: 'center',
-   
-    zIndex: '9999',
+    
+    // opacity: animate ? 1 : 0,
+    // transition: animate ? `opacity 2.5s ease ${delay}s` : 'none', // Užtikriname, kad kortelės atsiranda viena po kitos
+    // animation: animate ? `${slideInLeftAnimation} 2.5s ease ${delay}s forwards` : 'none', 
+    
+    zIndex: 9999,
     animationFillMode: 'forwards',
-  
+
+    // Responsive dizainas
     [theme.breakpoints.down('lg')]: {
        minWidth: '550px'
     },
-  
     [theme.breakpoints.down('sm')]: {
       maxWidth: 'calc(100% - 2rem)',
       minWidth: '350px',
       height: '550px',
     },
-  }));
-
+}));
 
 

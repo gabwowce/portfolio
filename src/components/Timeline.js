@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Box, Typography, Accordion, AccordionSummary, AccordionDetails } from '@mui/material';
+import { Box, Typography, Accordion, AccordionSummary, AccordionDetails, useMediaQuery,useTheme } from '@mui/material';
 import { slideInRightAnimation, slideInLeftAnimation, slideUpAnimation, fadeInAnimation } from '../styles/animations';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { styled } from '@mui/material/styles';
@@ -25,6 +25,10 @@ const Timeline = () => {
   const { t } = useTranslation();
   const workExperience = t('aboutPage.workExperience.experiences', { returnObjects: true });
   const isArray = Array.isArray(workExperience);
+
+  const theme = useTheme();
+  const isMdOrSmaller = useMediaQuery(theme.breakpoints.down('md'));
+
   const [lineY, setLineY] = useState({ top: 0, bottom: 0 });
 
   const initialExpandedIndexes = [0, 1];
@@ -89,13 +93,6 @@ const Timeline = () => {
     };
   }, [workExperience]); // Priklausomybė, jei workExperience keičiasi
   
-  
-  
-  
-  
-  
-  
-  
 
 
   return (
@@ -109,7 +106,7 @@ const Timeline = () => {
       <StyledTimelineContainer>
 
         {isArray && workExperience.map((exp, index) => (
-          <Box key={index} display="flex" flexDirection={index % 2 === 0 ? 'row' : 'row-reverse'} justifyContent={'space-between'} alignItems="center">
+          <MainBox key={index} display="flex" flexDirection={index % 2 === 0 ? 'row' : 'row-reverse'} justifyContent={isMdOrSmaller ? 'space-between' : 'flex-start'} alignItems="center"  margin="0 1rem">
             <StyledAccordion expanded={expandedIndex.includes(index)} onChange={handleAccordionChange(index)} animate={animate} ref={el => (accordionRefs.current[index] = el)} index={index}>
               <AccordionSummary expandIcon={<ExpandMoreIcon />}>
                 <Box>
@@ -154,7 +151,7 @@ const Timeline = () => {
                 {new Date(exp.startDate).toLocaleString('default', { year: 'numeric', month: 'short' })}
               </YearTypography>
             </YearDotContainer>
-          </Box>
+          </MainBox>
         ))}
       </StyledTimelineContainer>
     </StyledTimeline>
@@ -162,6 +159,16 @@ const Timeline = () => {
 };
 
 export default Timeline;
+
+const MainBox = styled(Box)(({ theme, index}) => ({
+  // display: "flex",
+  // flexDirection: index % 2 === 0 ? 'row' : 'row-reverse',
+  // justifyContent:'flex-start',
+  // alignItems:"center",
+//   [theme.breakpoints.down('md')]: {
+//     justifyContent:'space-between'
+//  },
+}));
 
 const YearDotContainer = styled(Box)(({ theme, index}) => ({
   display: 'flex',
@@ -233,12 +240,13 @@ const InnerTypography = styled(Typography)(({ theme }) => ({
         : '0 7px 6px -2px rgba(0, 0, 0, 0.2), 7px 0 6px -2px rgba(0, 0, 0, 0.2)',
     
     [theme.breakpoints.down('md')]: {
-        width: '40%',
+        width: '70%',
         margin: '1rem 0',
         alignSelf: 'center'
     },
     [theme.breakpoints.down('sm')]: {
       margin: '1rem 0',
+      width: '80%',
   },
     
 }));
@@ -315,7 +323,7 @@ const StyledDot = styled(Box)(({ theme, index, isLast }) => ({
   '&::after': {
     content: '""',
     position: 'absolute',
-    width: '550%', 
+    width: '650%', 
     height: '5px', 
     background: theme.palette.mode === 'dark' ? '#181818' : '#EBE5DC',
     top: '50%', 
@@ -323,6 +331,9 @@ const StyledDot = styled(Box)(({ theme, index, isLast }) => ({
     left: index % 2 === 0 ? 'none' : '0',
     transform: 'translateY(-50%)',
     zIndex: -1, 
+    [theme.breakpoints.down('sm')]: {
+      width: '300%', 
+   },
     
   },
 

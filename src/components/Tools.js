@@ -1,7 +1,7 @@
 import Slider from 'react-slick';
 import React, { useState, useContext, useEffect } from 'react';
 import { styled, useTheme, keyframes } from '@mui/material/styles';
-import { slideToolsInAnimation } from '../styles/animations';
+import { slideInRightAnimation, slideInLeftAnimation} from '../styles/animations';
 import { useVisibility } from '../context/VisibilityContext';
 import { useTranslation } from 'react-i18next'; 
 import { ThemeContext } from '../context/ThemeContext'; 
@@ -28,22 +28,24 @@ import xamlLogo from '../assets/tools/xaml.png';
 import xmlLogo from '../assets/tools/xml.png';
 import reactLogo from '../assets/tools/react.png';
 import jsLogo from '../assets/tools/js.png';
+import apiLogo from '../assets/tools/api.png';
 
 const tools = [
-  { name: 'Python', image: pythonLogo },
   { name: 'C#', image: csharpLogo },
+  { name: 'React', image: reactLogo },
+  { name: 'JavaScript', image: jsLogo },
   { name: 'HTML', image: htmlLogo },
   { name: 'CSS', image: cssLogo },
   { name: 'SQL', image: sqlLogo },
-  { name: 'React', image: reactLogo },
-  { name: 'JavaScript', image: jsLogo },
+  { name: 'REST API', image: apiLogo },
   {name: 'GitHub', image: githubLogo},
   { name: 'XAML', image: xamlLogo },
   { name: 'XML', image: xmlLogo },
   { name: 'Figma', image: figmaLogo },
   { name: 'AutoCAD', image: autocadLogo },
   { name: 'AxureRP', image: axureRPLogo },
-  { name: 'CMD', image: cmdLogo },
+  { name: 'Python', image: pythonLogo },
+  { name: 'To Be Continued...', image: null },
 ];
 
 const ToolCarousel = () => {
@@ -86,24 +88,22 @@ const ToolCarousel = () => {
 
   return (
   
-      <StyledBox id="about-skills" className="track-visibility">
+      <StyledBox id="about-skills" className="track-visibility" animate={animate}>
    
       
-      <Slider {...settings}>
+   
         {/* Use flexbox layout to make sure the tools align in rows and columns */}
-        {groupedTools.map((group, groupIndex) => (
-          <StyledBox2 key={groupIndex} isExtraSmall={isExtraSmall} animate={animate}>
-            {group.map((tool, index) => (
+        {tools.map((tool, index) => (
               <StyledBox4 key={index} index={index}>
-                <StyledBox3 component="img" src={tool.image} alt={tool.name} />
-                <ToolNameTypography>
+                {tool.image &&
+                  <StyledBox3 component="img" src={tool.image} alt={tool.name} />
+                }
+                  <ToolNameTypography>
                   {tool.name}
                 </ToolNameTypography>
               </StyledBox4>
             ))}
-          </StyledBox2>
-        ))}
-      </Slider>
+    
     </StyledBox>
   
     
@@ -114,10 +114,11 @@ export default ToolCarousel;
 
 const ToolNameTypography = styled(Typography)(({ theme }) => ({
   color: theme.palette.text.primary, 
+  lineHeight: 1,
 }));
 
 const StyledBox4 = styled(Box)(({ theme, isVisible, index }) => ({
-      display: 'flex', 
+      display: 'inline-flex',
       flexDirection: 'row', 
       alignItems: 'center', 
       justifyContent: 'center', 
@@ -126,18 +127,24 @@ const StyledBox4 = styled(Box)(({ theme, isVisible, index }) => ({
       borderRadius:'10px',
       gap:'5px',
       margin:'0.5rem 5px',
-      // backgroundColor: theme.palette.background.default,
-
+      width: '120px',         
+      height: 'auto',         
+      maxWidth: '120px',     
+      maxHeight: '45px',   
       zIndex:'100',
-    backgroundColor: 'rgba(255, 255, 255, 0.1)', 
-    backdropFilter: 'blur(10px)', 
-    boxShadow: theme.palette.mode === 'dark' 
-        ? '0 2px 3px rgba(0, 0, 0, 0.5)' 
-        : '0 2px 3px rgba(0, 0, 0, 0.5)', 
+      backgroundColor: 'rgba(255, 255, 255, 0.1)', 
+      backdropFilter: 'blur(10px)', 
+      boxShadow: theme.palette.mode === 'dark' 
+          ? '0 2px 3px rgba(0, 0, 0, 0.5)' 
+          : '0 2px 3px rgba(0, 0, 0, 0.5)', 
 
 
       [theme.breakpoints.down('lg')]: {
         margin:'10px 5px'
+      },
+      [theme.breakpoints.down('sm')]: {
+        width: '89px',         
+        height: '35px',  
       },
 }));
 
@@ -164,16 +171,18 @@ const StyledBox2 = styled(Box)(({ theme, isExtraSmall, animate }) => ({
 }));
   
 
-const StyledBox = styled(Box)(({ theme }) => ({
-  padding: '10px 0',
-  // backgroundColor: theme.palette.background.paper2,
+const StyledBox = styled(Box)(({ theme, animate }) => ({
   width: '100%',
-  overflow: 'hidden',  
-  position:'absolute',
- bottom:'27%',
- left:0
-
- 
+  display:'flex',
+  flexDirection:'row',
+  justifyContent:'felx-start',
+  alignItems:' center',
+  flexWrap:'wrap',
+  margin:'1rem 0',
+  animation: animate && `${slideInLeftAnimation} 2.8s ease forwards`,
+  [theme.breakpoints.down('lg')]: {
+    justifyContent:'center',
+},
 }));
 
 const StyledBoxBg = styled(Box)(({ theme }) => ({

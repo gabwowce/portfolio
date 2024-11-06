@@ -164,7 +164,7 @@ export const darkTheme = createTheme({
       default: '#121212', // Dark background
       paper: '#1d1d1d',   // Dark paper background
       paper2: '#1F1F1F',
-      hover: '#612a30',   // Light gray for hover effects
+      hover: '#612a30',  
       portfolio: '#1d1d1d'
     },
     text: {

@@ -55,7 +55,7 @@ export default function Header() {
             <>
               <StyledButton component={Link} to="/about">{t('header.about')}</StyledButton>
               <StyledButton component={Link} to="/portfolio">{t('header.portfolio')}</StyledButton>
-              <StyledButton component={Link} to="/contact">{t('header.contact')}</StyledButton>
+              <StyledButton2 component={Link} to="/contact">{t('header.contact')}</StyledButton2>
             </>
           )}
         </StyledBoxMenu>
@@ -68,7 +68,7 @@ export default function Header() {
             </IconButton >
             <StyledButton component={Link} to="/about" onClick={handleMenuClose}>{t('header.about')}</StyledButton>
             <StyledButton component={Link} to="/portfolio" onClick={handleMenuClose}>{t('header.portfolio')}</StyledButton>
-            <StyledButton component={Link} to="/contact" onClick={handleMenuClose}>{t('header.contact')}</StyledButton>
+            <StyledButton2 component={Link} to="/contact" onClick={handleMenuClose}>{t('header.contact')}</StyledButton2>
             </StyledMobileMenu>
         }
 
@@ -89,6 +89,23 @@ export default function Header() {
     </StyledAppBar>
   );
 }
+
+const StyledButton2 = styled(Button)(({ theme }) => ({
+  fontFamily: 'Outfit, sans-serif', 
+  fontWeight:'600',
+  color: theme.palette.text.primary,
+  // backgroundColor: theme.palette.background.hover,
+  margin: theme.spacing(1),
+  fontSize: '1rem', 
+  transition: 'color 0.3s ease',
+  boxSizing: 'border-box',
+  backgroundColor: 'transparent',
+  borderRadius:'10px',
+  border:`1px solid ${theme.palette.text.primary}`,
+  '&:hover': {
+    backgroundColor: theme.palette.background.hover,
+  },
+}));
 
 const StyledSwitch = styled(Switch)(({ theme }) => ({
   '& .MuiSwitch-thumb': {

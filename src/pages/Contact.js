@@ -25,6 +25,10 @@ const Contact = () => {
 
   const { visibleElements } = useVisibility();
     const [animate, setAnimate] = useState(false);
+
+    useEffect(() => {
+      window.scrollTo(0, 0);
+  }, []);
    
     useEffect(() => {
       const isVisible = visibleElements.has("contact");
@@ -193,6 +197,9 @@ export const StyledButton = styled(Button)(({ theme }) => ({
 
     color: theme.palette.mode === 'dark' ? '#FFFFFF' : '#000000',
     borderColor: theme.palette.mode === 'dark' ? '#CCCCCC' : '#333333',
+  },
+  [theme.breakpoints.down('md')]: {
+    width: '100%',
   },
 }));
 export const StyledBox = styled(Box)(({ theme }) => ({

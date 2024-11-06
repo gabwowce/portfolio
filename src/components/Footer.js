@@ -154,7 +154,8 @@ const StyledImage = styled('img')(({ theme }) => ({
 
 const BackgroundBox = styled(Box)(({ theme }) => ({
   width: '100%',
-  backgroundColor: theme.palette.background.default,
+  // backgroundColor: theme.palette.background.default,
+  backgroundColor: theme.palette.mode === 'dark' ? '#393736' : 'rgb(196, 225,246,0.3)',
 }));
 
 const StyledBox = styled(Box)(({ theme }) => ({

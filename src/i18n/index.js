@@ -145,8 +145,8 @@ i18n
               endYear: 2027
             },
             languages: {
-              title: "Language Skills",
-              subtitle:"Languages are my passion! I mean programming languages. Who wants to talk when you can write code?",
+              title: "My Relationship with Languages",
+              subtitle: "Me and languages – trying to find common ground here.",
               details: {
                 russian: {
                   speaking: 80,
@@ -273,11 +273,11 @@ i18n
           },
           statistics: {
             linesOfCode: {
-              title: "Lines of Code Written",
+              title: "Lines of Code",
               number: '50000+'
             },
             codeFirstTry: {
-              title: "Code Written on First Try Without Errors",
+              title: "First Try, No Errors",
               number: -1
             },
             bugsSquashed: {
@@ -292,32 +292,35 @@ i18n
           messages: [
             {
               id: 1,
-              sender: "Draugas",
-              recipient: "As",
+              sender: "Russian",
+              recipient: "Aš",
               text: [
-                
-                { type: "received", content: "How can you sit in such darkness? Open the curtains." },
-                { type: "sent", content: "No! It the light attracts bugs" },
+                { type: "received", content: "Ну что, как думаешь, нам ещё нужна практика?" },
+                { type: "sent", content: "Не, мне уже всё понятно! Я тебя прекрасно понимаю." },
+                { type: "received", content: "О, круто! Значит, можем спокойно общаться без проблем." },
+                { type: "sent", content: "Да, без проблем! Всё ясно с первого слова." },
+               
               ]
             },
             {
               id: 2,
-              sender: "Mama",
+              sender: "Lithuanian",
               recipient: "As",
               text: [
-                
-                { type: "received", content: "Kaip gali tokioje tamsoje sedėti, atskleisk užuolaidas" },
-                { type: "sent", content: "Ne! šviesą pritraukia bug'us" },
+                { type: "received", content: "Labas! Kaip sekasi?" },
+                { type: "sent", content: "Labas! Puikiai, lietuvių kalba – kaip vanduo, nesunkiai plaukiu!" },
+                { type: "received", content: "Ha, aišku, kad taip!" },
               ]
             },
             {
               id: 3,
-              sender: "Tetis",
+              sender: "English",
               recipient: "As",
               text: [
-              
-                { type: "received", content: "Kaip gali tokioje tamsoje sedėti, atskleisk užuolaidas" },
-                { type: "sent", content: "Ne! šviesą pritraukia bug'us" },
+                { type: "received", content: "Hey! I get everything you say, but I still need to practice a bit more before I sound like a pro." },
+                { type: "sent", content: "Haha, you’re doing great! I get everything, just need a bit more talking practice myself." },
+                { type: "received", content: "Well, at least we’re fluent in understanding each other, right?" },
+                { type: "sent", content: "Exactly! We’re practically language ninjas, just need to level up the speaking part!" },
               ]
             }
           ]
@@ -443,8 +446,8 @@ i18n
               endYear: 2027
             },
             languages: {
-              title: "Kalbų įgūdžiai",
-              subtitle:"Kalbos yra mano aistra! Turiu omenyje programavimo kalbas. Kam kalbėtis, kai galima rašyti kodą?",
+              title: "Santykiai su kalbomis",
+              subtitle:"Čia aš ir kalbos - bandom rasti bendrą kalbą",
               details: {
                 rusų: {
                   kalbėjimas: 80,
@@ -574,7 +577,7 @@ i18n
               number: '50000+'
             },
             codeFirstTry: {
-              title: "Kodas parašytas iš pirmo karto be klaidų",
+              title: "Kodas be klaidų iš pirmo karto",
               number: -1
             },
             bugsSquashed: {
@@ -589,29 +592,35 @@ i18n
           messages: [
             {
               id: 1,
-              sender: "Draugas",
-              recipient: "As",
+              sender: "Rusų kalba",
+              recipient: "Aš",
               text: [
-                { type: "sent", content: "No! It attracts bugs" },
-                { type: "received", content: "How can you sit in such darkness? Open the curtains." }
+                { type: "received", content: "Ну что, как думаешь, нам ещё нужна практика?" },
+                { type: "sent", content: "Не, мне уже всё понятно! Я тебя прекрасно понимаю." },
+                { type: "received", content: "О, круто! Значит, можем спокойно общаться без проблем." },
+                { type: "sent", content: "Да, без проблем! Всё ясно с первого слова." },
+               
               ]
             },
             {
               id: 2,
-              sender: "Mama",
+              sender: "Lietuvių kalba",
               recipient: "As",
               text: [
-                { type: "sent", content: "Ne! šviesą pritraukia bug'us" },
-                { type: "received", content: "Kaip gali tokioje tamsoje sedėti, atskleisk užuolaidas" }
+                { type: "received", content: "Labas! Kaip sekasi?" },
+                { type: "sent", content: "Labas! Puikiai, lietuvių kalba – kaip vanduo, nesunkiai plaukiu!" },
+                { type: "received", content: "Ha, aišku, kad taip!" },
               ]
             },
             {
               id: 3,
-              sender: "Tetis",
+              sender: "Anglų kalba",
               recipient: "As",
               text: [
-                { type: "sent", content: "Ne! šviesą pritraukia bug'us" },
-                { type: "received", content: "Kaip gali tokioje tamsoje sedėti, atskleisk užuolaidas" }
+                { type: "received", content: "Hey! I get everything you say, but I still need to practice a bit more before I sound like a pro." },
+                { type: "sent", content: "Haha, you’re doing great! I get everything, just need a bit more talking practice myself." },
+                { type: "received", content: "Well, at least we’re fluent in understanding each other, right?" },
+                { type: "sent", content: "Exactly! We’re practically language ninjas, just need to level up the speaking part!" },
               ]
             }
           ]

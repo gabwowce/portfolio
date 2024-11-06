@@ -14,8 +14,9 @@ import lightPhoneImage from '../assets/light-phone.png';
 import darkPhoneImage from '../assets/dark-phone.png';
 import { ReactComponent as AddUserIcon } from '../assets/add-user.svg';
 import Timeline from '../components/Timeline';
-import ToolCarousel from '../components/ToolCarousel';
+import Tools from '../components/Tools';
 import LanguageSkills from '../components/LanguageSkills';
+import ChatCards from '../components/ChatCards';
 import Statistics from '../components/FunStatistics';
 import CanvasComponent from '../components/CanvasComponent';
 import CanvasComponentLight from '../components/CanvasComponentLight ';
@@ -65,6 +66,7 @@ const About = () => {
     return (
       <>
       <BackgroundSection id="about-page" className="track-visibility" animate={animateAboutPage}>
+        
         <HeroSection id="about-hero" className="track-visibility"  animate={animate}>
           <StyledContainer className='custom-container' animate={animate}>
             <StyledBox>
@@ -74,18 +76,26 @@ const About = () => {
               <SecondTypography variant="h3" animate={animate}>
                 {t('aboutPage.jobTitle')}
               </SecondTypography>
-              <ThirdTypography variant="body1" animate={animate}>
+              {/* <ThirdTypography variant="body1" animate={animate}>
                 {t('aboutPage.description')}
-              </ThirdTypography>
+              </ThirdTypography> */}
+              <Tools/>
+              <Statistics/>
               
             </StyledBox>
             <BoxForPic animate={animate}>
-              <ImageBox component="img" src={themeMode === 'dark' ? darkPhoneImage : lightPhoneImage} alt="Phone" />
-              <StyledButton href="https://www.linkedin.com/in/gabrielė-tamaševičiūtė-06712526b" target="_blank" rel="noopener noreferrer">
-                <AddUserIcon /> Connect
-              </StyledButton>
+              <PhoneBox>
+                <ImageBox component="img" src={themeMode === 'dark' ? darkPhoneImage : lightPhoneImage} alt="Phone" />
+                <StyledButton href="https://www.linkedin.com/in/gabrielė-tamaševičiūtė-06712526b" target="_blank" rel="noopener noreferrer">
+                  <AddUserIcon /> Connect
+                </StyledButton>
+              </PhoneBox>
+              
             </BoxForPic>   
+            
           </StyledContainer>
+
+          
 
             {themeMode === 'dark' ?
             <CanvasComponent
@@ -98,21 +108,18 @@ const About = () => {
             />
             :
             <CanvasComponentLight cloudAnimation = {true} birdAnimation = {true}/>}
-           
+            
         </HeroSection>
 
-        <ToolCarousel/>
+        
 
-        <Statistics/>
 
         <StyledBackgroundBox3 animate={animateHistory} id="about-history" >
           <Timeline/>
         </StyledBackgroundBox3>
         
         <StyledBackgroundBox2>
-          <Container className='custom-container'>
-            <LanguageSkills/>
-          </Container>
+          <ChatCards/>
         </StyledBackgroundBox2>
       </BackgroundSection>
       </>
@@ -124,7 +131,12 @@ const About = () => {
 export default About;
 
 
+const PhoneBox = styled(Box)(({ theme }) => ({
+  position: 'relative',
+  width: 'auto',
 
+  
+}));
 
 const StyledCardBox = styled(Box)(({ theme }) => ({
   margin:'0 7rem',
@@ -242,19 +254,19 @@ export const ImageBox = styled(Box)(({ theme }) => ({
     marginBottom:'-325px',
   
   },
-  [theme.breakpoints.down('sm')]: {
-    clipPath: 'inset(0 0 57% 0)',
-    marginBottom:'-385px',
-  },
+  // [theme.breakpoints.down('sm')]: {
+  //   clipPath: 'inset(0 0 57% 0)',
+  //   marginBottom:'-385px',
+  // },
  
 }));                
 
 export const BoxForPic = styled(Box)(({ theme, animate }) => ({
-  position: 'relative',
+
   width: '100%',
   height: 'auto',
   justifyItems: 'center',
-  animation: animate &&`${slideInRightAnimation} 2.5s ease forwards`,
+  animation: animate &&`${slideInRightAnimation} 2.8s ease forwards`,
   // animationDelay: animate && '1.5s'
 }));
 
@@ -271,7 +283,7 @@ export const NameTypography = styled(Typography)(({ theme, animate }) => ({
   fontWeight: '600',
   textAlign:'left',
   color: theme.palette.text.primary,
-  animation:animate &&`${slideInLeftAnimation} 2.5s ease forwards`,
+  animation:animate &&`${slideInLeftAnimation} 2.2s ease forwards`,
   //  animationDelay: animate && '1.5s'
 }));
 
@@ -292,7 +304,7 @@ export const StyledContainer = styled(Container)(({ theme }) => ({
 
 export const StyledButton = styled(Button)(({ theme }) => ({
   position: 'absolute',
-  left: '71px',
+  left: '44px',
   top: '291px',
   backgroundColor: theme.palette.mode === 'dark' ? '#71b6f9' : '#0b66c1',
   color: theme.palette.mode === 'dark' ? '#0f121b' : '#fbfbff',
@@ -311,17 +323,18 @@ export const StyledButton = styled(Button)(({ theme }) => ({
     fill: theme.palette.mode === 'dark' ? '#0f121b' : '#fbfbff'
   },
 
-  [theme.breakpoints.down('lg')]: {                   
-    left: '44px',
-    top: '290px',
-  },
-  [theme.breakpoints.down('md')]: {
-    left: '148px',
-    top: '290px',
-  },
-  [theme.breakpoints.down('sm')]: {
-    visibility:'hidden'
-  },
+  // [theme.breakpoints.down('lg')]: {                   
+  //   left: '44px',
+  //   top: '290px',
+  // },
+  // [theme.breakpoints.down('md')]: {
+  //   left: '44px',
+  //   top: '290px',
+  // },
+  // [theme.breakpoints.down('sm')]: {
+  //   left: '44px',
+  //   top: '290px',
+  // },
 }));
 
 export const StyledBox = styled(Box)(({ theme }) => ({

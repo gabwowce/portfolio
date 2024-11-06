@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { styled, useTheme } from '@mui/material/styles';
 import { ThemeContext } from '../context/ThemeContext'; 
 import { useVisibility } from '../context/VisibilityContext';
-
+import { slideInRightAnimation, slideInLeftAnimation} from '../styles/animations';
 import CodeIcon from '@mui/icons-material/Code';
 import ErrorIcon from '@mui/icons-material/Error';
 import BugReportIcon from '@mui/icons-material/BugReport';
@@ -30,7 +30,7 @@ const Statistics = () => {
     }, [visibleElements]);
 
     return (
-        <StyledBox id="about-stats" className="track-visibility" animate={animate}>
+        <StyledBox2 id="about-stats" className="track-visibility" animate={animate}>
            
             <StyledBox>
                 {statisticsData.map((stat, index) => {
@@ -40,7 +40,7 @@ const Statistics = () => {
                         <StyledCard key={stat.key} animate={animate} index={index}>
                             <StyledCardContent>
 
-                                <NumberTypography variant="h2">{t(`statistics.${stat.key}.number`)}</NumberTypography>
+                                <NumberTypography variant="h3">{t(`statistics.${stat.key}.number`)}</NumberTypography>
                                 <TitleTypography variant="body1">{t(`statistics.${stat.key}.title`)}</TitleTypography>
                                 
                             </StyledCardContent>
@@ -48,7 +48,7 @@ const Statistics = () => {
                     );
                 })}
             </StyledBox>
-        </StyledBox>
+        </StyledBox2>
     );
 };
 
@@ -96,32 +96,31 @@ const StyledCard = styled(Box)(({ theme, animate, index }) => ({
     textAlign: 'center',
     position: 'relative',
     // backgroundColor: theme.palette.background.default,
-    borderRadius: '10px',
-    margin: '10px',
+    // borderRadius: '10px',
+    // margin: '10px',
     flexBasis: 'calc(25% - 20px)',
     flexGrow: 1,
-    minWidth: '200px',
-    height: '150px',
+    minWidth: '150px',
+    // height: '150px',
     display: 'flex',               
     justifyContent: 'center',       
     alignItems: 'center',
     opacity: animate ? 1 : 0, 
     transition: 'opacity 1.5s ease',
-
+    // zIndex:'9999999',
     
-    zIndex:'100',
-    backgroundColor: 'rgba(255, 255, 255, 0.1)', 
-    backdropFilter: 'blur(10px)', 
-    boxShadow: theme.palette.mode === 'dark' 
-        ? '0 2px 5px rgba(0, 0, 0, 0.5)' 
-        : '0 2px 5px rgba(0, 0, 0, 0.5)', 
+    // backgroundColor: 'rgba(255, 255, 255, 0.1)', 
+    // backdropFilter: 'blur(10px)', 
+    // boxShadow: theme.palette.mode === 'dark' 
+    //     ? '0 2px 5px rgba(0, 0, 0, 0.5)' 
+    //     : '0 2px 5px rgba(0, 0, 0, 0.5)', 
  
 
 
     [theme.breakpoints.down('sm')]: {
-        minWidth: '155px',
-        height: '120px',
-        margin: '4px',
+        minWidth: '100px',
+        // height: '120px',
+        // margin: '4px',
     },
    
 }));
@@ -133,7 +132,18 @@ const StyledBox = styled(Box)(({ theme, animate }) => ({
     justifyContent: 'center',
     width: '100%',
     flexWrap: 'wrap',
-    backgroundColor: theme.palette.background.paper2,
+    backgroundColor: 'transparent',
     padding:'0 5px',
-    
+    // marginTop:'-70px'
+}));
+const StyledBox2 = styled(Box)(({ theme, animate }) => ({
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: '100%',
+    flexWrap: 'wrap',
+    // backgroundColor: theme.palette.background.paper2,
+    padding:'0 5px',
+    animation: animate && `${slideInLeftAnimation} 3s ease forwards`,
 }));
