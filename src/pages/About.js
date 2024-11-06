@@ -254,10 +254,10 @@ export const ImageBox = styled(Box)(({ theme }) => ({
     marginBottom:'-325px',
   
   },
-  // [theme.breakpoints.down('sm')]: {
-  //   clipPath: 'inset(0 0 57% 0)',
-  //   marginBottom:'-385px',
-  // },
+  [theme.breakpoints.down('sm')]: {
+    clipPath: 'inset(0 0 57% 0)',
+    marginBottom:'-385px',
+  },
  
 }));                
 
@@ -327,18 +327,9 @@ export const StyledButton = styled(Button)(({ theme }) => ({
     fill: theme.palette.mode === 'dark' ? '#0f121b' : '#fbfbff'
   },
 
-  // [theme.breakpoints.down('lg')]: {                   
-  //   left: '44px',
-  //   top: '290px',
-  // },
-  // [theme.breakpoints.down('md')]: {
-  //   left: '44px',
-  //   top: '290px',
-  // },
-  // [theme.breakpoints.down('sm')]: {
-  //   left: '44px',
-  //   top: '290px',
-  // },
+  [theme.breakpoints.down('sm')]: {
+    display:'none'
+  },
 }));
 
 export const StyledBox = styled(Box)(({ theme, animate }) => ({

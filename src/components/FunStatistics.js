@@ -118,7 +118,8 @@ const StyledCard = styled(Box)(({ theme, animate, index }) => ({
 
 
     [theme.breakpoints.down('sm')]: {
-        minWidth: '100px',
+        minWidth: '40%',
+    
         // height: '120px',
         // margin: '4px',
     },
