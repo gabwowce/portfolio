@@ -40,7 +40,7 @@ const Portfolio = () => {
       return (
           <StyledCardBox bg={project.images[themeMode].bg} onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)} animate={animate} delay={delay}>
               <BoxForPic isHovered={isHovered}>
-                  <StyledImageBox component="img" src={project.images[themeMode].pic} alt="project picture laptop" />
+                  <StyledImageBox component="img" src={project.images[themeMode].pic} alt="project picture laptop" isHovered={isHovered}/>
                   {
                       project.images[themeMode].pic2 && <StyledImageBox2 component="img" src={project.images[themeMode].pic2} alt="project picture phone" />
                   }
@@ -218,8 +218,9 @@ const SkillsTypography = styled(Typography)(({ theme, isHovered }) => ({
     textAlign: 'center',
     transition: 'height 1s ease',
     zIndex: '10',
+    
     [theme.breakpoints.down('sm')]: {
-      height: isHovered ? '320px' : '140px', 
+      height: isHovered ? '360px' : '140px', 
    },
 }));
 
@@ -237,18 +238,17 @@ export const StyledImageBox2 = styled(Box)(({ theme }) => ({
 
   })); 
 
-export const StyledImageBox = styled(Box)(({ theme }) => ({
+  export const StyledImageBox = styled(Box)(({ theme, isHovered }) => ({
     position: 'absolute',
     top: '45%',
-    left:'48%',
+    left: '48%',
     transform: 'translate(-50%, -50%) rotate(-10deg)',
     width: '470px',
     [theme.breakpoints.down('lg')]: {
       top: '30%',
       width: '370px',
-   },
-   
-  })); 
+    },
+  }));
 
 export const BoxForPic = styled(Box)(({ theme, isHovered, animate }) => ({
     position: 'absolute',
@@ -297,7 +297,7 @@ export const BackgroundSection = styled(Box)(({ theme }) => ({
     [theme.breakpoints.down('sm')]: {
       maxWidth: 'calc(100% - 2rem)',
       minWidth: '350px',
-      height: '550px',
+      height: '600px',
     },
 }));
 

@@ -50,10 +50,10 @@ const ChatCards = () => {
                                 {msg.sender.charAt(0)}
                             </StyledAvatar>
                             <StyledBox>
-                                <Typography variant='body1' sx={{fontFamily: 'Outfit, sans-serif'}}>
+                                <Typography variant='subtitle1' sx={{fontFamily: 'Outfit, sans-serif'}}>
                                     {msg.sender}
                                 </Typography>
-                                <Typography variant='body2'>
+                                <Typography variant='subtitle2'>
                                     Active 1h ago
                                 </Typography>
                             </StyledBox>
@@ -272,6 +272,7 @@ const StyledChatRow = styled(Box)(({ theme }) => ({
     // gap:"3rem"
     [theme.breakpoints.down('lg')]: {
         gap:'2rem',
+        margin:"1rem 0",
     },
 }));
 

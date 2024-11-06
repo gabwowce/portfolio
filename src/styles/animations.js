@@ -1,5 +1,15 @@
 import { keyframes } from '@mui/material/styles';
 
+export const shake = `
+  @keyframes shake {
+    0% { transform: translate(-50%, -50%) rotate(0deg) translateY(20px) translateX(20px) scale(1.1); }
+    25% { transform: translate(-50%, -50%) rotate(0deg) translateY(18px) translateX(18px) scale(1.1); }
+    50% { transform: translate(-50%, -50%) rotate(0deg) translateY(22px) translateX(22px) scale(1.1); }
+    75% { transform: translate(-50%, -50%) rotate(0deg) translateY(19px) translateX(19px) scale(1.1); }
+    100% { transform: translate(-50%, -50%) rotate(0deg) translateY(20px) translateX(20px) scale(1.1); }
+  }
+  `;
+
 export const slideDownAnimation= keyframes`
   from {
     transform: translateY(-100%);

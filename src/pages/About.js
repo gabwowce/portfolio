@@ -1,5 +1,5 @@
 import React, { useState, useContext, useEffect } from 'react';
-import { slideInRightAnimation, slideInLeftAnimation} from '../styles/animations';
+import { slideInRightAnimation, slideInLeftAnimation, slideDownAnimation} from '../styles/animations';
 import {
   Box,
   Typography,
@@ -69,7 +69,7 @@ const About = () => {
         
         <HeroSection id="about-hero" className="track-visibility"  animate={animate}>
           <StyledContainer className='custom-container' animate={animate}>
-            <StyledBox>
+            <StyledBox animate={animate}>
               <NameTypography variant="h1" animate={animate}>
                 {t('aboutPage.name')}
               </NameTypography>
@@ -268,13 +268,17 @@ export const BoxForPic = styled(Box)(({ theme, animate }) => ({
   justifyItems: 'center',
   animation: animate &&`${slideInRightAnimation} 2.8s ease forwards`,
   // animationDelay: animate && '1.5s'
+  [theme.breakpoints.down('md')]: {
+    animation: animate &&`${slideDownAnimation} 2s ease forwards`,
+  
+  },
 }));
 
 export const ThirdTypography = styled(Typography)(({ theme, animate }) => ({
   textAlign: 'justify',
   color: theme.palette.text.third,
   marginTop: '1rem',
-  animation: animate && `${slideInLeftAnimation} 2.5s ease forwards`,
+  animation: animate && `${slideInLeftAnimation} 1v.5s ease forwards`,
   //  animationDelay: animate && '1.5s'
 }));
 
@@ -337,7 +341,7 @@ export const StyledButton = styled(Button)(({ theme }) => ({
   // },
 }));
 
-export const StyledBox = styled(Box)(({ theme }) => ({
+export const StyledBox = styled(Box)(({ theme, animate }) => ({
   padding: theme.spacing(3),
   maxWidth: '750px',
   display: 'flex',
@@ -355,6 +359,7 @@ export const StyledBox = styled(Box)(({ theme }) => ({
       ? '0 2px 5px rgba(0, 0, 0, 0.5)' 
       : '0 2px 5px rgba(0, 0, 0, 0.5)', 
     padding: theme.spacing(2),
+    animation:animate &&`${slideInLeftAnimation} 2s ease forwards`,
   },
 }));
 

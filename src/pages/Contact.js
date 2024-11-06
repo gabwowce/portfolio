@@ -76,7 +76,7 @@ const Contact = () => {
             <SecondTypography variant="h6" animate={animate}>
               {t('contact.subtitle')}
             </SecondTypography>
-            <SocialMediaBox mt={4} animate={animate}>
+            <SocialMediaBox mt={2} animate={animate}>
               <StyledIconButton color="inherit" component="a" href="https://www.facebook.com/gabriele.tamaseviciute" target="_blank" rel="noopener noreferrer">
                 <FacebookIcon sx={{ fontSize: '4rem' }} />
               </StyledIconButton>
@@ -160,6 +160,9 @@ export const NameTypography = styled(Typography)(({ theme, animate }) => ({
   [theme.breakpoints.down('lg')]: {
     textAlign:'center',
   },
+  [theme.breakpoints.down('md')]: {
+    margin:'0 0 1rem 0'
+  },
 }));
 
 const SocialMediaBox = styled(Box)(({ theme, animate }) => ({
@@ -209,6 +212,7 @@ export const StyledBox = styled(Box)(({ theme }) => ({
   flexDirection: 'column',
   justifyContent: 'center',
   alignItems: 'flex-start',
+  margin:'0 0.5rem',
   [theme.breakpoints.down('lg')]: {
     padding:'3rem 0 0 0 ',
     alignItems: 'center',
@@ -276,6 +280,7 @@ export const StyledBox2 = styled(Box)(({ theme }) => ({
   justifyContent: 'center',
   alignItems: 'center',
   height:'auto',
+
  
 }));
 
