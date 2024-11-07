@@ -3,11 +3,11 @@
 This is my personal portfolio website showcasing my programming skills and projects. The site is built with modern web technologies to provide a smooth, responsive experience across various devices.
 
 ## Tech Stack
-- **React**: Frontend framework
-- **Material-UI**: UI component library
+- **React**
+- **Material-UI**
 - **Theme**: For design customization
 - **i18next**: For internationalization
-- **CSS**: Styling
+- **CSS**
 
 ## Live Demo
 
