@@ -1,6 +1,6 @@
 # Portfolio Website
 
-This is my personal portfolio website showcasing my programming skills and projects. The site is built with modern web technologies to provide a smooth, responsive experience across various devices.
+This is my personal portfolio website showcasing my programming skills and projects. The site is responsive across various devices.
 
 ## Tech Stack
 - **React**
@@ -12,7 +12,7 @@ This is my personal portfolio website showcasing my programming skills and proje
 ## Live Demo
 
 You can check out the live version of the portfolio at:  
-[My Portfolio](https://your-portfolio-link.com)
+[My Portfolio]([https://your-portfolio-link.com](https://gabwowce.github.io/portfolio/))
 
 ## Installation
 
