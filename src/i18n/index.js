@@ -203,8 +203,8 @@ i18n
             projects: [
               {
                 title: "Library Management App",
-                description: "The library management system is designed for managing library data. The system allows tracking of book information, administering debts, and managing borrowers. It includes three modes: administrator, manager, and user, each with different rights and functionalities.",
-                tools: ["React", "SCSS", "ASP.NET Core Web API", "MySQL"],
+                "description": "This app manages library data using SQL for data handling and features three roles: admin, manager, and user, each with specific access rights. Authentication is handled with JWT tokens, and the frontend is built with React and SCSS.",
+                tools: ["React", "SCSS", "ASP.NET Core Web API", "MySQL", "JWT tokens"],
                 links:{
                   front:'https://github.com/gabwowce/LibraryManagement-frontend',
                   back:'https://github.com/gabwowce/LibraryManagement-backend'
@@ -225,7 +225,7 @@ i18n
               },
               {
                 title: "Real Estate Website",
-                description: "This real estate website project was created to deepen knowledge of React and TypeScript. Additionally, the site was developed as a practical tool to enhance skills in accurately replicating designs from Figma.",
+                "description": "A real estate website built with React, TypeScript, and SCSS to enhance skills in precise design replication from Figma and deepen frontend development expertise.",
                 tools: ["React", "TypeScript", "SCSS"],
                 links:{
                   front:'https://github.com/gabwowce/real-estate-fronted-app',
@@ -247,7 +247,7 @@ i18n
               },
               {
                 title: "My Portfolio Website",
-                description: "This portfolio website is a personal project showcasing my skills and experience in programming. I designed it myself to deepen my design and programming abilities. Focused on creating user-friendly interfaces, I continuously refine my development approach. The responsive layout offers a seamless experience across devices, reflecting my enthusiasm for engaging web experiences.",
+                description: "A personal portfolio website built with React, Material-UI, theme, i18next, and CSS. The responsive design ensures a smooth experience across different devices.",
                 tools: ["React", "Material-UI", "CSS", "i18next"],
                 links:{
                   front:'https://github.com/gabwowce/portfolio',
@@ -504,8 +504,8 @@ i18n
             projects: [
               {
                 title: "Bibliotekos valdymo sistema",
-                description: "Sistema skirta bibliotekų duomenims tvarkyti, leidžianti stebėti knygų informaciją, administruoti skolas ir tvarkyti skolintojus. Sistemoje yra trys režimai: administratoriaus, vadybininko ir vartotojo. Kiekvienas režimas turi skirtingas teises ir funkcijas.",
-                tools: ["React", "SCSS", "ASP.NET Core Web API", "MySQL"],
+                description: "Sistema skirta bibliotekų duomenims tvarkyti. Duomenis saugomi MySQL duomenų bazėje. Sistemoje yra trys režimai su skirtingomis teisėmis: administratoriaus, vadybininko ir vartotojo. Autentifikacijai naudojami JWT tokenai.",
+                tools: ["React", "SCSS", "ASP.NET Core Web API", "MySQL", "JWT tokens"],
                 links:{
                   front:'https://github.com/gabwowce/LibraryManagement-frontend',
                   back:'https://github.com/gabwowce/LibraryManagement-backend'
@@ -547,7 +547,7 @@ i18n
               },
               {
                 title: "Mano Portfelio Svetainė",
-                description: "Ši porfolio svetainė yra asmeninis projektas, pristatantis mano įgūdžius ir patirtį programavime. Svetainės dizainą sukūriau pati, siekdama gilinti dizaino ir programavimo žinias. Dėmesys vartotojui draugiškoms sąsajoms leidžia nuolat tobulinti savo požiūrį. Reaguojantis dizainas užtikrina sklandžią patirtį įvairiuose įrenginiuose, atspindint mano entuziazmą kurti patrauklias žiniatinklio patirtis.",
+                description: "Asmeninė portfolio svetainė, pademonstruojanti programavimo įgūdžius naudojant React, Material-UI, theme, i18next ir CSS. Reaguojantis dizainas užtikrina sklandžią patirtį įvairiuose įrenginiuose.",
                 tools: ["React", "Material-UI", "CSS", "i18next"],
                 links:{
                   front:'https://github.com/gabwowce/portfolio',
