@@ -204,7 +204,7 @@ i18n
               {
                 title: "Library Management App",
                 "description": "This app manages library data using SQL for data handling and features three roles: admin, manager, and user, each with specific access rights. Authentication is handled with JWT tokens, and the frontend is built with React and SCSS.",
-                tools: ["React", "SCSS", "ASP.NET Core Web API", "MySQL", "JWT tokens"],
+                tools: ["React", "SCSS", "ASP.NET Core Web API", "MySQL", "JWT tokens", "BCrypt"],
                 links:{
                   front:'https://github.com/gabwowce/LibraryManagement-frontend',
                   back:'https://github.com/gabwowce/LibraryManagement-backend'
@@ -505,7 +505,7 @@ i18n
               {
                 title: "Bibliotekos valdymo sistema",
                 description: "Sistema skirta bibliotekų duomenims tvarkyti. Duomenis saugomi MySQL duomenų bazėje. Sistemoje yra trys režimai su skirtingomis teisėmis: administratoriaus, vadybininko ir vartotojo. Autentifikacijai naudojami JWT tokenai.",
-                tools: ["React", "SCSS", "ASP.NET Core Web API", "MySQL", "JWT tokens"],
+                tools: ["React", "SCSS", "ASP.NET Core Web API", "MySQL", "JWT tokens", "BCrypt"],
                 links:{
                   front:'https://github.com/gabwowce/LibraryManagement-frontend',
                   back:'https://github.com/gabwowce/LibraryManagement-backend'
