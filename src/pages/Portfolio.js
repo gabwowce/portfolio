@@ -33,19 +33,19 @@ const Portfolio = () => {
   }, [visibleElements]);
 
 
-  const ProjectCard = ({ project, delay }) => { 
+  const ProjectCard = ({ project, index }) => { 
       const { themeMode } = useContext(ThemeContext);
       const [isHovered, setIsHovered] = useState(false);
 
       return (
-          <StyledCardBox bg={project.images[themeMode].bg} onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)} animate={animate} delay={delay}>
+          <StyledCardBox bg={project.images[themeMode].bg} onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)} animate={animate}>
               <BoxForPic isHovered={isHovered}>
                   <StyledImageBox component="img" src={project.images[themeMode].pic} alt="project picture laptop" isHovered={isHovered}/>
                   {
                       project.images[themeMode].pic2 && <StyledImageBox2 component="img" src={project.images[themeMode].pic2} alt="project picture phone" />
                   }
               </BoxForPic>
-              <StyledContentBox isHovered={isHovered}>
+              <StyledContentBox isHovered={isHovered} index={index}>
                   <SecondTypography variant='h3'>{project.title}</SecondTypography>
                   <StyledDescBox isHovered={isHovered}>{project.description}</StyledDescBox>
                   <SkillsTypography variant="subtitle2" component="div" isHovered={isHovered}>
@@ -98,7 +98,7 @@ const Portfolio = () => {
 
           <StyledBox2 animate={animate}>
               {projects.map((project, index) => (
-                  <ProjectCard key={index} project={project} delay={index * 1.6}/>
+                  <ProjectCard key={index} project={project} index={index}/>
               ))}
           </StyledBox2>
       </StyledBackgroundBox2>
@@ -155,7 +155,7 @@ export const SecondTypography = styled(Typography)(({ theme }) => ({
     textAlign: 'center',
     color:  theme.palette.mode === 'dark' ? '#E5E5CB' : '#F6FBFC', 
     lineHeight: '1.2 !important', 
-    marginBottom:'1rem'
+    marginBottom:'1rem',
   }));
 
 export const StyledDescBox = styled(Box)(({ theme, isHovered }) => ({
@@ -209,15 +209,15 @@ const SkillsTypography = styled(Typography)(({ theme, isHovered }) => ({
     color: theme.palette.mode === 'dark' ? '#E5E5CB' : '#F6FBFC',
   }));
 
-  export const StyledContentBox = styled(Box)(({ theme, isHovered }) => ({
+  export const StyledContentBox = styled(Box)(({ theme, isHovered, index }) => ({
     position: 'absolute',
     bottom: 0,
     width: '100%',
     padding:'0 2rem',
-    height: isHovered ? '300px' : '170px', 
+    height: index === 0 ? isHovered ? '370px' : '170px' : isHovered ? '330px' : '170px' , 
     textAlign: 'center',
     transition: 'height 1s ease',
-    zIndex: '10',
+    zIndex: '9999999',
     
     [theme.breakpoints.down('sm')]: {
       height: isHovered ? '360px' : '140px', 
@@ -272,7 +272,7 @@ export const BackgroundSection = styled(Box)(({ theme }) => ({
     flex: '1 1 300px',
     maxWidth: '50%',
     minWidth: '400px',
-    height: '600px',
+    height: '630px',
     backgroundImage: `url(${bg})`,
     color: theme.palette.mode === 'dark' ? '#D5CEA3' : '#EAF5F7',
     borderRadius: 20,
