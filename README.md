@@ -12,7 +12,7 @@ This is my personal portfolio website showcasing my programming skills and proje
 ## Live Demo
 
 You can check out the live version of the portfolio at:  
-[My Portfolio]([https://your-portfolio-link.com](https://gabwowce.github.io/portfolio/))
+[My Portfolio]((https://gabwowce.github.io/portfolio/))
 
 ## Installation
 
