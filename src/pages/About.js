@@ -278,7 +278,7 @@ export const ThirdTypography = styled(Typography)(({ theme, animate }) => ({
   textAlign: 'justify',
   color: theme.palette.text.third,
   marginTop: '1rem',
-  animation: animate && `${slideInLeftAnimation} 1v.5s ease forwards`,
+  animation: animate && `${slideInLeftAnimation} 1.5s ease forwards`,
   //  animationDelay: animate && '1.5s'
 }));
 

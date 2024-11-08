@@ -3,7 +3,7 @@ import { Card, CardContent, Typography, Avatar, Box, TextField, Button } from '@
 import { slideInRightAnimation, slideInLeftAnimation, slideUpAnimation } from '../styles/animations';
 import { blue, green } from '@mui/material/colors';
 import { useTranslation } from 'react-i18next';
-import { styled } from '@mui/material/styles';
+import { styled, useTheme } from '@mui/material/styles';
 import { ThemeContext } from '../context/ThemeContext'; 
 import starImage from '../assets/stars2.png';
 import { fadeInAnimation } from '../styles/animations';
@@ -14,6 +14,7 @@ const ChatCards = () => {
     const { t } = useTranslation();
     const messages = t('messages', { returnObjects: true });
     const { themeMode } = useContext(ThemeContext); 
+    const theme = useTheme();
     const languageSkills = t('aboutPage.languages', { returnObjects: true });
     const chatMessages = {
         chat1: messages.filter((msg) => msg.sender === 'Rusų kalba' || msg.sender === 'Russian'),
@@ -53,7 +54,7 @@ const ChatCards = () => {
                                 <Typography variant='subtitle1' sx={{fontFamily: 'Outfit, sans-serif'}}>
                                     {msg.sender}
                                 </Typography>
-                                <Typography variant='subtitle2'>
+                                <Typography variant='body1' sx={{marginTop:'-5px', [theme.breakpoints.down('sm')]: {marginTop:'0'},}}>
                                     Active 1h ago
                                 </Typography>
                             </StyledBox>
@@ -250,7 +251,14 @@ const StyledTextBox = styled(Box)(({ theme, isSent }) => ({
 
 const StyledAvatar = styled(Avatar)(({ theme,textItem }) => ({
     background: theme.palette.mode === 'dark' ? '#CE90F2' : '#E44C83',
-    borderRadius: '50px'
+    borderRadius: '50px',
+    width:'50px',
+    height:'50px',
+
+    [theme.breakpoints.down('sm')]: {
+        width:'40px',
+    height:'40px',
+    },
 }));
 
 const StyledCard = styled(Card)(({ theme }) => ({

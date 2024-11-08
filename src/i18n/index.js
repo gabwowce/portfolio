@@ -203,7 +203,7 @@ i18n
             projects: [
               {
                 title: "Library Management App",
-                "description": "This app manages library data using SQL for data handling and features three roles: admin, manager, and user, each with specific access rights. Authentication is handled with JWT tokens, and the frontend is built with React and SCSS.",
+                description: "This app manages library data using SQL for data handling and features three roles: admin, manager, and user, each with specific access rights. Authentication is handled with JWT tokens, and the frontend is built with React and SCSS.",
                 tools: ["React", "SCSS", "ASP.NET Core Web API", "MySQL", "JWT tokens", "BCrypt"],
                 links:{
                   front:'https://github.com/gabwowce/LibraryManagement-frontend',
@@ -225,7 +225,7 @@ i18n
               },
               {
                 title: "Real Estate Website",
-                "description": "A real estate website built with React, TypeScript, and SCSS to enhance skills in precise design replication from Figma and deepen frontend development expertise.",
+                description: "A real estate website built with React, TypeScript, and SCSS to enhance skills in precise design replication from Figma and deepen frontend development expertise.",
                 tools: ["React", "TypeScript", "SCSS"],
                 links:{
                   front:'https://github.com/gabwowce/real-estate-fronted-app',
@@ -251,6 +251,7 @@ i18n
                 tools: ["React", "Material-UI", "CSS", "i18next"],
                 links:{
                   front:'https://github.com/gabwowce/portfolio',
+                  link:'https://gabwowce.github.io/portfolio'
                 },
                 images: {
                   light: {
@@ -551,6 +552,7 @@ i18n
                 tools: ["React", "Material-UI", "CSS", "i18next"],
                 links:{
                   front:'https://github.com/gabwowce/portfolio',
+                  link:'https://gabwowce.github.io/portfolio'
                 },
                 images: {
                   light: {
