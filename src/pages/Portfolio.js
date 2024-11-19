@@ -174,9 +174,9 @@ export const StyledDescBox = styled(Box)(({ theme, isHovered }) => ({
 
 export const StyledBackgroundBox2 = styled(Box)(({ theme, animate }) => ({
     width: '100%',
-    height:'100vh',
+    height: '100%',
     background: theme.palette.background.portfolio,
-    padding: '5rem 0',
+    padding: '6rem 0',
     display:'flex',
     flexDirection:'column',
     justifyContent:'center',
