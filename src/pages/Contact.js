@@ -300,7 +300,7 @@ export const StyledContainerBox = styled(Box)(({ theme }) => ({
 
 export const StyledBackgroundBox2 = styled(Box)(({ theme, animate }) => ({
   width: '100%',
-  height:'auto',
+  height:'100vh',
   background: theme.palette.background.portfolio,
   padding: '5rem 0',
   display:'flex',
