@@ -2,6 +2,16 @@ import { createTheme } from '@mui/material/styles';
 
 // Light Theme
 export const lightTheme = createTheme({
+  breakpoints: {
+    values: {
+      xs: 0,
+      sm: 600,
+      md: 960,
+      lg: 1280,
+      xl: 1920,
+      xxl: 2300, // Pridėjome naują „breakpoint“
+    },
+  },
   palette: {
     mode: 'light',
     primary: {
@@ -153,6 +163,16 @@ export const lightTheme = createTheme({
 
 // Dark Theme
 export const darkTheme = createTheme({
+  breakpoints: {
+    values: {
+      xs: 0,
+      sm: 600,
+      md: 960,
+      lg: 1280,
+      xl: 1920,
+      xxl: 2300, // Pridėjome naują „breakpoint“
+    },
+  },
   palette: {
     mode: 'dark',
     primary: {
