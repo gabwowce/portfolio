@@ -13,7 +13,7 @@ const LoaderContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh; /* Uždengia visą ekraną */
+  height: 100dvh; /* Uždengia visą ekraną */
   width: 100%; /* Uždengia visą plotą */
   background: rgba(255, 255, 255, 0.8); /* Pasirinktinė fono spalva */
 `;
